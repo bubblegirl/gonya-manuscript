@@ -58,18 +58,17 @@ As high bootstrap values are often used as an indicator for robust species topol
 In this study we aim to build a bioinformatic pipeline that attempts to addresses the issues of paralogy when processing transcriptomic data from non-model organisms, utilises alternative methods to both concatenation and maximum likelihood inference. 
 % AD 131217: I think most people write RNAseq or RNA-seq
 Specifically, the pipeline assembles RNA seq datasets, identifies and extracts single copy genes across input taxa with extensive paralogy, and runs Bayesian inference phylogenetics. 
-% AD 131217: not sure the GPU thing is worth mentioning outside the methods section
-% AD 131217: validation? is there a known truth?
 Finally, to apply the pipeline to the historically difficult order Gonyaulacales (phylum: Dinoflagellata) which are notorious for the issues that the pipeline seeks to address.\\
 % AD 131217: suggest starting a new \subsection{} here
 %protists and environmental importance
+\subsection*{•}
 Dinoflagellates represent an ancient lineage on the eukaryotic branch of life. 
 They play a role in several important ecological processes, as members are represented in aquatic environments, where the cover a diverse niches such as symbionts, parasites and some taxa can cause harmful algal blooms through proliferation and/or neurotoxin production.
 While the evolutionary relationship of most orders within the dinoflagellates has been estimated with reasonable certainty, one order has consistently escaped scrutiny - the gonyaulacales. 
 Analyses for this order commonly combined concatenation and maximum likelihood approaches, which yielded long branch attraction, low confidence values and inconsistent taxon resolution. 
 Improving upon the species the evolution of the gonyaulaceles has implications for environmental disease monitoring, as neurotoxin production is prevalent in this order. 
 Specifically the ciguatoxins produced by some \emph{Gambierdiscus} spp. are of interest as the causative agent of ciguatera fish poisoning, a neglected tropical disease with high associated morbidity.%, which is predicted to increase in prevalence with the advent of climate change.
-%checking git link
+
 
 \newpage
 
@@ -262,6 +261,10 @@ Gymnodiniales&\emph{Karenia brevis}&CCMP2229&85&MMETSP0030 \citep{keeling2014mar
 
 Azadinium Order Dinophyceae incerta sedis according to algaebase, gonyaulacales from NCBI taxonomy
 
+\subsection*{Phylogeny}
+The gonyaulacales resolved as a monophyletic order with three major clades. 
+The PP for the deeper branching clades was well resolved (Check). 
+\emph{Crypthecodinium chonii} did not resolve within the gonyaulacales, but clustered as an outgroup along with \emph{Azadinium spinosum}, \emph{Karenia brevis} and \emph{Dinohysis acuminata}.
 \FloatBarrier 
 \begin{figure} 
 %\includegraphics[scale=.3]{HG7-env.png} 
@@ -269,9 +272,6 @@ Azadinium Order Dinophyceae incerta sedis according to algaebase, gonyaulacales 
 \label{fig:envHG7}
 \end{figure} 
 \FloatBarrier
-
-\subsection*{Phylogeny}
-
 \newpage
 \section{Discussion}
 This study presents a pipeline designed to handle the identification of single copy genes in ordinarily difficult taxa, extracting and aligning single copy gene sequences and running phylogenetic inference. 
