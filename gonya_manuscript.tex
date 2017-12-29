@@ -38,19 +38,30 @@ Climate Change Cluster (C3), University of Technology Sydney, Ultimo, 2007 NSW, 
 \newpage
 
 \section{Introduction}
+% AD 131217: the "NGS advances" opener is a bit cliche these days, but ok as a placeholder
 Advancement in next generation sequencing has heralded a new era for investigating the evolutionary relationships between organisms. 
+% AD 131217: don't we use models as a point of reference to develop understanding of specific biological parts and functions, which we then extrapolate to relatives via homology?
 The main focus has been on model organisms to infer the genetic make up of similar taxa. 
 Model organisms are usually characterised by a reference genome and established protocols for working with. 
 In the eukaryotic world, these well established model organisms only cover a predicted xx \% of known taxa. 
 With the reduction in sequencing cost, increasingly large transcriptomic datasets are available for non-model organisms without reference genomes. 
-Working with these taxa can pose obstacles for evolutionary inference when they do not satisfy the model selection or processing assumptions commonly attributed to model organisms. Frequent issues arise from:\
+% AD 131217: I'm not sure I understand what the following sentence means. I think you will have to be more explicit about what makes non-models difficult to analyse
+Working with these taxa can pose obstacles for evolutionary inference when they do not satisfy the model selection or processing assumptions commonly attributed to model organisms. Frequent issues arise from:\\
+% AD 131217: It would help to say more specifically that these are problems for species tree inference
 1) Selection of paralogs. If genes with different evolutionary histories are selected, the gene tree will not reflect the history of either paralog and be nonsensical for species tree inference; 
 2) Concatenation of genes. Can be statistically inconsistent estimator of the species tree due to incomplete lineage sorting and concatenation acting as imperfect estimator of species tree topology \cite{roch2015likelihood}; and 
-3) Inference of model adequacy from bootstrap values. Kubatko et al. (2007) demonstrated high bootstrap support under maximum likelihood inference for incorrect species trees with concatenated gene sets as input \cite{kubatko2007inconsistency}. As high bootstrap values are often used as an indicator for robust species topology resolution, this fallacy is particularly problematic if the reader/operator is unfamiliar with the statistical phenomenon.\\
-In this study we aim to build a bioinformatic pipeline that attempts to addresses the issues of paralogy when processing transcriptomic data from non-model organisms, utilises alternative methods to both concatenation and maximum likelihood inference. 
-Specifically, the pipeline assembles RNA seq datasets, identifies and extracts single copy genes across input taxa with extensive paralogy, and runs Bayesian inference phylogenetics. 
-Finally, to apply the pipeline to the historically difficult order Gonyaulacales (phylum: Dinoflagellata) which are notorious for the issues that the pipeline seeks to address.\\
+3) Inference of model adequacy from bootstrap values. Kubatko et al. (2007) demonstrated high bootstrap support under maximum likelihood inference for incorrect species trees with concatenated gene sets as input \cite{kubatko2007inconsistency}. 
+% AD 131217: the above passage is good.
 
+% AD 131217: might say "attempts to address" since it's not clear to what extent they have been fully addressed
+As high bootstrap values are often used as an indicator for robust species topology resolution, this fallacy is particularly problematic if the reader/operator is unfamiliar with the statistical phenomenon.\\
+In this study we aim to build a bioinformatic pipeline that attempts to addresses the issues of paralogy when processing transcriptomic data from non-model organisms, utilises alternative methods to both concatenation and maximum likelihood inference. 
+% AD 131217: I think most people write RNAseq or RNA-seq
+Specifically, the pipeline assembles RNA seq datasets, identifies and extracts single copy genes across input taxa with extensive paralogy, and runs Bayesian inference phylogenetics. 
+% AD 131217: not sure the GPU thing is worth mentioning outside the methods section
+% AD 131217: validation? is there a known truth?
+Finally, to apply the pipeline to the historically difficult order Gonyaulacales (phylum: Dinoflagellata) which are notorious for the issues that the pipeline seeks to address.\\
+% AD 131217: suggest starting a new \subsection{} here
 %protists and environmental importance
 Dinoflagellates represent an ancient lineage on the eukaryotic branch of life. 
 They play a role in several important ecological processes, as members are represented in aquatic environments, where the cover a diverse niches such as symbionts, parasites and some taxa can cause harmful algal blooms through proliferation and/or neurotoxin production.
@@ -104,7 +115,7 @@ Samples were split in two and transferred to 1.5ml eppendorf tubes.
 Cellular thecae were ruptured by three rounds of freeze-thaw, with tubes transferred between liquid Nitrogen and 95 $^{\circ}$C. 
 RNA was extracted as per protocol for TRI Reagent. 
 RNA elute was purified with the RNeasy RNA clean up kit EXACT NAME as per protocol(Qiagen). 
-DNA was digested with Turbe DNAse (Life technologies, subsidiary of Thermo Fischer scientific, AU). 
+DNA was digested with TurboDNAse (Life technologies, subsidiary of Thermo Fischer scientific, AU). 
 RNA was quantified with Nanodrop 2000 (XXX) and frozen at -80 $^{\circ}$C until sequencing.
  
 \subsection*{Library preparation and Sequencing}
@@ -115,14 +126,16 @@ Paired-end sequencing was performed on NextSeq 500 High Output was conducted by 
 %\subsection*{Transcriptomes}
 %\emph{Coolia malayensis}, \emph{Gambierdiscus carpenteri}, \emph{Gambierdiscus lapillus}, \emph{G. polynesiensis}, \emph{Gambierdiscus} cf. \emph{silvae} \emph{Ostreopsis ovata}, \emph{Ostreopsis rhodesae}, \emph{Ostreopsis siamensis} and \emph{Thecadinium} cf. \emph{kofoidii} were grown in F/10 medium at 25 - 27 degrees celcius, except for \emph{T.} cf. \emph{kofoidii} which was grown at 18 degrees celcius, and cells were harvested via centrifugation at 350 rcf for 10 minutes at late exponential phase. Trizole was directly added to cells, cells were opened by three cycles of freezing in liquid nitrogen and thaw at 95 degrees celcius, then RNA was extracted as per reccomendation for Trizole by the manufacturers. Quality of RNA was screened by Agilent Bioanalyzer and paired-end sequencing was performed on NextSeq 500 High Output by Ramaciotti, UNSW. \emph{G. lapillus} and \emph{G.} cf. \emph{silvae} sequencing libraries were created with 75bp insert size; \emph{G. carpenterii}, \emph{G. polynesiensis} and \emph{T.} cf. \emph{kofoidii} sequencing libraries were created with 150bp inserts.
 \subsubsection*{Publically available transcriptome libraries}
-\emph{Gambierdiscus excentricus} VGO790 transcriptome was downloaded from NCBI under accession ID SRR3348983 \cite{kohli2017role}. \textit{Coolia malayensis}, \textit{Ostreopsis ovata}, \textit{Ostreopsis rhodesae} and \textit{Ostreopsis siamensis} sequencing libraries were aquired from Arjun Verma (Verma 2018, in prep). 
+\emph{Gambierdiscus excentricus} VGO790 transcriptome was downloaded from NCBI under accession ID SRR3348983 \cite{kohli2017role}. 
+\textit{Coolia malayensis}, \textit{Ostreopsis ovata}, \textit{Ostreopsis rhodesae} and \textit{Ostreopsis siamensis} sequencing libraries were aquired from Arjun Verma (Verma 2018, in prep). 
 RNA seq libraries for all remaining transcriptomes were generated by, and downloaded from, the Marine Microbial Eukaryote Transcriptome Sequencing Project \citep{keeling2014marine}.
 
 \subsection*{Pipeline}
 The pipeline is packaged in the Nextflow language for streamlined transferal between high powered computing clusters. 
 The workflow is separated into part 1 and part 2, and modules within the pipeline are written in the Python 2.7 and bash languages.
 \subsubsection*{Pipeline part 1}
-The input to pipeline 1 were the individual RNA sequencing library which is the processed through FastQC for quality assurance, sequences are trimmed with Trimmomatic and assembled with Trinity v2.4.0. Assemblies were then processed with BUSCO2 with the protist specific library.
+The input to pipeline 1 were the individual RNA sequencing library which is the processed through FastQC for quality assurance, sequences are trimmed with Trimmomatic and assembled with Trinity v2.4.0. 
+Assemblies were then processed with BUSCO2 with the protist specific library.
 The RNA libraries with 150bp inserts generated as part of this study were also subjected to Digital Normalization to pool identical transcripts before assembly.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
 \subsubsection*{Pipeline part 2}
 The input to pipeline 2 was the output of BUSCO2, where all complete single copy genes were identified per transcriptome. 
@@ -135,7 +148,8 @@ The inference was run four times to compare convergence parameters, then log and
 Inference was run using BEAGLE \cite{ayres2011beagle} on the University of Technology's High-powered computing cluster GPU.
 
 \subsection*{Assembly analysis}
-Contigs from assemblies from pipeline part 1 were searched against NCBI's non-redundant (nr) database in a BLASTx search with and E-value cut off $\leq$ 10$^{-3}$ in Blast2GO \cite{conesa2005blast2go}. Mapping and annotation were performed in Blast2GO also, including gene ontology (GO) term retrieval and enzyme code determination to establish metabolic pathways though the retrieval database.
+Contigs from assemblies from pipeline part 1 were searched against NCBI's non-redundant (nr) database in a BLASTx search with and E-value cut off $\leq$ 10$^{-3}$ in Blast2GO \cite{conesa2005blast2go}. 
+Mapping and annotation were performed in Blast2GO also, including gene ontology (GO) term retrieval and enzyme code determination to establish metabolic pathways though the retrieval database.
 \subsection*{Inference run time comparison}
 A subset of 14 taxa was selected for a comparison between CPU and GPU inference run time comparison. 
 The transcriptome libraries were fed through the pipeline as described, which was set to extract single copy genes present in all of the taxa. 
@@ -248,13 +262,13 @@ Gymnodiniales&\emph{Karenia brevis}&CCMP2229&85&MMETSP0030 \citep{keeling2014mar
 
 Azadinium Order Dinophyceae incerta sedis according to algaebase, gonyaulacales from NCBI taxonomy
 
-%\FloatBarrier 
-%\begin{figure} 
+\FloatBarrier 
+\begin{figure} 
 %\includegraphics[scale=.3]{HG7-env.png} 
-%\caption{Detection of \emph{G. lapillus} per spatial replicate at each sampling site, cell numbers as normalised to HG7 standard curve (Fig. ~\ref{fig:lapiStd}B). Spatial replicates coloured as per macroalgal substrate,\ where \emph{Chnoospora} sp. are green, \emph{Sargassum} sp. are blue, \emph{Padina} sp. are red and mixed macroalgal substrates are yellow (see table ~\ref{tbl:MacroalgaeTable}).} 
-%\label{fig:envHG7}
-%\end{figure} 
-%\FloatBarrier
+\caption{Phylogeny of the gonyaulacales.} 
+\label{fig:envHG7}
+\end{figure} 
+\FloatBarrier
 
 \subsection*{Phylogeny}
 
