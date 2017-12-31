@@ -259,9 +259,16 @@ Azadinium Order Dinophyceae incerta sedis according to algaebase, gonyaulacales 
 
 \subsection*{Phylogeny}
 The gonyaulacales resolved as a monophyletic order with three major clades, tentatively named clades I - III. PP branch support values were analyzed as follows: 1.00 was fully supported, $\geq$ 0.9 was very well supported, $\geq$ 0.8 was relatively well supported and $\leq$ 0.5 was unsupported.
-The separation of clades I, II and III was fully supported, the PP within the three clades was predominantly fully or very well supported. The exception in clade I was the placement of \emph{O. ovata} as sister species to \emph{O. rhodesae} with a PP of 0.76. The exception in clade II was in \emph{G. carpenteri} placement as sister species to \emph{G. excentricus} with a PP of 0.61. In clade III, the placement of \emph{P. bahamense} as basal to the other taxa within that clade was supported with 0.57, while the split off for \emph{T. kofoidii} was relatively well supported.
+The separation of clades I, II and III was fully supported, the PP within the three clades was predominantly fully or very well supported. 
+The exception in clade I was the placement of \emph{O. ovata} as sister species to \emph{O. rhodesae} with a PP of 0.76. 
+The exception in clade II was in \emph{G. carpenteri} placement as sister species to \emph{G. excentricus} with a PP of 0.61. In clade III, the placement of \emph{P. bahamense} as basal to the other taxa within that clade was supported with 0.57, while the split off for \emph{T. kofoidii} was relatively well supported.
 The PP for the deeper branching clades was well resolved (Check). %look up terminology for this
-Clade I within the gonyaulacales contains \emph{Alexandrium} spp., \emph{Coolia malayensis} and \emph{Ostreopsis} spp. Clade II contains \emph{Gambierdiscus} spp. as well as \emph{Pyrodinium bahamense} as sister genus. Clade III contains \emph{Pyrodinium bahamense}, \emph{Ceratium fusus}, \emph{Gonyaulax spinifera}, \emph{Protoceratium reticulatum} and \emph{Thecadinium kofoidii}. This inference suggests that \emph{O. ovata} and \emph{O. rhodeseae} are sister species with \emph{O. siamensis} diverging earlier. This is contrary to the \emph{Ostreopsis} species evolution in the literature to date, which is based on ribosomal genes cite verma. The placement of \emph{Gambbierdiscus} species from this study follows the species resolution in the literature to date (eg. cite kretzschmar). 
+Clade I within the gonyaulacales contains \emph{Alexandrium} spp., \emph{Coolia malayensis} and \emph{Ostreopsis} spp. 
+Clade II contains \emph{Gambierdiscus} spp. as well as \emph{Pyrodinium bahamense} as sister genus. 
+Clade III contains \emph{Pyrodinium bahamense}, \emph{Ceratium fusus}, \emph{Gonyaulax spinifera}, \emph{Protoceratium reticulatum} and \emph{Thecadinium kofoidii}. 
+This inference suggests that \emph{O. ovata} and \emph{O. rhodeseae} are sister species with \emph{O. siamensis} diverging earlier. 
+This is contrary to the \emph{Ostreopsis} species evolution in the literature to date, which is based on ribosomal genes \cite{verma2016molecular}. 
+The placement of \emph{Gambbierdiscus} species from this study follows the species resolution in the literature to date \cite{kretzschmar2017characterization}. 
 \emph{Crypthecodinium chonii} did not resolve within the gonyaulacales (green branch Fig. ~\ref{fig:phylo}), but clustered as an outgroup, more distant that the other outgroup taxa \emph{Azadinium spinosum}, \emph{Karenia brevis} and \emph{Dinohysis acuminata}.
 %check toxin production along those branches
 \FloatBarrier 
@@ -273,7 +280,21 @@ Clade I within the gonyaulacales contains \emph{Alexandrium} spp., \emph{Coolia 
 \FloatBarrier
 \newpage
 \section{Discussion}
-This study presents a pipeline designed to handle the identification of single copy genes in ordinarily difficult taxa, extracting and aligning single copy gene sequences and running phylogenetic inference. 
+This study presents a pipeline designed to identify single copy genes in transcriptomes from taxa with extensive parology, extracting and aligning single copy gene sequences and running phylogenetic inference. 
+The pipeline was tested on the order gonyaulacales, phylum donphyceales, with publically available transcriptomes as well as transcriptomes characterised in this study. 
+With publically available datasets such as the MMETSP project for marine microbes \cite{keeling2014marine}, previous data based limitations for exploring the species evolution within these abundant organsisms can now be overcome. 
+However, the next obstacle lies in the methodology for investigating these taxa. 
+Due to the size of their genomes, ancient lineages and extensive parology, transparent, reproducible and sound reasoning for gene slection is necessary. 
+This pipeline is publically available at zenodo? as well as the single copy genes used to infer the species evolution in this study, as well as the log files for the *BEAST runs. 
+As a result we present a phylogeny with good support values, a range of taxa that covers all the families with the gonyaulacales proposed by algaebase (CITE) and a range of input genes as the basis for species evolution estimation.
+Rather than the five families in the gonyaulacales, this study proposes three well supported sub-clades. 
+These do not correspond to previous studies, however this is likely due to: 
+1) infering species evolution from a small subset of genes such as ribosomal genes, whose evolution may not reflect that of the species; 
+2) concatenating the genes selected and using maximum likelihood methods for species inference; 
+3) selection of paralogs to infer species evolution; and 
+4) transcriptome assemblies that are not as representative of biology as could be.
+
+Historically, the evolutionary inference for organsims from this group have been 
 Dinoflagellates are renowned for their large genomes and paralogy, which is why historically the evolutionary inference for them has been shithouse. With the recent completion and public availability of the MMETSP database, transcriptomes to investigate the evolutionary relationship for marine protists has become possible. And several studies have looked at the evolutionary relationships. While most clades of the dinoflagellates have been relatively well worked out, the gonyaulacales have been recalcitrant. So these have been of particular interest, especially as many of the taxa produce polyketide toxins that cause seafood intoxications globally. However, now that the transcriptomes are available, it's crucial to develop robust and reproducible methods to analyse the data
 \subsection*{Phylogeny}
 - differences between ML and BI analyses incl tanglegram
