@@ -199,7 +199,7 @@ In all five transcriptomes the complete protein coding pathways were present. %C
 \end{longtable}
 
 \subsection*{Transcripome stuff}
-
+Assemblies for all transcriptome datasets used in this study were channeled through the pipeline. The single copy genes acquired though the BUSCO hmmer libraries curated for protists are reported in Table ~\ref{tbl:Transcriptomes} out of the total xx genes searched for, as well as accession numbers and identifiers for each transcriptome.
 \FloatBarrier
 \begin{longtable}{  | p{3cm} |p{4.5cm} | p{2cm} | p{2cm} | p{3cm} |}
 \caption{Transcriptomes used for study along with taxonomic placement at family level and source. Family level placement derived from algaebase. MMETSP abbreviation for marine Microbial eukaryotic transcriptome sequencing project, by Moore Foundation.}\\
@@ -252,24 +252,23 @@ Dinophysiaceae&\emph{Dinophysis acimunata}&DAEP01&74&MMETSP0797 \citep{keeling20
 Dinophyceae incertae sedis&\emph{Azadinium spinosum}&3D9&81&MMETSP1036\_2 \citep{keeling2014marine}\\
         \hline
 Gymnodiniales&\emph{Karenia brevis}&CCMP2229&85&MMETSP0030 \citep{keeling2014marine}\\
-%    \hline
-%    &\emph{Amphidinium massartii}&&&&\\
-%        &\emph{Durinskia baltica}&&&&\\
     \hline
-%    &\emph{Peridinium aciculferum}&&&&\\
 \end{longtable}
 
 Azadinium Order Dinophyceae incerta sedis according to algaebase, gonyaulacales from NCBI taxonomy
 
 \subsection*{Phylogeny}
-The gonyaulacales resolved as a monophyletic order with three major clades. 
-The PP for the deeper branching clades was well resolved (Check). 
-\emph{Crypthecodinium chonii} did not resolve within the gonyaulacales, but clustered as an outgroup along with \emph{Azadinium spinosum}, \emph{Karenia brevis} and \emph{Dinohysis acuminata}.
+The gonyaulacales resolved as a monophyletic order with three major clades, tentatively named clades I - III. PP branch support values were analyzed as follows: 1.00 was fully supported, $\geq$ 0.9 was very well supported, $\geq$ 0.8 was relatively well supported and $\leq$ 0.5 was unsupported.
+The separation of clades I, II and III was fully supported, the PP within the three clades was predominantly fully or very well supported. The exception in clade I was the placement of \emph{O. ovata} as sister species to \emph{O. rhodesae} with a PP of 0.76. The exception in clade II was in \emph{G. carpenteri} placement as sister species to \emph{G. excentricus} with a PP of 0.61. In clade III, the placement of \emph{P. bahamense} as basal to the other taxa within that clade was supported with 0.57, while the split off for \emph{T. kofoidii} was relatively well supported.
+The PP for the deeper branching clades was well resolved (Check). %look up terminology for this
+Clade I within the gonyaulacales contains \emph{Alexandrium} spp., \emph{Coolia malayensis} and \emph{Ostreopsis} spp. Clade II contains \emph{Gambierdiscus} spp. as well as \emph{Pyrodinium bahamense} as sister genus. Clade III contains \emph{Pyrodinium bahamense}, \emph{Ceratium fusus}, \emph{Gonyaulax spinifera}, \emph{Protoceratium reticulatum} and \emph{Thecadinium kofoidii}. This inference suggests that \emph{O. ovata} and \emph{O. rhodeseae} are sister species with \emph{O. siamensis} diverging earlier. This is contrary to the \emph{Ostreopsis} species evolution in the literature to date, which is based on ribosomal genes cite verma. The placement of \emph{Gambbierdiscus} species from this study follows the species resolution in the literature to date (eg. cite kretzschmar). 
+\emph{Crypthecodinium chonii} did not resolve within the gonyaulacales (green branch Fig. ~\ref{fig:phylo}), but clustered as an outgroup, more distant that the other outgroup taxa \emph{Azadinium spinosum}, \emph{Karenia brevis} and \emph{Dinohysis acuminata}.
+%check toxin production along those branches
 \FloatBarrier 
 \begin{figure} 
-%\includegraphics[scale=.3]{HG7-env.png} 
+\includegraphics[scale=.25]{Aug2_20-taxa-combined-fig_MCC_trees_gimp.png} 
 \caption{Phylogeny of the gonyaulacales.} 
-\label{fig:envHG7}
+\label{fig:phylo}
 \end{figure} 
 \FloatBarrier
 \newpage
