@@ -274,25 +274,52 @@ The placement of \emph{Gambbierdiscus} species from this study follows the speci
 \FloatBarrier 
 \begin{figure} 
 \includegraphics[scale=.25]{Aug2_20-taxa-combined-fig_MCC_trees_gimp.png} 
-\caption{Phylogeny of the gonyaulacales.} 
+\caption{Phylogenetic analysis of Gonyaulacales species tree with 62 single copy genes from 20 taxa. Gonyaulacales (\#16) in purple, outgroups (\#3) in light blue and taxa \textit{incertae sedis} (\#1) in teal.} 
 \label{fig:phylo}
 \end{figure} 
 \FloatBarrier
 \newpage
 \section{Discussion}
-This study presents a pipeline designed to identify single copy genes in transcriptomes from taxa with extensive parology, extracting and aligning single copy gene sequences and running phylogenetic inference. 
-The pipeline was tested on the order gonyaulacales, phylum donphyceales, with publically available transcriptomes as well as transcriptomes characterised in this study. 
-With publically available datasets such as the MMETSP project for marine microbes \cite{keeling2014marine}, previous data based limitations for exploring the species evolution within these abundant organsisms can now be overcome. 
+This study presents a pipeline designed to identify single copy genes in transcriptomes from taxa with extensive paralogy, extracting and aligning single copy gene sequences and running phylogenetic inference. 
+The pipeline was tested on the order gonyaulacales, phylum dinophyceales, with publicly available transcriptomes as well as transcriptomes characterised in this study. 
+With publicly available datasets such as the MMETSP project for marine microbes \cite{keeling2014marine}, previous data based limitations for exploring the species evolution within these abundant organisms can now be overcome. 
 However, the next obstacle lies in the methodology for investigating these taxa. 
-Due to the size of their genomes, ancient lineages and extensive parology, transparent, reproducible and sound reasoning for gene slection is necessary. 
-This pipeline is publically available at zenodo? as well as the single copy genes used to infer the species evolution in this study, as well as the log files for the *BEAST runs. 
+Due to the size of their genomes, ancient lineages and extensive paralogy, transparent, reproducible and sound reasoning for gene selection is necessary. 
+This pipeline is publicly available at zenodo? as well as the single copy genes used to infer the species evolution in this study, as well as the log files for the *BEAST runs.
+\subsection*{Phylogeny comparison to previous studies} 
 As a result we present a phylogeny with good support values, a range of taxa that covers all the families with the gonyaulacales proposed by algaebase (CITE) and a range of input genes as the basis for species evolution estimation.
 Rather than the five families in the gonyaulacales, this study proposes three well supported sub-clades. 
 These do not correspond to previous studies, however this is likely due to: 
-1) infering species evolution from a small subset of genes such as ribosomal genes, whose evolution may not reflect that of the species; 
-2) concatenating the genes selected and using maximum likelihood methods for species inference; 
-3) selection of paralogs to infer species evolution; and 
-4) transcriptome assemblies that are not as representative of biology as could be.
+\subsubsection*{(1) infering species evolution from a small subset of genes such as ribosomal genes, whose evolution may not reflect that of the species.}
+Using LSU or SSU rDNA regions for phylogenetics is common practice. eg XXX. 
+It is important to acknowledge that these represent the evolutionary history of highly conserved genes, which does not necessarily represent the species evolution. 
+Studies which utilise primarily rDNA genes for inferring species phylogeny XXX
+To address this obstacle, a range of genes need to be used to infer the species evolution.
+\subsubsection*{(2) concatenating the genes selected and using maximum likelihood methods for species inference.}
+Concatenation of genes coupled with running maximum likelihood inference is a commonly used method as it is computationally cheap in comparison to Bayesian inference methods. 
+However as demonstrated by Kubatko et al. (2007) and Roche et al. (2015), this approach is error prone and can be misleading by presenting high bootstrap values.
+Phylogenies that use concatenation with ML XXX
+\subsubsection*{(3) quantity of taxa or quality of transcriptome assemblies.}
+Several studies have inferred the evolutionary relationship within the gonyaulacales as part of larger studies around the dinoflagellates, and as such the number of taxa from within the gonyaulacales is too limited to speculate on the families or clades within the order. Eg XXX
+Since the publicly available MMETSP datasets, several studies have utilised a broader range of taxa to explore gonyaulacales evolution. 
+However, these have relied on the assemblies supplied by the project. 
+Cohen et al. evaluated the publicly available assemblies compared to processing and re-assembly with Trinity, with XXX. 
+This study demonstrated that while the raw data available from the MMETSP project is awesome, the assembly method has become outdated. 
+Further, the assembly method used can result in the assembly of paralogs into a single contig, giving the illusion of a single copy gene while actually representing hybrids. 
+Explain here with Cohen's BUSCO scores, or compare to own? Hence, it is imperative to re-assembly the transcriptome libraries before searching for single copy genes or paralogs.
+Studeis XXX
+\subsubsection*{(4) selection of paralogs to infer species evolution.}
+Other studies... long branch attraction?
+Selection of paralogs for species inference is highly problematic as it will present an arbitrarily divergent gene history as input. 
+This problem is particularly present in the dinoflagellates and gonyaulacales due to the frequent gene duplication discussed previously.
+Only one other study by Price et al. (2017) seeks to address this by purportedly selecting single genes as input. 
+However there are several issues with this study. 
+The assemblies used are from the MMETSP project, which are problematic as mentioned in (3) as they can present single copy genes which are hybrids of paralogs. 
+Hence the selection of single copy genes as input to the species evolution inference, is dubious. 
+Further, when the scripts for selecting single copy genes were requested in order to replicate the study, the authors were unable to supply any record of how the genes were attained so it was not possible to replicate the study and examine the parameters that went into identifying single copy genes. 
+Lastly, the genes were concatenated and the evolutionary relationships were inferred using ML. While the bootstraps are well supported, this could well be due to the methodology problems outlined in (2).
+
+\subsection*{Comparison to Mona's proposal}
 
 Historically, the evolutionary inference for organsims from this group have been 
 Dinoflagellates are renowned for their large genomes and paralogy, which is why historically the evolutionary inference for them has been shithouse. With the recent completion and public availability of the MMETSP database, transcriptomes to investigate the evolutionary relationship for marine protists has become possible. And several studies have looked at the evolutionary relationships. While most clades of the dinoflagellates have been relatively well worked out, the gonyaulacales have been recalcitrant. So these have been of particular interest, especially as many of the taxa produce polyketide toxins that cause seafood intoxications globally. However, now that the transcriptomes are available, it's crucial to develop robust and reproducible methods to analyse the data
