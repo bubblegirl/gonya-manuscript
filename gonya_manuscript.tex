@@ -19,8 +19,8 @@
  \addtolength{\voffset}{-1cm}
  \setlength{\parindent}{0pt}
  
-\title{Redefinition of the evolutionary relationships within the gonyaulacales - wrangling paralogy in transcriptomics. $^{1}$}
-\author{Key words: }
+\title{Redefinition of the evolutionary relationships within the gonyaulacales - wrangling paralogy in transcriptomes for phylogenetics. $^{1}$}
+\author{Key words: Bayesian inference, gonyaulacales, phylogenetics, transcriptomics}
 \date{}
 
 \begin{document}
@@ -75,9 +75,9 @@ Specifically the ciguatoxins produced by some \emph{Gambierdiscus} spp. are of i
 
 \section{Materials and methods}
 \subsection*{Culture conditions}
+\FloatBarrier
 Cultures were isolated from locations as per Table ~\ref{tbl:strainTable} and clonalal cultures established by micropipetting single cells through sterile seawater. 
 
-\FloatBarrier
 \begin{table}
 \caption{Culturing conditions for species processed for this study.}
 \label{tbl:strainTable}
@@ -293,7 +293,7 @@ The process of paralog elimination as input for species inference presented here
 The gonyaulacales were chosen to test the pipeline due to the size of their genomes and extensive paralogs.
 This pipeline is publicly available through github and the single copy genes used to infer the species evolution in this study, as well as the log files for the *BEAST runs, are available on zenodo.
 \subsection*{Phylogeny comparison to previous studies} 
-As a result we present a phylogeny with good support values, a range of taxa that covers 5 of the 9 families with the gonyaulacales proposed by algaebase, which is the taxonomy authority for phycology journals such as Harmful Algae and the Journal of Phycology. Families not represented in this study were the Cladopyxidaceae \& Pyrophacaceae for which no transcriptome libraries were available; and Hystrichosphaeridiaceae \& Pterospermopsidaceae whose extant taxa appear to be fossils.
+As a result we present a phylogeny with good support values, a range of taxa that covers 5 of the 9 families with the gonyaulacales proposed by algaebase, which is the taxonomy authority for phycology journals, e.g. Journal of Phycology. Families not represented in this study were the Cladopyxidaceae \& Pyrophacaceae for which no transcriptome libraries were available; and Hystrichosphaeridiaceae \& Pterospermopsidaceae whose extant taxa appear to be fossils.
 Rather than the five families in the gonyaulacales, this study proposes three well supported sub-clades. 
 These do not correspond to previous studies, however this is likely due to: 
 \subsubsection*{(1) infering species evolution from a small subset of genes such as ribosomal genes, whose evolution may not reflect that of the species.}
@@ -305,13 +305,14 @@ To address this obstacle, a range of genes need to be used to infer the species 
 Concatenation of genes coupled with running maximum likelihood inference is a commonly used method as it is computationally cheap in comparison to Bayesian inference methods. 
 However as demonstrated by Kubatko et al. (2007) and Roche et al. (2015), this approach is error prone and can be misleading by presenting high bootstrap values.
 Phylogenies that use concatenation with ML XXX
-This issue is addressed by running Bayesian inference under a multi-species coalescence process.
+This issue is addressed in this study by running Bayesian inference under a multi-species coalescence process.
 \subsubsection*{(3) quantity of taxa or quality of transcriptome assemblies.}
--- paper on trimmomatic
 Several studies have inferred the evolutionary relationship within the gonyaulacales as part of larger studies around the dinoflagellates, and as such the number of taxa from within the gonyaulacales is too limited to speculate on the families or clades within the order. Eg XXX
 Since the publicly available MMETSP datasets, several studies have utilised a broader range of taxa to explore gonyaulacales evolution. 
 However, these have relied on the assemblies supplied by the project. 
-Cohen et al. evaluated the publicly available assemblies from MMETSP, compared to processing and re-assembly with Trinity \cite{cohen-reass}. 
+The stringency of quality trimming of RNA-seq libraries prior to assembly plays a role in the number of unique contigs recovered and the subsequent assembly quality of transcriptomes. 
+Commonly high stringency is favored, however MacManes (2014) found that this can be detrimental to the assembly and the quality cut off scores used in this pipeline were in recommendation with that study \cite{macmanes2014optimal}.
+Regarding the transcriptome assembly method, Cohen et al. evaluated the publicly available assemblies from MMETSP, compared to processing and re-assembly with Trinity \cite{cohen-reass}. 
 Cohen et al. demonstrated that while the raw data available from the MMETSP project is awesome, the assembly method has become outdated. 
 % check veracity of statement: Further, the assembly method used can result in the assembly of paralogs into a single contig, giving the illusion of a single copy gene while actually representing hybrids. 
 To address this problem, trimming and assembly of RNA-seq libraries using Trimomatic and Trinity respectively are integral to the pipeline.
@@ -322,11 +323,21 @@ Studeis XXX
 Selection of paralogs for species inference is highly problematic as it will present an arbitrarily divergent gene history as input. 
 This problem is particularly present in the dinoflagellates and gonyaulacales due to the frequent gene duplication discussed previously. %is it?
 Only one other study by Price et al. (2017) seeks to address this by purportedly selecting single genes as input. 
-However there are several issues with the study presented by Price et al. 
+However there are several issues with the study presented by Price et al \cite{price2017robust}. 
 The assemblies used are from the MMETSP project, which are problematic as mentioned in (3) as they can present single copy genes which are hybrids of paralogs. 
 Hence the selection of single copy genes as input to the species evolution inference, is dubious. 
 Further, when the scripts for selecting single copy genes were requested in order to replicate their study, the authors were unable to supply any record of how the genes were attained hence it was not possible to examine the parameters that went into identifying single copy genes. 
 Lastly, the genes were concatenated and the evolutionary relationships were inferred using ML. While the bootstraps are well supported, this could very well be due to the methodology problems outlined in (2).
+The difference in topology between topologies presented by Price et al. and this study (Fig. ~\ref{fig:tangle}), is lies in the organization of sister taxa 
+
+\FloatBarrier 
+\begin{figure} 
+\includegraphics[scale=.2]{Price-comparison.png} 
+\caption{Tanglegram of topology presented in this study (a) and Price et al. (2017) (b). Taxa uncommon to both studies not shown.} 
+\label{fig:tangle}
+\end{figure} 
+\FloatBarrier
+
 
 \subsection*{Comparison to Mona's proposal}
 
