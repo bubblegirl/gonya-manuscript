@@ -286,43 +286,47 @@ The placement of \emph{Gambbierdiscus} species from this study follows the speci
 \newpage
 \section{Discussion}
 This study presents a pipeline designed to identify single copy genes in transcriptomes from taxa with extensive paralogy, extracting and aligning single copy gene sequences and running phylogenetic inference. 
-The pipeline was tested on the order gonyaulacales, phylum dinophyceales, with publicly available transcriptomes as well as transcriptomes characterised in this study. 
+The pipeline was tested on the order gonyaulacales, class Dinophyceae, with publicly available transcriptomes as well as transcriptomes presented as part of this study. 
 With publicly available datasets such as the MMETSP project for marine microbes \cite{keeling2014marine}, previous data based limitations for exploring the species evolution within these abundant organisms can now be overcome. 
-However, the next obstacle lies in the methodology for investigating these taxa. 
-Due to the size of their genomes, ancient lineages and extensive paralogy, transparent, reproducible and sound reasoning for gene selection is necessary. 
+However, the next obstacle lies in the methodology for investigating these taxa and this is what this study seeks to address. 
+The process of paralog elimination as input for species inference presented here is transparent and reproducible. 
+The gonyaulacales were chosen to test the pipeline due to the size of their genomes and extensive paralogs.
 This pipeline is publicly available through github and the single copy genes used to infer the species evolution in this study, as well as the log files for the *BEAST runs, are available on zenodo.
 \subsection*{Phylogeny comparison to previous studies} 
-As a result we present a phylogeny with good support values, a range of taxa that covers 5 of the 6 families with the gonyaulacales with living taxons proposed by algaebase and a range of input genes as the basis for species evolution estimation.
+As a result we present a phylogeny with good support values, a range of taxa that covers 5 of the 9 families with the gonyaulacales proposed by algaebase, which is the taxonomy authority for phycology journals such as Harmful Algae and the Journal of Phycology. Families not represented in this study were the Cladopyxidaceae \& Pyrophacaceae for which no transcriptome libraries were available; and Hystrichosphaeridiaceae \& Pterospermopsidaceae whose extant taxa appear to be fossils.
 Rather than the five families in the gonyaulacales, this study proposes three well supported sub-clades. 
 These do not correspond to previous studies, however this is likely due to: 
 \subsubsection*{(1) infering species evolution from a small subset of genes such as ribosomal genes, whose evolution may not reflect that of the species.}
 Using LSU or SSU rDNA regions for phylogenetics is common practice. eg XXX. 
 It is important to acknowledge that these represent the evolutionary history of highly conserved genes, which does not necessarily represent the species evolution. 
-Studies which utilise primarily rDNA genes for inferring species phylogeny XXX
+Hence studies which utilise primarily rDNA genes for inferring species phylogeny run the risk of presenting the evolutionary history of rDNA genes as synonymous with species evolution.
 To address this obstacle, a range of genes need to be used to infer the species evolution.
 \subsubsection*{(2) concatenating the genes selected and using maximum likelihood methods for species inference.}
 Concatenation of genes coupled with running maximum likelihood inference is a commonly used method as it is computationally cheap in comparison to Bayesian inference methods. 
 However as demonstrated by Kubatko et al. (2007) and Roche et al. (2015), this approach is error prone and can be misleading by presenting high bootstrap values.
 Phylogenies that use concatenation with ML XXX
+This issue is addressed by running Bayesian inference under a multi-species coalescence process.
 \subsubsection*{(3) quantity of taxa or quality of transcriptome assemblies.}
+-- paper on trimmomatic
 Several studies have inferred the evolutionary relationship within the gonyaulacales as part of larger studies around the dinoflagellates, and as such the number of taxa from within the gonyaulacales is too limited to speculate on the families or clades within the order. Eg XXX
 Since the publicly available MMETSP datasets, several studies have utilised a broader range of taxa to explore gonyaulacales evolution. 
 However, these have relied on the assemblies supplied by the project. 
-Cohen et al. evaluated the publicly available assemblies compared to processing and re-assembly with Trinity, with XXX. 
-This study demonstrated that while the raw data available from the MMETSP project is awesome, the assembly method has become outdated. 
-Further, the assembly method used can result in the assembly of paralogs into a single contig, giving the illusion of a single copy gene while actually representing hybrids. 
-Explain here with Cohen's BUSCO scores, or compare to own? Hence, it is imperative to re-assembly the transcriptome libraries before searching for single copy genes or paralogs.
+Cohen et al. evaluated the publicly available assemblies from MMETSP, compared to processing and re-assembly with Trinity \cite{cohen-reass}. 
+Cohen et al. demonstrated that while the raw data available from the MMETSP project is awesome, the assembly method has become outdated. 
+% check veracity of statement: Further, the assembly method used can result in the assembly of paralogs into a single contig, giving the illusion of a single copy gene while actually representing hybrids. 
+To address this problem, trimming and assembly of RNA-seq libraries using Trimomatic and Trinity respectively are integral to the pipeline.
+%Explain here with Cohen's BUSCO scores, or compare to own? Hence, it is imperative to re-assembly the transcriptome libraries before searching for single copy genes or paralogs.
 Studeis XXX
 \subsubsection*{(4) selection of paralogs to infer species evolution.}
-Other studies... long branch attraction?
+%Other studies... long branch attraction?
 Selection of paralogs for species inference is highly problematic as it will present an arbitrarily divergent gene history as input. 
-This problem is particularly present in the dinoflagellates and gonyaulacales due to the frequent gene duplication discussed previously.
+This problem is particularly present in the dinoflagellates and gonyaulacales due to the frequent gene duplication discussed previously. %is it?
 Only one other study by Price et al. (2017) seeks to address this by purportedly selecting single genes as input. 
-However there are several issues with this study. 
+However there are several issues with the study presented by Price et al. 
 The assemblies used are from the MMETSP project, which are problematic as mentioned in (3) as they can present single copy genes which are hybrids of paralogs. 
 Hence the selection of single copy genes as input to the species evolution inference, is dubious. 
-Further, when the scripts for selecting single copy genes were requested in order to replicate the study, the authors were unable to supply any record of how the genes were attained so it was not possible to replicate the study and examine the parameters that went into identifying single copy genes. 
-Lastly, the genes were concatenated and the evolutionary relationships were inferred using ML. While the bootstraps are well supported, this could well be due to the methodology problems outlined in (2).
+Further, when the scripts for selecting single copy genes were requested in order to replicate their study, the authors were unable to supply any record of how the genes were attained hence it was not possible to examine the parameters that went into identifying single copy genes. 
+Lastly, the genes were concatenated and the evolutionary relationships were inferred using ML. While the bootstraps are well supported, this could very well be due to the methodology problems outlined in (2).
 
 \subsection*{Comparison to Mona's proposal}
 
