@@ -38,23 +38,18 @@ Climate Change Cluster (C3), University of Technology Sydney, Ultimo, 2007 NSW, 
 \newpage
 
 \section{Introduction}
-Insert \cite{maddison1997gene} \cite{jeffroy2006phylogenomics}
-%The intro needs work still to make sense
-%Several studies have been published employing the MMETSP database content since the project has gone live, for both direct exploration of the available data as well as supplementing transcriptomes to answer questions. Arguably, there is a disconnect between bioinformaticians, computer scientists and biologists which is well showcased in this area. The tenets of reproducible bioinformatics is hinged on open access software, as well as documentation, a sound understanding of the methods employed and best practices vs. computational trade-offs in analyses.
-% AD 131217: the "NGS advances" opener is a bit cliche these days, but ok as a placeholder
-Advancement in next generation sequencing has heralded a new era for investigating the evolutionary relationships between organisms. 
-% AD 131217: don't we use models as a point of reference to develop understanding of specific biological parts and functions, which we then extrapolate to relatives via homology?
-The main focus has been on model organisms to infer the genetic make up of similar taxa. 
-Model organisms are usually characterised by a reference genome and established protocols for working with. 
-In the eukaryotic world, these well established model organisms only cover a predicted xx \% of known taxa. 
-With the reduction in sequencing cost, increasingly large transcriptomic datasets are available for non-model organisms without reference genomes. 
-% AD 131217: I'm not sure I understand what the following sentence means. I think you will have to be more explicit about what makes non-models difficult to analyse
-Working with these taxa can pose obstacles for evolutionary inference when they do not satisfy the model selection or processing assumptions commonly attributed to model organisms. Frequent issues for species tree inference arise from:\\
+
+The availability of large datasets and breadth of information contained therein is phenomenal. 
+Predominantly the focus is on model organisms, however there has been a concerted effort to push non-model organisms to catch up recently. 
+An example is the MMETSP project, sequencing the transcriptomes of over 650 marine eukaryotic microbes \cite{keeling2014marine}. 
+This project has unlocked an unprecedented wealth of information to investigate the phylogenetics of some rather prolific branches of the tree of life. 
+However, wealth of data alone isn't sufficient for an adequate approximation of the evolution of these organisms - robust methodology is key. 
+The gene representative for each taxa is compared with all other representatives, with the assumption of a shared evolutionary history, i.e. orthology, from which the species evolution is inferred \cite{maddison1997gene}. 
+Increasing the number of genes used for inferring the species evolution can address this stochastic error, however if there are systematic and method based errors that can arise - which can in turn give robust support values for the incorrect phylogenetic tree inferred and obfuscate the error inherent in the analysis \cite{jeffroy2006phylogenomics,roch2015likelihood,kubatko2007inconsistency}. 
+Frequent issues for species tree inference arise from:\\
 1) Selection of paralogs. If genes with different evolutionary histories are selected, the gene tree will not reflect the history of either paralog and be nonsensical for species tree inference; 
 2) Concatenation of genes. Can be statistically inconsistent estimator of the species tree due to incomplete lineage sorting and concatenation acting as imperfect estimator of species tree topology \cite{roch2015likelihood}; and 
 3) Inference of model adequacy from bootstrap values. Kubatko et al. (2007) demonstrated high bootstrap support under maximum likelihood inference for incorrect species trees with concatenated gene sets as input \cite{kubatko2007inconsistency}. 
-% AD 131217: the above passage is good. %yay ^____^
-
 As high bootstrap values are often used as an indicator for robust species topology resolution, this fallacy is particularly problematic if the reader/operator is unfamiliar with the statistical phenomenon.\\
 In this study we aim to build a bioinformatic pipeline that attempts to addresses the issues of paralogy when processing transcriptomic data from non-model organisms, utilises alternative methods to both concatenation and maximum likelihood inference. 
 Specifically, the pipeline assembles RNA-seq datasets, identifies and extracts single copy genes across input taxa with extensive paralogy, and runs Bayesian inference phylogenetics. 
@@ -66,43 +61,12 @@ While the evolutionary relationship of most orders within the dinoflagellates ha
 Analyses for this order commonly combined concatenation and maximum likelihood approaches, which yielded long branch attraction, low confidence values and inconsistent taxon resolution. 
 Improving upon the species the evolution of the gonyaulaceles has implications for environmental disease monitoring, as neurotoxin production is prevalent in this order. 
 Specifically the ciguatoxins produced by some \emph{Gambierdiscus} spp. are of interest as the causative agent of ciguatera fish poisoning, a neglected tropical disease with high associated morbidity.%, which is predicted to increase in prevalence with the advent of climate change.
-
-
 \newpage
-
 \section{Materials and methods}
 \subsection*{Culture conditions}
 \FloatBarrier
-Cultures were isolated from locations as per Table ~\ref{tbl:strainTable} and clonalal cultures established by micropipetting single cells through sterile seawater. Clonal cultures were maintained in F/10 medium and maintained at temperatures indicated in Table ~\ref{tbl:strainTable}.
+Cultures were isolated from locations as per Table ~\ref{tbl:strainTable} and clonalal cultures established by micropipetting single cells through sterile seawater. Clonal cultures were maintained in F/10 medium and maintained at temperatures indicated in Table S1.
 
-\begin{table}
-\caption{Culturing conditions for species processed for this study.}
-\label{tbl:strainTable}
-\begin{tabular}{ | p{3cm} | p{2.5cm} | p{1.5cm} | p{5.3cm} |}
-\hline
-\textbf{Species} & \textbf{Strain}& \textbf{Temp} & \textbf{Source location} \\
-%\hline
-%\textit{Coolia malayensis}&MAB&& \\
-\hline
-\textit{Gambierdiscus carpenteri}&UTSMER9A&17&Merimbula, AU\\
-\hline
-\textit{Gambierdiscus lapillus}&HG4&27&Heron Island, AU\\
-\hline
-\textit{Gambierdiscus polynesiensis}&CG15&27&Rarotonga, COK\\
-\hline
-\textit{Gambierdiscus} cf. \textit{silvae}&HG5&27&Heron Island, AU\\
-\hline
-%\textit{Ostreopsis ovata}&HER27&&\\
-%\hline
-%\textit{Ostreopsis rhodesae}&HER26&&\\
-%\hline
-%\textit{Ostreopsis siamensis}&BH1&&\\
-%\hline
-\textit{Thecadinium kofoidii}&THECA&18&Gordons bay, Sydney, AU\\
-\hline
-\end{tabular}
-\end{table}
-\FloatBarrier
  \subsection*{RNA isolation}
 %\textit{Coolia malayensis}, \textit{Ostreopsis ovata}, \textit{Ostreopsis rhodesae} and \textit{Ostreopsis siamensis} were processed as per Ref ARJUN.
 \emph{Gambierdiscus} spp. and \emph{Thecadinium kofoidii} were harvested during late exponential growth phase by filtration onto 5 $\mu$m SMWP Millipore membrane filter (Merck, DE) and washed off with sterile seawater. 
@@ -198,12 +162,143 @@ In all five transcriptomes the complete protein coding pathways were present. %C
 
 \subsection*{Transcripome stuff}
 Assemblies for all transcriptome datasets used in this study were channeled through the pipeline. 
-The single copy genes acquired though the BUSCO hmmer libraries curated for protists are reported in Table ~\ref{tbl:Transcriptomes} out of the total 234 genes searched for, as well as accession numbers and identifiers for each transcriptome.
+The single copy genes acquired though the BUSCO hmmer libraries curated for protists are reported in Table S2 out of the total 234 genes searched for, as well as accession numbers and identifiers for each transcriptome.
+
+\subsection*{Phylogeny}
+The gonyaulacales resolved as a monophyletic order with three major clades, tentatively named clades I - III. 
+PP branch support values were analyzed as follows: 1.00 was fully supported, $\geq$ 0.9 was very well supported, $\geq$ 0.8 was relatively well supported and $\leq$ 0.5 was unsupported.
+The separation of clades I, II and III was fully supported, the PP within the three clades was predominantly fully or very well supported. 
+The exception in clade I was the placement of \emph{O. ovata} as sister species to \emph{O. rhodesae} with a PP of 0.76. 
+The exception in clade II was in \emph{G. carpenteri} placement as sister species to \emph{G. excentricus} with a PP of 0.61. In clade III, the placement of \emph{P. bahamense} as basal to the other taxa within that clade was supported with 0.57, while the split off for \emph{T. kofoidii} was relatively well supported.
+The PP for the deeper branching clades was well resolved (Check). %look up terminology for this
+Clade I within the gonyaulacales contains \emph{Alexandrium} spp., \emph{Coolia malayensis} and \emph{Ostreopsis} spp. 
+Clade II contains \emph{Gambierdiscus} spp. as well as \emph{Pyrodinium bahamense} as sister genus. 
+Clade III contains \emph{Pyrodinium bahamense}, \emph{Ceratium fusus}, \emph{Gonyaulax spinifera}, \emph{Protoceratium reticulatum} and \emph{Thecadinium kofoidii}. 
+This inference suggests that \emph{O. ovata} and \emph{O. rhodeseae} are sister species with \emph{O. siamensis} diverging earlier. 
+This is contrary to the \emph{Ostreopsis} species evolution in the literature to date, which is based on ribosomal genes \cite{verma2016molecular}. 
+The placement of \emph{Gambierdiscus} species from this study follows the species resolution in the literature to date \cite{kretzschmar2017characterization}. 
+\emph{Crypthecodinium chonii} did not resolve within the gonyaulacales (green branch Fig. ~\ref{fig:phylo}), but clustered as an outgroup, more distant that the other outgroup taxa \emph{Azadinium spinosum}, \emph{Karenia brevis} and \emph{Dinohysis acuminata}.
+%check toxin production along those branches
+\FloatBarrier 
+\begin{figure} 
+\includegraphics[scale=.25]{Aug2_20-taxa-combined-fig_MCC_trees_gimp.png} 
+\caption{Phylogenetic analysis of Gonyaulacales species tree with 62 single copy genes from 20 taxa. Gonyaulacales (\#16) in purple, outgroups (\#3) in light blue and taxa \textit{incertae sedis} (\#1) in teal.} 
+\label{fig:phylo}
+\end{figure} 
 \FloatBarrier
-\begin{longtable}{  | p{3cm} |p{4.5cm} | p{2cm} | p{2cm} | p{3cm} |}
-\caption{Transcriptomes used for study along with taxonomic placement at family level and source. Family level placement derived from algaebase. MMETSP abbreviation for marine Microbial eukaryotic transcriptome sequencing project, by Moore Foundation.}\\
+\subsubsection*{Run time comparison}
+The run time for the test data-set on CPU was 18 days. The run time on the GPU was 2 days, while the topology and nodal support of the resulting phylogenies matched.
+%aaron and Mathieu, how do I put this in in a way that is useful?
+\subsubsection*{Generation of figures}
+Tanglegrams were generated with Dendroscope v3.5.9 \cite{huson2007dendroscope}; images were edited in GIMP \cite{gimp}.
+\newpage
+\section{Discussion}
+This study presents a pipeline designed to identify single copy genes in transcriptomes from taxa with extensive paralogy, extracting and aligning single copy gene sequences and running phylogenetic inference. 
+The pipeline was tested on the order gonyaulacales, class Dinophyceae, with publicly available transcriptomes as well as transcriptomes presented as part of this study. 
+With publicly available datasets such as the MMETSP project for marine microbes \cite{keeling2014marine}, previous data based limitations for exploring the species evolution within these abundant organisms can now be overcome. 
+However, the next obstacle lies in the methodology for investigating these taxa and this is what this study seeks to address. 
+The process of paralog elimination as input for species inference presented here is transparent and reproducible. 
+The gonyaulacales were chosen to test the pipeline due to the size of their genomes and extensive paralogs.
+This pipeline is publicly available through github and the single copy genes used to infer the species evolution in this study, as well as the log files for the *BEAST runs, are available on zenodo.
+\subsection*{Gonyaulacales phylogeny comparison to previous studies} 
+As a result we present a phylogeny with good support values, a range of taxa that covers 5 of the 9 families with the gonyaulacales proposed by algaebase, which is the taxonomy authority for phycology journals, e.g. Journal of Phycology. 
+Families not represented in this study were the Cladopyxidaceae \& Pyrophacaceae for which no transcriptome libraries were available; and Hystrichosphaeridiaceae \& Pterospermopsidaceae whose extant taxa appear to be fossils.
+Rather than the five families in the gonyaulacales, this study proposes three well supported sub-clades. 
+Interestingly, the phylogenetic resolution of two genera with the highest species coverage, \emph{Gambierdiscus} and \emph{Ostreopsis}, did not mimic the resolution established in the literature within either genus. 
+This is likely due to the rDNA sequences targeted for the usual studies reflect the evolution of that particular gene region, rather than the species evolution itself. 
+However the arrangement of sister species for both \emph{Gambierdiscus} and \emph{Ostreopsis} matched that of the ketosynthase module of polyketide synthase complexes, which are thought to be involved in polyketide toxin production (Unpublished A. Kretzschmar; pers. comm. A. Verma). 
+On a higer taxonomic level, the gonyaulacales phylogenies pre-dating this study also differ extensively from the results presented here. 
+This is likely due to the methodological differences: 
+\subsubsection*{(1) infering species evolution from a small subset of genes such as ribosomal genes, whose evolution may not reflect that of the species.}
+Using LSU or SSU rDNA regions for phylogenetics is common practice, at times supplemented with a small number of other genes \cite{shalchian2006combined,zhang2007three,saldarriaga2004molecular,murray2005improving,hoppenrath2010dinoflagellate} 
+It is important to acknowledge that these represent the evolutionary history of highly conserved genes, which does not necessarily represent the species evolution. 
+Hence studies which utilise primarily rDNA genes for inferring species phylogeny run the risk of presenting the evolutionary history of rDNA genes as synonymous with species evolution.
+To address this obstacle, a range of genes need to be used to infer the species evolution.
+\subsubsection*{(2) concatenating the genes selected and using maximum likelihood methods for species inference.}
+Concatenation of genes coupled with running maximum likelihood inference is a commonly used method as it is computationally cheap in comparison to Bayesian inference methods. 
+However as demonstrated by Kubatko et al. (2007) and Roche et al. (2015), this approach is error prone and can be misleading by presenting high bootstrap values.
+Studies that generated gonyaulacoid inclusive phylogenetic studies that combined concatenation with ML e.g. \cite{shalchian2006combined,zhang2007three,saldarriaga2004molecular,murray2005improving,hoppenrath2010dinoflagellate}
+This issue is addressed in this study by running Bayesian inference under a multi-species coalescence process.
+\subsubsection*{(3) quantity of taxa or quality of transcriptome assemblies.}
+Several studies have inferred the evolutionary relationship within the gonyaulacales as part of larger studies around the dinoflagellates, and as such the number of taxa from within the gonyaulacales is too limited to speculate on the families or clades within the order. Eg \cite{shalchian2006combined,zhang2007three,saldarriaga2004molecular,hoppenrath2010dinoflagellate,murray2005improving}
+Since the publicly available MMETSP datasets, several studies have utilised a broader range of taxa to explore gonyaulacales evolution. 
+However, these have relied on the assemblies supplied by the project. 
+The stringency of quality trimming of RNA-seq libraries prior to assembly plays a role in the number of unique contigs recovered and the subsequent assembly quality of transcriptomes. 
+Commonly high stringency is favored, however MacManes (2014) found that this can be detrimental to the assembly and the quality cut off scores used in this pipeline were in recommendation with that study \cite{macmanes2014optimal}.
+Regarding the transcriptome assembly method, Cohen et al. evaluated the publicly available assemblies from MMETSP, compared to processing and re-assembly with Trinity \cite{cohen-reass}. 
+Cohen et al. demonstrated that while the raw data available from the MMETSP project is awesome, the assembly method has become outdated. 
+% check veracity of statement: Further, the assembly method used can result in the assembly of paralogs into a single contig, giving the illusion of a single copy gene while actually representing hybrids. 
+To address this problem, trimming and assembly of RNA-seq libraries using Trimomatic and Trinity respectively are integral to the pipeline.
+%Explain here with Cohen's BUSCO scores, or compare to own? Hence, it is imperative to re-assembly the transcriptome libraries before searching for single copy genes or paralogs.
+Studies XXX
+\subsubsection*{(4) selection of paralogs to infer species evolution.}
+%Other studies... long branch attraction?
+Selection of paralogs for species inference is highly problematic as it will present an arbitrarily divergent gene history as input. 
+This problem is particularly present in the dinoflagellates and gonyaulacales due to the frequent gene duplication discussed previously. %is it?
+Only one other study by Price et al. (2017) seeks to address this by purportedly selecting single genes as input. 
+However there are several issues with the study presented by Price et al \cite{price2017robust}. 
+The assemblies used are from the MMETSP project, which are problematic as mentioned in (3) as they can present single copy genes which are hybrids of paralogs. 
+Hence the selection of single copy genes as input to the species evolution inference, is dubious. 
+Further, the methodology for identifying and selecting these single copy genes is not included in the publication. 
+Contact with the author established that there was no script or documentation for the commands that the authors executed. 
+Hence as there is no record of how the genes were attained hence it was not possible to examine the parameters that went into identifying and screening for single copy genes, it was not possible to scrutinize or reproduce the study.
+Lastly, the genes were concatenated and the evolutionary relationships were inferred using ML. While the bootstraps are well supported, this could very well be due to the methodology problems outlined in (2).
+The difference in topology between inferences presented by Price et al. and this study, is lies in the organization of sister taxa (Fig. ~\ref{fig:tangle}). 
+Price et al. place \emph{Alexandrium} spp. as the closest genus to \emph{Gambierdiscus}, while this study places \emph{Pyrodinium} as sister. 
+As some \emph{Gambierdiscus} spp. produce polyketide toxins which cause ciguatera fish poisoning, establishing the close relations to \emph{Gambierdiscus} is important for investigating the toxin evolution \cite{pawlowiez2014transcriptome}.
+The placement of the genus \emph{Azadinium} is equally as divergent as Price et al. place this genus as part of the gonyaulacales, while this study firmly places this genus as an outgroup with \emph{Dinophysis} spp. and \emph{Karenia} spp.
+As \emph{Azadinium} spp. also produce polyketide toxins that cause azaspiracid shellfish poisoning, their placement is important for investigating polyketide toxin evolution \cite{meyer2015transcriptomic}.
+
+\FloatBarrier 
+\begin{figure} 
+\includegraphics[scale=.23]{Price-comparison.png} 
+\caption{Tanglegram of topology presented in this study (a); and Price et al. (2017) (b). Taxa uncommon to both studies not shown.} 
+\label{fig:tangle}
+\end{figure} 
+\FloatBarrier
+
+\newpage
+\section{Conclusion}
+With the accessibility of large data sets, the focus needs to fall on the methodology for investigating them. This study presents a pipeline to process RNA-seq libraries through assembly, single copy gene selection to phylogenetic species inference. As a case study, the gonyaulacales phylogeny was elucidated as taxa within this order are rife with paralogs. The resulting phylogeny shows a well resolved, well supported inference of the gonyaulacales evolution. By presenting the pipeline designed in this study, as well as an example of running *BEAST on the GPU to drastically reduce running time, we hope that the use of reproducible, open-access processing of large data-sets such as the MMETSP database becomes the standard. The demonstration of utilising the GPU node on the high powered computing cluster to drastically reduce run time should hopefully encourage research teams to utilise the superior inference method at minimised cost of run time. 
+\newpage
+
+\section{Acknowledgments}
+Gratitude to the Stanley Watson foundation, the Linnaean Society of New South Wales, and the ABRS National Taxonomy Research Student Travel Bursary for funding A. L. Kretzschmar's attendance at the Molecular Evolution workshop at the Marine biological laboratory, Woods Hole, MA, USA. 
+\section{Supplementary material}
+\FloatBarrier
+\begin{table}
+\caption{Table S1: Culturing conditions for species processed for this study.}
+%\label{tbl:strainTable}
+\begin{tabular}{ | p{3cm} | p{2.5cm} | p{1.5cm} | p{5.3cm} |}
 \hline
-\label{tbl:Transcriptomes}
+\textbf{Species} & \textbf{Strain}& \textbf{Temp} & \textbf{Source location} \\
+%\hline
+%\textit{Coolia malayensis}&MAB&& \\
+\hline
+\textit{Gambierdiscus carpenteri}&UTSMER9A&17&Merimbula, AU\\
+\hline
+\textit{Gambierdiscus lapillus}&HG4&27&Heron Island, AU\\
+\hline
+\textit{Gambierdiscus polynesiensis}&CG15&27&Rarotonga, COK\\
+\hline
+\textit{Gambierdiscus} cf. \textit{silvae}&HG5&27&Heron Island, AU\\
+\hline
+%\textit{Ostreopsis ovata}&HER27&&\\
+%\hline
+%\textit{Ostreopsis rhodesae}&HER26&&\\
+%\hline
+%\textit{Ostreopsis siamensis}&BH1&&\\
+%\hline
+\textit{Thecadinium kofoidii}&THECA&18&Gordons bay, Sydney, AU\\
+\hline
+\end{tabular}
+\end{table}
+\FloatBarrier
+
+\begin{longtable}{  | p{3cm} |p{4.5cm} | p{2cm} | p{2cm} | p{3cm} |}
+\caption{Table S2: Transcriptomes used for study along with taxonomic placement at family level and source. Family level placement derived from algaebase. MMETSP abbreviation for marine Microbial eukaryotic transcriptome sequencing project, by Moore Foundation.}\\
+\hline
+%\label{tbl:Transcriptomes}
 \textbf{Family}&\textbf{Species}&\textbf{Strain}&\textbf{BUSCO single complete}&\textbf{Source}\\
 \hline
  \multicolumn{5}{| c |}{Gonyaulacales transcriptomes}\\
@@ -254,108 +349,9 @@ Dinophyceae incertae sedis&\emph{Azadinium spinosum}&3D9&81&MMETSP1036\_2 \citep
 Gymnodiniales&\emph{Karenia brevis}&CCMP2229&85&MMETSP0030 \citep{keeling2014marine}\\
     \hline
 \end{longtable}
-
-Azadinium Order Dinophyceae incerta sedis according to algaebase, gonyaulacales from NCBI taxonomy
-
-\subsection*{Phylogeny}
-The gonyaulacales resolved as a monophyletic order with three major clades, tentatively named clades I - III. 
-PP branch support values were analyzed as follows: 1.00 was fully supported, $\geq$ 0.9 was very well supported, $\geq$ 0.8 was relatively well supported and $\leq$ 0.5 was unsupported.
-The separation of clades I, II and III was fully supported, the PP within the three clades was predominantly fully or very well supported. 
-The exception in clade I was the placement of \emph{O. ovata} as sister species to \emph{O. rhodesae} with a PP of 0.76. 
-The exception in clade II was in \emph{G. carpenteri} placement as sister species to \emph{G. excentricus} with a PP of 0.61. In clade III, the placement of \emph{P. bahamense} as basal to the other taxa within that clade was supported with 0.57, while the split off for \emph{T. kofoidii} was relatively well supported.
-The PP for the deeper branching clades was well resolved (Check). %look up terminology for this
-Clade I within the gonyaulacales contains \emph{Alexandrium} spp., \emph{Coolia malayensis} and \emph{Ostreopsis} spp. 
-Clade II contains \emph{Gambierdiscus} spp. as well as \emph{Pyrodinium bahamense} as sister genus. 
-Clade III contains \emph{Pyrodinium bahamense}, \emph{Ceratium fusus}, \emph{Gonyaulax spinifera}, \emph{Protoceratium reticulatum} and \emph{Thecadinium kofoidii}. 
-This inference suggests that \emph{O. ovata} and \emph{O. rhodeseae} are sister species with \emph{O. siamensis} diverging earlier. 
-This is contrary to the \emph{Ostreopsis} species evolution in the literature to date, which is based on ribosomal genes \cite{verma2016molecular}. 
-The placement of \emph{Gambbierdiscus} species from this study follows the species resolution in the literature to date \cite{kretzschmar2017characterization}. 
-\emph{Crypthecodinium chonii} did not resolve within the gonyaulacales (green branch Fig. ~\ref{fig:phylo}), but clustered as an outgroup, more distant that the other outgroup taxa \emph{Azadinium spinosum}, \emph{Karenia brevis} and \emph{Dinohysis acuminata}.
-%check toxin production along those branches
-\FloatBarrier 
-\begin{figure} 
-\includegraphics[scale=.25]{Aug2_20-taxa-combined-fig_MCC_trees_gimp.png} 
-\caption{Phylogenetic analysis of Gonyaulacales species tree with 62 single copy genes from 20 taxa. Gonyaulacales (\#16) in purple, outgroups (\#3) in light blue and taxa \textit{incertae sedis} (\#1) in teal.} 
-\label{fig:phylo}
-\end{figure} 
-\FloatBarrier
-\subsubsection*{Run time comparison}
-The run time for the test data-set on CPU was 18 days. The run time on the GPU was 2 days, while the topology and nodal support of the resulting phylogenies matched.
-%aaron and Mathieu, how do I put this in in a way that is useful?
-\subsubsection*{Generation of figures}
-Tanglegrams were generated with Dendroscope v3.5.9 \cite{huson2007dendroscope}; images were edited in GIMP \cite{gimp}.
-\newpage
-\section{Discussion}
-This study presents a pipeline designed to identify single copy genes in transcriptomes from taxa with extensive paralogy, extracting and aligning single copy gene sequences and running phylogenetic inference. 
-The pipeline was tested on the order gonyaulacales, class Dinophyceae, with publicly available transcriptomes as well as transcriptomes presented as part of this study. 
-With publicly available datasets such as the MMETSP project for marine microbes \cite{keeling2014marine}, previous data based limitations for exploring the species evolution within these abundant organisms can now be overcome. 
-However, the next obstacle lies in the methodology for investigating these taxa and this is what this study seeks to address. 
-The process of paralog elimination as input for species inference presented here is transparent and reproducible. 
-The gonyaulacales were chosen to test the pipeline due to the size of their genomes and extensive paralogs.
-This pipeline is publicly available through github and the single copy genes used to infer the species evolution in this study, as well as the log files for the *BEAST runs, are available on zenodo.
-\subsection*{Gonyaulacales phylogeny comparison to previous studies} 
-As a result we present a phylogeny with good support values, a range of taxa that covers 5 of the 9 families with the gonyaulacales proposed by algaebase, which is the taxonomy authority for phycology journals, e.g. Journal of Phycology. 
-Families not represented in this study were the Cladopyxidaceae \& Pyrophacaceae for which no transcriptome libraries were available; and Hystrichosphaeridiaceae \& Pterospermopsidaceae whose extant taxa appear to be fossils.
-Rather than the five families in the gonyaulacales, this study proposes three well supported sub-clades. 
-Interestingly, the phylogenetic resolution of two genera with the highest species coverage, \emph{Gambierdiscus} and \emph{Ostreopsis}, did not mimic the resolution established in the literature within either genus. 
-This is likely due to the rDNA sequences targeted for the usual studies reflect the evolution of that particular gene region, rather than the species evolution itself. 
-However the arrangement of sister species for both \emph{Gambierdiscus} and \emph{Ostreopsis} matched that of the ketosynthase module of polyketide synthase complexes, which are thought to be involved in polyketide toxin production (Unpublished A. Kretzschmar; pers. comm. A. Verma). 
-On a higer taxonomic level, the gonyaulacales phylogenies pre-dating this study also differ extensively from the results presented here. 
-This is likely due to the methodological differences: 
-\subsubsection*{(1) infering species evolution from a small subset of genes such as ribosomal genes, whose evolution may not reflect that of the species.}
-Using LSU or SSU rDNA regions for phylogenetics is common practice, at times supplemented with a small number of other genes \cite{shalchian2006combined,zhang2007three,saldarriaga2004molecular,murray2005improving,hoppenrath2010dinoflagellate} 
-It is important to acknowledge that these represent the evolutionary history of highly conserved genes, which does not necessarily represent the species evolution. 
-Hence studies which utilise primarily rDNA genes for inferring species phylogeny run the risk of presenting the evolutionary history of rDNA genes as synonymous with species evolution.
-To address this obstacle, a range of genes need to be used to infer the species evolution.
-\subsubsection*{(2) concatenating the genes selected and using maximum likelihood methods for species inference.}
-Concatenation of genes coupled with running maximum likelihood inference is a commonly used method as it is computationally cheap in comparison to Bayesian inference methods. 
-However as demonstrated by Kubatko et al. (2007) and Roche et al. (2015), this approach is error prone and can be misleading by presenting high bootstrap values.
-Studies that genewrated gonyaulacoid inclusive phylogenetic studies that combined concatenation with ML e.g. \cite{shalchian2006combined,zhang2007three,saldarriaga2004molecular,murray2005improving,hoppenrath2010dinoflagellate}
-This issue is addressed in this study by running Bayesian inference under a multi-species coalescence process.
-\subsubsection*{(3) quantity of taxa or quality of transcriptome assemblies.}
-Several studies have inferred the evolutionary relationship within the gonyaulacales as part of larger studies around the dinoflagellates, and as such the number of taxa from within the gonyaulacales is too limited to speculate on the families or clades within the order. Eg \cite{shalchian2006combined,zhang2007three,saldarriaga2004molecular,hoppenrath2010dinoflagellate,murray2005improving}
-Since the publicly available MMETSP datasets, several studies have utilised a broader range of taxa to explore gonyaulacales evolution. 
-However, these have relied on the assemblies supplied by the project. 
-The stringency of quality trimming of RNA-seq libraries prior to assembly plays a role in the number of unique contigs recovered and the subsequent assembly quality of transcriptomes. 
-Commonly high stringency is favored, however MacManes (2014) found that this can be detrimental to the assembly and the quality cut off scores used in this pipeline were in recommendation with that study \cite{macmanes2014optimal}.
-Regarding the transcriptome assembly method, Cohen et al. evaluated the publicly available assemblies from MMETSP, compared to processing and re-assembly with Trinity \cite{cohen-reass}. 
-Cohen et al. demonstrated that while the raw data available from the MMETSP project is awesome, the assembly method has become outdated. 
-% check veracity of statement: Further, the assembly method used can result in the assembly of paralogs into a single contig, giving the illusion of a single copy gene while actually representing hybrids. 
-To address this problem, trimming and assembly of RNA-seq libraries using Trimomatic and Trinity respectively are integral to the pipeline.
-%Explain here with Cohen's BUSCO scores, or compare to own? Hence, it is imperative to re-assembly the transcriptome libraries before searching for single copy genes or paralogs.
-Studeis XXX
-\subsubsection*{(4) selection of paralogs to infer species evolution.}
-%Other studies... long branch attraction?
-Selection of paralogs for species inference is highly problematic as it will present an arbitrarily divergent gene history as input. 
-This problem is particularly present in the dinoflagellates and gonyaulacales due to the frequent gene duplication discussed previously. %is it?
-Only one other study by Price et al. (2017) seeks to address this by purportedly selecting single genes as input. 
-However there are several issues with the study presented by Price et al \cite{price2017robust}. 
-The assemblies used are from the MMETSP project, which are problematic as mentioned in (3) as they can present single copy genes which are hybrids of paralogs. 
-Hence the selection of single copy genes as input to the species evolution inference, is dubious. 
-Further, the methodology for identifying and selecting these single copy genes is not included in the publication. 
-Contact with the author established that there was no script or documentation for the commands that the authors executed. 
-Hence as there is no record of how the genes were attained hence it was not possible to examine the parameters that went into identifying and screening for single copy genes, it was not possible to scrutinize or reproduce the study.
-Lastly, the genes were concatenated and the evolutionary relationships were inferred using ML. While the bootstraps are well supported, this could very well be due to the methodology problems outlined in (2).
-The difference in topology between inferences presented by Price et al. and this study, is lies in the organization of sister taxa (Fig. ~\ref{fig:tangle}). 
-Price et al. place \emph{Alexandrium} spp. as the closest genus to \emph{Gambierdiscus}, while this study places \emph{Pyrodinium} as sister. 
-As some \emph{Gambierdiscus} spp. produce polyketide toxins which cause ciguatera fish poisoning, establishing the close relations to \emph{Gambierdiscus} is important for investigating the toxin evolution \cite{pawlowiez2014transcriptome}.
-The placement of the genus \emph{Azadinium} is equally as divergent as Price et al. place this genus as part of the gonyaulacales, while this study firmly places this genus as an outgroup with \emph{Dinophysis} spp. and \emph{Karenia} spp.
-As \emph{Azadinium} spp. also produce polyketide toxins that cause azaspiracid shellfish poisoning, their placement is important for investigating polyketide toxin evolution \cite{meyer2015transcriptomic}.
-
-\FloatBarrier 
-\begin{figure} 
-\includegraphics[scale=.23]{Price-comparison.png} 
-\caption{Tanglegram of topology presented in this study (a); and Price et al. (2017) (b). Taxa uncommon to both studies not shown.} 
-\label{fig:tangle}
-\end{figure} 
 \FloatBarrier
 
 \newpage
-\section{Conclusion}
-With the accessbility of large data sets, the focus needs to fall on the methodology for investigating them. This study presents a pipeline to process RNA-seq libraries through assembly, single copy gene selection to phylogenetic species inference. As a case study, the gonyaulacales phylogeny was elucidated as taxa within this order are rife with paralogs. The resulting phylogeny shows a well resolved, well supported inference of the gonyaulacales evolution. By presenting the pipeline designed in this study, as well as an example of running *BEAST on the GPU to drastically reduce running time, we hope that the use of reproducible, open-access processing of large data-sets such as the MMETSP database becomes the standard. The demonstration of utilising the GPU node on the high powered computing cluster to drastically reduce run time should hopefully encourage research teams to utilise the superior inference method at minimised cost of run time. 
-\newpage
-
-\section{Acknowledgements}
 \bibliographystyle{acm}
 \bibliography{gonya.bib}
 
