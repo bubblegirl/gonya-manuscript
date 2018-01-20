@@ -276,11 +276,11 @@ As \emph{Azadinium} spp. also produce polyketide toxins that cause azaspiracid s
 %TODO long list of problems with this approach.
 
 In the previous section study we identified potential problems with common approaches to species inference, and then presented a pipeline which attempts to address these problems, we in no way want to imply that this study is not fraught with potential pitfalls too. We aim to present avenues for improvement for current methods, especially in areas where large datsets are recently unlocked such as in marine protists with the MMETSP project. %Models and methodology build upon previous work and improve with increased collective knowledge, take the progression for nucleotide substitution rates as an example. The JC69 model from 1969 assumes the substitutions rates between all nuceleotides are equal, including between purines and pyrimidines \cite{}. Through a series of increased complexity to model transition \& transversion rates (i.e. the likelihood of nucleotide change from purine to pyrimidine and vice versa) and steady-state distributions (frequency of each nucleotide given infinite time), the HK85 model was proposed in 1985 \cite{}.
-%I may have gone on a tangent here. Basically 
+%I may have gone on a tangent here. Probably leave that out.
 What follows is the identification of issues with the approach presented in this study, which the authors hope will be improved upon in the future. 
 \subsubsection*{Pipeline specific issues}
 \paragraph*{Trimming of RNA seq libraries.} The cut off values chosen for this study are based on the recommendations of MacMannes (2014) for optimal transcript discovery. However the recommendations are based on an RNA-seq library from mouse embryonic stem cells, which may not be an adequate model for dinoflagellates.
-\paragraph*{Single copy gene selection bias.} Based on BUSCOv2 which may have inherent selection bias that is not tranparent to us 
+\paragraph*{Single copy gene selection bias.} The selection of single copy genes is based on BUSCOv2 hmmer libraries. The pre-screening process by which may have inherent selection bias that is not tranparent to us 
 \paragraph*{Assembly parameters.}
 \paragraph*{Amino acid substitution model.} WAG model
 \paragraph*{Molecular clock model selection.} Relaxed clock normal
@@ -329,62 +329,60 @@ Shout out to the Taming the BEAST organizers \& fellow attendees for a most illu
 \end{table}
 \FloatBarrier
 
-\begin{longtable}{  | p{3cm} |p{4.5cm} | p{2cm} | p{2cm} | p{3cm} |}
-\caption{Table S2: Transcriptomes used for study along with taxonomic placement at family level and source. Family level placement derived from algaebase. MMETSP abbreviation for marine Microbial eukaryotic transcriptome sequencing project, by Moore Foundation.}\\
+\begin{longtable}{  | p{3.5cm} |p{2.2cm} | p{1.8cm} | p{1.8cm} | p{1.8cm} | p{3cm} |}
+\caption{Table S2: Transcriptomes used for study along including strain ID, source and BUSCOv2 information. MMETSP abbreviation for marine Microbial eukaryotic transcriptome sequencing project, by Moore Foundation.}\\
 \hline
 %\label{tbl:Transcriptomes}
-\textbf{Family}&\textbf{Species}&\textbf{Strain}&\textbf{BUSCO single complete}&\textbf{Source}\\
+%\textbf{Family}&
+\textbf{Species}&\textbf{Strain}&\textbf{complete BUSCOs}&\textbf{single complete BUSCOs}&\textbf{fragmented BUSCOs}&\textbf{Source}\\
 \hline
- \multicolumn{5}{| c |}{Gonyaulacales transcriptomes}\\
+ \multicolumn{6}{| c |}{Gonyaulacales transcriptomes}\\
     \hline
-   Ceratiaceae&\emph{Ceratium fusus}&PA161109&81&MMETSP1074 \citep{keeling2014marine}\\
+\emph{Ceratium fusus}&PA161109&121&81&4&MMETSP1074 \citep{keeling2014marine}\\
         \hline
-  Crypthecodiniaceae&\emph{Crypthecodinium cohnii}&Seligo&98&MMETSP0326\_2 \citep{keeling2014marine}\\
+\emph{Crypthecodinium cohnii}&Seligo&126&98&0&MMETSP0326\_2 \citep{keeling2014marine}\\
         \hline
-    &\emph{Alexandrium catenella}&OF101&74&MMETSP0790 \citep{keeling2014marine}\\
+\emph{Alexandrium catenella}&OF101&110&74&3&MMETSP0790 \citep{keeling2014marine}\\
         \hline
-    &\emph{Alexandrium monilatum}&JR08&74&MMETSP0093 \citep{keeling2014marine}\\
+\emph{Alexandrium monilatum}&JR08&107&74&3&MMETSP0093 \citep{keeling2014marine}\\
         \hline
-&\emph{Pyrodinium bahamense}&pbaha01&89&MMETSP0796 \citep{keeling2014marine}\\
+\emph{Pyrodinium bahamense}&pbaha01&119&897&2&MMETSP0796 \citep{keeling2014marine}\\
         \hline
-Gonyaulacaceae&\emph{Coolia malayensis}&MAB&100&This study\\
+\emph{Coolia malayensis}&MAB&138&100&1&This study-Arjun?\\
 \hline
-&\emph{Gambierdiscus carpenteri}&UTSMER9A&83&This study\\
+\emph{Gambierdiscus carpenteri}&UTSMER9A&101&83&2&This study\\
 \hline
-&\emph{Gambierdiscus excentricus}&VGO790&83&\cite{kohli2017role}\\
+\emph{Gambierdiscus excentricus}&VGO790&88&83&4&\cite{kohli2017role}\\
         \hline
-    &\emph{Gambierdiscus lapillus}&HG4&98&This study\\
+\emph{Gambierdiscus lapillus}&HG4&141&98&2&This study\\
         \hline
-            &\emph{Gambierdiscus polynesiensis}&CG14 really&81&This study\\
+\emph{Gambierdiscus polynesiensis}&CG15&104&81&3&This study\\
         \hline
-    &\emph{Gambierdiscus} cf. \emph{silvae}&HG5&87&This study\\
+\emph{Gambierdiscus} cf. \emph{silvae}&HG5&134&87&2&This study\\
         \hline
-    &\emph{Gonyaulax spinifera}&CCMP409&53&MMETSP1439 \citep{keeling2014marine}\\
+\emph{Gonyaulax spinifera}&CCMP409&83&53&2&MMETSP1439 \citep{keeling2014marine}\\
         \hline
-%    &\emph{Lingulodinium polyedra}&CCMP1738&MMETSP1032&209&\citep{keeling2014marine}\\
- %       \hline
-     &\emph{Ostreopsis ovata}&HER27&99&This study\\
+\emph{Ostreopsis ovata}&HER27&132&99&2&This study-Arjun?\\
      \hline
-     &\emph{Ostreopsis rhodesae}&HER26&98&This study\\
+\emph{Ostreopsis rhodesae}&HER26&131&98&1&This study-Arjun?\\
      \hline
-     &\emph{Ostreopsis siamensis}&BH1&98&This study\\
+\emph{Ostreopsis siamensis}&BH1&132&98&1&This study-Arjun?\\
      \hline     
-Protoceratiaceae&\emph{Protoceratium reticulatum}&CCCM535=CCMP1889&72&MMETSP0228 \citep{keeling2014marine}\\
+\emph{Protoceratium reticulatum}&CCCM535=CCMP1889&108&72&5&MMETSP0228 \citep{keeling2014marine}\\
     \hline
- &\emph{Thecadinium kofoidii}&THECA&70&This study\\
+\emph{Thecadinium kofoidii}&THECA&93&70&5&This study\\
  \hline
- \multicolumn{5}{| c |}{Outgroup transcriptomes}\\
+ \multicolumn{6}{| c |}{Outgroup transcriptomes}\\
  \hline
-Dinophysiaceae&\emph{Dinophysis acimunata}&DAEP01&74&MMETSP0797 \citep{keeling2014marine}\\
+\emph{Dinophysis acimunata}&DAEP01&117&74&2&MMETSP0797 \citep{keeling2014marine}\\
         \hline
-Dinophyceae incertae sedis&\emph{Azadinium spinosum}&3D9&81&MMETSP1036\_2 \citep{keeling2014marine}\\
+\emph{Azadinium spinosum}&3D9&1.8&81&4&MMETSP1036\_2 \citep{keeling2014marine}\\
         \hline
-% AD 131217: It would help to say more specifically that these are problems for species tree inference
-Gymnodiniales&\emph{Karenia brevis}&CCMP2229&85&MMETSP0030 \citep{keeling2014marine}\\
+\emph{Karenia brevis}&CCMP2229&115&85&2&MMETSP0030 \citep{keeling2014marine}\\
     \hline
 \end{longtable}
 \FloatBarrier
-
+%families, sections which was taken out:Ceratiaceae,Crypthecodiniaceae,Gonyaulacaceae,Protoceratiaceae,Dinophysiaceae,Dinophyceae incertae sedis,Gymnodiniales
 \newpage
 \bibliographystyle{acm}
 \bibliography{gonya.bib}
