@@ -281,7 +281,7 @@ What follows is the identification of issues with the approach presented in this
 \subsubsection*{Pipeline specific issues}
 \paragraph*{Trimming of RNA seq libraries.} The cut off values chosen for this study are based on the recommendations of MacMannes (2014) for optimal transcript discovery. However the recommendations are based on an RNA-seq library from mouse embryonic stem cells, which may not be an adequate model for dinoflagellates.
 %\paragraph*{Single copy gene selection bias.} The selection of single copy genes is based on BUSCOv2 hmmer libraries. The pre-screening process by which may have inherent selection bias that is not tranparent to us // Not sure if this one is a problem =/
-\paragraph*{Assembly parameters.}
+\paragraph*{Assembly parameters.} assemblers have different strengths and weaknesses. In this study we selected Trinity based on the findings of Cerveau et al. (2016) as it emerged as the optimal single assembler for nonmodel eukaryptic de novo transcriptome assembly. However Trinity was still prone to some errors xx which could affect the assemblies and downstream analysis \cite{cerveau2016combining}.
 \paragraph*{Amino acid substitution model.} WAG model
 \paragraph*{Molecular clock model selection.} Relaxed clock normal
 \subsubsection*{Gonyaulacales specific issues}
@@ -291,7 +291,7 @@ What follows is the identification of issues with the approach presented in this
 
 \newpage
 \section{Conclusion}
-With the accessibility of large data sets, the focus needs to fall on the methodology for investigating them. This study presents a pipeline to process RNA-seq libraries through assembly, single copy gene selection to phylogenetic species inference. As a case study, the gonyaulacales phylogeny was elucidated as taxa within this order are rife with paralogs. The resulting phylogeny shows a well resolved, well supported inference of the gonyaulacales evolution. By presenting the pipeline designed in this study, as well as an example of running *BEAST on the GPU to drastically reduce running time, we hope that the use of reproducible, open-access processing of large data-sets such as the MMETSP database becomes the standard. The demonstration of utilising the GPU node on the high powered computing cluster to drastically reduce run time should hopefully encourage research teams to utilise the superior inference method at minimised cost of run time. 
+With the accessibility of large data sets, the focus needs to fall on the methodology for investigating them. This study presents a pipeline to process RNA-seq libraries through assembly, single copy gene selection to phylogenetic species inference. As a case study, the gonyaulacales phylogeny was elucidated as taxa within this order are rife with paralogs. The resulting phylogeny shows a well resolved, well supported inference of the gonyaulacales evolution. By presenting the pipeline designed in this study we hope that the use of reproducible, open-access processing of large data-sets such as the MMETSP database becomes the standard.  
 \newpage
 
 \section{Acknowledgments}
