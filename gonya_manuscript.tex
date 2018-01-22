@@ -277,7 +277,7 @@ In this study, we utilised the BUSCO output which screens for and verifies singl
 
 In the previous section study we identified potential problems with common approaches to species inference, and then presented a pipeline which attempts to address these problems, we in no way want to imply that this study is not fraught with potential pitfalls too. We aim to present avenues for improvement for current methods, especially in areas where large datsets are recently unlocked such as in marine protists with the MMETSP project. %Models and methodology build upon previous work and improve with increased collective knowledge, take the progression for nucleotide substitution rates as an example. The JC69 model from 1969 assumes the substitutions rates between all nuceleotides are equal, including between purines and pyrimidines \cite{}. Through a series of increased complexity to model transition \& transversion rates (i.e. the likelihood of nucleotide change from purine to pyrimidine and vice versa) and steady-state distributions (frequency of each nucleotide given infinite time), the HK85 model was proposed in 1985 \cite{}.
 %I may have gone on a tangent here. Probably leave that out.
-What follows is the identification of issues with the approach presented in this study, which the authors hope will be improved upon in the future. 
+What follows is the identification of issues with the approach presented in this study, which the authors hope that these will be improved upon in the future. 
 \subsubsection*{Pipeline specific issues}
 \paragraph*{Trimming of RNA seq libraries.} The cut off values chosen for this study are based on the recommendations of MacMannes (2014) for optimal transcript discovery. However the recommendations are based on an RNA-seq library from mouse embryonic stem cells, which may not be an adequate model for dinoflagellates.
 %\paragraph*{Single copy gene selection bias.} The selection of single copy genes is based on BUSCOv2 hmmer libraries. The pre-screening process by which may have inherent selection bias that is not tranparent to us // Not sure if this one is a problem =/
@@ -285,8 +285,8 @@ What follows is the identification of issues with the approach presented in this
 \paragraph*{Amino acid substitution model.} WAG model
 \paragraph*{Molecular clock model selection.} Relaxed clock normal
 \subsubsection*{Gonyaulacales specific issues}
-\paragraph*{Contamination of other taxa.} Not axenic ie. bacterial contamination. Further, the 650+ RNA extract submission to MMETSP was from a large number of investigators and low level contamination is inherent in the project \cite{keeling2014marine}.
-\paragraph*{No representative genome for comparison.} Without a guided genome comparison, it is difficult to extrapolate the assembly adequacy or whether paralogy is 
+\paragraph*{Contamination of other taxa.} Not axenic ie. bacterial contamination. Further, the 650+ RNA extract submission to MMETSP was from a large number of investigators and low level contamination is inherent in the project \cite{keeling2014marine}. 
+\paragraph*{No representative genome for comparison.} Without a guided genome comparison, it is difficult to extrapolate on the assembly adequacy and whether the genes selected are single copies, or  mis-assemblies of paralogs.
 \paragraph*{Different methods for RNA seq.} Three different approaches for RNA-seq library generation were employed for the libraries used in this study, the MMETSP taxa were sequences on HiSeq platform with 50bp inserts; while all other taxa were sequenced on the NextSeq platform with 75bp or 150bp inserts.
 
 \newpage
