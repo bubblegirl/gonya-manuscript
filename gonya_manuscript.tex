@@ -59,7 +59,7 @@ Dinoflagellates represent an ancient lineage on the eukaryotic branch of life \c
 They play a role in several important ecological processes, as members are represented in aquatic environments, where the cover a diverse niches such as symbionts, parasites and some taxa can cause harmful algal blooms through proliferation and/or neurotoxin production \cite{murray2016unravelling}.
 While the evolutionary relationship of most orders within the dinoflagellates has been inferred with consistently high support values, one order has consistently escaped elucidation - the gonyaulacales. 
 Analyses for this order commonly combined concatenation and maximum likelihood approaches, which yielded long branch attraction, low confidence values and inconsistent taxon resolution \cite{}. 
-Improving upon the species the evolution of the gonyaulaceles has implications for environmental disease monitoring, as neurotoxin production is prevalent in this order \cite{}. 
+Improving upon the species the evolution of the gonyaulaceles has implications for environmental disease monitoring, as neurotoxin production is prevalent in this order, e.g. \cite{shalchian2006combined,zhang2007three,saldarriaga2004molecular,hoppenrath2010dinoflagellate,murray2005improving}. 
 Specifically the ciguatoxins produced by some \emph{Gambierdiscus} spp. are of interest as the causative agent of ciguatera fish poisoning, a neglected tropical disease with high associated morbidity \cite{}, which is predicted to increase in prevalence as climate change progresses \cite{}.
 %TODO reference this section
 \newpage
@@ -86,7 +86,7 @@ RNA was quantified with Nanodrop 2000 (Thermo Scientific, Australia) and frozen 
 \subsection*{Library preparation and Sequencing}
 The quality of samples was assessed via Agilent 2100 Bioanalyzer. 
 Paired-end sequencing was performed on NextSeq 500 High Output at the Ramaciotti Centre (UNSW, AU) with 75bp insert size for \emph{G. lapillus} and \emph{G.} cf. \emph{silvae}; and 150bp inserts for \emph{G. carpenterii}, \emph{G. polynesiensis} and \emph{T.} cf. \emph{kofoidii}.
-%TODO work out if Arjun or I am describing transcriptomes for \emph{Coolia malayensis} \emph{Ostreopsis ovata}, \emph{Ostreopsis rhodesae}, \emph{Ostreopsis siamensis} 
+
 \subsubsection*{Publically available transcriptome libraries}
 The \emph{Gambierdiscus excentricus} VGO790 transcriptome was downloaded from NCBI under accession ID SRR3348983 \cite{kohli2017role}. 
 \textit{Coolia malayensis}, \textit{Ostreopsis ovata}, \textit{Ostreopsis rhodesae} and \textit{Ostreopsis siamensis} sequencing libraries were acquired from Arjun Verma (Verma 2018, in prep). 
@@ -213,15 +213,9 @@ This pipeline is publicly available through github and the single copy genes use
 %AD 160118: in the above you are making a pretty hard sell for a "pipeline" as the main product of the research. what is going to happen when a user of median computing skill downloads your pipeline and tries to run it on their dataset? if the result is anything less than euphoria-inducing you should consider what kind of revisions and improvements need to be made to the software, or emphasise something else as the main finding/outcome. 
 \subsection*{Gonyaulacales phylogeny comparison to previous studies} 
 As a result we present a phylogeny with good support values, a range of taxa that covers 5 of the 9 families with the gonyaulacales proposed by algaebase, which is the taxonomy authority for phycology journals, e.g. Journal of Phycology. 
-Families not represented in this study were the Cladopyxidaceae \& Pyrophacaceae for which no transcriptome libraries were available; and Hystrichosphaeridiaceae \& Pterospermopsidaceae whose extant taxa appear to be fossils.
-%AD 160118: I thought extant meant currently alive? e.g. contradicts fossils? // Yep, you're right. See, this is why I shouldn't go near fossils. I can't even get the terminology right, let alone dates
+Families not represented in this study were the Cladopyxidaceae \& Pyrophacaceae for which no transcriptome libraries were available; and Hystrichosphaeridiaceae \& Pterospermopsidaceae whose listed taxa appear to be fossils.
 Rather than the five families in the gonyaulacales, this study proposes three well supported sub-clades. 
 %AD 160118: here you seem to be confusing taxonomy and phylogeny -- phylo will always have finer resolution than taxonomy.
-Interestingly, the phylogenetic resolution of two genera with the highest species coverage, \emph{Gambierdiscus} and \emph{Ostreopsis}, did not mimic the resolution established in the literature within either genus. 
-This is likely due to the rDNA sequences targeted for the usual studies reflect the evolution of that particular gene region, rather than the species evolution itself. 
-However the arrangement of sister species for both \emph{Gambierdiscus} and \emph{Ostreopsis} matched that of the ketosynthase module of polyketide synthase complexes, which are thought to be involved in polyketide toxin production (Unpublished A. Kretzschmar; pers. comm. A. Verma). 
-%AD 160118: this is a bit dodgy. if you want to state this you should back it up with verifiable data.
-%TODO find out when that is getting published by Arjun or remove. Also,be less dodgy.
 On a higher taxonomic level, the gonyaulacales phylogenies pre-dating this study also differ extensively from the results presented here. 
 This is likely due to the methodological differences: 
 \subsubsection*{(1) inferring species evolution from a small subset of genes such as ribosomal genes, whose evolution may not reflect that of the species.}
@@ -235,7 +229,7 @@ However as demonstrated by Kubatko et al. (2007) and Roche et al. (2015), this a
 The application of concatenation in combination with ML is common practice in phylogenetic studies for gonyaulacoids  \cite{shalchian2006combined,zhang2007three,saldarriaga2004molecular,murray2005improving,hoppenrath2010dinoflagellate}.
 This issue is addressed in this study by running Bayesian inference under a multi-species coalescence process.
 \subsubsection*{(3) quantity of taxa or quality of transcriptome assemblies.}
-Several studies have inferred the evolutionary relationship within the gonyaulacales as part of larger studies around the dinoflagellates, and as such the number of taxa from within the gonyaulacales is too limited to speculate on the families or clades within the order. Eg \cite{shalchian2006combined,zhang2007three,saldarriaga2004molecular,hoppenrath2010dinoflagellate,murray2005improving}
+Several studies have inferred the evolutionary relationship within the gonyaulacales as part of larger studies around the dinoflagellates, and as such the number of taxa from within the gonyaulacales is too limited to speculate on the families or clades within the order, e.g. \cite{shalchian2006combined,zhang2007three,saldarriaga2004molecular,hoppenrath2010dinoflagellate,murray2005improving}.
 Since the publicly available MMETSP datasets, several studies have utilised a broader range of taxa to explore gonyaulacales evolution. 
 However, these have relied on the assemblies supplied by the project. 
 The stringency of quality trimming of RNA-seq libraries prior to assembly plays a role in the number of unique contigs recovered and the subsequent assembly quality of transcriptomes. 
