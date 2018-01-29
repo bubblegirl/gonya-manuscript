@@ -31,6 +31,8 @@ Climate Change Cluster (C3), University of Technology Sydney, Ultimo, 2007 NSW, 
 The ithree institute, University of Technology Sydney, Ultimo, 2007 NSW, Australia
 \paragraph{}Mathieu Fourment \\
 The ithree institute, University of Technology Sydney, Ultimo, 2007 NSW, Australia
+\paragraph{}Arjun Verma\\
+Climate Change Cluster (C3), University of Technology Sydney, Ultimo, 2007 NSW, Australia
 \paragraph{}Shauna Murray\\ 
 Climate Change Cluster (C3), University of Technology Sydney, Ultimo, 2007 NSW, Australia
 \newpage
@@ -60,18 +62,17 @@ They play a role in several important ecological processes, as members are repre
 While the evolutionary relationship of most orders within the dinoflagellates has been inferred with consistently high support values, one order has consistently escaped elucidation - the gonyaulacales. 
 Analyses for this order commonly combined concatenation and maximum likelihood approaches, which yielded long branch attraction, low confidence values and inconsistent taxon resolution \cite{}. 
 Improving upon the species the evolution of the gonyaulaceles has implications for environmental disease monitoring, as neurotoxin production is prevalent in this order, e.g. \cite{shalchian2006combined,zhang2007three,saldarriaga2004molecular,hoppenrath2010dinoflagellate,murray2005improving}. 
-Specifically the ciguatoxins produced by some \emph{Gambierdiscus} spp. are of interest as the causative agent of ciguatera fish poisoning, a neglected tropical disease with high associated morbidity \cite{}, which is predicted to increase in prevalence as climate change progresses \cite{}.
-%TODO reference this section
+Specifically the ciguatoxins produced by some \emph{Gambierdiscus} spp. are of interest as the causative agent of ciguatera fish poisoning, a neglected tropical disease with global implications \cite{globalcig}.%, which is predicted to increase in prevalence as climate change progresses \cite{}.
+
 \newpage
 \section{Materials and methods}
 \subsection*{Culture conditions}
 \FloatBarrier
-Cultures were isolated from locations as per Table ~\ref{tbl:strainTable} and clonal cultures established by micropipetting single cells through sterile seawater. 
+Cultures were isolated from locations as per Table S1 and clonal cultures established by micropipetting single cells through sterile seawater. 
 Clonal cultures were maintained in F/10 medium and maintained at temperatures indicated in Table S1. 
 %AD 160117: do you think these are actually clonal? Does the term clonal as used in euk microbiology include commensal bacteria? clonal but not necessarily axenic? // Yep, that's spot on - clonal but not axenic. These critters tend to die faster than a snowball in a bushfire without their bacteria
 
  \subsection*{RNA isolation}
-%\textit{Coolia malayensis}, \textit{Ostreopsis ovata}, \textit{Ostreopsis rhodesae} and \textit{Ostreopsis siamensis} were processed as per Ref ARJUN.
 \emph{Gambierdiscus} spp. and \emph{Thecadinium kofoidii} were harvested during late exponential growth phase by filtration onto 5 $\mu$m SMWP Millipore membrane filter (Merck, DE) and washed off with sterile seawater. 
 Cells were pelleted via centrifugation (make of centrifuge) for 10 minutes at 350 rcf. 
 Supernatant was decanted and 2ml of TRI Reagent (Sigma-Aldrich, subsidiary of Merck, DE) was added to the pellet and vortexed till dissolved. 
@@ -81,7 +82,7 @@ RNA was extracted as per protocol for TRI Reagent.
 RNA elute was purified with the RNeasy RNA clean up kit EXACT NAME as per protocol(Qiagen). 
 DNA was digested with TurboDNAse (Life technologies, subsidiary of Thermo Fischer scientific, AU). 
 RNA was quantified with Nanodrop 2000 (Thermo Scientific, Australia) and frozen at -80 $^{\circ}$C until sequencing.
-%TODO work out transcriptomes Arjun, insert centrifuge, kit name deets
+%TODO insert centrifuge, kit name deets
  
 \subsection*{Library preparation and Sequencing}
 The quality of samples was assessed via Agilent 2100 Bioanalyzer. 
@@ -127,10 +128,9 @@ The resulting alignments were run on *BEAST either on the CPU or GPU.
 \newpage
 \section{Results}
 \subsection*{Transcriptomes overview}
-Sequencing of transcriptomes for \emph{Gambierdiscus} spp. and \emph{T. kofoidii} generated datasets ranging in size from, XX million to XX million reads, resulting in assembled sequence data XX to XX Mbp in size, which corresponded to XX to XX assembled contigs (table ~\ref{tbl:asmstats}). 
-Approximately XX\% to XX\% predicted to be protein coding sequences. %Transdecoder stats?
-In all five transcriptomes the complete protein coding pathways were present. %TODO what the fuck pathway am I talking about here?
-%TODO Interpro scan, mothur, SRA IDs
+Sequencing of transcriptomes for \emph{Gambierdiscus} spp. and \emph{T. kofoidii} generated datasets ranging in size from, 143,155,667 to 233,822,334 reads, resulting in 97,634 to 191,224 assembled contigs (table ~\ref{tbl:asmstats}). 
+Approximately XX\% to XX\% predicted to be protein coding sequences. 
+%TODO Interpro scan, SRA IDs
 \FloatBarrier
 \begin{longtable}{  | p{3cm} |p{2cm} | p{2cm} | p{2cm} | p{2cm} | p{2cm} |}
 \caption{Summary of transcriptome sequencing and assembly statistics.}\\
@@ -144,17 +144,17 @@ In all five transcriptomes the complete protein coding pathways were present. %T
 \hline
 \textbf{Raw sequencing reads}&186,422,744&145,366,966&217,031,342&143,155,667&233,822,334\\
 \hline
-\textbf{Size (Gb)}&16.92&&19.51&&21.08\\
-\hline
+%\textbf{Size (Gb)}&16.92&&19.51&&21.08\\
+%\hline
  \multicolumn{6}{| c |}{Assembly}\\
  \hline
- \textbf{Contigs}&105,464&148,972&114,622&191,224&97,634\\
+ \textbf{Contigs \#}&105,464&148,972&114,622&191,224&97,634\\
 \hline
-\textbf{Average length (bp)}&&&&&\\
+\textbf{Average length (bp)}&607&1,139&633&953&581\\
+%\hline
+%\textbf{Minimum length (bp)}&201&201&201&201&201\\
 \hline
-\textbf{Range of contigs length (bp)}&&&&&\\
-\hline
-\textbf{GC content/N50?}&&&&&\\
+\textbf{Maximum length (bp)}&7,448&12,370&6,608&8,198&7,922\\
 \hline
   \multicolumn{6}{| c |}{Transcript clustering \& annotation}\\
 \hline
@@ -332,18 +332,16 @@ Shout out to the Taming the BEAST organizers \& fellow attendees for a most illu
 \hline
  \multicolumn{6}{| c |}{Gonyaulacales transcriptomes}\\
     \hline
-\emph{Ceratium fusus}&PA161109&121&81&4&MMETSP1074 \citep{keeling2014marine}\\
-        \hline
-\emph{Crypthecodinium cohnii}&Seligo&126&98&0&MMETSP0326\_2 \citep{keeling2014marine}\\
-        \hline
 \emph{Alexandrium catenella}&OF101&110&74&3&MMETSP0790 \citep{keeling2014marine}\\
         \hline
 \emph{Alexandrium monilatum}&JR08&107&74&3&MMETSP0093 \citep{keeling2014marine}\\
         \hline
-\emph{Pyrodinium bahamense}&pbaha01&119&897&2&MMETSP0796 \citep{keeling2014marine}\\
+\emph{Ceratium fusus}&PA161109&121&81&4&MMETSP1074 \citep{keeling2014marine}\\
         \hline
-\emph{Coolia malayensis}&MAB&138&100&1&This study-Arjun?\\
+\emph{Coolia malayensis}&MAB&138&100&1&(Verma 2018, in prep)\\
 \hline
+\emph{Crypthecodinium cohnii}&Seligo&126&98&0&MMETSP0326\_2 \citep{keeling2014marine}\\
+        \hline
 \emph{Gambierdiscus carpenteri}&UTSMER9A&101&83&2&This study\\
 \hline
 \emph{Gambierdiscus excentricus}&VGO790&88&83&4&\cite{kohli2017role}\\
@@ -356,21 +354,23 @@ Shout out to the Taming the BEAST organizers \& fellow attendees for a most illu
         \hline
 \emph{Gonyaulax spinifera}&CCMP409&83&53&2&MMETSP1439 \citep{keeling2014marine}\\
         \hline
-\emph{Ostreopsis ovata}&HER27&132&99&2&This study-Arjun?\\
+\emph{Ostreopsis ovata}&HER27&132&99&2&(Verma 2018, in prep)\\
      \hline
-\emph{Ostreopsis rhodesae}&HER26&131&98&1&This study-Arjun?\\
+\emph{Ostreopsis rhodesae}&HER26&131&98&1&(Verma 2018, in prep)\\
      \hline
-\emph{Ostreopsis siamensis}&BH1&132&98&1&This study-Arjun?\\
-     \hline     
+\emph{Ostreopsis siamensis}&BH1&132&98&1&(Verma 2018, in prep)\\
+     \hline
 \emph{Protoceratium reticulatum}&CCCM535=CCMP1889&108&72&5&MMETSP0228 \citep{keeling2014marine}\\
     \hline
+\emph{Pyrodinium bahamense}&pbaha01&119&897&2&MMETSP0796 \citep{keeling2014marine}\\
+        \hline
 \emph{Thecadinium kofoidii}&THECA&93&70&5&This study\\
  \hline
  \multicolumn{6}{| c |}{Outgroup transcriptomes}\\
  \hline
-\emph{Dinophysis acimunata}&DAEP01&117&74&2&MMETSP0797 \citep{keeling2014marine}\\
+ \emph{Azadinium spinosum}&3D9&1.8&81&4&MMETSP1036\_2 \citep{keeling2014marine}\\
         \hline
-\emph{Azadinium spinosum}&3D9&1.8&81&4&MMETSP1036\_2 \citep{keeling2014marine}\\
+\emph{Dinophysis acimunata}&DAEP01&117&74&2&MMETSP0797 \citep{keeling2014marine}\\
         \hline
 \emph{Karenia brevis}&CCMP2229&115&85&2&MMETSP0030 \citep{keeling2014marine}\\
     \hline
