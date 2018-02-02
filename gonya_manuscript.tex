@@ -206,7 +206,7 @@ This study presents a pipeline designed to identify single copy genes in transcr
 The pipeline was tested on the order gonyaulacales, class Dinophyceae, with publicly available transcriptomes as well as transcriptomes presented as part of this study. 
 With publicly available datasets such as the MMETSP project for marine microbes \cite{keeling2014marine}, previous data based limitations for exploring the species evolution within these abundant organisms can now be overcome. 
 However, the next obstacle lies in the methodology for investigating these taxa and that is what this study seeks to address. 
-The process of paralog elimination as input for species inference presented here is transparent and reproducible. 
+The process of paralog elimination as input for species inference presented here is transparent and, the authors hope, reproducible with rudimentary programming skills. 
 The gonyaulacales were chosen to test the pipeline due to the size of their genomes and extensive paralogs.
 This pipeline is publicly available through github and the single copy genes used to infer the species evolution in this study, as well as the log files for the *BEAST runs, are available on zenodo.
 %TODO see below.
@@ -269,17 +269,23 @@ In this study, we utilised the BUSCO output which screens for and verifies singl
 \subsection*{Limitations of study}
 %TODO long list of problems with this approach.
 
-In the previous section study we identified potential problems with common approaches to species inference, and then presented a pipeline which attempts to address these problems, we in no way want to imply that this study is not fraught with potential pitfalls too. We aim to present avenues for improvement for current methods, especially in areas where large datsets are recently unlocked such as in marine protists with the MMETSP project. %Models and methodology build upon previous work and improve with increased collective knowledge, take the progression for nucleotide substitution rates as an example. The JC69 model from 1969 assumes the substitutions rates between all nuceleotides are equal, including between purines and pyrimidines \cite{}. Through a series of increased complexity to model transition \& transversion rates (i.e. the likelihood of nucleotide change from purine to pyrimidine and vice versa) and steady-state distributions (frequency of each nucleotide given infinite time), the HK85 model was proposed in 1985 \cite{}.
+In the previous section we identified potential problems with common approaches to species inference for the gonyaulacales, and then presented a pipeline which attempts to address these problems. However we in no way want to imply that this study is not fraught with potential pitfalls too. We aim to present avenues for improvement for current methods, especially in areas where large datsets are recently unlocked such as in marine protists with the MMETSP project. %Models and methodology build upon previous work and improve with increased collective knowledge, take the progression for nucleotide substitution rates as an example. The JC69 model from 1969 assumes the substitutions rates between all nuceleotides are equal, including between purines and pyrimidines \cite{}. Through a series of increased complexity to model transition \& transversion rates (i.e. the likelihood of nucleotide change from purine to pyrimidine and vice versa) and steady-state distributions (frequency of each nucleotide given infinite time), the HK85 model was proposed in 1985 \cite{}.
 %I may have gone on a tangent here. Probably leave that out.
 What follows is the identification of issues with the approach presented in this study, which the authors hope that these will be improved upon in the future. 
 \subsubsection*{Pipeline specific issues}
-\paragraph*{Trimming of RNA seq libraries.} The cut off values chosen for this study are based on the recommendations of MacMannes (2014) for optimal transcript discovery. However the recommendations are based on an RNA-seq library from mouse embryonic stem cells, which may not be an adequate model for dinoflagellates.
+\paragraph*{Trimming of RNA seq libraries.} The cut off values chosen for this study are based on the recommendations of MacMannes (2014) for optimal transcript discovery. However the recommendations are based on an RNA-seq library from mouse embryonic stem cells, which may not be an adequate model for dinoflagellates. 
+This could confound the difference between single copy genes and sequencing artifacts.
 %\paragraph*{Single copy gene selection bias.} The selection of single copy genes is based on BUSCOv2 hmmer libraries. The pre-screening process by which may have inherent selection bias that is not tranparent to us // Not sure if this one is a problem =/
-\paragraph*{Assembly parameters.} assemblers have different strengths and weaknesses. In this study we selected Trinity based on the findings of Cerveau et al. (2016) as it emerged as the optimal single assembler for nonmodel eukaryptic de novo transcriptome assembly. However Trinity was still prone to some errors xx which could affect the assemblies and downstream analysis \cite{cerveau2016combining}.
+\paragraph*{Assembly parameters.} Assemblers have different strengths and weaknesses. 
+In this study we selected Trinity based on xx 
+Cerveau et al. (2016) found that Trinity, CLC Bio and IDBA-Tran assemblies all contain bioinformatic artefacts. 
+Using a combination of all three assemblers yielded a final assebly closer to biological reality than any individual assembler, when no reference genome is available \cite{cerveau2016combining}.
+As this study uses Trinity exclusively, it is subject to the bioinformatic errors found by Cerveau et al. which could affect downstream analysis.
 \paragraph*{Amino acid substitution model.} WAG model
 \paragraph*{Molecular clock model selection.} Relaxed clock normal
 \subsubsection*{Gonyaulacales specific issues}
-\paragraph*{Contamination of other taxa.} Not axenic ie. bacterial contamination. Further, the 650+ RNA extract submission to MMETSP was from a large number of investigators and low level contamination is inherent in the project \cite{keeling2014marine}. 
+\paragraph*{Contamination of other taxa.} The ot axenic ie. bacterial contamination. 
+Further, the 650+ RNA extract submission to MMETSP was from a large number of investigators and low level contamination is inherent in the project \cite{keeling2014marine}. 
 \paragraph*{No representative genome for comparison.} Without a guided genome comparison, it is difficult to extrapolate on the assembly adequacy and whether the genes selected are single copies, or  mis-assemblies of paralogs.
 \paragraph*{Different methods for RNA seq.} Three different approaches for RNA-seq library generation were employed for the libraries used in this study, the MMETSP taxa were sequences on HiSeq platform with 50bp inserts; while all other taxa were sequenced on the NextSeq platform with 75bp or 150bp inserts.
 
