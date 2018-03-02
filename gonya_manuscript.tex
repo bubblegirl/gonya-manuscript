@@ -229,6 +229,13 @@ The placement of \emph{Gambierdiscus} species from this study follows the specie
 
 \subsection*{rDNA based phylogeny}
 %TODO blergh
+\FloatBarrier 
+\begin{figure} 
+%\includegraphics[scale=.23]{Price-comparison.png} 
+\caption{Maximum likelihood phylogenetic inference of ribosomal DNA genes. Concatenation of small subunit rDNA and D1-D3 region large subunit rDNA. Accession numbers for concatenated genes in Table S3.} 
+\label{fig:rdna}
+\end{figure} 
+\FloatBarrier
 
 \subsubsection*{Generation of figures}
 Tanglegrams were generated with Dendroscope v3.5.9 \cite{huson2007dendroscope}; images were edited in GIMP \cite{gimp}.
@@ -262,11 +269,27 @@ Hence studies which utilise primarily rDNA genes for inferring species phylogeny
 To address this obstacle, a range of genes need to be used to infer the species evolution.
 %TODO tangelgram of rDNA vs single copy gene trees
 
+\FloatBarrier 
+\begin{figure} 
+%\includegraphics[scale=.25]{Aug2_20-taxa-combined-fig_MCC_trees_gimp.png} 
+\caption{Tanglegram showing the topological differences in phylogenies from (A) MSC starbeast inference with 58 single copy genes; and (B) concatenated rDNA genes (SSU and D1-D3 LSU)infered with ML.} 
+\label{fig:tanglerdna}
+\end{figure} 
+\FloatBarrier
+
 \subsubsection*{(2) concatenating the genes selected and using maximum likelihood methods for species inference.}
 Concatenation of genes coupled with running maximum likelihood inference is a commonly used method as it is computationally cheap in comparison to Bayesian inference methods. 
 However as demonstrated by Kubatko et al. (2007) and Roche et al. (2015), this approach is error prone and can be misleading by presenting high bootstrap values on incorrect clades which is positively misleading.
 The application of concatenation in combination with ML is common practice in phylogenetic studies for gonyaulacoids  \cite{shalchian2006combined,zhang2007three,saldarriaga2004molecular,murray2005improving,hoppenrath2010dinoflagellate}.
 This issue is addressed in this study by running Bayesian inference under a multi-species coalescence process.
+\FloatBarrier 
+\begin{figure} 
+%\includegraphics[scale=.25]{Aug2_20-taxa-combined-fig_MCC_trees_gimp.png} 
+\caption{Tanglegram showing the topological differences in phylogenies with same 58 single copy gene alignments as input. (A) MSC starbeast inference; and (B) concatenated ML inference.} 
+\label{fig:tangleconcat}
+\end{figure} 
+\FloatBarrier
+
 \subsubsection*{(3) quantity of taxa or quality of transcriptome assemblies.}
 Several studies have inferred the evolutionary relationship within the gonyaulacales as part of larger studies around the dinoflagellates, and as such the number of taxa from within the gonyaulacales is too limited to speculate on the families or clades within the order, e.g. \cite{shalchian2006combined,zhang2007three,saldarriaga2004molecular,hoppenrath2010dinoflagellate,murray2005improving}.
 Since the publicly available MMETSP datasets, several studies have utilised a broader range of taxa to explore gonyaulacales evolution. 
@@ -426,6 +449,62 @@ Shout out to the Taming the BEAST organizers \& fellow attendees for a most illu
 \end{longtable}
 \FloatBarrier
 %families, sections which was taken out:Ceratiaceae,Crypthecodiniaceae,Gonyaulacaceae,Protoceratiaceae,Dinophysiaceae,Dinophyceae incertae sedis,Gymnodiniales
+
+\begin{longtable}{  | p{3cm} |p{3cm} |  p{3cm} | }
+\caption{Table S3: Accession numbers for ribosomal DNA sequences used for Fig. ~\ref{fig:rdna}. Sequences sourced from NCBI, except accesion numbers with $\ast$ sourced from the Silva database}\\
+\hline
+%\label{tbl:Transcriptomes}
+%\textbf{Family}&
+\textbf{Species}&\textbf{SSU seq.}&\textbf{D1-D3 LSU seq.}\\
+
+\hline
+ \multicolumn{3}{| c |}{Gonyaulacales taxa}\\
+ \hline
+\emph{Alexandrium catenella}&&\\
+        \hline
+\emph{Alexandrium monilatum}&&\\
+        \hline
+\emph{Ceratium fusus}&&\\
+        \hline
+\emph{Coolia malayensis}&&\\
+\hline
+\emph{Crypthecodinium cohnii}&&\\
+        \hline
+\emph{Gambierdiscus carpenteri}&&\\
+\hline
+\emph{Gambierdiscus excentricus}&&\\
+        \hline
+\emph{Gambierdiscus lapillus}&&\\
+        \hline
+\emph{Gambierdiscus polynesiensis}&&\\
+        \hline
+\emph{Gambierdiscus} cf. \emph{silvae}&&\\
+        \hline
+\emph{Gonyaulax spinifera}&&\\
+        \hline
+\emph{Ostreopsis ovata}&&\\
+     \hline
+\emph{Ostreopsis rhodesae}&&\\
+     \hline
+\emph{Ostreopsis siamensis}&&\\
+     \hline
+\emph{Protoceratium reticulatum}&&\\
+    \hline
+\emph{Pyrodinium bahamense}&&\\
+        \hline
+\emph{Thecadinium kofoidii}&&\\
+ \hline
+\multicolumn{3}{| c |}{Outgroup taxa}\\
+    \hline
+  \emph{Azadinium spinosum}&&\\
+        \hline
+\emph{Dinophysis acimunata}&&\\
+        \hline
+\emph{Karenia brevis}&&\\
+\hline
+\end{longtable}
+\FloatBarrier
+
 \newpage
 \bibliographystyle{acm}
 \bibliography{gonya.bib}
