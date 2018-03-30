@@ -1,4 +1,4 @@
-\documentclass[12pt]{article}
+ \documentclass[12pt]{article}
  \usepackage[hcentering,bindingoffset=20mm]{geometry}
  \usepackage{placeins}
  \usepackage[numbib]{tocbibind}
@@ -76,6 +76,12 @@ Finally, to apply the pipeline to the historically difficult order Gonyaulacales
 
 %TODO need to bridge the gap in knowledge for taxonomists
 \subsubsection*{Box for biologists}
+\textbf{Potential statistical error types}
+1. systematic. Arises from non-phylogenetic signal and does not average out with number of sites in the dataset. If strong, can override true phylogenetic signal.\\
+2. stochastic.\\
+\textbf{Bayesian inference}
+\textbf{Maximum likelihood}
+\textbf{•}
 
 \subsection*{Gonyaulacales - a phylogenetic obstacle course}
 Dinoflagellates represent an ancient lineage on the eukaryotic branch of life \cite{moldowan1998biogeochemical}. 
@@ -96,7 +102,7 @@ Cultures were isolated from locations as per Table S1 and clonal cultures establ
 Clonal cultures were maintained in F/10 medium and maintained at temperatures indicated in Table S1. 
 %AD 160117: do you think these are actually clonal? Does the term clonal as used in euk microbiology include commensal bacteria? clonal but not necessarily axenic? // Yep, that's spot on - clonal but not axenic. These critters tend to die faster than a snowball in a bushfire without their bacteria
 
- \subsection*{RNA isolation}
+\subsection*{RNA isolation}
 \emph{Gambierdiscus} spp. and \emph{Thecadinium kofoidii} were harvested during late exponential growth phase by filtration onto 5 $\mu$m SMWP Millipore membrane filter (Merck, DE) and washed off with sterile seawater. 
 Cells were pelleted via centrifugation (make of centrifuge) for 10 minutes at 350 rcf. 
 Supernatant was decanted and 2ml of TRI Reagent (Sigma-Aldrich, subsidiary of Merck, DE) was added to the pellet and vortexed till dissolved. 
@@ -130,6 +136,12 @@ The RNA libraries with 150bp inserts generated as part of this study were also s
 The BUSCO2 output from all transcriptomes in the previous script run is the input for the second round. 
 Any genes that were present in at least 75 \% of the transcriptomes were indexed, the corresponding contig extracted from the assemblies, aligned with hmmer3.1b2 \cite{eddy2015hmmer} and unaligned regions trimmed.
 If several candidate sequences are processed for the same organism, a warning message in the command interface alerts the user before proceeding.
+
+\subsection*{Assembly analysis}
+Contigs from assemblies from pipeline part 1 were clustered with CD-HIT with the command cd 
+cd-hit \cite{fu2012cd}, transdecoder \cite{haas2016transdecoder}, cd-hit, get\_homologs \cite{contreras2013gethom}, interproscan \cite{quevillon2005interproscan}
+%TODO insert processing scripts
+
 \subsection*{Phylogenetic inference}
 The pipeline output was processed on the University of Technology Sydney's High-performance computing cluster.
 %AD 160118: the P in HPC is for performance - not power, though neither adjective is very appropriate for UTS's cluster :( // true that
@@ -141,10 +153,8 @@ Posterior distributions of parameters were approximated after 300,000,000 genera
 The inference was run four times to compare convergence of parameters, then log and tree files were merged. 
 Inference was accelerated using BEAGLE \cite{ayres2011beagle} on the GPU.
 
-\subsection*{Assembly analysis}
-Contigs from assemblies from pipeline part 1 were clustered with CD-HIT with the command cd 
-cd-hit \cite{fu2012cd}, transdecoder \cite{haas2016transdecoder}, cd-hit, get\_homologs \cite{contreras2013gethom}, interproscan \cite{quevillon2005interproscan}
-%TODO insert processing scripts
+\subsection{Path sampling}
+
 
 \subsection*{rDNA based tree comparison}
 %TODO commit seppuku
