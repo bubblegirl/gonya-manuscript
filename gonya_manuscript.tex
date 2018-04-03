@@ -69,13 +69,16 @@ Frequent issues for species tree inference arise from:\\
 1) Selection of paralogs. If genes with different evolutionary histories are selected, the gene tree will not reflect the history of either paralog and be nonsensical for species tree inference; 
 2) Concatenation of genes. Can be statistically inconsistent estimator of the species tree due to incomplete lineage sorting and concatenation acting as imperfect estimator of species tree topology \cite{roch2015likelihood}; and 
 3) Inference of model adequacy from bootstrap values. Kubatko et al. (2007) demonstrated high bootstrap support under maximum likelihood inference for incorrect species trees with concatenated gene sets as input \cite{kubatko2007inconsistency}. 
-As high bootstrap values are often used as an indicator for robust species topology resolution, this fallacy is particularly problematic if the reader/operator is unfamiliar with the statistical phenomenon.\\
+As high bootstrap values are often used as an indicator for robust species topology resolution, this fallacy is particularly problematic if the reader/operator is unfamiliar with the statistical phenomenon (see box 1 for).\\
 In this study we aim to build a bioinformatic pipeline that attempts to addresses the issues of paralogy when processing transcriptomic data from non-model organisms, utilises alternative methods to both concatenation and maximum likelihood inference. 
 Specifically, the pipeline assembles RNA-seq datasets, identifies and extracts single copy genes across input taxa with extensive paralogy, and runs Bayesian inference phylogenetics. 
-Finally, to apply the pipeline to the historically difficult order Gonyaulacales (phylum: Dinoflagellata) which are notorious for the issues that the pipeline seeks to address.\\
+Finally, to apply the pipeline to the historically difficult order Gonyaulacales (phylum: Dinoflagellata) which are notorious for the issues that the pipeline seeks to address (see box 2 for further information on the gonaylacales).\\
+
+
+
 
 %TODO need to bridge the gap in knowledge for taxonomists
-\subsubsection*{Box for biologists}
+\subsubsection*{Box 1}
 \textbf{Potential statistical error types}
 1. systematic. Arises from non-phylogenetic signal and does not average out with number of sites in the dataset. If strong, can override true phylogenetic signal.\\
 2. stochastic.\\
@@ -83,16 +86,17 @@ Finally, to apply the pipeline to the historically difficult order Gonyaulacales
 \textbf{Maximum likelihood}
 \textbf{•}
 
-\subsection*{Gonyaulacales - a phylogenetic obstacle course}
+\subsubsection*{Box 2}
 Dinoflagellates represent an ancient lineage on the eukaryotic branch of life \cite{moldowan1998biogeochemical}. 
 They play a role in several important ecological processes, as members are represented in aquatic environments, where the cover a diverse niches such as symbionts, parasites and some taxa can cause harmful algal blooms through proliferation and/or neurotoxin production \cite{murray2016unravelling}.
+large genomes \cite{casabianca2017genome}
 While the evolutionary relationship of most orders within the dinoflagellates has been inferred with consistently high support values, one order has consistently escaped elucidation - the gonyaulacales. 
 Analyses for this order commonly combined concatenation and maximum likelihood approaches, which yielded long branch attraction, low confidence values and inconsistent taxon resolution \cite{}. 
 Improving upon the species the evolution of the gonyaulaceles has implications for environmental disease monitoring, as neurotoxin production is prevalent in this order, e.g. \cite{shalchian2006combined,zhang2007three,saldarriaga2004molecular,hoppenrath2010dinoflagellate,murray2005improving}. 
 Specifically the ciguatoxins produced by some \emph{Gambierdiscus} spp. are of interest as the causative agent of ciguatera fish poisoning, a neglected tropical disease with global implications \cite{globalcig}.%, which is predicted to increase in prevalence as climate change progresses \cite{}.
 
 %TODO need to bring the non-messy-biologists up to speed on why the fuck gonyaulacales
-\subsubsection*{Box for non-protistologists}
+
 
 \newpage
 \section{Materials and methods}
@@ -153,7 +157,7 @@ Posterior distributions of parameters were approximated after 300,000,000 genera
 The inference was run four times to compare convergence of parameters, then log and tree files were merged. 
 Inference was accelerated using BEAGLE \cite{ayres2011beagle} on the GPU.
 
-\subsection{Path sampling}
+\subsection*{Path sampling}
 
 
 \subsection*{rDNA based tree comparison}
