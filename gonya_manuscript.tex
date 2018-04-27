@@ -19,8 +19,8 @@
  \addtolength{\voffset}{-1cm}
  \setlength{\parindent}{0pt}
  
-\title{Paralogy and model choice in large data-set transcriptomics for phylogenetics. $^{1}$}
-\author{Key words: Bayesian inference, gonyaulacales, phylogenetics, transcriptomics}
+\title{The impact of data and model selection on phylogenetics - case study of the gonyaulacales. $^{1}$}
+\author{Key words: Bayesian inference, model selection, gonyaulacales, phylogenetics, transcriptomics}
 \date{}
 
 \begin{document}
@@ -93,7 +93,7 @@ The gonyaulacales are an order within the phylum dinoflagellata, which are an an
 Dinoflagellates possess large genomes (estimated 3.7 to 220 Gbp) \cite{casabianca2017genome}, with extensive paralogy and repetitive short sequences %TODO cite
 While the evolutionary relationship of most orders within the dinoflagellates has been inferred with consistently high support values, one order has often escaped elucidation - the gonyaulacales. 
 %Analyses for this order commonly combined concatenation and maximum likelihood approaches, which yielded long branch attraction, low confidence values and inconsistent taxon resolution \cite{}. 
-Improving upon the species the evolution of the gonyaulaceles has implications for environmental disease monitoring, as neurotoxin production is prevalent in this order, e.g. \cite{shalchian2006combined,zhang2007three,saldarriaga2004molecular,hoppenrath2010dinoflagellate,murray2005improving}. 
+Improving upon the species the evolution of the gonyaulaceles has implications for environmental disease monitoring, as neurotoxin production is prevalent in this order and the direct cause of paralytic shellfish poisioning, ciguatera fish poisoning, e.g. \cite{shalchian2006combined,zhang2007three,saldarriaga2004molecular,hoppenrath2010dinoflagellate,murray2005improving}. 
 %Specifically the ciguatoxins produced by some \emph{Gambierdiscus} spp. are of interest as the causative agent of ciguatera fish poisoning, a neglected tropical disease with global implications \cite{globalcig}.%, which is predicted to increase in prevalence as climate change progresses \cite{}.
 
 %TODO need to bring the non-messy-biologists up to speed on why the fuck gonyaulacales
@@ -147,8 +147,8 @@ Contigs from assemblies from pipeline part 1 were clustered with CD-HIT with the
 cd-hit \cite{fu2012cd}, transdecoder \cite{haas2016transdecoder}, cd-hit, get\_homologs \cite{contreras2013gethom}, interproscan \cite{quevillon2005interproscan}
 %TODO insert processing scripts
 
-\subsection*{Phylogenetic inference}
-The pipeline output was processed on the University of Technology Sydney's High-performance computing cluster.
+\subsection*{Multispecies coalescence phylogenetic inference of single copy genes}
+The pipeline output was processed on the University of Technology Sydney's High-performance computing cluster (HPCC).
 %AD 160118: the P in HPC is for performance - not power, though neither adjective is very appropriate for UTS's cluster :( // true that
 Species evolutionary inference was based on Bayesian probability with the *BEAST2 model in BEAST2 \cite{bouckaert2014beast}. 
 %TODO make a sensical something as 'Bayesian probability'
@@ -158,11 +158,18 @@ Posterior distributions of parameters were approximated after 300,000,000 genera
 The inference was run four times to compare convergence of parameters, then log and tree files were merged. 
 Inference was accelerated using BEAGLE \cite{ayres2011beagle} on the GPU.
 
-\subsection*{Path sampling}
+\subsection*{Concatenation phylogenetic inference of single copy genes}
 
+\subsubsection*{with Maximum Likelihood}
+
+\subsubsection*{with Bayesian inference}
 
 \subsection*{rDNA based tree comparison}
 %TODO commit seppuku
+Ribosomal DNA sequences for the small subunit region as well as the D1-D3 large subunit region were aquired from NCBI \cite{coordinators2017database} or the SILVA rRNA database project \cite{silvaproj}, accession IDs in Suppl. table 1. Sequences were concatenated in Geneious v11.3 and Maximum Likelihood inference was run the HPCC using RaxML \cite{stamatakis2014raxml} with under the GTR and GAMMA flags.
+
+\subsection*{Path sampling}
+
 \subsection*{Inference run time comparison}
 A subset of 14 taxa was selected for a comparison between CPU and GPU inference run time comparison. 
 The transcriptome libraries were fed through the pipeline as described, which was set to extract single copy genes present in all of the taxa. 
