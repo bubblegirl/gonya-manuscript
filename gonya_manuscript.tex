@@ -159,22 +159,33 @@ The inference was run four times to compare convergence of parameters, then log 
 Inference was accelerated using BEAGLE \cite{ayres2011beagle} on the GPU.
 
 \subsection*{Concatenation phylogenetic inference of single copy genes}
-
-\subsubsection*{with Maximum Likelihood}
-
-\subsubsection*{with Bayesian inference}
+Individual genes were aligned using the MUSCLE algorithm a maximum of 8 iterations \cite{edgar2004muscle}, then were concatenated in Geneious v11.3 \cite{kearse2012geneious}. 
+ML inference was obtained using RaxML \cite{stamatakis2014raxml} with the ILGF, GAMMA and PROT flags, with 100 bootstraps.
+BI was run in BEAST2 with the Gamma site model with 4 Gamma category counts under the WAG amino acid model. A local random clock was used and the priors were under the Birth Death model %TODO MATHIEU what was the end nuber of chains?
+Both ML and BI inferences were run the HPCC. 
 
 \subsection*{rDNA based tree comparison}
 %TODO commit seppuku
-Ribosomal DNA sequences for the small subunit region as well as the D1-D3 large subunit region were aquired from NCBI \cite{coordinators2017database} or the SILVA rRNA database project \cite{silvaproj}, accession IDs in Suppl. table 1. Sequences were concatenated in Geneious v11.3 and Maximum Likelihood inference was run the HPCC using RaxML \cite{stamatakis2014raxml} with under the GTR and GAMMA flags.
+Ribosomal DNA sequences for the small subunit region as well as the D1-D3 large subunit region were acquired from NCBI \cite{coordinators2017database} or the SILVA rRNA database project \cite{silvaproj}, accession IDs in Suppl. table 1. 
+Sequences were concatenated and ML inference generated as described in the previous section, with the GTR and GAMMA flags.
+
+\FloatBarrier
+\begin{longtable}{  | p{3cm} |p{2cm} | p{2cm} | p{2cm} | p{2cm} | p{2cm} |}
+\caption{Accession codes for rDNA sequences.}\\
+\hline
+\label{tbl:rDNA}
+\end{longtable}
 
 \subsection*{Path sampling}
+%TODO Mathieu please put details in
 
 \subsection*{Inference run time comparison}
 A subset of 14 taxa was selected for a comparison between CPU and GPU inference run time comparison. 
 The transcriptome libraries were fed through the pipeline as described, which was set to extract single copy genes present in all of the taxa. 
 The resulting alignments were run on *BEAST either on the CPU or GPU.
 
+\subsubsection*{Generation of figures}
+Tanglegrams were generated with Dendroscope v3.5.9 \cite{huson2007dendroscope}; images were edited in GIMP \cite{gimp}.
 \newpage
 \section{Results}
 \subsection*{Transcriptomes overview}
@@ -225,7 +236,7 @@ Approximately XX\% to XX\% predicted to be protein coding sequences.
 Assemblies for all transcriptome datasets used in this study were channeled through the pipeline. 
 The single copy genes acquired though the BUSCO hmmer libraries curated for protists are reported in Table S2 out of the total 234 genes searched for, as well as accession numbers and identifiers for each transcriptome.
 %TODO less lame title and insert relevant info when together
-\subsection*{Single copy gene based phylogeny}
+\subsection*{Single copy gene based phylogeny under MSC}
 %TODO take out recoomendation for clades
 The gonyaulacales resolved as a monophyletic order with three major clades, tentatively named clades I - III. 
 Posterior probability (PP) branch support values were analyzed as follows: 1.00 was fully supported, $\geq$ 0.9 was very well supported, $\geq$ 0.8 was relatively well supported and $\leq$ 0.5 was unsupported.
@@ -245,22 +256,39 @@ The placement of \emph{Gambierdiscus} species from this study follows the specie
 \begin{figure} 
 \includegraphics[scale=.25]{Aug2_20-taxa-combined-fig_MCC_trees_gimp.png} 
 \caption{Phylogenetic analysis of Gonyaulacales species tree with 62 single copy genes from 20 taxa. Gonyaulacales (\#16) in purple, outgroups (\#3) in light blue and taxa \textit{incertae sedis} (\#1) in teal.} 
-\label{fig:phylo}
+\label{fig:SCmscBI}
+\end{figure} 
+\FloatBarrier
+
+\subsection*{Concatenated single copy gene based phylogeny inferred with BI}
+%TODO Running with PATH sampling
+\FloatBarrier 
+\begin{figure} 
+%\includegraphics[scale=.23]{} 
+\caption{Bayesian inference phylogenetic inference of concatenated single copy gene set (62 single copy genes from 20 taxa). Gonyaulacales (\#16) in purple, outgroups (\#3) in light blue and taxa \textit{incertae sedis} (\#1) in teal.} 
+\label{fig:SCconcatBI}
+\end{figure} 
+\FloatBarrier
+
+\subsection*{Concatenated single copy gene based phylogeny inferred with ML}
+\FloatBarrier 
+\begin{figure} 
+\includegraphics[scale=.23]{figures/Singlecopy-concat-ML.png} 
+\caption{Maximum likelihood phylogenetic inference of concatenated single copy gene set (62 single copy genes from 20 taxa). Gonyaulacales (\#16) in purple, outgroups (\#3) in light blue and taxa \textit{incertae sedis} (\#1) in teal.} 
+\label{fig:SCconcatML}
 \end{figure} 
 \FloatBarrier
 
 \subsection*{rDNA based phylogeny}
-%TODO blergh
 \FloatBarrier 
 \begin{figure} 
-%\includegraphics[scale=.23]{Price-comparison.png} 
-\caption{Maximum likelihood phylogenetic inference of ribosomal DNA genes. Concatenation of small subunit rDNA and D1-D3 region large subunit rDNA. Accession numbers for concatenated genes in Table S3.} 
+\includegraphics[scale=.23]{figures/rDNA-ML.png} 
+\caption{Maximum likelihood phylogenetic inference of ribosomal DNA genes. Concatenation of small subunit rDNA and D1-D3 region large subunit rDNA. Accession numbers for concatenated genes in Table S3. Gonyaulacales (\#16) in purple, outgroups (\#3) in light blue and taxa \textit{incertae sedis} (\#1) in teal.} 
 \label{fig:rdna}
 \end{figure} 
 \FloatBarrier
 
-\subsubsection*{Generation of figures}
-Tanglegrams were generated with Dendroscope v3.5.9 \cite{huson2007dendroscope}; images were edited in GIMP \cite{gimp}.
+
 \newpage
 \section{Discussion}
 %TODO need to take out any reference to pipeline or software
@@ -275,6 +303,32 @@ However, the next obstacle lies in the methodology for investigating these taxa 
 The process of paralog elimination as input for species inference presented here is transparent and, the authors hope, reproducible with rudimentary programming skills. 
 The gonyaulacales were chosen to test the pipeline due to the size of their genomes and extensive paralogs.
 This pipeline is publicly available through github and the single copy genes used to infer the species evolution in this study, as well as the log files for the *BEAST runs, are available on zenodo.
+
+\FloatBarrier 
+\begin{figure} 
+\includegraphics[scale=.23]{figures/MSC-BI_vs_rDNA-ML.png} 
+\caption{Tanglegram of single copy MSC vs. rDNA concat ML. Gonyaulacales (\#16) in purple, outgroups (\#3) in light blue and taxa \textit{incertae sedis} (\#1) in teal.} 
+\label{fig:tanglerDNA}
+\end{figure} 
+\FloatBarrier
+
+\FloatBarrier 
+\begin{figure} 
+\includegraphics[scale=.23]{figures/MSC-BI_vs_singlecopy-concat-ML.png} 
+\caption{Tangle MSC vs. single copy concat ML. Gonyaulacales (\#16) in purple, outgroups (\#3) in light blue and taxa \textit{incertae sedis} (\#1) in teal.} 
+\label{fig:tangleconcatML}
+\end{figure} 
+\FloatBarrier
+
+
+
+\FloatBarrier 
+\begin{figure} 
+%\includegraphics[scale=.23]{figures/rDNA-ML.png} 
+\caption{Tangle vs. single copy concat BI. Gonyaulacales (\#16) in purple, outgroups (\#3) in light blue and taxa \textit{incertae sedis} (\#1) in teal.} 
+\label{fig:tangleconcatBI}
+\end{figure} 
+\FloatBarrier
  
 \subsection*{Gonyaulacales phylogeny comparison to previous studies} 
 As a result we present a phylogeny with good support values, a range of taxa that covers 5 of the 9 families with the gonyaulacales proposed by algaebase, which is the taxonomy authority for phycology journals, e.g. Journal of Phycology. 
