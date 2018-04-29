@@ -41,6 +41,7 @@ Climate Change Cluster (C3), University of Technology Sydney, Ultimo, 2007 NSW, 
 
 \section{Introduction}
 %TODO need to take out any reference to pipeline or software
+%TODO new direction of paper - model and data impact on phylogenetics. need to re-write intro
 
 %good refs re systematics
 \cite{posada2016phylogenomics} start of special issue discussing systematics. Overview of problems and gold mine of references
@@ -59,20 +60,26 @@ Climate Change Cluster (C3), University of Technology Sydney, Ultimo, 2007 NSW, 
 
 %for later:
 % fern transcriptome database, rife w paralogy www.onekp.com Rothfels '13 Transcriptome-Mining for Single-Copy Nuclear Markers in Ferns .. but use ML
-The availability of large datasets and breadth of information contained therein is phenomenal. 
-Predominantly the focus is on model organisms, however there has been a concerted effort to push non-model organisms to catch up recently. 
+Untangling the evolutionary relationships between organisms and glimpsing the shape of the tree of life is an ongoing process. 
+Advances in sequencing capabilities, computational resources and xxx have seen the use of increasing gene sets and complexity in model selection to inform phylogenetic inference. 
+The decrease in next-gen sequencing technology cost has helped make seq more common - which means that public databases of non-model organism genomes or transcriptomes are getting more betterer (fuck me I word good).
+
+%Phylogenetics assessing large gene sets is becoming common practice.
+%The availability of large datasets and breadth of information contained therein is phenomenal. 
+%Predominantly the focus is on model organisms, however there has been a concerted effort to push non-model organisms to catch up recently. 
 An example is the MMETSP project, sequencing the transcriptomes of over 650 marine eukaryotic microbes \cite{keeling2014marine}. 
 This project has unlocked an unprecedented wealth of information to investigate the phylogenetics of some rather prolific branches of the tree of life. 
 However, wealth of data alone isn't sufficient for an adequate approximation of the evolution of these organisms - robust methodology is key. 
-The gene representative for each taxa is compared with all other representatives, with the assumption of a shared evolutionary history, i.e. orthology, from which the species evolution is inferred \cite{maddison1997gene}. 
-Increasing the number of genes used for inferring the species evolution can address this stochastic error, however if there are systematic and method based errors that can arise - which can in turn give robust support values for the incorrect phylogenetic tree inferred and obfuscate the error inherent in the analysis \cite{jeffroy2006phylogenomics,roch2015likelihood,kubatko2007inconsistency}. 
+For phylogenetic inference, the gene representative for each taxa is compared with all other representatives, with the assumption of a shared evolutionary history, i.e. orthology, from which the species evolution is inferred \cite{maddison1997gene}. 
+%TODO I think I jumped the gun here a little with the next sentence - explain why there can be an error
+Increasing the number of genes used for inferring the species evolution can address this stochastic error, however systematic and method based errors can arise also, which can in turn give robust support values for the incorrect phylogenetic tree inferred and obfuscate the error inherent in the analysis (see Box 1) \cite{jeffroy2006phylogenomics,roch2015likelihood,kubatko2007inconsistency}. 
 Frequent issues for species tree inference arise from:\\
 1) Selection of paralogs. If genes with different evolutionary histories are selected, the gene tree will not reflect the history of either paralog and be nonsensical for species tree inference; 
 2) Concatenation of genes. Can be statistically inconsistent estimator of the species tree due to incomplete lineage sorting and concatenation acting as imperfect estimator of species tree topology \cite{roch2015likelihood}; and 
-3) Inference of model adequacy from bootstrap values. Kubatko et al. (2007) demonstrated high bootstrap support under maximum likelihood inference for incorrect species trees with concatenated gene sets as input \cite{kubatko2007inconsistency}. 
+3) Inference of model adequacy from bootstrap values. Kubatko et al. (2007) demonstrated high bootstrap support under maximum likelihood (ML) inference for incorrect species trees with concatenated gene sets as input \cite{kubatko2007inconsistency}. 
 As high bootstrap values are often used as an indicator for robust species topology resolution, this fallacy is particularly problematic if the reader/operator is unfamiliar with the statistical phenomenon (see box 1 for).\\
-In this study we aim to build a bioinformatic pipeline that attempts to addresses the issues of paralogy when processing transcriptomic data from non-model organisms, utilises alternative methods to both concatenation and maximum likelihood inference. 
-Specifically, the pipeline assembles RNA-seq datasets, identifies and extracts single copy genes across input taxa with extensive paralogy, and runs Bayesian inference phylogenetics. 
+In this study we aim to build a bioinformatic pipeline that attempts to addresses the issues of paralogy when processing transcriptomic data from non-model organisms, utilises alternative methods to both concatenation and ML inference and investigate the impact that model selection has on topology. 
+Specifically, the pipeline assembles RNA-seq datasets, identifies and extracts single copy genes across input taxa with extensive paralogy, and runs Bayesian inference (BI) phylogenetics. 
 Finally, to apply the pipeline to the historically difficult order Gonyaulacales (phylum: Dinoflagellata) which are notorious for the issues that the pipeline seeks to address (see box 2 for further information on the gonaylacales).\\
 
 
@@ -108,7 +115,7 @@ Clonal cultures were maintained in F/10 medium and maintained at temperatures in
 %AD 160117: do you think these are actually clonal? Does the term clonal as used in euk microbiology include commensal bacteria? clonal but not necessarily axenic? // Yep, that's spot on - clonal but not axenic. These critters tend to die faster than a snowball in a bushfire without their bacteria
 
 \subsection*{RNA isolation}
-\emph{Gambierdiscus} spp. and \emph{Thecadinium kofoidii} were harvested during late exponential growth phase by filtration onto 5 $\mu$m SMWP Millipore membrane filter (Merck, DE) and washed off with sterile seawater. 
+\emph{Gambierdiscus} spp. and \emph{Thecadinium} cf. \emph{kofoidii} were harvested during late exponential growth phase by filtration onto 5 $\mu$m SMWP Millipore membrane filter (Merck, DE) and washed off with sterile seawater. 
 Cells were pelleted via centrifugation (make of centrifuge) for 10 minutes at 350 rcf. 
 Supernatant was decanted and 2ml of TRI Reagent (Sigma-Aldrich, subsidiary of Merck, DE) was added to the pellet and vortexed till dissolved. 
 Samples were split in two and transferred to 1.5ml eppendorf tubes. 
@@ -150,7 +157,7 @@ cd-hit \cite{fu2012cd}, transdecoder \cite{haas2016transdecoder}, cd-hit, get\_h
 \subsection*{Multispecies coalescence phylogenetic inference of single copy genes}
 The pipeline output was processed on the University of Technology Sydney's High-performance computing cluster (HPCC).
 %AD 160118: the P in HPC is for performance - not power, though neither adjective is very appropriate for UTS's cluster :( // true that
-Species evolutionary inference was based on Bayesian probability with the *BEAST2 model in BEAST2 \cite{bouckaert2014beast}. 
+Species evolutionary inference was based on BI with the *BEAST2 model in BEAST2 \cite{bouckaert2014beast}. 
 %TODO make a sensical something as 'Bayesian probability'
 The analysis was performed under the WAG substitution model \cite{whelan2001general} with a Gamma distribution for four rate categories. 
 A random local clock was employed \cite{drummond2010bayesian}. 
@@ -166,7 +173,7 @@ Both ML and BI inferences were run the HPCC.
 
 \subsection*{rDNA based tree comparison}
 %TODO commit seppuku
-Ribosomal DNA sequences for the small subunit region as well as the D1-D3 large subunit region were acquired from NCBI \cite{coordinators2017database} or the SILVA rRNA database project \cite{silvaproj}, accession IDs in Suppl. table 1. 
+Ribosomal DNA sequences for the small subunit region as well as the D1-D3 large subunit region were acquired from NCBI \cite{coordinators2017database} or the SILVA rRNA database project \cite{silvaproj}, accession IDs in Table S3. 
 Sequences were concatenated and ML inference generated as described in the previous section, with the GTR and GAMMA flags.
 
 \FloatBarrier
@@ -189,7 +196,7 @@ Tanglegrams were generated with Dendroscope v3.5.9 \cite{huson2007dendroscope}; 
 \newpage
 \section{Results}
 \subsection*{Transcriptomes overview}
-Sequencing of transcriptomes for \emph{Gambierdiscus} spp. and \emph{T. kofoidii} generated datasets ranging in size from, 143,155,667 to 233,822,334 reads, resulting in 97,634 to 191,224 assembled contigs (table ~\ref{tbl:asmstats}). 
+Sequencing of transcriptomes for \emph{Gambierdiscus} spp. and \emph{T.} cf. \emph{kofoidii} generated datasets ranging in size from, 143,155,667 to 233,822,334 reads, resulting in 97,634 to 191,224 assembled contigs (table ~\ref{tbl:asmstats}). 
 Approximately XX\% to XX\% predicted to be protein coding sequences. 
 %TODO Interpro scan, SRA IDs
 \FloatBarrier
@@ -197,7 +204,7 @@ Approximately XX\% to XX\% predicted to be protein coding sequences.
 \caption{Summary of transcriptome sequencing and assembly statistics.}\\
 \hline
 \label{tbl:asmstats}
-\emph{Sequences:}&\emph{G. carpenteri}&\emph{G. lapillus}&\emph{G. polynesiensis}&\emph{G.} cf. \emph{silvae}&\emph{T. kofoidii}\\
+\emph{Sequences:}&\emph{G. carpenteri}&\emph{G. lapillus}&\emph{G. polynesiensis}&\emph{G.} cf. \emph{silvae}&\emph{T.} cf. \emph{kofoidii}\\
 \hline
  \multicolumn{6}{| c |}{Sequencing}\\
  \hline
@@ -242,11 +249,12 @@ The gonyaulacales resolved as a monophyletic order with three major clades, tent
 Posterior probability (PP) branch support values were analyzed as follows: 1.00 was fully supported, $\geq$ 0.9 was very well supported, $\geq$ 0.8 was relatively well supported and $\leq$ 0.5 was unsupported.
 The separation of clades I, II and III was fully supported, the PP within the three clades was predominantly fully or very well supported. 
 The exception in clade I was the placement of \emph{O. ovata} as sister species to \emph{O. rhodesae} with a PP of 0.76. 
-The exception in clade II was in \emph{G. carpenteri} placement as sister species to \emph{G. excentricus} with a PP of 0.61. In clade III, the placement of \emph{P. bahamense} as basal to the other taxa within that clade was supported with 0.57, while the split off for \emph{T. kofoidii} was relatively well supported.
+The exception in clade II was in \emph{G. carpenteri} placement as sister species to \emph{G. excentricus} with a PP of 0.61. In clade III, the placement of \emph{P. bahamense} as basal to the other taxa within that clade was supported with 0.57, while the split off for \emph{T.} cf. \emph{kofoidii} was relatively well supported.
 Other deeper branches were very well supported.
-Clade I within the gonyaulacales contains \emph{Alexandrium} spp., \emph{Coolia malayensis} and \emph{Ostreopsis} spp. 
-Clade II contains \emph{Gambierdiscus} spp. as well as \emph{Pyrodinium bahamense} as sister genus. 
-Clade III contains \emph{Pyrodinium bahamense}, \emph{Ceratium fusus}, \emph{Gonyaulax spinifera}, \emph{Protoceratium reticulatum} and \emph{Thecadinium kofoidii}. 
+%TODO Shauna wanted this taken out:
+%Clade I within the gonyaulacales contains \emph{Alexandrium} spp., \emph{Coolia malayensis} and \emph{Ostreopsis} spp. 
+%Clade II contains \emph{Gambierdiscus} spp. as well as \emph{Pyrodinium bahamense} as sister genus. 
+%Clade III contains \emph{Pyrodinium bahamense}, \emph{Ceratium fusus}, \emph{Gonyaulax spinifera}, \emph{Protoceratium reticulatum} and \emph{Thecadinium kofoidii}. 
 This inference suggests that \emph{O. ovata} and \emph{O. rhodeseae} are sister species with \emph{O. siamensis} diverging earlier. 
 This is contrary to the \emph{Ostreopsis} species evolution in the literature to date, which is based on ribosomal genes \cite{verma2016molecular}. 
 The placement of \emph{Gambierdiscus} species from this study follows the species resolution in the literature to date \cite{kretzschmar2017characterization}. 
@@ -353,11 +361,11 @@ To address this obstacle, a range of genes need to be used to infer the species 
 \end{figure} 
 \FloatBarrier
 
-\subsubsection*{(2) concatenating the genes selected and using maximum likelihood methods for species inference.}
-Concatenation of genes coupled with running maximum likelihood inference is a commonly used method as it is computationally cheap in comparison to Bayesian inference methods. 
+\subsubsection*{(2) concatenating the genes selected and using ML methods for species inference.}
+Concatenation of genes coupled with running ML inference is a commonly used method as it is computationally cheap in comparison to BI methods. 
 However as demonstrated by Kubatko et al. (2007) and Roche et al. (2015), this approach is error prone and can be misleading by presenting high bootstrap values on incorrect clades which is positively misleading.
 The application of concatenation in combination with ML is common practice in phylogenetic studies for gonyaulacoids  \cite{shalchian2006combined,zhang2007three,saldarriaga2004molecular,murray2005improving,hoppenrath2010dinoflagellate}.
-This issue is addressed in this study by running Bayesian inference under a multi-species coalescence process.
+This issue is addressed in this study by running BI under a multi-species coalescence process.
 \FloatBarrier 
 \begin{figure} 
 %\includegraphics[scale=.25]{Aug2_20-taxa-combined-fig_MCC_trees_gimp.png} 
@@ -465,7 +473,7 @@ Shout out to the Taming the BEAST organizers \& fellow attendees for a most illu
 %\hline
 %\textit{Ostreopsis siamensis}&BH1&&\\
 %\hline
-\textit{Thecadinium kofoidii}&THECA&18&Gordons bay, Sydney, AU\\
+\textit{Thecadinium} cf. \emph{kofoidii}&THECA&18&Gordons bay, Sydney, AU\\
 \hline
 \end{tabular}
 \end{table}
@@ -512,7 +520,7 @@ Shout out to the Taming the BEAST organizers \& fellow attendees for a most illu
     \hline
 \emph{Pyrodinium bahamense}&pbaha01&119&897&2&MMETSP0796 \citep{keeling2014marine}\\
         \hline
-\emph{Thecadinium kofoidii}&THECA&93&70&5&This study\\
+\emph{Thecadinium} cf. \emph{kofoidii}&THECA&93&70&5&This study\\
  \hline
  \multicolumn{6}{| c |}{Outgroup transcriptomes}\\
  \hline
@@ -568,7 +576,7 @@ Shout out to the Taming the BEAST organizers \& fellow attendees for a most illu
     \hline
 \emph{Pyrodinium bahamense}&AY456115&AB936757\\
         \hline
-\emph{Thecadinium kofoidii}&AY238478&KT371445\\
+\emph{Thecadinium} cf. \emph{kofoidii}&AY238478&KT371445\\
  \hline
 \multicolumn{3}{| c |}{Outgroup taxa}\\
     \hline
