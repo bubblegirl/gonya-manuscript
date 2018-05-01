@@ -150,9 +150,10 @@ Any genes that were present in at least 75 \% of the transcriptomes were indexed
 If several candidate sequences are processed for the same organism, a warning message in the command interface alerts the user before proceeding.
 
 \subsection*{Assembly analysis}
-Contigs from assemblies from pipeline part 1 were clustered with CD-HIT with the command cd 
-cd-hit \cite{fu2012cd}, transdecoder \cite{haas2016transdecoder}, cd-hit, get\_homologs \cite{contreras2013gethom}, interproscan \cite{quevillon2005interproscan}
-%TODO insert processing scripts
+Contigs from assemblies were clustered with cd-hit with the flaps T 10 -M 5000 -G 0 -c 1.00 -aS 1.00 -aL 0.005 \cite{fu2012cd}. 
+Protein coding regions were predicted with Transdecoder \cite{haas2016transdecoder}.
+Amino acid clusters were clustered again with cd-hit with the flags as previously except -c 0.98.
+Protein sequences were analysed with interproscan \cite{quevillon2005interproscan}.
 
 \subsection*{Multispecies coalescence phylogenetic inference of single copy genes}
 The pipeline output was processed on the University of Technology Sydney's High-performance computing cluster (HPCC).
@@ -449,6 +450,7 @@ With the accessibility of large data sets, the focus needs to fall on the method
 The GVL section of this study was conducted inside the National eResearch Collaboration Tools and Resources (NeCTAR) research cloud, an initiative by the National Research Infrastructure for Australia (NCRIS).
 Gratitude to the Stanley Watson foundation, the Linnaean Society of New South Wales, and the ABRS National Taxonomy Research Student Travel Bursary for funding A. L. Kretzschmar's attendance at the Molecular Evolution workshop at the Marine biological laboratory, Woods Hole, MA, USA.
 Shout out to the Taming the BEAST organizers \& fellow attendees for a most illuminating workshop in February 2017 on BEAST methodology, and to Geneious for subsidizing A. L. Kretzschmar's attendance fee.
+Thank you to Dr. Tim Kahlke for running Interproscan for transcriptome analysis.
 \section{Supplementary material}
 \FloatBarrier
 \begin{table}
