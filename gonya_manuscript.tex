@@ -72,7 +72,7 @@ This project has unlocked an unprecedented wealth of information to investigate 
 However, wealth of data alone isn't sufficient for an adequate approximation of the evolution of these organisms - robust methodology is key. 
 For phylogenetic inference, the gene representative for each taxa is compared with all other representatives, with the assumption of a shared evolutionary history, i.e. orthology, from which the species evolution is inferred \cite{maddison1997gene}. 
 %TODO I think I jumped the gun here a little with the next sentence - explain why there can be an error
-Increasing the number of genes used for inferring the species evolution can address this stochastic error, however systematic and method based errors can arise also, which can in turn give robust support values for the incorrect phylogenetic tree inferred and obfuscate the error inherent in the analysis (see Box 1) \cite{jeffroy2006phylogenomics,roch2015likelihood,kubatko2007inconsistency}. 
+Increasing the number of genes used for inferring the species evolution can address any random sampling error, however systematic error(s) can be exacerbated by dataset increase. To confound this error, it can return robust support values for the incorrect phylogenetic tree inferred and obfuscate the error inherent in the analysis (see Box 1) \cite{jeffroy2006phylogenomics,roch2015likelihood,kubatko2007inconsistency}. 
 Frequent issues for species tree inference arise from:\\
 1) Selection of paralogs. If genes with different evolutionary histories are selected, the gene tree will not reflect the history of either paralog and be nonsensical for species tree inference; 
 2) Concatenation of genes. Can be statistically inconsistent estimator of the species tree due to incomplete lineage sorting and concatenation acting as imperfect estimator of species tree topology \cite{roch2015likelihood}; and 
@@ -103,8 +103,7 @@ change in evolutionary rates of sites over time, specific to lineage(s).\\
 2. systematic. Arises from incorrect model assumptions or problems with the model itself. 
 Error type persists and increases as dataset size approaches infinity. 
 If strong, can override true phylogenetic signal.\\
-\textbf{Incomplete lineage sorting:}
-\textbf{Long branch attarction}
+\textbf{Incomplete lineage sorting:} discordance of gene evolutionary history with the species evolutionary history causing the phylogenetic species tree to be misinfered.\textbf{Long branch attraction:} phylogenetic phenomenon where distantly related taxa are inferred as close relatives due to systematic error.
 
 \subsubsection*{Box 2: Who/what are the gonyaulacales?}
 The gonyaulacales are an order within the phylum dinoflagellata, which are an ancient lineage on the eukaryotic branch of life \cite{moldowan1998biogeochemical}. 
