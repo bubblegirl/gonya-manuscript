@@ -44,38 +44,42 @@ Climate Change Cluster (C3), University of Technology Sydney, Ultimo, 2007 NSW, 
 %TODO new direction of paper - model and data impact on phylogenetics. need to re-write intro
 
 %good refs re systematics
-\cite{posada2016phylogenomics} start of special issue discussing systematics. Overview of problems and gold mine of references
+%\cite{posada2016phylogenomics} start of special issue discussing systematics. Overview of problems and gold mine of references
 
 %good refs re ILS
 
 %good refs re orthology/parlogy
-\cite{yang2014orthology} orthologue extr method which means good discussion on problems with wrong selection
-\cite{degnan2009gene} some bullshit bout paralogs in soy bean
+%\cite{yang2014orthology} orthologue extr method which means good discussion on problems with wrong selection
+%\cite{degnan2009gene} some bullshit bout paralogs in soy bean
 
 %rdna
-\cite{ochieng2007nuclear}  don't even know if this is any good but has rdna of eucalypts
+%\cite{ochieng2007nuclear}  don't even know if this is any good but has rdna of eucalypts
 
 %bullshit refs
 %Galtier 08 Dealing with incongruence in phylogenomic analyses : argues against validity of ILS and for natural seletion but using morphology for being the reason why they 'can't be extensive problem in reality'. bacteria only though, doesn't hold this up for vertebrates etc.
 
 %for later:
 % fern transcriptome database, rife w paralogy www.onekp.com Rothfels '13 Transcriptome-Mining for Single-Copy Nuclear Markers in Ferns .. but use ML
-Untangling the evolutionary relationships between organisms and glimpsing the shape of the tree of life is an ongoing process. 
-Advances in sequencing capabilities, computational resources and xxx have seen the use of increasing gene sets and complexity in model selection to inform phylogenetic inference. 
-The decrease in next-gen sequencing technology cost has helped make seq more common - which means that public databases of non-model organism genomes or transcriptomes are getting more betterer (fuck me I word good).
+For most of the history of the field of phylogenetics, the limiting factor was availability of data to infer evolutionary relationships.
+Now, the breadth of publicly available in genetic information through next-gen sequencing techniques has allowed for an increasingly complex investigation into the evolutionary relationships between organisms. 
+The quest for untangling these relationships is an ongoing process that can help inform a broad range of fields, including epidemiology, toxicology and trophic interactions \cite{mctavish2017and}. %TODO need more refs
+The limiting factor now becomes possible errors in the methodology and understanding of the model selection underlying the phylogenetic inference by the operator.
+%Advances in sequencing capabilities, computational resources and xxx have seen the use of increasing gene sets and complexity in model selection to inform phylogenetic inference. 
+%The decrease in next-gen sequencing technology cost has helped make seq more common - which means that public databases of non-model organism genomes or transcriptomes are getting more betterer (fuck me I word good).
 
 %Phylogenetics assessing large gene sets is becoming common practice.
 %The availability of large datasets and breadth of information contained therein is phenomenal. 
 %Predominantly the focus is on model organisms, however there has been a concerted effort to push non-model organisms to catch up recently. 
 An example is the MMETSP project, sequencing the transcriptomes of over 650 marine eukaryotic microbes \cite{keeling2014marine}. 
 This project has unlocked an unprecedented wealth of information to investigate the phylogenetics of some rather prolific branches of the tree of life. 
-However, wealth of data alone isn't sufficient for an adequate approximation of the evolution of these organisms - robust methodology is key. 
+Here we seek to bridge some of the gap between the theoretical in computational biology and the environmental biologists exploring these types of datasets.
+%However, wealth of data alone isn't sufficient for an adequate approximation of the evolution of these organisms - robust methodology is key. 
 For phylogenetic inference, the gene representative for each taxa is compared with all other representatives, with the assumption of a shared evolutionary history, i.e. orthology, from which the species evolution is inferred \cite{maddison1997gene}. 
 %TODO I think I jumped the gun here a little with the next sentence - explain why there can be an error
 Increasing the number of genes used for inferring the species evolution can address any random sampling error, however systematic error(s) can be exacerbated by dataset increase. To confound this error, it can return robust support values for the incorrect phylogenetic tree inferred and obfuscate the error inherent in the analysis (see Box 1) \cite{jeffroy2006phylogenomics,roch2015likelihood,kubatko2007inconsistency}. 
 Frequent issues for species tree inference arise from:\\
-1) Selection of paralogs. If genes with different evolutionary histories are selected, the gene tree will not reflect the history of either paralog and be nonsensical for species tree inference; 
-2) Concatenation of genes. Can be statistically inconsistent estimator of the species tree due to incomplete lineage sorting and concatenation acting as imperfect estimator of species tree topology \cite{roch2015likelihood}; and 
+1) Selection of paralogs. If genes with different evolutionary histories are selected, the gene tree will not reflect the history of either paralog and be nonsensical for species tree inference; \\
+2) Concatenation of genes. Can be statistically inconsistent estimator of the species tree due to incomplete lineage sorting and concatenation acting as imperfect estimator of species tree topology \cite{roch2015likelihood}; and \\
 3) Inference of model adequacy from bootstrap values. Kubatko et al. (2007) demonstrated high bootstrap support under maximum likelihood (ML) inference for incorrect species trees with concatenated gene sets as input \cite{kubatko2007inconsistency}. 
 As high bootstrap values are often used as an indicator for robust species topology resolution, this fallacy is particularly problematic if the reader/operator is unfamiliar with the statistical phenomenon (see box 1 for).\\
 In this study we aim to build a bioinformatic pipeline that attempts to addresses the issues of paralogy when processing transcriptomic data from non-model organisms, utilises alternative methods to both concatenation and ML inference and investigate the impact that model selection has on topology. 
@@ -114,7 +118,6 @@ While the evolutionary relationship of most orders within the dinoflagellates ha
 Improving upon the species the evolution of the gonyaulaceles has implications for environmental disease monitoring, as neurotoxin production is prevalent in this order and the direct cause of paralytic shellfish poisioning, ciguatera fish poisoning, e.g. \cite{shalchian2006combined,zhang2007three,saldarriaga2004molecular,hoppenrath2010dinoflagellate,murray2005improving}. 
 %Specifically the ciguatoxins produced by some \emph{Gambierdiscus} spp. are of interest as the causative agent of ciguatera fish poisoning, a neglected tropical disease with global implications \cite{globalcig}.%, which is predicted to increase in prevalence as climate change progresses \cite{}.
 
-%TODO need to bring the non-messy-biologists up to speed on why the fuck gonyaulacales
 
 
 \newpage
@@ -124,7 +127,7 @@ Improving upon the species the evolution of the gonyaulaceles has implications f
 Cultures were isolated from locations as per Table S1 and clonal cultures established by micropipetting single cells through sterile seawater. 
 Clonal cultures were maintained in F/10 medium and maintained at temperatures indicated in Table S1. 
 %AD 160117: do you think these are actually clonal? Does the term clonal as used in euk microbiology include commensal bacteria? clonal but not necessarily axenic? // Yep, that's spot on - clonal but not axenic. These critters tend to die faster than a snowball in a bushfire without their bacteria
-`
+
 \subsection*{RNA isolation}
 \emph{Gambierdiscus} spp. and \emph{Thecadinium} cf. \emph{kofoidii} were harvested during late exponential growth phase by filtration onto 5 $\mu$m SMWP Millipore membrane filter (Merck, DE) and washed off with sterile seawater. 
 Cells were pelleted via centrifugation (make of centrifuge) for 10 minutes at 350 rcf. 
@@ -188,13 +191,6 @@ Both ML and BI inferences were run the HPCC.
 Ribosomal DNA sequences for the small subunit region as well as the D1-D3 large subunit region were acquired from NCBI \cite{coordinators2017database} or the SILVA rRNA database project \cite{silvaproj}, accession IDs in Table S3. 
 Sequences were concatenated and ML inference generated as described in the previous section, with the GTR and GAMMA flags.
 
-\FloatBarrier
-\begin{longtable}{  | p{3cm} |p{2cm} | p{2cm} | p{2cm} | p{2cm} | p{2cm} |}
-\caption{Accession codes for rDNA sequences.}\\
-\hline
-\label{tbl:rDNA}
-\end{longtable}
-
 \subsection*{Path sampling}
 %TODO Mathieu please put details in
 
@@ -250,12 +246,43 @@ Approximately XX\% to XX\% predicted to be protein coding sequences.
 %\hline
 \end{longtable}
 
-\subsection*{Transcriptome stuff}
+\subsection*{BUSCO output}
 %AD 160118: nice section title // Thanks! I made it myself
-Assemblies for all transcriptome datasets used in this study were channeled through the pipeline. 
+Assemblies for all transcriptome datasets used in this study were searched with BUSCOv2 and single copy genes extracted. 
 The single copy genes acquired though the BUSCO hmmer libraries curated for protists are reported in Table S2 out of the total 234 genes searched for, as well as accession numbers and identifiers for each transcriptome.
 %TODO less lame title and insert relevant info when together
-\subsection*{Single copy gene based phylogeny under MSC}
+
+\subsection*{Phylogenetic inferences}
+Support for branches was interpreted as follows, for ML and BI, respectively: 100\%/1.0 was considered fully supported, above 90\%/0.9 was very well supported, 80\%/0.8 and above was interpreted as relatively well supported and below 50\%/0.5 was unsupported.
+\subsubsection*{rDNA based phylogeny}
+\FloatBarrier 
+\begin{figure} 
+\includegraphics[scale=.23]{figures/rDNA-ML.png} 
+\caption{Maximum likelihood phylogenetic inference of ribosomal DNA genes. Concatenation of small subunit rDNA and D1-D3 region large subunit rDNA. Accession numbers for concatenated genes in Table S3. Gonyaulacales (\#16) in purple, outgroups (\#3) in light blue and taxa \textit{incertae sedis} (\#1) in teal.} 
+\label{fig:rdna}
+\end{figure} 
+\FloatBarrier
+
+\subsubsection*{Concatenated single copy gene based phylogeny inferred with ML}
+\FloatBarrier 
+\begin{figure} 
+\includegraphics[scale=.23]{figures/Singlecopy-concat-ML.png} 
+\caption{Maximum likelihood phylogenetic inference of concatenated single copy gene set (62 single copy genes from 20 taxa). Gonyaulacales (\#16) in purple, outgroups (\#3) in light blue and taxa \textit{incertae sedis} (\#1) in teal.} 
+\label{fig:SCconcatML}
+\end{figure} 
+\FloatBarrier
+
+\subsubsection*{Concatenated single copy gene based phylogeny inferred with BI}
+%TODO Running with PATH sampling
+\FloatBarrier 
+\begin{figure} 
+%\includegraphics[scale=.23]{} 
+\caption{Bayesian inference phylogenetic inference of concatenated single copy gene set (62 single copy genes from 20 taxa). Gonyaulacales (\#16) in purple, outgroups (\#3) in light blue and taxa \textit{incertae sedis} (\#1) in teal.} 
+\label{fig:SCconcatBI}
+\end{figure} 
+\FloatBarrier
+
+\subsubsection*{Single copy gene based phylogeny under MSC}
 %TODO take out recoomendation for clades
 The gonyaulacales resolved as a monophyletic order with three major clades, tentatively named clades I - III. 
 Posterior probability (PP) branch support values were analyzed as follows: 1.00 was fully supported, $\geq$ 0.9 was very well supported, $\geq$ 0.8 was relatively well supported and $\leq$ 0.5 was unsupported.
@@ -279,35 +306,6 @@ The placement of \emph{Gambierdiscus} species from this study follows the specie
 \label{fig:SCmscBI}
 \end{figure} 
 \FloatBarrier
-
-\subsection*{Concatenated single copy gene based phylogeny inferred with BI}
-%TODO Running with PATH sampling
-\FloatBarrier 
-\begin{figure} 
-%\includegraphics[scale=.23]{} 
-\caption{Bayesian inference phylogenetic inference of concatenated single copy gene set (62 single copy genes from 20 taxa). Gonyaulacales (\#16) in purple, outgroups (\#3) in light blue and taxa \textit{incertae sedis} (\#1) in teal.} 
-\label{fig:SCconcatBI}
-\end{figure} 
-\FloatBarrier
-
-\subsection*{Concatenated single copy gene based phylogeny inferred with ML}
-\FloatBarrier 
-\begin{figure} 
-\includegraphics[scale=.23]{figures/Singlecopy-concat-ML.png} 
-\caption{Maximum likelihood phylogenetic inference of concatenated single copy gene set (62 single copy genes from 20 taxa). Gonyaulacales (\#16) in purple, outgroups (\#3) in light blue and taxa \textit{incertae sedis} (\#1) in teal.} 
-\label{fig:SCconcatML}
-\end{figure} 
-\FloatBarrier
-
-\subsection*{rDNA based phylogeny}
-\FloatBarrier 
-\begin{figure} 
-\includegraphics[scale=.23]{figures/rDNA-ML.png} 
-\caption{Maximum likelihood phylogenetic inference of ribosomal DNA genes. Concatenation of small subunit rDNA and D1-D3 region large subunit rDNA. Accession numbers for concatenated genes in Table S3. Gonyaulacales (\#16) in purple, outgroups (\#3) in light blue and taxa \textit{incertae sedis} (\#1) in teal.} 
-\label{fig:rdna}
-\end{figure} 
-\FloatBarrier
-
 
 \newpage
 \section{Discussion}
