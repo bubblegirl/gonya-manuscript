@@ -254,22 +254,38 @@ The single copy genes acquired though the BUSCO hmmer libraries curated for prot
 
 \subsection*{Phylogenetic inferences}
 Support for branches was interpreted as follows, for ML and BI, respectively: 100\%/1.0 was considered fully supported, above 90\%/0.9 was very well supported, 80\%/0.8 and above was interpreted as relatively well supported and above 50\%/0.5 was considered supported but below was considered unsupported.
+As \emph{Azadinium spinosum}, \emph{Dinophysis acuminata} and \emph{Karenia brevis} are considered the outgroup to this study, the unifying branch for these taxa was used to root the tree in all subsequent analyses.
 \subsubsection*{rDNA based phylogeny}
-Species within the genus \emph{Ostreopsis} resolved together with full support.
+All nodes were supported, with a range of certainty (Fig. ~\ref{fig:rdna}.
+Species with the genera \emph{Gambierdiscus} and \emph{Ostreopsis} resolved with their sister species with full support. 
+Within the \emph{Gambierdiscus} clade, nodes are either supported or fully supported. 
+The two species of \emph{Alexandrium} resolve as well supported closest relatives, but do not form an individual clade. 
+Deeper nodes were supported but with less certainty than the crown taxa. 
+Two distinct clades can be observed from the topology: One including \emph{Alexandrium}, \emph{Coolia} and \emph{Ostreopsis}; another with only \emph{Gambierdiscus}. 
+Sister to these clades, in descending order, was \emph{Pyrodinium}, \emph{Ceratium} and \emph{Gonaulax}, \emph{Protoceratium} and \emph{Thecadinium}. 
+The outgroup was relatively well supported and included \emph{Crypthecodinium}.
 
 \FloatBarrier 
 \begin{figure} 
-\includegraphics[scale=.23]{figures/rDNA-ML.png} 
-\caption{Maximum likelihood phylogenetic inference of ribosomal DNA genes. Concatenation of small subunit rDNA and D1-D3 region large subunit rDNA. Accession numbers for concatenated genes in Table S3. Gonyaulacales (\#16) in purple, outgroups (\#3) in light blue and taxa \textit{incertae sedis} (\#1) in teal.} 
+\includegraphics[scale=.4]{figures/rDNA-ML.png} 
+\caption{Maximum likelihood phylogenetic inference of ribosomal DNA genes. Concatenation of small subunit rDNA and D1-D3 region large subunit rDNA. Accession numbers for concatenated genes in Table S3. Gonyaulacales (\#16) in purple, outgroups (\#3) in light blue and taxa \textit{incertae sedis} (\#1) in teal. The scale represents number of mutations.} 
 \label{fig:rdna}
 \end{figure} 
 \FloatBarrier
 
 \subsubsection*{Concatenated single copy gene based phylogeny inferred with ML}
+All nodes except one within the \emph{Gambierdiscus} species cluster resolved relatively well supported (Fig. ~\ref{fig:SCconcatML}). 
+Species of the genera \emph{Alexandrium}, \emph{Gambierdiscus} and \emph{Ostreopsis} cluster as individual clades with their sister species.  
+The topology shows three distinct, well supported clades: 
+One encompassing \emph{Alexandrium}, \emph{Coolia} and \emph{Ostreopsis}; another which only contains \emph{Gambierdiscus}; and one which includes \emph{Pyrodinium}, \emph{Gonyaulax} and \emph{Protoceratium}. 
+Sister to these clades is \emph{Thecadinium}, followed by \emph{Ceratium}. .
+The split of the outgroup was fully supported, while the internal nodes resolved very well supported. 
+\emph{Crypthecodinium} resolved within the outgroup, sister to \emph{Karenia.}
+
 \FloatBarrier 
 \begin{figure} 
 \includegraphics[scale=.23]{figures/Singlecopy-concat-ML.png} 
-\caption{Maximum likelihood phylogenetic inference of concatenated single copy gene set (62 single copy genes from 20 taxa). Gonyaulacales (\#16) in purple, outgroups (\#3) in light blue and taxa \textit{incertae sedis} (\#1) in teal.} 
+\caption{Maximum likelihood phylogenetic inference of concatenated single copy gene set (62 single copy genes from 20 taxa). Gonyaulacales (\#16) in purple, outgroups (\#3) in light blue and taxa \textit{incertae sedis} (\#1) in teal. The scale represents number of mutations.} 
 \label{fig:SCconcatML}
 \end{figure} 
 \FloatBarrier
@@ -286,7 +302,7 @@ Species within the genus \emph{Ostreopsis} resolved together with full support.
 
 \subsubsection*{Single copy gene based phylogeny under MSC}
 %TODO take out recoomendation for clades
-The gonyaulacales resolved as a monophyletic order with three major clades, tentatively named clades I - III. 
+%The gonyaulacales resolved as a monophyletic order with three major clades, tentatively named clades I - III. 
 Posterior probability (PP) branch support values were analyzed as follows: 1.00 was fully supported, $\geq$ 0.9 was very well supported, $\geq$ 0.8 was relatively well supported and $\leq$ 0.5 was unsupported.
 The separation of clades I, II and III was fully supported, the PP within the three clades was predominantly fully or very well supported. 
 The exception in clade I was the placement of \emph{O. ovata} as sister species to \emph{O. rhodesae} with a PP of 0.76. 
@@ -303,7 +319,7 @@ The placement of \emph{Gambierdiscus} species from this study follows the specie
 %TODO look up toxin production along branches?
 \FloatBarrier 
 \begin{figure} 
-\includegraphics[scale=.25]{Aug2_20-taxa-combined-fig_MCC_trees_gimp.png} 
+\includegraphics[scale=.25]{figures/Aug2_20-taxa-combined-fig_MCC_trees_gimp.png} 
 \caption{Phylogenetic analysis of Gonyaulacales species tree with 62 single copy genes from 20 taxa. Gonyaulacales (\#16) in purple, outgroups (\#3) in light blue and taxa \textit{incertae sedis} (\#1) in teal.} 
 \label{fig:SCmscBI}
 \end{figure} 
