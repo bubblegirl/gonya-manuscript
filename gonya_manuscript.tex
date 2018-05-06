@@ -19,7 +19,7 @@
  \addtolength{\voffset}{-1cm}
  \setlength{\parindent}{0pt}
  
-\title{Trial by phylogenetics - how model and data selection impacts the elucidation of the gonyaulacales. $^{1}$}
+\title{Trial by phylogenetics - how model and data selection impacts the elucidation of the gonyaulacales (Dinophyceae). $^{1}$}
 \author{Key words: Bayesian inference, model selection, gonyaulacales, phylogenetics, transcriptomics}
 \date{}
 
@@ -46,12 +46,6 @@ Climate Change Cluster (C3), University of Technology Sydney, Ultimo, 2007 NSW, 
 %good refs re systematics
 %\cite{posada2016phylogenomics} start of special issue discussing systematics. Overview of problems and gold mine of references
 
-%good refs re ILS
-
-%good refs re orthology/parlogy
-%\cite{yang2014orthology} orthologue extr method which means good discussion on problems with wrong selection
-%\cite{degnan2009gene} some bullshit bout paralogs in soy bean
-
 %rdna
 %\cite{ochieng2007nuclear}  don't even know if this is any good but has rdna of eucalypts
 
@@ -66,7 +60,8 @@ The quest for untangling these relationships is an ongoing process that can help
 The limiting factor now becomes possible errors in the methodology and understanding of the model selection underlying the phylogenetic inference by the operator.
 %Advances in sequencing capabilities, computational resources and xxx have seen the use of increasing gene sets and complexity in model selection to inform phylogenetic inference. 
 %The decrease in next-gen sequencing technology cost has helped make seq more common - which means that public databases of non-model organism genomes or transcriptomes are getting more betterer (fuck me I word good).
-
+%\cite{yang2014orthology} orthologue extr method which means good discussion on problems with wrong selection
+%\cite{degnan2009gene} some bullshit bout paralogs in soy bean
 %Phylogenetics assessing large gene sets is becoming common practice.
 %The availability of large datasets and breadth of information contained therein is phenomenal. 
 %Predominantly the focus is on model organisms, however there has been a concerted effort to push non-model organisms to catch up recently. 
@@ -256,6 +251,7 @@ The single copy genes acquired though the BUSCO hmmer libraries curated for prot
 Support for branches was interpreted as follows, for ML and BI, respectively: 100\%/1.0 was considered fully supported, above 90\%/0.9 was very well supported, 80\%/0.8 and above was interpreted as relatively well supported and above 50\%/0.5 was considered supported but below was considered unsupported.
 As \emph{Azadinium spinosum}, \emph{Dinophysis acuminata} and \emph{Karenia brevis} are considered the outgroup to this study, the unifying branch for these taxa was used to root the tree in all subsequent analyses.
 \subsubsection*{rDNA based phylogeny}
+\FloatBarrier 
 All nodes were supported, with a range of certainty (Fig. ~\ref{fig:rdna}).
 Species with the genera \emph{Gambierdiscus} and \emph{Ostreopsis} resolved with their sister species with full support. 
 Within the \emph{Gambierdiscus} clade, nodes are either supported or fully supported. 
@@ -265,7 +261,7 @@ Two distinct clades can be observed from the topology: One including \emph{Alexa
 Sister to these clades, in descending order, was \emph{Pyrodinium}, \emph{Ceratium} and \emph{Gonaulax}, \emph{Protoceratium} and \emph{Thecadinium}. 
 The outgroup was relatively well supported and included \emph{Crypthecodinium}. 
 Support for deeper nodes varied from supported to well supported.
-\FloatBarrier 
+
 \begin{figure} 
 \includegraphics[scale=.4]{figures/rDNA-ML.png} 
 \caption{Maximum likelihood phylogenetic inference of ribosomal DNA genes. Concatenation of small subunit rDNA and D1-D3 region large subunit rDNA. Accession numbers for concatenated genes in Table S3. Gonyaulacales (\#16) in purple, outgroups (\#3) in light blue and taxa \textit{incertae sedis} (\#1) in teal. The scale represents number of mutations.} 
@@ -274,6 +270,7 @@ Support for deeper nodes varied from supported to well supported.
 \FloatBarrier
 
 \subsubsection*{Concatenated single copy gene based phylogeny inferred with ML}
+\FloatBarrier
 All nodes except one within the \emph{Gambierdiscus} species cluster resolved relatively well supported (Fig. ~\ref{fig:SCconcatML}). 
 Species of the genera \emph{Alexandrium}, \emph{Gambierdiscus} and \emph{Ostreopsis} cluster as individual clades with their sister species.  
 The topology shows three distinct, well supported clades: 
@@ -283,7 +280,7 @@ The split of the outgroup was fully supported, while the internal nodes resolved
 \emph{Crypthecodinium} resolved within the outgroup, sister to \emph{Karenia.} 
 Other deeper nodes were well supported.
 
-\FloatBarrier 
+ 
 \begin{figure} 
 \includegraphics[scale=.45]{figures/Singlecopy-concat-ML.png} 
 \caption{Maximum likelihood phylogenetic inference of concatenated single copy gene set (62 single copy genes from 20 taxa). Gonyaulacales (\#16) in purple, outgroups (\#3) in light blue and taxa \textit{incertae sedis} (\#1) in teal. The scale represents number of mutations.} 
@@ -292,8 +289,9 @@ Other deeper nodes were well supported.
 \FloatBarrier
 
 \subsubsection*{Concatenated single copy gene based phylogeny inferred with BI}
-%TODO Running with PATH sampling
 \FloatBarrier 
+%TODO Running with PATH sampling
+
 \begin{figure} 
 %\includegraphics[scale=.23]{} 
 \caption{Bayesian inference phylogenetic inference of concatenated single copy gene set (62 single copy genes from 20 taxa). Gonyaulacales (\#16) in purple, outgroups (\#3) in light blue and taxa \textit{incertae sedis} (\#1) in teal.} 
@@ -302,6 +300,7 @@ Other deeper nodes were well supported.
 \FloatBarrier
 
 \subsubsection*{Single copy gene based phylogeny under MSC}
+\FloatBarrier 
 All nodes except one within the outgroup clustering resolved (Fig. ~\ref{fig:SCmscBI}). 
 Species of \emph{Alexandrium}, \emph{Ostreopsis} and \emph{Gambierdiscus} resolved well or fully supported within their genus clades. 
 The topology within the gonyaulacales resolves as three clades: 
@@ -311,23 +310,21 @@ and a supported clade including \emph{Ceratium}, \emph{Gonyaulax}, \emph{Protoce
 The outgroup clustered together with high support. 
 \emph{Crypthecodinium} resolved as a sister taxon to the outgroup. 
 Other deeper nodes were well or fully supported.
-%TODO take out recoomendation for clades
 %The gonyaulacales resolved as a monophyletic order with three major clades, tentatively named clades I - III. 
 %Posterior probability (PP) branch support values were analyzed as follows: 1.00 was fully supported, $\geq$ 0.9 was very well supported, $\geq$ 0.8 was relatively well supported and $\leq$ 0.5 was unsupported.
 %The separation of clades I, II and III was fully supported, the PP within the three clades was predominantly fully or very well supported. 
 %The exception in clade I was the placement of \emph{O. ovata} as sister species to \emph{O. rhodesae} with a PP of 0.76. 
 %The exception in clade II was in \emph{G. carpenteri} placement as sister species to \emph{G. excentricus} with a PP of 0.61. In clade III, the placement of \emph{P. bahamense} as basal to the other taxa within that clade was supported with 0.57, while the split off for \emph{T.} cf. \emph{kofoidii} was relatively well supported.
 %Other deeper branches were very well supported.
-%TODO Shauna wanted this taken out:
 %Clade I within the gonyaulacales contains \emph{Alexandrium} spp., \emph{Coolia malayensis} and \emph{Ostreopsis} spp. 
 %Clade II contains \emph{Gambierdiscus} spp. as well as \emph{Pyrodinium bahamense} as sister genus. 
 %Clade III contains \emph{Pyrodinium bahamense}, \emph{Ceratium fusus}, \emph{Gonyaulax spinifera}, \emph{Protoceratium reticulatum} and \emph{Thecadinium kofoidii}. 
-This inference suggests that \emph{O. ovata} and \emph{O. rhodeseae} are sister species with \emph{O. siamensis} diverging earlier. 
-This is contrary to the \emph{Ostreopsis} species evolution in the literature to date, which is based on ribosomal genes \cite{verma2016molecular}. 
-The placement of \emph{Gambierdiscus} species from this study follows the species resolution in the literature to date \cite{kretzschmar2017characterization}. 
-\emph{Crypthecodinium chonii} did not resolve within the gonyaulacales (green branch Fig. ~\ref{fig:phylo}), but clustered as an outgroup, more distant that the other outgroup taxa \emph{Azadinium spinosum}, \emph{Karenia brevis} and \emph{Dinohysis acuminata}.
+%This inference suggests that \emph{O. ovata} and \emph{O. rhodeseae} are sister species with \emph{O. siamensis} diverging earlier. 
+%This is contrary to the \emph{Ostreopsis} species evolution in the literature to date, which is based on ribosomal genes \cite{verma2016molecular}. 
+%The placement of \emph{Gambierdiscus} species from this study follows the species resolution in the literature to date \cite{kretzschmar2017characterization}. 
+%\emph{Crypthecodinium chonii} did not resolve within the gonyaulacales (green branch Fig. ~\ref{fig:phylo}), but clustered as an outgroup, more distant that the other outgroup taxa \emph{Azadinium spinosum}, \emph{Karenia brevis} and \emph{Dinohysis acuminata}.
 %TODO look up toxin production along branches?
-\FloatBarrier 
+
 \begin{figure} 
 \includegraphics[scale=.25]{figures/Aug2_20-taxa-combined-fig_MCC_trees.png} 
 \caption{Phylogenetic analysis of Gonyaulacales species tree with 62 single copy genes from 20 taxa. Gonyaulacales (\#16) in purple, outgroups (\#3) in light blue and taxa \textit{incertae sedis} (\#1) in teal.} 
@@ -337,11 +334,11 @@ The placement of \emph{Gambierdiscus} species from this study follows the specie
 
 \newpage
 \section{Discussion}
-%TODO \cite{baele2012accurate} for Path sampling as accurate model assessment method for relaxed clock models... are any improper priors used? PS may not be able to sample from the prior
+
 % LBA usually Parsimony problem, but if the underlying model is mis-specified, occurs in ML & BI
 % Disagreements in deeper branches in insect phylogenomic study which compared models - but used concat \cite{boussau2014strepsiptera}
-% MSC robust for both ILS & LBA unlike concat <3 \cite{liu2014coalescent} ; example from water lillies with same phenomenon \cite{liu2014coalescent}
-% Alveolates rDNA copies some of the highest extreme long branch content \cite{he2016reducing}
+
+
 
 %TODO need to take out any reference to pipeline or software
 %TODO take out value judgement compared to other studies
@@ -356,70 +353,10 @@ The process of paralog elimination as input for species inference presented here
 The gonyaulacales were chosen to test the pipeline due to the size of their genomes and extensive paralogs.
 This pipeline is publicly available through github and the single copy genes used to infer the species evolution in this study, as well as the log files for the *BEAST runs, are available on zenodo.
 
-%Suzuki 2002 shows that PP is overestimated when concatenation is used
-\FloatBarrier 
-\begin{figure} 
-\includegraphics[scale=.23]{figures/MSC-BI_vs_rDNA-ML.png} 
-\caption{Tanglegram of single copy MSC vs. rDNA concat ML. Gonyaulacales (\#16) in purple, outgroups (\#3) in light blue and taxa \textit{incertae sedis} (\#1) in teal.} 
-\label{fig:tanglerDNA}
-\end{figure} 
-\FloatBarrier
-
-\FloatBarrier 
-\begin{figure} 
-\includegraphics[scale=.23]{figures/MSC-BI_vs_singlecopy-concat-ML.png} 
-\caption{Tangle MSC vs. single copy concat ML. Gonyaulacales (\#16) in purple, outgroups (\#3) in light blue and taxa \textit{incertae sedis} (\#1) in teal.} 
-\label{fig:tangleconcatML}
-\end{figure} 
-\FloatBarrier
-
-
-
-\FloatBarrier 
-\begin{figure} 
-%\includegraphics[scale=.23]{figures/rDNA-ML.png} 
-\caption{Tangle vs. single copy concat BI. Gonyaulacales (\#16) in purple, outgroups (\#3) in light blue and taxa \textit{incertae sedis} (\#1) in teal.} 
-\label{fig:tangleconcatBI}
-\end{figure} 
-\FloatBarrier
- 
-\subsection*{Gonyaulacales phylogeny comparison to previous studies} 
-As a result we present a phylogeny with good support values, a range of taxa that covers 5 of the 9 families with the gonyaulacales proposed by algaebase, which is the taxonomy authority for phycology journals, e.g. Journal of Phycology. 
-Families not represented in this study were the Cladopyxidaceae \& Pyrophacaceae for which no transcriptome libraries were available; and Hystrichosphaeridiaceae \& Pterospermopsidaceae whose listed taxa appear to be fossils.
-Rather than the five families in the gonyaulacales, this study proposes three well supported sub-clades. 
-%AD 160118: here you seem to be confusing taxonomy and phylogeny -- phylo will always have finer resolution than taxonomy.
-On a higher taxonomic level, the gonyaulacales phylogenies pre-dating this study also differ extensively from the results presented here. 
-This is likely due to the methodological differences: 
-%TODO need to explain these sections in more detail & increase studies compared to, not just gonya
-\subsubsection*{(1) inferring species evolution from a small subset of genes such as ribosomal genes, whose evolution may not reflect that of the species.}
-Using LSU or SSU rDNA regions for phylogenetics is common practice, at times supplemented with a small number of other genes \cite{shalchian2006combined,zhang2007three,saldarriaga2004molecular,murray2005improving,hoppenrath2010dinoflagellate} 
-It is important to acknowledge that these represent the evolutionary history of highly conserved genes, which does not necessarily represent the species evolution. 
-Hence studies which utilise primarily rDNA genes for inferring species phylogeny run the risk of presenting the evolutionary history of rDNA genes as synonymous with species evolution when they are in fact poor representatives of the evolutionary history of the majority of nuclear genes?
-To address this obstacle, a range of genes need to be used to infer the species evolution.
-%TODO tangelgram of rDNA vs single copy gene trees
-
-\FloatBarrier 
-\begin{figure} 
-%\includegraphics[scale=.25]{Aug2_20-taxa-combined-fig_MCC_trees_gimp.png} 
-\caption{Tanglegram showing the topological differences in phylogenies from (A) MSC starbeast inference with 58 single copy genes; and (B) concatenated rDNA genes (SSU and D1-D3 LSU)infered with ML.} 
-\label{fig:tanglerdna}
-\end{figure} 
-\FloatBarrier
-
-\subsubsection*{(2) concatenating the genes selected and using ML methods for species inference.}
-Concatenation of genes coupled with running ML inference is a commonly used method as it is computationally cheap in comparison to BI methods. 
-However as demonstrated by Kubatko et al. (2007) and Roche et al. (2015), this approach is error prone and can be misleading by presenting high bootstrap values on incorrect clades which is positively misleading.
-The application of concatenation in combination with ML is common practice in phylogenetic studies for gonyaulacoids  \cite{shalchian2006combined,zhang2007three,saldarriaga2004molecular,murray2005improving,hoppenrath2010dinoflagellate}.
-This issue is addressed in this study by running BI under a multi-species coalescence process.
-\FloatBarrier 
-\begin{figure} 
-%\includegraphics[scale=.25]{Aug2_20-taxa-combined-fig_MCC_trees_gimp.png} 
-\caption{Tanglegram showing the topological differences in phylogenies with same 58 single copy gene alignments as input. (A) MSC starbeast inference; and (B) concatenated ML inference.} 
-\label{fig:tangleconcat}
-\end{figure} 
-\FloatBarrier
-
-\subsubsection*{(3) quantity of taxa or quality of transcriptome assemblies.}
+\subsection*{Assessment of methods tested in this study}
+%TODO work out which parts of the following sections are still relevant
+\subsubsection*{Quantity of taxa or quality of transcriptome assemblies.}
+%ILS and LBA studies go here - especially Liu 14 \cite{liu2014coalescent}
 Several studies have inferred the evolutionary relationship within the gonyaulacales as part of larger studies around the dinoflagellates, and as such the number of taxa from within the gonyaulacales is too limited to speculate on the families or clades within the order, e.g. \cite{shalchian2006combined,zhang2007three,saldarriaga2004molecular,hoppenrath2010dinoflagellate,murray2005improving}.
 Since the publicly available MMETSP datasets, several studies have utilised a broader range of taxa to explore gonyaulacales evolution. 
 However, these have relied on the assemblies supplied by the project. 
@@ -430,8 +367,11 @@ Cohen et al. demonstrated that while the raw data available from the MMETSP proj
 % check veracity of statement: Further, the assembly method used can result in the assembly of paralogs into a single contig, giving the illusion of a single copy gene while actually representing hybrids. 
 To address this problem, trimming and assembly of RNA-seq libraries using Trimomatic and Trinity respectively are integral to the pipeline.
 %Explain here with Cohen's BUSCO scores, or compare to own? Hence, it is imperative to re-assembly the transcriptome libraries before searching for single copy genes or paralogs.
-\subsubsection*{(4) selection of paralogs to infer species evolution.}
+\subsubsection*{Selection of paralogs to infer species evolution.}
 %TODO massively reduce the direct comparison to Price here
+%\cite{yang2014orthology} orthologue extr method which means good discussion on problems with wrong selection
+%\cite{degnan2009gene} some bullshit bout paralogs in soy bean
+
 Selection of paralogs for species inference is highly problematic as it will present an arbitrarily divergent gene history as input. 
 This problem is particularly present in the dinoflagellates and gonyaulacales due to the frequent gene duplication discussed previously. %is it?
 Only one other study by Price et al. (2017) seeks to address this by purportedly selecting single genes as input. 
@@ -457,6 +397,61 @@ As \emph{Azadinium} spp. also produce polyketide toxins that cause azaspiracid s
 In this study, we utilised the BUSCO output which screens for and verifies single copy genes for input into species tree inference, a purpose which was suggested as ideal by the authors of the software \cite{simao2015busco}. 
 %AD 160118: you have done a lot of writing describing how previous studies are full of shortcomings and how yours is the awesomest. while that is certainly good for the ego and all, i strongly suggest spending equal effort describing limitations of your study. This gives readers a balanced sense of the work and has the secondary benefit of showing the authors of all those studies you just poopoo'd that you're equally willing to criticize your own work so you are (slightly) less likely to be perceived as an arrogant egomaniac.
 % to get you started, perhaps you can talk about the unknown quality of the transcriptome assembly in the regions used for phylo inference. or the fact that you have to do assembly at all instead of just sequencing full length transcripts with high accuracy. or that you have to use transcripts because genomes are too expensive.
+
+
+
+\subsection*{Comparison of models tested in this study} 
+As a result we present a phylogeny with good support values, a range of taxa that covers 5 of the 9 families with the gonyaulacales proposed by algaebase, which is the taxonomy authority for phycology journals, e.g. Journal of Phycology. 
+Families not represented in this study were the Cladopyxidaceae \& Pyrophacaceae for which no transcriptome libraries were available; and Hystrichosphaeridiaceae \& Pterospermopsidaceae whose listed taxa appear to be fossils.
+Rather than the five families in the gonyaulacales, this study proposes three well supported sub-clades. 
+%AD 160118: here you seem to be confusing taxonomy and phylogeny -- phylo will always have finer resolution than taxonomy.
+On a higher taxonomic level, the gonyaulacales phylogenies pre-dating this study also differ extensively from the results presented here. 
+This is likely due to the methodological differences: 
+%TODO need to explain these sections in more detail & increase studies compared to, not just gonya
+%TODO focus on comparison of own data first
+\subsubsection*{Inferring species evolution from a small subset of genes such as ribosomal genes, whose evolution may not reflect that of the species.}
+\FloatBarrier 
+% Alveolates rDNA copies some of the highest extreme long branch content \cite{he2016reducing}
+Using LSU or SSU rDNA regions for phylogenetics is common practice, at times supplemented with a small number of other genes \cite{shalchian2006combined,zhang2007three,saldarriaga2004molecular,murray2005improving,hoppenrath2010dinoflagellate} 
+It is important to acknowledge that these represent the evolutionary history of highly conserved genes, which does not necessarily represent the species evolution. 
+Hence studies which utilise primarily rDNA genes for inferring species phylogeny run the risk of presenting the evolutionary history of rDNA genes as synonymous with species evolution when they are in fact poor representatives of the evolutionary history of the majority of nuclear genes?
+To address this obstacle, a range of genes need to be used to infer the species evolution.
+
+\begin{figure} 
+\includegraphics[scale=.2]{figures/MSC-BI_vs_rDNA-ML.png} 
+\caption{Tanglegram showing the topological differences in phylogenies from (A) MSC starbeast inference with 58 single copy genes; and (B) concatenated rDNA genes (SSU and D1-D3 LSU)infered with ML. Gonyaulacales (\#16) in purple, outgroups (\#3) in light blue and taxa \textit{incertae sedis} (\#1) in teal.} 
+\label{fig:tanglerDNA}
+\end{figure} 
+\FloatBarrier
+
+\subsubsection*{Concatenating selected genes and using ML methods for species inference.}
+\FloatBarrier
+Concatenation of genes coupled with running ML inference is a commonly used method as it is computationally cheap in comparison to BI methods. 
+However as demonstrated by Kubatko et al. (2007) and Roche et al. (2015), this approach is error prone and can be misleading by presenting high bootstrap values on incorrect clades which is positively misleading.
+The application of concatenation in combination with ML is common practice in phylogenetic studies for gonyaulacoids  \cite{shalchian2006combined,zhang2007three,saldarriaga2004molecular,murray2005improving,hoppenrath2010dinoflagellate}.
+This issue is addressed in this study by running BI under a multi-species coalescence process.
+ 
+\begin{figure} 
+\includegraphics[scale=.2]{figures/MSC-BI_vs_singlecopy-concat-ML.png} 
+\caption{Tanglegram showing the topological differences in phylogenies with same 58 single copy gene alignments as input. (A) MSC starbeast inference; and (B) concatenated ML inference. Gonyaulacales (\#16) in purple, outgroups (\#3) in light blue and taxa \textit{incertae sedis} (\#1) in teal.} 
+\label{fig:tangleconcatML}
+\end{figure} 
+\FloatBarrier
+
+\subsubsection*{Concatenating selected genes and using BI methods for species inference.}
+\FloatBarrier 
+%Suzuki 2002 shows that PP is overestimated when concatenation is used
+%TODO \cite{baele2012accurate} for Path sampling as accurate model assessment method for relaxed clock models... are any improper priors used? PS may not be able to sample from the prior
+
+% MSC robust for both ILS & LBA unlike concat <3 \cite{liu2014coalescent} ; example from water lillies with same phenomenon \cite{liu2014coalescent}
+
+\begin{figure} 
+%\includegraphics[scale=.23]{figures/rDNA-ML.png} 
+\caption{Tanglegram showing the topological differences in phylogenies with same 58 single copy gene alignments as input. (A) MSC starbeast inference; and (B) concatenated beast2 inference. Gonyaulacales (\#16) in purple, outgroups (\#3) in light blue and taxa \textit{incertae sedis} (\#1) in teal.} 
+\label{fig:tangleconcatBI}
+\end{figure} 
+\FloatBarrier
+
 
 \subsection*{Limitations of study}
 In the previous section we identified potential problems with common approaches to species inference for the gonyaulacales, and then presented a pipeline which attempts to address these problems. However we in no way want to imply that this study is not fraught with potential pitfalls too. We aim to present avenues for improvement for current methods, especially in areas where large datsets are recently unlocked such as in marine protists with the MMETSP project. %Models and methodology build upon previous work and improve with increased collective knowledge, take the progression for nucleotide substitution rates as an example. The JC69 model from 1969 assumes the substitutions rates between all nuceleotides are equal, including between purines and pyrimidines \cite{}. Through a series of increased complexity to model transition \& transversion rates (i.e. the likelihood of nucleotide change from purine to pyrimidine and vice versa) and steady-state distributions (frequency of each nucleotide given infinite time), the HK85 model was proposed in 1985 \cite{}.
