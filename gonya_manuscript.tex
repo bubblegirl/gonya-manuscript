@@ -40,7 +40,6 @@ Climate Change Cluster (C3), University of Technology Sydney, Ultimo, 2007 NSW, 
 \newpage
 
 \section{Introduction}
-%TODO need to take out any reference to pipeline or software
 %TODO new direction of paper - model and data impact on phylogenetics. need to re-write intro
 
 %good refs re systematics
@@ -71,15 +70,20 @@ Here we seek to bridge some of the gap between the theoretical in computational 
 %However, wealth of data alone isn't sufficient for an adequate approximation of the evolution of these organisms - robust methodology is key. 
 For phylogenetic inference, the gene representative for each taxa is compared with all other representatives, with the assumption of a shared evolutionary history, i.e. orthology, from which the species evolution is inferred \cite{maddison1997gene}. 
 %TODO I think I jumped the gun here a little with the next sentence - explain why there can be an error
-Increasing the number of genes used for inferring the species evolution can address any random sampling error, however systematic error(s) can be exacerbated by dataset increase. To confound this error, it can return robust support values for the incorrect phylogenetic tree inferred and obfuscate the error inherent in the analysis (see Box 1) \cite{jeffroy2006phylogenomics,roch2015likelihood,kubatko2007inconsistency}. 
+Increasing the number of genes used for inferring the species evolution can address any random sampling error, however systematic error(s) can be exacerbated by dataset increase. 
+To confound this error, it can return robust support values for the incorrect phylogenetic tree inferred and obfuscate the error inherent in the analysis (see Box 1) \cite{jeffroy2006phylogenomics,roch2015likelihood,kubatko2007inconsistency}. 
 Frequent issues for species tree inference arise from:\\
-1) Selection of paralogs. If genes with different evolutionary histories are selected, the gene tree will not reflect the history of either paralog and be nonsensical for species tree inference; \\
-2) Concatenation of genes. Can be statistically inconsistent estimator of the species tree due to incomplete lineage sorting and concatenation acting as imperfect estimator of species tree topology \cite{roch2015likelihood}; and \\
-3) Inference of model adequacy from bootstrap values. Kubatko et al. (2007) demonstrated high bootstrap support under maximum likelihood (ML) inference for incorrect species trees with concatenated gene sets as input \cite{kubatko2007inconsistency}. 
+1) Selection of paralogs. 
+If genes with different evolutionary histories are selected, the gene tree will not reflect the history of either paralog and be nonsensical for species tree inference; \\
+2) Concatenation of genes. 
+Can be statistically inconsistent estimator of the species tree due to incomplete lineage sorting and concatenation acting as imperfect estimator of species tree topology \cite{roch2015likelihood}; and \\
+3) Inference of model adequacy from bootstrap values. 
+Kubatko et al. (2007) demonstrated high bootstrap support under maximum likelihood (ML) inference for incorrect species trees with concatenated gene sets as input \cite{kubatko2007inconsistency}. 
 As high bootstrap values are often used as an indicator for robust species topology resolution, this fallacy is particularly problematic if the reader/operator is unfamiliar with the statistical phenomenon (see box 1 for).\\
-In this study we aim to build a bioinformatic pipeline that attempts to addresses the issues of paralogy when processing transcriptomic data from non-model organisms, utilises alternative methods to both concatenation and ML inference and investigate the impact that model selection has on topology. 
-Specifically, the pipeline assembles RNA-seq datasets, identifies and extracts single copy genes across input taxa with extensive paralogy, and runs Bayesian inference (BI) phylogenetics. 
-Finally, to apply the pipeline to the historically difficult order Gonyaulacales (phylum: Dinoflagellata) which are notorious for the issues that the pipeline seeks to address (see box 2 for further information on the gonaylacales).\\
+In this study we aim to demonstrate a bioinformatic methodology which is more robust to paralogy when processing transcriptomic data than currently commonly utilized in protistology. 
+Further, we seek to demonstrate the impact of model and data selection on the resulting phylogenetic inference. 
+Specifically, the scripts available with this study assemble RNA-seq datasets, identifies and extracts single copy genes across input taxa with extensive paralogy, and runs Bayesian inference (BI) phylogenetics. 
+Finally, a comparison between commonly used phylogenetic methods to the historically difficult order Gonyaulacales (phylum: Dinoflagellata) which are notorious for the issues that this study seeks to draw attention to (see box 2 for further information on the gonaylacales).\\
 
 
 
@@ -146,10 +150,10 @@ The \emph{Gambierdiscus excentricus} VGO790 transcriptome was downloaded from NC
 RNA seq libraries for all remaining transcriptomes were generated by, and downloaded from, the Marine Microbial Eukaryote Transcriptome Sequencing Project \citep{keeling2014marine}.
 
 \subsection*{Transcriptome processing scripts}
-The pipeline is packaged in the Nextflow language \cite{nextflow} for streamlined transferal between high performance computing clusters. 
-The workflow is separated into two parts, and modules within the pipeline are written in bash and Python 2.7 \cite{python}, including the pandas module \cite{pandas}, and can be found on github. 
+The scripts are packaged in the Nextflow language \cite{nextflow} for streamlined transferal between high performance computing clusters and available on Github under hydrahamster/gonya\_phylo. 
+The workflow is separated into two parts, and modules within the scripts are written in bash and Python 2.7 \cite{python}, including the pandas module \cite{pandas}, and can be found on github. 
 %AD 160118: do you want to give the two parts more descriptive short names? // Better ^___^ but maybe not on the short front
-The pipeline was run on the Genomics Virtual Lab (GVL) \cite{afgan2015genomics}.
+The scripts were executed on the Genomics Virtual Lab (GVL) \cite{afgan2015genomics}.
 \subsubsection*{Scripting part 1: Transformers, assemble!}
 Individual RNA sequencing libraries are the input, which are then processed through FastQC \cite{fastqc} for quality metrics, sequences are trimmed with Trimmomatic (LEADING:3 TRAILING:3 SLIDINGWINDOW:4:5 MINLEN:25) \cite{bolger2014trimmomatic} and assembled with Trinity v2.4.0 (default settings for paired end libraries) \cite{haas2013novo}. 
 Assemblies were then processed with BUSCO2 with the protist specific library \cite{simao2015busco}.
@@ -179,7 +183,7 @@ BI was run in BEAST2 with the Gamma site model with 4 Gamma category counts unde
 Both ML and BI inferences were run the HPCC. 
 
 \subsubsection*{Multispecies coalescence phylogenetic inference of single copy genes}
-The pipeline output was processed on the University of Technology Sydney's High-performance computing cluster (HPCC).
+Subsequent analyses were executed on the University of Technology Sydney's High-performance computing cluster (HPCC).
 %AD 160118: the P in HPC is for performance - not power, though neither adjective is very appropriate for UTS's cluster :( // true that
 Species evolutionary inference was based on BI with the *BEAST2 model in BEAST2 \cite{bouckaert2014beast}. 
 %TODO make a sensical something as 'Bayesian probability'
@@ -194,7 +198,7 @@ Inference was accelerated using BEAGLE \cite{ayres2011beagle} on the GPU.
 
 \subsection*{Inference run time comparison}
 A subset of 14 taxa was selected for a comparison between CPU and GPU inference run time comparison. 
-The transcriptome libraries were fed through the pipeline as described, which was set to extract single copy genes present in all of the taxa. 
+The transcriptome libraries were fed through the single copy gene extracrion script as described, which was set to extract single copy genes present in all of the taxa. 
 The resulting alignments were run on *BEAST either on the CPU or GPU.
 
 \subsubsection*{Generation of figures}
@@ -326,7 +330,7 @@ Other deeper nodes were well or fully supported.
 %This is contrary to the \emph{Ostreopsis} species evolution in the literature to date, which is based on ribosomal genes \cite{verma2016molecular}. 
 %The placement of \emph{Gambierdiscus} species from this study follows the species resolution in the literature to date \cite{kretzschmar2017characterization}. 
 %\emph{Crypthecodinium chonii} did not resolve within the gonyaulacales (green branch Fig. ~\ref{fig:phylo}), but clustered as an outgroup, more distant that the other outgroup taxa \emph{Azadinium spinosum}, \emph{Karenia brevis} and \emph{Dinohysis acuminata}.
-%TODO look up toxin production along branches?
+
 
 \begin{figure} 
 \includegraphics[scale=.25]{figures/Aug2_20-taxa-combined-fig_MCC_trees.png} 
@@ -343,8 +347,7 @@ Other deeper nodes were well or fully supported.
 
 
 
-%TODO need to take out any reference to pipeline or software
-%TODO take out value judgement compared to other studies
+
 %TODO discuss the purely data driven approach not agreeing with morphology, incl. ref FBD-*beast findings
 This study presents a data driven, statistically currently adequate method to approach the issue of paralogy for phylogenetics. 
 The approach is founded on identifying single copy genes in transcriptomes; extracting and aligning the candidate genes; and running phylogenetic inference. 
@@ -353,8 +356,8 @@ The method was tested on taxa the order gonyaulacales, class Dinophyceae, with p
 With publicly available datasets such as the MMETSP project for marine microbes \cite{keeling2014marine}, previous data based limitations for exploring the species evolution within these abundant organisms can now be overcome. 
 However, the next obstacle lies in the methodology for investigating these taxa and that is what this study seeks to address. 
 The process of paralog elimination as input for species inference presented here is transparent and, the authors hope, reproducible with rudimentary programming skills. 
-The gonyaulacales were chosen to test the pipeline due to the size of their genomes and extensive paralogs.
-This pipeline is publicly available through github and the single copy genes used to infer the species evolution in this study, as well as the log files for the *BEAST runs, are available on zenodo.
+The gonyaulacales were chosen to test the methodology presented here due to the size of their genomes and extensive paralogs.
+This scripts which for the basis of this study are publicly available through github and the single copy genes used to infer the species evolution in this study, as well as the log files for the *BEAST runs, are available on zenodo.
 
 \subsection*{Assessment of methods tested in this study}
 %TODO work out which parts of the following sections are still relevant
@@ -364,11 +367,11 @@ Several studies have inferred the evolutionary relationship within the gonyaulac
 Since the publicly available MMETSP datasets, several studies have utilised a broader range of taxa to explore gonyaulacales evolution. 
 However, these have relied on the assemblies supplied by the project. 
 The stringency of quality trimming of RNA-seq libraries prior to assembly plays a role in the number of unique contigs recovered and the subsequent assembly quality of transcriptomes. 
-Commonly high stringency is favored, however MacManes (2014) found that this can be detrimental to the assembly and the quality cut off scores used in this pipeline were in recommendation with that study \cite{macmanes2014optimal}.
+Commonly high stringency is favored, however MacManes (2014) found that this can be detrimental to the assembly and the quality cut off scores used in this study were based on the recommendation with that study \cite{macmanes2014optimal}.
 Regarding the transcriptome assembly method, Cohen et al. evaluated the publicly available assemblies from MMETSP, compared to processing and re-assembly with Trinity \cite{cohen-reass}. 
 Cohen et al. demonstrated that while the raw data available from the MMETSP project is awesome, the assembly method has become outdated. 
 % check veracity of statement: Further, the assembly method used can result in the assembly of paralogs into a single contig, giving the illusion of a single copy gene while actually representing hybrids. 
-To address this problem, trimming and assembly of RNA-seq libraries using Trimomatic and Trinity respectively are integral to the pipeline.
+To address this problem, trimming and assembly of RNA-seq libraries using Trimomatic and Trinity respectively are integral to the transcriptome assembly.
 %Explain here with Cohen's BUSCO scores, or compare to own? Hence, it is imperative to re-assembly the transcriptome libraries before searching for single copy genes or paralogs.
 \subsubsection*{Selection of paralogs to infer species evolution.}
 %TODO massively reduce the direct comparison to Price here
@@ -457,7 +460,7 @@ This issue is addressed in this study by running BI under a multi-species coales
 
 
 \subsection*{Limitations of study}
-In the previous section we identified potential problems with common approaches to species inference for the gonyaulacales, and then presented a pipeline which attempts to address these problems. However we in no way want to imply that this study is not fraught with potential pitfalls too. We aim to present avenues for improvement for current methods, especially in areas where large datsets are recently unlocked such as in marine protists with the MMETSP project. %Models and methodology build upon previous work and improve with increased collective knowledge, take the progression for nucleotide substitution rates as an example. The JC69 model from 1969 assumes the substitutions rates between all nuceleotides are equal, including between purines and pyrimidines \cite{}. Through a series of increased complexity to model transition \& transversion rates (i.e. the likelihood of nucleotide change from purine to pyrimidine and vice versa) and steady-state distributions (frequency of each nucleotide given infinite time), the HK85 model was proposed in 1985 \cite{}.
+In the previous section we identified potential problems with common approaches to species inference for the gonyaulacales, and then sought to demonstrate a robust methodology to address these problems. However we in no way want to imply that this study is not fraught with potential pitfalls too. We aim to present avenues for improvement for current methods, especially in areas where large datsets are recently unlocked such as in marine protists with the MMETSP project. %Models and methodology build upon previous work and improve with increased collective knowledge, take the progression for nucleotide substitution rates as an example. The JC69 model from 1969 assumes the substitutions rates between all nuceleotides are equal, including between purines and pyrimidines \cite{}. Through a series of increased complexity to model transition \& transversion rates (i.e. the likelihood of nucleotide change from purine to pyrimidine and vice versa) and steady-state distributions (frequency of each nucleotide given infinite time), the HK85 model was proposed in 1985 \cite{}.
 %I may have gone on a tangent here. Probably leave that out.
 What follows is the identification of issues with the approach presented in this study, which the authors hope that these will be improved upon in the future. 
 %\subsubsection*{Pipeline specific issues}
@@ -484,7 +487,7 @@ Three different approaches for RNA-seq library generation were employed for the 
 
 \newpage
 \section{Conclusion}
-With the accessibility of large data sets, the focus needs to fall on the methodology for investigating them. This study presents a pipeline to process RNA-seq libraries through assembly, single copy gene selection to phylogenetic species inference. As a case study, the gonyaulacales phylogeny was elucidated as taxa within this order are rife with paralogs. The resulting phylogeny shows a well resolved, well supported inference of the gonyaulacales evolution. By presenting the pipeline designed in this study we hope that the use of reproducible, open-access processing of large data-sets such as the MMETSP database becomes the standard.  
+With the accessibility of large data sets, the focus needs to fall on the methodology for investigating them. This study presents a robust methodology to process RNA-seq libraries through assembly, single copy gene selection to phylogenetic species inference. As a case study, the gonyaulacales phylogeny was elucidated as taxa within this order are rife with paralogs. The resulting phylogeny shows a well resolved, well supported inference of the gonyaulacales evolution. By presenting a statistically rigurous methodology and demonstrating how this overcomes common problems faced in phylogenetic studies, we hope that the use of reproducible, open-access processing of large data-sets such as the MMETSP database becomes the standard.  
 \newpage
 
 \section{Acknowledgments}
@@ -711,7 +714,8 @@ Here we seek to bridge some of the gap between the theoretical in computational 
 %However, wealth of data alone isn't sufficient for an adequate approximation of the evolution of these organisms - robust methodology is key. 
 For phylogenetic inference, the gene representative for each taxa is compared with all other representatives, with the assumption of a shared evolutionary history, i.e. orthology, from which the species evolution is inferred \cite{maddison1997gene}. 
 %TODO I think I jumped the gun here a little with the next sentence - explain why there can be an error
-Increasing the number of genes used for inferring the species evolution can address any random sampling error, however systematic error(s) can be exacerbated by dataset increase. To confound this error, it can return robust support values for the incorrect phylogenetic tree inferred and obfuscate the error inherent in the analysis (see Box 1) \cite{jeffroy2006phylogenomics,roch2015likelihood,kubatko2007inconsistency}. 
+Increasing the number of genes used for inferring the species evolution can address any random sampling error, however systematic error(s) can be exacerbated by dataset increase. 
+To confound this error, it can return robust support values for the incorrect phylogenetic tree inferred and obfuscate the error inherent in the analysis (see Box 1) \cite{jeffroy2006phylogenomics,roch2015likelihood,kubatko2007inconsistency}. 
 Frequent issues for species tree inference arise from:\\
 1) Selection of paralogs. If genes with different evolutionary histories are selected, the gene tree will not reflect the history of either paralog and be nonsensical for species tree inference; \\
 2) Concatenation of genes. Can be statistically inconsistent estimator of the species tree due to incomplete lineage sorting and concatenation acting as imperfect estimator of species tree topology \cite{roch2015likelihood}; and \\
@@ -815,7 +819,8 @@ ML inference was obtained using RaxML \cite{stamatakis2014raxml} with the GTR an
 
 \subsubsection*{Concatenation phylogenetic inference of single copy genes}
 Sequences were concatenated and ML inference run as described in the previous section, with the ILGF, GAMMA and PROT flags flags.
-BI was run in BEAST2 with the Gamma site model with 4 Gamma category counts under the WAG amino acid model. A local random clock was used  under the Birth Death model %TODO MATHIEU what was the end nuber of chains?
+BI was run in BEAST2 with the Gamma site model with 4 Gamma category counts under the WAG amino acid model. 
+A local random clock was used  under the Birth Death model %TODO MATHIEU what was the end nuber of chains?
 Both ML and BI inferences were run the HPCC. 
 
 \subsubsection*{Multispecies coalescence phylogenetic inference of single copy genes}
@@ -907,7 +912,10 @@ Support for deeper nodes varied from supported to well supported.
 
 \begin{figure} 
 \includegraphics[scale=.4]{figures/rDNA-ML.png} 
-\caption{Maximum likelihood phylogenetic inference of ribosomal DNA genes. Concatenation of small subunit rDNA and D1-D3 region large subunit rDNA. Accession numbers for concatenated genes in Table S3. Gonyaulacales (\#16) in purple, outgroups (\#3) in light blue and taxa \textit{incertae sedis} (\#1) in teal. The scale represents number of mutations.} 
+\caption{Maximum likelihood phylogenetic inference of ribosomal DNA genes. 
+Concatenation of small subunit rDNA and D1-D3 region large subunit rDNA. 
+Accession numbers for concatenated genes in Table S3. Gonyaulacales (\#16) in purple, outgroups (\#3) in light blue and taxa \textit{incertae sedis} (\#1) in teal. 
+The scale represents number of mutations.} 
 \label{fig:rdna}
 \end{figure} 
 \FloatBarrier
@@ -918,7 +926,7 @@ All nodes except one within the \emph{Gambierdiscus} species cluster resolved re
 Species of the genera \emph{Alexandrium}, \emph{Gambierdiscus} and \emph{Ostreopsis} cluster as individual clades with their sister species.  
 The topology shows three distinct, well supported clades: 
 One encompassing \emph{Alexandrium}, \emph{Coolia} and \emph{Ostreopsis}; another which only contains \emph{Gambierdiscus}; and one which includes \emph{Pyrodinium}, \emph{Gonyaulax} and \emph{Protoceratium}. 
-Sister to these clades is \emph{Thecadinium}, followed by \emph{Ceratium}. .
+Sister to these clades is \emph{Thecadinium}, followed by \emph{Ceratium}. 
 The split of the outgroup was fully supported, while the internal nodes resolved very well supported. 
 \emph{Crypthecodinium} resolved within the outgroup, sister to \emph{Karenia.} 
 Other deeper nodes were well supported.
@@ -926,7 +934,9 @@ Other deeper nodes were well supported.
  
 \begin{figure} 
 \includegraphics[scale=.45]{figures/Singlecopy-concat-ML.png} 
-\caption{Maximum likelihood phylogenetic inference of concatenated single copy gene set (62 single copy genes from 20 taxa). Gonyaulacales (\#16) in purple, outgroups (\#3) in light blue and taxa \textit{incertae sedis} (\#1) in teal. The scale represents number of mutations.} 
+\caption{Maximum likelihood phylogenetic inference of concatenated single copy gene set (62 single copy genes from 20 taxa). 
+Gonyaulacales (\#16) in purple, outgroups (\#3) in light blue and taxa \textit{incertae sedis} (\#1) in teal. 
+The scale represents number of mutations.} 
 \label{fig:SCconcatML}
 \end{figure} 
 \FloatBarrier
@@ -937,7 +947,8 @@ Other deeper nodes were well supported.
 
 \begin{figure} 
 %\includegraphics[scale=.23]{} 
-\caption{Bayesian inference phylogenetic inference of concatenated single copy gene set (62 single copy genes from 20 taxa). Gonyaulacales (\#16) in purple, outgroups (\#3) in light blue and taxa \textit{incertae sedis} (\#1) in teal.} 
+\caption{Bayesian inference phylogenetic inference of concatenated single copy gene set (62 single copy genes from 20 taxa). 
+Gonyaulacales (\#16) in purple, outgroups (\#3) in light blue and taxa \textit{incertae sedis} (\#1) in teal.} 
 \label{fig:SCconcatBI}
 \end{figure} 
 \FloatBarrier
@@ -970,7 +981,8 @@ Other deeper nodes were well or fully supported.
 
 \begin{figure} 
 \includegraphics[scale=.25]{figures/Aug2_20-taxa-combined-fig_MCC_trees.png} 
-\caption{Phylogenetic analysis of Gonyaulacales species tree with 62 single copy genes from 20 taxa. Gonyaulacales (\#16) in purple, outgroups (\#3) in light blue and taxa \textit{incertae sedis} (\#1) in teal.} 
+\caption{Phylogenetic analysis of Gonyaulacales species tree with 62 single copy genes from 20 taxa. 
+Gonyaulacales (\#16) in purple, outgroups (\#3) in light blue and taxa \textit{incertae sedis} (\#1) in teal.} 
 \label{fig:SCmscBI}
 \end{figure} 
 \FloatBarrier
@@ -1063,7 +1075,8 @@ To address this obstacle, a range of genes need to be used to infer the species 
 
 \begin{figure} 
 \includegraphics[scale=.2]{figures/MSC-BI_vs_rDNA-ML.png} 
-\caption{Tanglegram showing the topological differences in phylogenies from (A) MSC starbeast inference with 58 single copy genes; and (B) concatenated rDNA genes (SSU and D1-D3 LSU)infered with ML. Gonyaulacales (\#16) in purple, outgroups (\#3) in light blue and taxa \textit{incertae sedis} (\#1) in teal.} 
+\caption{Tanglegram showing the topological differences in phylogenies from (A) MSC starbeast inference with 58 single copy genes; and (B) concatenated rDNA genes (SSU and D1-D3 LSU)infered with ML. 
+Gonyaulacales (\#16) in purple, outgroups (\#3) in light blue and taxa \textit{incertae sedis} (\#1) in teal.} 
 \label{fig:tanglerDNA}
 \end{figure} 
 \FloatBarrier
@@ -1077,7 +1090,9 @@ This issue is addressed in this study by running BI under a multi-species coales
  
 \begin{figure} 
 \includegraphics[scale=.2]{figures/MSC-BI_vs_singlecopy-concat-ML.png} 
-\caption{Tanglegram showing the topological differences in phylogenies with same 58 single copy gene alignments as input. (A) MSC starbeast inference; and (B) concatenated ML inference. Gonyaulacales (\#16) in purple, outgroups (\#3) in light blue and taxa \textit{incertae sedis} (\#1) in teal.} 
+\caption{Tanglegram showing the topological differences in phylogenies with same 58 single copy gene alignments as input. 
+(A) MSC starbeast inference; and (B) concatenated ML inference. 
+Gonyaulacales (\#16) in purple, outgroups (\#3) in light blue and taxa \textit{incertae sedis} (\#1) in teal.} 
 \label{fig:tangleconcatML}
 \end{figure} 
 \FloatBarrier
@@ -1091,18 +1106,23 @@ This issue is addressed in this study by running BI under a multi-species coales
 
 \begin{figure} 
 %\includegraphics[scale=.23]{figures/rDNA-ML.png} 
-\caption{Tanglegram showing the topological differences in phylogenies with same 58 single copy gene alignments as input. (A) MSC starbeast inference; and (B) concatenated beast2 inference. Gonyaulacales (\#16) in purple, outgroups (\#3) in light blue and taxa \textit{incertae sedis} (\#1) in teal.} 
+\caption{Tanglegram showing the topological differences in phylogenies with same 58 single copy gene alignments as input. 
+(A) MSC starbeast inference; and (B) concatenated beast2 inference. 
+Gonyaulacales (\#16) in purple, outgroups (\#3) in light blue and taxa \textit{incertae sedis} (\#1) in teal.} 
 \label{fig:tangleconcatBI}
 \end{figure} 
 \FloatBarrier
 
 
 \subsection*{Limitations of study}
-In the previous section we identified potential problems with common approaches to species inference for the gonyaulacales, and then presented a pipeline which attempts to address these problems. However we in no way want to imply that this study is not fraught with potential pitfalls too. We aim to present avenues for improvement for current methods, especially in areas where large datsets are recently unlocked such as in marine protists with the MMETSP project. %Models and methodology build upon previous work and improve with increased collective knowledge, take the progression for nucleotide substitution rates as an example. The JC69 model from 1969 assumes the substitutions rates between all nuceleotides are equal, including between purines and pyrimidines \cite{}. Through a series of increased complexity to model transition \& transversion rates (i.e. the likelihood of nucleotide change from purine to pyrimidine and vice versa) and steady-state distributions (frequency of each nucleotide given infinite time), the HK85 model was proposed in 1985 \cite{}.
+In the previous section we identified potential problems with common approaches to species inference for the gonyaulacales, and then presented a pipeline which attempts to address these problems. 
+However we in no way want to imply that this study is not fraught with potential pitfalls too. 
+We aim to present avenues for improvement for current methods, especially in areas where large datsets are recently unlocked such as in marine protists with the MMETSP project. %Models and methodology build upon previous work and improve with increased collective knowledge, take the progression for nucleotide substitution rates as an example. The JC69 model from 1969 assumes the substitutions rates between all nuceleotides are equal, including between purines and pyrimidines \cite{}. Through a series of increased complexity to model transition \& transversion rates (i.e. the likelihood of nucleotide change from purine to pyrimidine and vice versa) and steady-state distributions (frequency of each nucleotide given infinite time), the HK85 model was proposed in 1985 \cite{}.
 %I may have gone on a tangent here. Probably leave that out.
 What follows is the identification of issues with the approach presented in this study, which the authors hope that these will be improved upon in the future. 
 %\subsubsection*{Pipeline specific issues}
-\paragraph*{Trimming of RNA seq libraries.} The cut off values chosen for this study are based on the recommendations of MacMannes (2014) for optimal transcript discovery. However the recommendations are based on an RNA-seq library from mouse embryonic stem cells, which may not be an adequate model for dinoflagellates. 
+\paragraph*{Trimming of RNA seq libraries.} The cut off values chosen for this study are based on the recommendations of MacMannes (2014) for optimal transcript discovery. 
+However the recommendations are based on an RNA-seq library from mouse embryonic stem cells, which may not be an adequate model for dinoflagellates. 
 This could confound the difference between single copy genes and sequencing artifacts.
 %\paragraph*{Single copy gene selection bias.} The selection of single copy genes is based on BUSCOv2 hmmer libraries. The pre-screening process by which may have inherent selection bias that is not tranparent to us // Not sure if this one is a problem =/
 \paragraph*{Assembly parameters.}
@@ -1125,7 +1145,11 @@ Three different approaches for RNA-seq library generation were employed for the 
 
 \newpage
 \section{Conclusion}
-With the accessibility of large data sets, the focus needs to fall on the methodology for investigating them. This study presents a pipeline to process RNA-seq libraries through assembly, single copy gene selection to phylogenetic species inference. As a case study, the gonyaulacales phylogeny was elucidated as taxa within this order are rife with paralogs. The resulting phylogeny shows a well resolved, well supported inference of the gonyaulacales evolution. By presenting the pipeline designed in this study we hope that the use of reproducible, open-access processing of large data-sets such as the MMETSP database becomes the standard.  
+With the accessibility of large data sets, the focus needs to fall on the methodology for investigating them. 
+This study presents a pipeline to process RNA-seq libraries through assembly, single copy gene selection to phylogenetic species inference. 
+As a case study, the gonyaulacales phylogeny was elucidated as taxa within this order are rife with paralogs. 
+The resulting phylogeny shows a well resolved, well supported inference of the gonyaulacales evolution. 
+By presenting the pipeline designed in this study we hope that the use of reproducible, open-access processing of large data-sets such as the MMETSP database becomes the standard.  
 \newpage
 
 \section{Acknowledgments}
