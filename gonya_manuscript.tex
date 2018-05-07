@@ -832,6 +832,7 @@ The analysis was performed under the WAG substitution model \cite{whelan2001gene
 A random local clock was employed \cite{drummond2010bayesian}. 
 Posterior distributions of parameters were approximated after 300,000,000 generations of MCMC runs with 4 heated and one cold chain, sampled every 5,000 generations  with a burn in of 15\%. 
 The inference was run four times to compare convergence of parameters, then log and tree files were merged. 
+Log and tree files are available on Zenodo DOI: 
 Inference was accelerated using BEAGLE \cite{ayres2011beagle} on the GPU.
 
 \subsection*{Path sampling}
@@ -991,22 +992,15 @@ Gonyaulacales (\#16) in purple, outgroups (\#3) in light blue and taxa \textit{i
 \section{Discussion}
 
 % LBA usually Parsimony problem, but if the underlying model is mis-specified, occurs in ML & BI
-% Disagreements in deeper branches in insect phylogenomic study which compared models - but used concat \cite{boussau2014strepsiptera}
-
-
-
-
-%TODO take out value judgement compared to other studies
-%TODO discuss the purely data driven approach not agreeing with morphology, incl. ref FBD-*beast findings
-This study presents a data driven, statistically currently adequate method to approach the issue of paralogy for phylogenetics. 
+This study presents a data driven, statistically sound method to approach the issue of paralogy in datasets for phylogenetics. 
 The approach is founded on identifying single copy genes in transcriptomes; extracting and aligning the candidate genes; and running phylogenetic inference. 
-%upt ot here
-The method was tested on taxa the order gonyaulacales, class Dinophyceae, with publicly available transcriptomes as well as transcriptomes presented as part of this study. 
+The work compares commonly utilized methods of data acquisition and models used to compare the resulting topologies.
+The method was tested on taxa from the order gonyaulacales, class Dinophyceae, with publicly available transcriptomes as well as transcriptomes presented as part of this study. 
 With publicly available datasets such as the MMETSP project for marine microbes \cite{keeling2014marine}, previous data based limitations for exploring the species evolution within these abundant organisms can now be overcome. 
 However, the next obstacle lies in the methodology for investigating these taxa and that is what this study seeks to address. 
 The process of paralog elimination as input for species inference presented here is transparent and, the authors hope, reproducible with rudimentary programming skills. 
-The gonyaulacales were chosen to test the pipeline due to the size of their genomes and extensive paralogs.
-This pipeline is publicly available through github and the single copy genes used to infer the species evolution in this study, as well as the log files for the *BEAST runs, are available on zenodo.
+The gonyaulacales were chosen as a case study to demonstrate the common phylogenetic issues with problematic taxa. 
+This scripts for this study are publicly available through github and the single copy genes used to infer the species evolution in this study, as well as the log files for the *BEAST runs, are available on zenodo.
 
 \subsection*{Assessment of methods tested in this study}
 %TODO work out which parts of the following sections are still relevant
@@ -1083,6 +1077,7 @@ Gonyaulacales (\#16) in purple, outgroups (\#3) in light blue and taxa \textit{i
 
 \subsubsection*{Concatenating selected genes and using ML methods for species inference.}
 \FloatBarrier
+% Disagreements in deeper branches in insect phylogenomic study which compared models - but used concat \cite{boussau2014strepsiptera}
 Concatenation of genes coupled with running ML inference is a commonly used method as it is computationally cheap in comparison to BI methods. 
 However as demonstrated by Kubatko et al. (2007) and Roche et al. (2015), this approach is error prone and can be misleading by presenting high bootstrap values on incorrect clades which is positively misleading.
 The application of concatenation in combination with ML is common practice in phylogenetic studies for gonyaulacoids  \cite{shalchian2006combined,zhang2007three,saldarriaga2004molecular,murray2005improving,hoppenrath2010dinoflagellate}.
