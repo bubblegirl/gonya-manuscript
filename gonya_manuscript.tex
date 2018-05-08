@@ -171,18 +171,21 @@ Amino acid clusters were clustered again with cd-hit with the flags as previousl
 Protein sequences were analysed with interproscan v5.27 with local lookup server \cite{quevillon2005interproscan}.
 
 \subsection*{Phylogenetic inferences}
-\subsubsection*{rDNA based tree comparison}
-%TODO commit seppuku
+\subsubsection*{rDNA based inference}
+\paragraph*{Maximum likelihood with concatenated sequences.}
+\paragraph*{Bayesian probability with concatenated sequences.}
 Ribosomal DNA sequences for the small subunit region as well as the D1-D3 large subunit region were acquired from NCBI \cite{coordinators2017database} or the SILVA rRNA database project \cite{silvaproj}, accession IDs in Table S3. 
 Individual genes were aligned using the MUSCLE algorithm a maximum of 8 iterations \cite{edgar2004muscle}, then were concatenated in Geneious v11.3 \cite{kearse2012geneious}.
 ML inference was obtained using RaxML \cite{stamatakis2014raxml} with the GTR and GAMMA flags, with 100 bootstraps.
 
-\subsubsection*{Concatenation phylogenetic inference of single copy genes}
-Sequences were concatenated and ML inference run as described in the previous section, with the ILGF, GAMMA and PROT flags flags.
+\subsubsection*{Single copy gene based inference}
+\paragraph*{Maximum likelihood with concatenated sequences.}
+\paragraph*{Bayesian probability with concatenated sequences.}
+Sequences were concatenated and ML inference run as described in the previous section, with the ILGF, GAMMA and PROT flags.
 BI was run in BEAST2 with the Gamma site model with 4 Gamma category counts under the WAG amino acid model. A local random clock was used  under the Birth Death model %TODO MATHIEU what was the end nuber of chains?
 Both ML and BI inferences were run the HPCC. 
 
-\subsubsection*{Multispecies coalescence phylogenetic inference of single copy genes}
+\paragraph*{Bayesian probability under multispecies coalescence.}
 Subsequent analyses were executed on the University of Technology Sydney's High-performance computing cluster (HPCC).
 %AD 160118: the P in HPC is for performance - not power, though neither adjective is very appropriate for UTS's cluster :( // true that
 Species evolutionary inference was based on BI with the *BEAST2 model in BEAST2 \cite{bouckaert2014beast}. 
