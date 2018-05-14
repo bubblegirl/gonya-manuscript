@@ -45,9 +45,6 @@ Climate Change Cluster (C3), University of Technology Sydney, Ultimo, 2007 NSW, 
 %good refs re systematics
 %\cite{posada2016phylogenomics} start of special issue discussing systematics. Overview of problems and gold mine of references
 
-%rdna
-
-
 %bullshit refs
 %Galtier 08 Dealing with incongruence in phylogenomic analyses : argues against validity of ILS and for natural seletion but using morphology for being the reason why they 'can't be extensive problem in reality'. bacteria only though, doesn't hold this up for vertebrates etc.
 
@@ -57,6 +54,7 @@ For most of the history of the field of phylogenetics, the limiting factor was a
 Now, the breadth of publicly available in genetic information through next-gen sequencing techniques has allowed for an increasingly complex investigation into the evolutionary relationships between organisms. 
 The quest for untangling these relationships is an ongoing process that can help inform a broad range of fields, including epidemiology, toxicology and trophic interactions \cite{mctavish2017and}. %TODO need more refs
 The limiting factor now becomes possible errors in the methodology and understanding of the model selection underlying the phylogenetic inference by the operator.
+%Taken out/re-written the following comments to change focus of manuscript:
 %Advances in sequencing capabilities, computational resources and xxx have seen the use of increasing gene sets and complexity in model selection to inform phylogenetic inference. 
 %The decrease in next-gen sequencing technology cost has helped make seq more common - which means that public databases of non-model organism genomes or transcriptomes are getting more betterer (fuck me I word good).
 %\cite{yang2014orthology} orthologue extr method which means good discussion on problems with wrong selection
@@ -85,9 +83,6 @@ Further, we seek to demonstrate the impact of model and data selection on the re
 Specifically, the scripts available with this study assemble RNA-seq datasets, identifies and extracts single copy genes across input taxa with extensive paralogy, and runs Bayesian inference (BI) phylogenetics. 
 Finally, a comparison between commonly used phylogenetic methods to the historically difficult order Gonyaulacales (phylum: Dinoflagellata) which are notorious for the issues that this study seeks to draw attention to (see box 2 for further information on the gonaylacales).\\
 
-
-
-
 %TODO need to bridge the gap in knowledge for taxonomists
 \subsubsection*{Box 1: Statistical nomenclature \& errors this study seeks to address}
 For in depth explanations see \cite{yang2014molecular}.\\
@@ -98,7 +93,8 @@ Model reparametrization does not affect MLE, in effect a static method.\\
 \textbf{Bayesian probability:}
 infers posterior probability from expectation based prior probability and data based likelihood function.
 BI uses probability distributions to describe uncertainty in parameters.
-Model reparametrization via priors changes posterior output, i.e. a dynamic method informed by observation.\\
+Model reparametrization via priors changes posterior output, i.e. a dynamic method informed by observation. 
+We recommend Huelsenbeck et al. (2001) for an overview of the principles underlying BI for phylogenetics \cite{huelsenbeck2001bayesian}.\\
 \textbf{Heterotachy:} 
 change in evolutionary rates of sites over time, specific to lineage(s).\\
 \textbf{Potential statistical error types:}\\
@@ -117,8 +113,6 @@ While the evolutionary relationship of most orders within the dinoflagellates ha
 %Analyses for this order commonly combined concatenation and maximum likelihood approaches, which yielded long branch attraction, low confidence values and inconsistent taxon resolution \cite{}. 
 Improving upon the species the evolution of the gonyaulaceles has implications for environmental disease monitoring, as neurotoxin production is prevalent in this order and the direct cause of paralytic shellfish poisioning, ciguatera fish poisoning, e.g. \cite{shalchian2006combined,zhang2007three,saldarriaga2004molecular,hoppenrath2010dinoflagellate,murray2005improving}. 
 %Specifically the ciguatoxins produced by some \emph{Gambierdiscus} spp. are of interest as the causative agent of ciguatera fish poisoning, a neglected tropical disease with global implications \cite{globalcig}.%, which is predicted to increase in prevalence as climate change progresses \cite{}.
-
-
 
 \newpage
 \section{Materials and methods}
@@ -290,7 +284,6 @@ Sister to these clades is \emph{Thecadinium}, followed by \emph{Ceratium}. .
 The split of the outgroup was fully supported, while the internal nodes resolved very well supported. 
 \emph{Crypthecodinium} resolved within the outgroup, sister to \emph{Karenia.} 
 Other deeper nodes were well supported.
-
  
 \begin{figure} 
 \includegraphics[scale=.45]{figures/Singlecopy-concat-ML.png} 
@@ -321,20 +314,6 @@ and a supported clade including \emph{Ceratium}, \emph{Gonyaulax}, \emph{Protoce
 The outgroup clustered together with high support. 
 \emph{Crypthecodinium} resolved as a sister taxon to the outgroup. 
 Other deeper nodes were well or fully supported.
-%The gonyaulacales resolved as a monophyletic order with three major clades, tentatively named clades I - III. 
-%Posterior probability (PP) branch support values were analyzed as follows: 1.00 was fully supported, $\geq$ 0.9 was very well supported, $\geq$ 0.8 was relatively well supported and $\leq$ 0.5 was unsupported.
-%The separation of clades I, II and III was fully supported, the PP within the three clades was predominantly fully or very well supported. 
-%The exception in clade I was the placement of \emph{O. ovata} as sister species to \emph{O. rhodesae} with a PP of 0.76. 
-%The exception in clade II was in \emph{G. carpenteri} placement as sister species to \emph{G. excentricus} with a PP of 0.61. In clade III, the placement of \emph{P. bahamense} as basal to the other taxa within that clade was supported with 0.57, while the split off for \emph{T.} cf. \emph{kofoidii} was relatively well supported.
-%Other deeper branches were very well supported.
-%Clade I within the gonyaulacales contains \emph{Alexandrium} spp., \emph{Coolia malayensis} and \emph{Ostreopsis} spp. 
-%Clade II contains \emph{Gambierdiscus} spp. as well as \emph{Pyrodinium bahamense} as sister genus. 
-%Clade III contains \emph{Pyrodinium bahamense}, \emph{Ceratium fusus}, \emph{Gonyaulax spinifera}, \emph{Protoceratium reticulatum} and \emph{Thecadinium kofoidii}. 
-%This inference suggests that \emph{O. ovata} and \emph{O. rhodeseae} are sister species with \emph{O. siamensis} diverging earlier. 
-%This is contrary to the \emph{Ostreopsis} species evolution in the literature to date, which is based on ribosomal genes \cite{verma2016molecular}. 
-%The placement of \emph{Gambierdiscus} species from this study follows the species resolution in the literature to date \cite{kretzschmar2017characterization}. 
-%\emph{Crypthecodinium chonii} did not resolve within the gonyaulacales (green branch Fig. ~\ref{fig:phylo}), but clustered as an outgroup, more distant that the other outgroup taxa \emph{Azadinium spinosum}, \emph{Karenia brevis} and \emph{Dinohysis acuminata}.
-
 
 \begin{figure} 
 \includegraphics[scale=.25]{figures/Aug2_20-taxa-combined-fig_MCC_trees.png} 
@@ -348,9 +327,7 @@ Other deeper nodes were well or fully supported.
 
 % LBA usually Parsimony problem, but if the underlying model is mis-specified, occurs in ML & BI
 % Disagreements in deeper branches in insect phylogenomic study which compared models - but used concat \cite{boussau2014strepsiptera}
-
-
-
+% PATH sampling also penalises over-parameterization \cite{} because while bias decreses w/ #parameters, variance increases. So model \& it's parameters should hit the sweet spot between the two \cite{kelchner2007model}
 
 %TODO discuss the purely data driven approach not agreeing with morphology, incl. ref FBD-*beast findings
 This study presents a data driven, statistically currently adequate method to approach the issue of paralogy for phylogenetics. 
@@ -367,7 +344,7 @@ This scripts which for the basis of this study are publicly available through gi
 %TODO work out which parts of the following sections are still relevant
 %TODO where do I put LBA and ILS sections?
 % \cite{degnan2006discordance} describes that methods which rely on democratic elucidation of species tree by most common gene tree are statistically predisposed to being wrong as anomalous gene trees are likely with asymetric trees, and this holds true for any trees with 5 or more taxa (ie. if there are long and short branches). uses coalescence as example
-
+%comparison of bootstraps and PP with sim data, they freak out a bit over neither hitting the right answer \cite{erixon2003reliability}
 \subsubsection*{Quantity of taxa or quality of transcriptome assemblies.}
 %ILS and LBA studies go here - especially Liu 14 \cite{liu2014coalescent}
 Several studies have inferred the evolutionary relationship within the gonyaulacales as part of larger studies around the dinoflagellates, and as such the number of taxa from within the gonyaulacales is too limited to speculate on the families or clades within the order, e.g. \cite{shalchian2006combined,zhang2007three,saldarriaga2004molecular,hoppenrath2010dinoflagellate,murray2005improving}.
@@ -380,6 +357,8 @@ Cohen et al. demonstrated that while the raw data available from the MMETSP proj
 % check veracity of statement: Further, the assembly method used can result in the assembly of paralogs into a single contig, giving the illusion of a single copy gene while actually representing hybrids. 
 To address this problem, trimming and assembly of RNA-seq libraries using Trimomatic and Trinity respectively are integral to the transcriptome assembly.
 %Explain here with Cohen's BUSCO scores, or compare to own? Hence, it is imperative to re-assembly the transcriptome libraries before searching for single copy genes or paralogs.
+%TODO so the taxon sampling is important and can reduce bias. nee to work out if enough coverage in the study here, or suggest in limitations \cite{heath2008taxon}
+%eukaryotic deep lineages show evidence of rapid diversification \cite{he2016reducing} -- actually maybe find a different ref for this, they're kinda shite, which results in short internl brnaches which is the play ground for ILS.
 \subsubsection*{Selection of paralogs to infer species evolution.}
 %TODO massively reduce the direct comparison to Price here
 %\cite{yang2014orthology} orthologue extr method which means good discussion on problems with wrong selection
@@ -414,6 +393,7 @@ In this study, we utilised the BUSCO output which screens for and verifies singl
 
 
 \subsection*{Comparison of models tested in this study} 
+% overparamiterization as well as undfer parameterization cause mis-secification under BI, if not n thwe Felsenstein zone. However under-par has more severe impacts in giving the wrong species tree \cite{lemmon2004importance}
 As a result we present a phylogeny with good support values, a range of taxa that covers 5 of the 9 families with the gonyaulacales proposed by algaebase, which is the taxonomy authority for phycology journals, e.g. Journal of Phycology. 
 Families not represented in this study were the Cladopyxidaceae \& Pyrophacaceae for which no transcriptome libraries were available; and Hystrichosphaeridiaceae \& Pterospermopsidaceae whose listed taxa appear to be fossils.
 Rather than the five families in the gonyaulacales, this study proposes three well supported sub-clades. 
@@ -455,6 +435,7 @@ This issue is addressed in this study by running BI under a multi-species coales
 
 \subsubsection*{Concatenating selected genes and using BI methods for species inference.}
 \FloatBarrier 
+%with concatenation, coalescent methods still commonly return inaccurate species tree resolutions \cite{kubatko2007inconsistency} 
 %Suzuki 2002 shows that PP is overestimated when concatenation is used
 %TODO \cite{baele2012accurate} for Path sampling as accurate model assessment method for relaxed clock models... are any improper priors used? PS may not be able to sample from the prior
 
@@ -469,6 +450,7 @@ This issue is addressed in this study by running BI under a multi-species coales
 
 
 \subsection*{Limitations of study}
+%WAG shows some issues with model misspec under BI using WAG which disappeared with CAT BUT this was based on a concatenated dataset soo... fuck it? \cite{lartillot2007suppression}
 In the previous section we identified potential problems with common approaches to species inference for the gonyaulacales, and then sought to demonstrate a robust methodology to address these problems. However we in no way want to imply that this study is not fraught with potential pitfalls too. We aim to present avenues for improvement for current methods, especially in areas where large datsets are recently unlocked such as in marine protists with the MMETSP project. %Models and methodology build upon previous work and improve with increased collective knowledge, take the progression for nucleotide substitution rates as an example. The JC69 model from 1969 assumes the substitutions rates between all nuceleotides are equal, including between purines and pyrimidines \cite{}. Through a series of increased complexity to model transition \& transversion rates (i.e. the likelihood of nucleotide change from purine to pyrimidine and vice versa) and steady-state distributions (frequency of each nucleotide given infinite time), the HK85 model was proposed in 1985 \cite{}.
 %I may have gone on a tangent here. Probably leave that out.
 What follows is the identification of issues with the approach presented in this study, which the authors hope that these will be improved upon in the future. 
