@@ -86,29 +86,28 @@ Finally, a comparison between commonly used phylogenetic methods to the historic
 %TODO need to bridge the gap in knowledge for taxonomists
 \subsubsection*{Box 1: Statistical nomenclature \& errors this study seeks to address}
 For in depth explanations see \cite{yang2014molecular}.\\
-\textbf{Maximum likelihood estimate:} 
-estimates parameters of a statistical model with maximises the parameter's likelihood function. 
+\textbf{Maximum likelihood estimate:} estimates parameters of a statistical model with maximises the parameter's likelihood function. 
 Does not use priors, which means probability functions not applied to model parameters, but only their estimates. 
 Model reparametrization does not affect MLE, in effect a static method.\\
-\textbf{Bayesian probability:}
-infers posterior probability from expectation based prior probability and data based likelihood function.
+\textbf{Bayesian probability:} infers posterior probability from expectation based prior probability and data based likelihood function.
 BI uses probability distributions to describe uncertainty in parameters.
 Model reparametrization via priors changes posterior output, i.e. a dynamic method informed by observation. 
 We recommend Huelsenbeck et al. (2001) for an overview of the principles underlying BI for phylogenetics \cite{huelsenbeck2001bayesian}.\\
-\textbf{Heterotachy:} 
-change in evolutionary rates of sites over time, specific to lineage(s).\\
+\textbf{Heterotachy:} change in evolutionary rates of sites over time, specific to lineage(s).\\
 \textbf{Potential statistical error types:}\\
 1. random. Sampling based error which decreases and approaches zero as size of dataset approaches infinity.\\
 2. systematic. Arises from incorrect model assumptions or problems with the model itself. 
 Error type persists and increases as dataset size approaches infinity. 
 If strong, can override true phylogenetic signal.\\
-\textbf{Incomplete lineage sorting:} discordance of gene evolutionary history with the species evolutionary history causing the phylogenetic species tree to be misinfered.\textbf{Long branch attraction:} phylogenetic phenomenon where distantly related taxa are inferred as close relatives due to systematic error.
+\textbf{Incomplete lineage sorting:} discordance of gene evolutionary history with the species evolutionary history causing the phylogenetic species tree to be misinfered.\\
+\textbf{Long branch attraction:} phylogenetic phenomenon where distantly related taxa are inferred as close relatives due to systematic error, also known as the Felsenstein zone.
 
 \subsubsection*{Box 2: Who/what are the gonyaulacales?}
 %TODO Aaron and Mathieu, as non protistologists is this section adequate in explaining why the gonyaulacales were chosen for this work, or would it help to include some of the commented out text?
-The gonyaulacales are an order within the phylum dinoflagellata, which are an ancient lineage on the eukaryotic branch of life \cite{moldowan1998biogeochemical}. 
+The gonyaulacales are an order within the super-phylum alveolata and sub-phylum dinoflagellata, which are an ancient lineage on the eukaryotic branch of life \cite{moldowan1998biogeochemical}. 
 %They play a role in several important ecological processes, as members are represented in aquatic environments, where the cover a diverse niches such as symbionts, parasites and some taxa can cause harmful algal blooms through proliferation and/or neurotoxin production \cite{murray2016unravelling}.
-Dinoflagellates possess large genomes (estimated 3.7 to 220 Gbp) \cite{casabianca2017genome}, with extensive paralogy and repetitive short sequences %TODO cite
+Dinoflagellates possess large genomes (estimated 3.7 to 220 Gbp) \cite{casabianca2017genome}, with extensive paralogy and repetitive short sequences. 
+For a review on the genetic features of dinoflagellates see \cite{murray2016unravelling}. 
 While the evolutionary relationship of most orders within the dinoflagellates has been inferred with consistently high support values, one order has often escaped elucidation - the gonyaulacales. 
 %Analyses for this order commonly combined concatenation and maximum likelihood approaches, which yielded long branch attraction, low confidence values and inconsistent taxon resolution \cite{}. 
 Improving upon the species the evolution of the gonyaulaceles has implications for environmental disease monitoring, as neurotoxin production is prevalent in this order and the direct cause of paralytic shellfish poisioning, ciguatera fish poisoning, e.g. \cite{shalchian2006combined,zhang2007three,saldarriaga2004molecular,hoppenrath2010dinoflagellate,murray2005improving}. 
@@ -324,12 +323,15 @@ Other deeper nodes were well or fully supported.
 
 \newpage
 \section{Discussion}
-
-With publicly available libraries such as the MMETSP project for marine microbes \cite{keeling2014marine}, previous data based limitations for exploring the species evolution within these abundant organisms can now be overcome. 
+%TODO work out what UCLN is and re-run rDNA phylo
+With publicly available libraries such as the MMETSP project for marine microbes \cite{keeling2014marine}, previous data based limitations for exploring the species evolution within these abundant organisms can be overcome. 
 However, the next obstacle lies in the methodology used for investigating the evolutionary relationship between these taxa, as common practice does not necessarily equate best practice.
+In particular and highly relevant to working with dinoflagellate phylogenetics, the process of paralog elimination as input for species inference presented here is transparent and, the authors hope, reproducible with basic programming skills. 
+Due to the size of their genomes and extensive paralogs the gonyaulacales were chosen to test the methodology presented here.
 We present a synopsis of the impact of model and data selection on the overall topology, while comparing commonly employed methodologies. 
-In particular and highly relevant to working with dinoflagellate phylogenetics, the process of paralog elimination as input for species inference presented here is transparent and, the authors hope, reproducible with rudimentary programming skills. 
-The gonyaulacales were chosen to test the methodology presented here due to the size of their genomes and extensive paralogs.
+The authors are mindful that overparameterization as well as under parameterization can cause mis-specification under BI, if the inference is not in the Felsenstein zone. 
+However under- compared to over-parameterization has been shown to have  more severe impacts in giving the wrong species tree \cite{lemmon2004importance}. 
+Hence integral to this study was the statistical comparison of different models through PATH sampling as evidence for model parameter adequacy. 
 The scripts which form the basis of this study are publicly available through github and the single copy genes used to infer the species evolution in this study, as well as the log files for the *BEAST runs, are available on zenodo. 
 What follows is a discussion of the key methodological questions that this study sought to address, using the gonyalacales as a case study. 
 %TODO refs:
@@ -358,16 +360,16 @@ What follows is a discussion of the key methodological questions that this study
 %comparison of bootstraps and PP with sim data, they freak out a bit over neither hitting the right answer \cite{erixon2003reliability}
 \subsection*{Quality of transcriptome assemblies.}
 %Several studies have inferred the evolutionary relationship within the gonyaulacales as part of larger studies around the dinoflagellates, and as such the number of taxa from within the gonyaulacales is too limited to speculate on the families or clades within the order, e.g. \cite{shalchian2006combined,zhang2007three,saldarriaga2004molecular,hoppenrath2010dinoflagellate,murray2005improving}.
-Since the publicly available MMETSP datasets, several studies have utilised a broader range of taxa to explore gonyaulacales evolution. 
-However, these have relied on the assemblies supplied by the project. 
+Since the publicly available MMETSP datasets, several studies have utilised a broader range of taxa to explore evolutionary stories involving the gonyaulacales. 
+However, these have relied on the assemblies supplied as part of the project. 
 The stringency of quality trimming of RNA-seq libraries prior to assembly plays a role in the number of unique contigs recovered and the subsequent assembly quality of transcriptomes. 
+Regarding the transcriptome assembly method, Cohen et al. evaluated the publicly available assemblies from MMETSP using BUSCO scores, compared to processing and re-assembly with Trinity \cite{cohen-reass}. 
+Cohen et al. demonstrated that while the raw data available from the MMETSP project is an excellent resource, the assembly quality is less than ideal. 
+Another factor in assembly quality is RNA-seq library processing prior to assembly, especially trimming. 
 Commonly high stringency is favored, however MacManes (2014) found that this can be detrimental to the assembly and the quality cut off scores used in this study were based on the recommendation with that study \cite{macmanes2014optimal}.
-Regarding the transcriptome assembly method, Cohen et al. evaluated the publicly available assemblies from MMETSP, compared to processing and re-assembly with Trinity \cite{cohen-reass}. 
-%Cohen et al. demonstrated that while the raw data available from the MMETSP project is an excellent resource, the assembly quality is less than ideal. 
-The trimming and assembly pipeline used for the assemblies available as part of MMETSP have become outdated and this is reflected in the quality comparison by Cohen et al. 
-% check veracity of statement: Further, the assembly method used can result in the assembly of paralogs into a single contig, giving the illusion of a single copy gene while actually representing hybrids. 
-To address this problem, trimming and assembly of RNA-seq libraries using Trimomatic and Trinity respectively are integral to the transcriptome assembly.
-%Explain here with Cohen's BUSCO scores, or compare to own? Hence, it is imperative to re-assembly the transcriptome libraries before searching for single copy genes or paralogs.
+In short, the trimming and assembly pipeline used for the assemblies available as part of MMETSP have become outdated and this is reflected in the quality comparison by Cohen et al. 
+To address this problem, trimming and assembly of RNA-seq libraries using Trimomatic and Trinity respectively were considered integral to the transcriptome assembly in this study.
+
 \subsection*{Quantity of taxa in phylogenetic inference}
 %ILS and LBA studies go here - especially Liu 14 \cite{liu2014coalescent}
 %TODO so the taxon sampling is important and can reduce bias. nee to work out if enough coverage in the study here, or suggest in limitations \cite{heath2008taxon}
@@ -375,12 +377,7 @@ To address this problem, trimming and assembly of RNA-seq libraries using Trimom
 % \cite{degnan2006discordance} describes that methods which rely on democratic elucidation of species tree by most common gene tree are statistically predisposed to being wrong as anomalous gene trees are likely with asymetric trees, and this holds true for any trees with 5 or more taxa (ie. if there are long and short branches). uses coalescence as example
 
 %\subsection*{Comparison of models tested in this study} 
-% overparamiterization as well as undfer parameterization cause mis-secification under BI, if not n thwe Felsenstein zone. However under-par has more severe impacts in giving the wrong species tree \cite{lemmon2004importance}
 %As a result we present a phylogeny with good support values, a range of taxa that covers 5 of the 9 families with the gonyaulacales proposed by algaebase, which is the taxonomy authority for phycology journals, e.g. Journal of Phycology. 
-%Families not represented in this study were the Cladopyxidaceae \& Pyrophacaceae for which no transcriptome libraries were available; and Hystrichosphaeridiaceae \& Pterospermopsidaceae whose listed taxa appear to be fossils.
-%Rather than the five families in the gonyaulacales, this study proposes three well supported sub-clades. 
-%AD 160118: here you seem to be confusing taxonomy and phylogeny -- phylo will always have finer resolution than taxonomy.
-%On a higher taxonomic level, the gonyaulacales phylogenies pre-dating this study also differ extensively from the results presented here. 
 %This is likely due to the methodological differences: 
 %TODO need to explain these sections in more detail & increase studies compared to, not just gonya
 %TODO focus on comparison of own data first
