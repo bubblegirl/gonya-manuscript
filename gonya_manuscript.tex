@@ -1004,7 +1004,9 @@ The gonyaulacales were chosen as a case study to demonstrate the common phylogen
 This scripts for this study are publicly available through github and the single copy genes used to infer the species evolution in this study, as well as the log files for the *BEAST runs, are available on zenodo.
 
 \subsection*{Assessment of methods tested in this study}
-
+Before phylogenetic inference, RNA-seq libraries undergo a number of processing steps which results in assembly and gene selection. 
+These steps are integral to the quality of the analysis and can confound efforts before model selection becomes an issue. 
+We sought to address these in the following ways: 
 \subsubsection*{Quantity of taxa or quality of transcriptome assemblies.}
 %ILS and LBA studies go here - especially Liu 14 \cite{liu2014coalescent}
 Several studies have inferred the evolutionary relationship within the gonyaulacales as part of larger studies around the dinoflagellates, and as such the number of taxa from within the gonyaulacales is too limited to speculate on the families or clades within the order, e.g. \cite{shalchian2006combined,zhang2007three,saldarriaga2004molecular,hoppenrath2010dinoflagellate,murray2005improving}.
@@ -1051,14 +1053,8 @@ With adjusting the RNA-seq library trimming values and assembly methods to what 
 
 
 \subsection*{Comparison of models tested in this study} 
-As a result we present a phylogeny with good support values, a range of taxa that covers 5 of the 9 families with the gonyaulacales proposed by algaebase, which is the taxonomy authority for phycology journals, e.g. Journal of Phycology. 
-Families not represented in this study were the Cladopyxidaceae \& Pyrophacaceae for which no transcriptome libraries were available; and Hystrichosphaeridiaceae \& Pterospermopsidaceae whose listed taxa appear to be fossils.
-Rather than the five families in the gonyaulacales, this study proposes three well supported sub-clades. 
-%AD 160118: here you seem to be confusing taxonomy and phylogeny -- phylo will always have finer resolution than taxonomy.
-On a higher taxonomic level, the gonyaulacales phylogenies pre-dating this study also differ extensively from the results presented here. 
-This is likely due to the methodological differences: 
-%TODO need to explain these sections in more detail & increase studies compared to, not just gonya
-%TODO focus on comparison of own data first
+Once the quality of the transcriptome assembly and gene selection for comparison is satisfied, the next question concerns the adequacy of the models used as a proxy for the evolutionary inference. 
+%TODO up to here
 \subsubsection*{Inferring species evolution from a small subset of genes such as ribosomal genes, whose evolution may not reflect that of the species.}
 \FloatBarrier 
 % Alveolates rDNA copies some of the highest extreme long branch content \cite{he2016reducing}
