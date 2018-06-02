@@ -1054,15 +1054,16 @@ With adjusting the RNA-seq library trimming values and assembly methods to what 
 
 \subsection*{Comparison of models tested in this study} 
 Once the quality of the transcriptome assembly and gene selection for comparison is satisfied, the next question concerns the adequacy of the models used as a proxy for the evolutionary inference. 
-%TODO up to here
+
 \subsubsection*{Inferring species evolution from a small subset of genes such as ribosomal genes, whose evolution may not reflect that of the species.}
 \FloatBarrier 
-% Alveolates rDNA copies some of the highest extreme long branch content \cite{he2016reducing}
 %\cite{ochieng2007nuclear}  don't even know if this is any good but has rdna of eucalypts
-Using LSU or SSU rDNA regions for phylogenetics is common practice, at times supplemented with a small number of other genes \cite{shalchian2006combined,zhang2007three,saldarriaga2004molecular,murray2005improving,hoppenrath2010dinoflagellate} 
+Using LSU or SSU rDNA regions for phylogenetics is common practice, at times supplemented with a small number of other genomic, mitochondrial or chloroplastic genes \cite{shalchian2006combined,zhang2007three,saldarriaga2004molecular,murray2005improving,hoppenrath2010dinoflagellate}. 
 It is important to acknowledge that these represent the evolutionary history of highly conserved genes, which does not necessarily represent the species evolution. 
-Hence studies which utilise primarily rDNA genes for inferring species phylogeny run the risk of presenting the evolutionary history of rDNA genes as synonymous with species evolution when they are in fact poor representatives of the evolutionary history of the majority of nuclear genes?
-To address this obstacle, a range of genes need to be used to infer the species evolution.
+Hence studies which primarily utilise rDNA genes for inferring species phylogeny run the risk of presenting the evolutionary history of the ribosomal genes as synonymous with species evolution. 
+Yet these are poor representatives of the evolutionary history of other nuclear genes or the species concept. %TODO find ref that deals with rDNA evol compared to genomic
+This issue is particularly pronounced in the alveolates, the super-phylum encompassing the dinoflaggelates, whose high rDNA copy numbers result in extremely long branches \cite{he2016reducing}. %TODO check what the fuck this study says
+ %TODO up to here need to incorporate results and comparisons and shit
 
 \begin{figure} 
 \includegraphics[scale=.2]{figures/MSC-BI_vs_rDNA-ML.png} 
@@ -1071,6 +1072,8 @@ Gonyaulacales (\#16) in purple, outgroups (\#3) in light blue and taxa \textit{i
 \label{fig:tanglerDNA}
 \end{figure} 
 \FloatBarrier
+
+To address the  obstacle, a range of genes need to be used to infer the species evolution.
 
 \subsubsection*{Concatenating selected genes and using ML methods for species inference.}
 \FloatBarrier
