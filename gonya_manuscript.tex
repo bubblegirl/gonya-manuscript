@@ -182,14 +182,13 @@ Both ML and BI inferences were run the HPCC.
 Subsequent analyses were executed on the University of Technology Sydney's High-performance computing cluster (HPCC).
 %AD 160118: the P in HPC is for performance - not power, though neither adjective is very appropriate for UTS's cluster :( // true that
 Species evolutionary inference was based on BI with the *BEAST2 model in BEAST2 \cite{bouckaert2014beast}. 
-%TODO make a sensical something as 'Bayesian probability'
 The analysis was performed under the WAG substitution model \cite{whelan2001general} with a Gamma distribution for four rate categories. 
 A random local clock was employed \cite{drummond2010bayesian}.
 Posterior distributions of parameters were approximated after 300,000,000 generations of MCMC runs with 4 heated and one cold chain, sampled every 5,000 generations  with a burn in of 15\%. 
 The inference was run four times to compare convergence of parameters, then log and tree files were merged. 
 Inference was accelerated using BEAGLE \cite{ayres2011beagle} on the GPU.
 
-\subsection*{Path sampling}
+%\subsection*{Path sampling}
 %TODO Mathieu please put details in
 
 \subsection*{Inference run time comparison}
@@ -323,7 +322,7 @@ Other deeper nodes were well or fully supported.
 
 \newpage
 \section{Discussion}
-%TODO work out what UCLN is and re-run rDNA phylo
+%TODO work out what UCLN is and re-run rDNA phylo -- uncorrelated lognormal relaxed clock
 With publicly available libraries such as the MMETSP project for marine microbes \cite{keeling2014marine}, previous data based limitations for exploring the species evolution within these abundant organisms can be overcome. 
 However, the next obstacle lies in the methodology used for investigating the evolutionary relationship between these taxa, as common practice does not necessarily equate best practice.
 In particular and highly relevant to working with dinoflagellate phylogenetics, the process of paralog elimination as input for species inference presented here is transparent and, the authors hope, reproducible with basic programming skills. 
@@ -335,7 +334,6 @@ Hence integral to this study was the statistical comparison of different models 
 The scripts which form the basis of this study are publicly available through github and the single copy genes used to infer the species evolution in this study, as well as the log files for the *BEAST runs, are available on zenodo. 
 What follows is a discussion of the key methodological questions that this study sought to address, using the gonyalacales as a case study. 
 %TODO refs:
-% LBA usually Parsimony problem, but if the underlying model is mis-specified, occurs in ML & BI
 % Disagreements in deeper branches in insect phylogenomic study which compared models - but used concat \cite{boussau2014strepsiptera}
 % PATH sampling also penalises over-parameterization \cite{} because while bias decreses w/ #parameters, variance increases. So model \& it's parameters should hit the sweet spot between the two \cite{kelchner2007model}
 
@@ -355,40 +353,46 @@ What follows is a discussion of the key methodological questions that this study
 %upt ot here
 %The method was tested on taxa  from the order gonyaulacales, class Dinophyceae, with publicly available transcriptomes as well as transcriptomes presented as part of this study. 
 
-%\subsection*{Assessment of methods tested in this study}
-
 %comparison of bootstraps and PP with sim data, they freak out a bit over neither hitting the right answer \cite{erixon2003reliability}
 \subsection*{Quality of transcriptome assemblies.}
 %Several studies have inferred the evolutionary relationship within the gonyaulacales as part of larger studies around the dinoflagellates, and as such the number of taxa from within the gonyaulacales is too limited to speculate on the families or clades within the order, e.g. \cite{shalchian2006combined,zhang2007three,saldarriaga2004molecular,hoppenrath2010dinoflagellate,murray2005improving}.
 Since the publicly available MMETSP datasets, several studies have utilised a broader range of taxa to explore evolutionary stories involving the gonyaulacales. 
 However, these have relied on the assemblies supplied as part of the project. 
-The stringency of quality trimming of RNA-seq libraries prior to assembly plays a role in the number of unique contigs recovered and the subsequent assembly quality of transcriptomes. 
+The stringency for quality trimming of RNA-seq libraries prior to assembly plays a role in the number of unique contigs recovered and the subsequent assembly quality of transcriptomes. 
 Regarding the transcriptome assembly method, Cohen et al. evaluated the publicly available assemblies from MMETSP using BUSCO scores, compared to processing and re-assembly with Trinity \cite{cohen-reass}. 
 Cohen et al. demonstrated that while the raw data available from the MMETSP project is an excellent resource, the assembly quality is less than ideal. 
 Another factor in assembly quality is RNA-seq library processing prior to assembly, especially trimming. 
 Commonly high stringency is favored, however MacManes (2014) found that this can be detrimental to the assembly and the quality cut off scores used in this study were based on the recommendation with that study \cite{macmanes2014optimal}.
-In short, the trimming and assembly pipeline used for the assemblies available as part of MMETSP have become outdated and this is reflected in the quality comparison by Cohen et al. 
+In short, the trimming and assembly pipeline used for the assemblies available as part of MMETSP have become outdated and this is reflected in the quality comparison conducted by Cohen et al. 
 To address this problem, trimming and assembly of RNA-seq libraries using Trimomatic and Trinity respectively were considered integral to the transcriptome assembly in this study.
 
 \subsection*{Quantity of taxa in phylogenetic inference}
 %ILS and LBA studies go here - especially Liu 14 \cite{liu2014coalescent}
-%TODO so the taxon sampling is important and can reduce bias. nee to work out if enough coverage in the study here, or suggest in limitations \cite{heath2008taxon}
+%TODO 
 %eukaryotic deep lineages show evidence of rapid diversification \cite{he2016reducing} -- actually maybe find a different ref for this, they're kinda shite, which results in short internl brnaches which is the play ground for ILS.
-% \cite{degnan2006discordance} describes that methods which rely on democratic elucidation of species tree by most common gene tree are statistically predisposed to being wrong as anomalous gene trees are likely with asymetric trees, and this holds true for any trees with 5 or more taxa (ie. if there are long and short branches). uses coalescence as example
+% ---> \cite{degnan2006discordance} describes that methods which rely on democratic elucidation of species tree by most common gene tree are statistically predisposed to being wrong as anomalous gene trees are likely with asymetric trees, and this holds true for any trees with 5 or more taxa (ie. if there are long and short branches). uses coalescence as example
+Extensive coverage of taxons within the group of organisms examined is necessary to give useful insight into the evolutionary inter-taxon relationships. 
+Two concerning phenomena that can creep in in phylogenetic studies based on the data set selected are incomplete lineage sorting (ILS) and long branch attraction (LBA). 
+LBa blah blah blah 
+The lack of adequate coverage is termed ILS and subject to postulated detrimental impact through bias on inferences \cite{heath2008taxon}. 
+The impact of ILS on phylogenetic inferences has been explored through simulated datasets with a known species tree. 
+Maddison et. Knowles (2006) found that the amount of genetic information retains enough information to overcome extensive ILS when the number of genes is sufficient, in their study 27 \cite{maddison2006inferring}. 
+So extrapolating from the simulation data studies available, a large number of genes should overcome the incomplete coverage of the families from the gonyaluacales and give an accurate representation of the evolutionary relationships despite the missing taxa. 
+LBA in comparison is prone to be problematic in the deployment of less robust inference methods such as parsimony, however if the models are mispecified in ML or BI study this issue can occur also. 
 
-%\subsection*{Comparison of models tested in this study} 
-%As a result we present a phylogeny with good support values, a range of taxa that covers 5 of the 9 families with the gonyaulacales proposed by algaebase, which is the taxonomy authority for phycology journals, e.g. Journal of Phycology. 
-%This is likely due to the methodological differences: 
-%TODO need to explain these sections in more detail & increase studies compared to, not just gonya
-%TODO focus on comparison of own data first
 \subsection*{Inferring species evolution from a small subset of genes such as ribosomal genes, whose evolution may not reflect that of the species.}
 \FloatBarrier 
-% Alveolates rDNA copies some of the highest extreme long branch content \cite{he2016reducing}
-% gene tree discordance refers to the common issue of gene tree resolving different to species tree. However historically gene trees were used as an approximation for species tree - which we now know is statistically bollocks \cite{degnan2009gene}. The use of rDNA genes as species estimator is an example of this
-Using LSU or SSU rDNA regions for phylogenetics is common practice, at times supplemented with a small number of other genes \cite{shalchian2006combined,zhang2007three,saldarriaga2004molecular,murray2005improving,hoppenrath2010dinoflagellate} 
-It is important to acknowledge that these represent the evolutionary history of highly conserved genes, which does not necessarily represent the species evolution. 
-Hence studies which utilise primarily rDNA genes for inferring species phylogeny run the risk of presenting the evolutionary history of rDNA genes as synonymous with species evolution when they are in fact poor representatives of the evolutionary history of the majority of nuclear genes?
-To address this obstacle, a range of genes need to be used to infer the species evolution.
+%TODO up tho here and incoherent
+% gene tree discordance refers to the common issue of gene tree resolving different to species tree. However historically gene trees were used as an approximation for species tree - which we now know is statistically bollocks . The use of rDNA genes as species estimator is an example of this
+Using LSU or SSU rDNA regions for phylogenetics is common practice, at times supplemented with a small number of other genes \cite{shalchian2006combined,zhang2007three,saldarriaga2004molecular,murray2005improving,hoppenrath2010dinoflagellate}. 
+It is important to acknowledge that these represent the evolutionary history of highly conserved genes, which does not necessarily represent the species evolution and assuming their synonymity is statistically inadequate \cite{degnan2009gene}.
+Utilization of rDNA loci made sense when study designs were bound by sequencing and computational limitations, so they were the best proxy available. 
+With the advancement of sequencing techniques and the utilization of computing clusters now commonly available, we are no longer restricted to limited rDNA datasets as proxies for species evolution. 
+A confounding factor for the gonyaulacales is that organisms from the superphylum in which they reside posses very high rDNA copy numbers which for phylogenetics result in extremely long branches \cite{he2016reducing}. 
+Yet rDNA loci are still widely used for gonyaulacales. 
+Comparing the topology from an rDNA ML inference with the single gene copy MSC phylogeny presented here (Fig. ~\ref{fig:tanglerDNA}) shows that both topologies were both predominantly completely or very well supported. 
+Within the genera \emph{Gambierdiscus} and \emph{Ostreopsis}, the species resolution differed between the two datasets. 
+This is exemplary in how using rDNA segments as a proxy for species evolution can differ when examining the history in light of a range of nuclear genes. 
 
 \begin{figure} 
 \includegraphics[scale=.2]{figures/MSC-BI_vs_rDNA-ML.png} 
@@ -400,8 +404,8 @@ To address this obstacle, a range of genes need to be used to infer the species 
 \subsection*{Concatenating selected genes and using ML methods for species inference.}
 \FloatBarrier
 %TODO review on why concatenation is inadequate. assumes uniform evolutionary history across different loci, which is unrealistic. Can cause overinflated confidence through bootstrap values \cite{degnan2009gene}
-Concatenation of genes coupled with running ML inference is a commonly used method as it is computationally cheap in comparison to BI methods. 
-However as demonstrated by Kubatko et al. (2007) and Roche et al. (2015), this approach is error prone and can be misleading by presenting high bootstrap values on incorrect clades which is positively misleading.
+Concatenation of genes coupled with running ML inference is a commonly used method as it is computationally un-intensive in comparison to BI methods. 
+However as demonstrated by Kubatko et al. (2007) and Roche et al. (2015), this approach is error prone and worse, can be misleading by presenting high bootstrap values on incorrect clades. 
 The application of concatenation in combination with ML is common practice in phylogenetic studies for gonyaulacoids  \cite{shalchian2006combined,zhang2007three,saldarriaga2004molecular,murray2005improving,hoppenrath2010dinoflagellate}.
 This issue is addressed in this study by running BI under a multi-species coalescence process.
  
@@ -431,7 +435,7 @@ This issue is addressed in this study by running BI under a multi-species coales
 %TODO massively reduce the direct comparison to Price here
 %\cite{yang2014orthology} orthologue extr method which means good discussion on problems with wrong selection
 %\cite{degnan2009gene} some bullshit bout paralogs in soy bean
-
+waterhouse2017busco
 Selection of paralogs for species inference is highly problematic as it will compare an arbitrarily divergent gene history as input. 
 This problem is particularly prevalent in the dinoflagellates and gonyaulacales due to extensive paralogy from gene duplication. 
 Only one other study by Price et al. (2017) seeks to address the issue of parology within the gonyalacales, by purportedly selecting single genes as input. 
