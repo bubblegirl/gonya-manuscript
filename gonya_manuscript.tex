@@ -424,7 +424,18 @@ The BI MSC method clusters \emph{Ceratium}, \emph{Gonyaulax}, \emph{Protoceratiu
 \FloatBarrier
 
 \subsection*{Concatenating selected genes and using BI methods for species inference.}
-\FloatBarrier 
+\FloatBarrier
+Finally, to demonstrate the difference in concatenation and MSC, the single copy gene dataset was run as BI with both approaches (Fig. ~\ref{fig:tangleconcatBI}). 
+Even within a BI framework, while more robust than ML, concatenation can introduce a number of errors. 
+Under simulated datasets, even under the coalescent methods, the species tree topology is inaccurate when concatenation is used \cite{kubatko2007inconsistency}. 
+Further to that, the PP values tend to be overestimated for concatenation \cite{suzuki2002overcredibility}. 
+Theoretically for the gonyaluacales, and taxa prone to paralogy and convoluted evolutionary histories, MSC is a preferable approach to concatenation as MSC is more robust to ILS \& LBA artefacts \cite{liu2014coalescent}.
+To objectively compare the veracity of this  for the single copy gene dataset from the gonyalacales, we used a statistical framework to compare the concatenation and MSC approaches through PATH sampling. 
+PATH sampling is an adequate method for objectively comparing the model parameters for relaxed clock models while penalizing for over-parameterization \cite{baele2012accurate}. 
+The valuex XXX %TODO whatever the hell the PATH sampling results are
+%TODO whatever the topological differences are 
+
+  
 %with concatenation, coalescent methods still commonly return inaccurate species tree resolutions \cite{kubatko2007inconsistency} 
 %Suzuki 2002 shows that PP is overestimated when concatenation is used
 %TODO \cite{baele2012accurate} for Path sampling as accurate model assessment method for relaxed clock models... are any improper priors used? PS may not be able to sample from the prior
