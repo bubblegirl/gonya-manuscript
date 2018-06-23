@@ -410,8 +410,12 @@ Concatenation of genes coupled with running ML inference is a commonly used meth
 However as demonstrated by Kubatko et al. (2007) and Roche et al. (2015), this approach is error prone and more gravely, can be misleading by presenting high bootstrap values on incorrect clades. 
 The application of concatenation in combination with ML is common practice in phylogenetic studies for gonyaulacoids  \cite{shalchian2006combined,zhang2007three,saldarriaga2004molecular,murray2005improving,hoppenrath2010dinoflagellate}.
 This issue was addressed in this study by running BI under the MSC process rather than resorting to concatenation. 
-A comparison between a BI inference under MSC compared to concatenated ML inference on the same single copy gene dataset shows differing topology (Fig. ~\ref{fig:tangleconcatML}). 
- 
+A comparison between a BI inference under MSC compared to concatenated ML inference on the same single copy gene dataset shows differences in topology, albeit different when comparing to the rDNA dataset (Fig. ~\ref{fig:tangleconcatML}). 
+The species resolution within the genera \emph{Alexandrium}, \emph{Gambierdiscus} and \emph{Ostreopsis} matches between the two inference methods. 
+The major difference is of the \emph{Pyrodinium} placement, where the BI MSC approach places the genus sister to \emph{Gambierdiscus} while the concatenated ML approach places it with \emph{Gonyaulax} and \emph{Protoceratium}. 
+Further, the deeper branches of the phylogenies differ. 
+The BI MSC method clusters \emph{Ceratium}, \emph{Gonyaulax}, \emph{Protoceratium} and \emph{Thecadinium} as a clade, while the concatenated ML approach clusters \emph{Gonyaulax}, \emph{Protoceratium} and \emph{Pyrodinium} as a clade to which \emph{Thecadinium} and then \emph{Ceratium} feature as ancestral genera. 
+
 \begin{figure} 
 \includegraphics[scale=.2]{figures/MSC-BI_vs_singlecopy-concat-ML.png} 
 \caption{Tanglegram showing the topological differences in phylogenies with same 58 single copy gene alignments as input. (A) MSC starbeast inference; and (B) concatenated ML inference. Gonyaulacales (\#16) in purple, outgroups (\#3) in light blue and taxa \textit{incertae sedis} (\#1) in teal.} 
@@ -427,6 +431,7 @@ A comparison between a BI inference under MSC compared to concatenated ML infere
 
 % MSC robust for both ILS & LBA unlike concat <3 \cite{liu2014coalescent} ; example from water lillies with same phenomenon \cite{liu2014coalescent}
 
+%TODO this will be generated from PATH sampling
 \begin{figure} 
 %\includegraphics[scale=.23]{figures/rDNA-ML.png} 
 \caption{Tanglegram showing the topological differences in phylogenies with same 58 single copy gene alignments as input. (A) MSC starbeast inference; and (B) concatenated beast2 inference. Gonyaulacales (\#16) in purple, outgroups (\#3) in light blue and taxa \textit{incertae sedis} (\#1) in teal.} 
