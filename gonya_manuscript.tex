@@ -392,6 +392,8 @@ A confounding factor for the gonyaulacales is that organisms from the superphylu
 Yet rDNA loci are still widely used for gonyaulacales. 
 Comparing the topology from an rDNA ML inference with the single gene copy MSC phylogeny presented here (Fig. ~\ref{fig:tanglerDNA}) shows that both topologies were both predominantly completely or very well supported. 
 Within the genera \emph{Gambierdiscus} and \emph{Ostreopsis}, the species resolution differed between the two datasets. 
+In several cases, the placement of sister taxa was incongruous between the two analyses. 
+For example, the rDNA concatenation dataset places \emph{Ceratium} \& \emph{Gonyaulax} as well as \emph{Alexandrium} and \emph{Gambierdiscus} as sister taxa, while the single copy gene dataset under MSC places \emph{Gonyaulax} with \emph{Protoceratium} and \emph{Gambierdiscus} with \emph{Pyrodinium}. 
 This is exemplary in how using rDNA segments as a proxy for species evolution can differ when examining the history in light of a range of nuclear genes. 
 
 \begin{figure} 
@@ -405,9 +407,10 @@ This is exemplary in how using rDNA segments as a proxy for species evolution ca
 \FloatBarrier
 %TODO review on why concatenation is inadequate. assumes uniform evolutionary history across different loci, which is unrealistic. Can cause overinflated confidence through bootstrap values \cite{degnan2009gene}
 Concatenation of genes coupled with running ML inference is a commonly used method as it is computationally un-intensive in comparison to BI methods. 
-However as demonstrated by Kubatko et al. (2007) and Roche et al. (2015), this approach is error prone and worse, can be misleading by presenting high bootstrap values on incorrect clades. 
+However as demonstrated by Kubatko et al. (2007) and Roche et al. (2015), this approach is error prone and more gravely, can be misleading by presenting high bootstrap values on incorrect clades. 
 The application of concatenation in combination with ML is common practice in phylogenetic studies for gonyaulacoids  \cite{shalchian2006combined,zhang2007three,saldarriaga2004molecular,murray2005improving,hoppenrath2010dinoflagellate}.
-This issue is addressed in this study by running BI under a multi-species coalescence process.
+This issue was addressed in this study by running BI under the MSC process rather than resorting to concatenation. 
+A comparison between a BI inference under MSC compared to concatenated ML inference on the same single copy gene dataset shows differing topology (Fig. ~\ref{fig:tangleconcatML}). 
  
 \begin{figure} 
 \includegraphics[scale=.2]{figures/MSC-BI_vs_singlecopy-concat-ML.png} 
