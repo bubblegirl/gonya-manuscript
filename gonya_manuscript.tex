@@ -454,22 +454,24 @@ The valuex XXX %TODO whatever the hell the PATH sampling results are
 %TODO massively reduce the direct comparison to Price here
 %\cite{yang2014orthology} orthologue extr method which means good discussion on problems with wrong selection
 %\cite{degnan2009gene} some bullshit bout paralogs in soy bean
-waterhouse2017busco
-Selection of paralogs for species inference is highly problematic as it will compare an arbitrarily divergent gene history as input. 
+Selection of paralogs for species inference is highly problematic as it compares an arbitrarily divergent gene history as input. 
 This problem is particularly prevalent in the dinoflagellates and gonyaulacales due to extensive paralogy from gene duplication. 
+This study sought to address the issues arising from paralog comparison by isolating single copy genes, based on the BUSCO software output. 
+As this software utilizes lineage specific hmmer libraries designed to target single copy genes, and the output distinguishes between single copy genes and duplications, it presents a method for reliably screening for single copy genes for phylogenomics \cite{waterhouse2017busco}.
 Only one other study by Price et al. (2017) seeks to address the issue of parology within the gonyalacales, by purportedly selecting single genes as input. 
 However there are several issues with the study presented by Price et al \cite{price2017robust}. 
-The assemblies used are from the MMETSP project, which are problematic as mentioned previously as they can present single copy genes which are hybrids of paralogs. 
-Hence the selection of single copy genes as input to the species evolution inference, is dubious. 
+The assemblies used are from the MMETSP project, which employednoutdated assembly methods as mentioned previously, and hence can present single copy genes which are instead hybrids of paralogs. 
+%Hence the selection of single copy genes as input to the species evolution inference, is dubious. 
 Further, the methodology for identifying and selecting the single copy genes is not included in the publication. 
 Contact with the author established that there was no documentation for the commands that the authors executed, so no record of how the genes were attained was available. 
-Hence it was not possible to compare the parameters that went into identifying and screening for single copy genes, it was not possible to scrutinize or reproduce the study.
-Lastly, the genes were concatenated and the evolutionary relationships were inferred using ML. While the bootstraps are well supported, this could very well be due to the methodology problems outlined in (2).
-The difference in topology between inferences presented by Price et al. and this study, is lies in the organization of sister taxa %(Fig. ~\ref{fig:tangle}). 
-Price et al. place \emph{Alexandrium} spp. as the closest genus to \emph{Gambierdiscus}, while this study places \emph{Pyrodinium} as sister. 
-As some \emph{Gambierdiscus} spp. produce polyketide toxins which cause ciguatera fish poisoning, establishing the close relations to \emph{Gambierdiscus} is important for investigating the toxin evolution \cite{pawlowiez2014transcriptome}.
-The placement of the genus \emph{Azadinium} is equally as divergent as Price et al. place this genus as part of the gonyaulacales, while this study firmly places this genus as an outgroup with \emph{Dinophysis} spp. and \emph{Karenia} spp.
-As \emph{Azadinium} spp. also produce polyketide toxins that cause azaspiracid shellfish poisoning, their placement is important for investigating polyketide toxin evolution \cite{meyer2015transcriptomic}.
+Hence it was not possible to compare the parameters that went into identifying and screening for single copy genes, so it was not possible to scrutinize or reproduce the study.
+Lastly, the genes were concatenated and the evolutionary relationships were inferred using ML. 
+While the bootstraps are well supported, this could very well be due to the methodology problems outlined in previous sections.
+%The difference in topology between inferences presented by Price et al. and this study, is lies in the organization of sister taxa %(Fig. ~\ref{fig:tangle}). 
+%Price et al. place \emph{Alexandrium} spp. as the closest genus to \emph{Gambierdiscus}, while this study places \emph{Pyrodinium} as sister. 
+%As some \emph{Gambierdiscus} spp. produce polyketide toxins which cause ciguatera fish poisoning, establishing the close relations to \emph{Gambierdiscus} is important for investigating the toxin evolution \cite{pawlowiez2014transcriptome}.
+%The placement of the genus \emph{Azadinium} is equally as divergent as Price et al. place this genus as part of the gonyaulacales, while this study firmly places this genus as an outgroup with \emph{Dinophysis} spp. and \emph{Karenia} spp.
+%As \emph{Azadinium} spp. also produce polyketide toxins that cause azaspiracid shellfish poisoning, their placement is important for investigating polyketide toxin evolution \cite{meyer2015transcriptomic}.
 %\FloatBarrier 
 %\begin{figure} 
 %\includegraphics[scale=.23]{Price-comparison.png} 
@@ -477,41 +479,54 @@ As \emph{Azadinium} spp. also produce polyketide toxins that cause azaspiracid s
 %\label{fig:tangle}
 %\end{figure} 
 %\FloatBarrier
-In this study, we utilised the BUSCO output which screens for and verifies single copy genes for input into species tree inference, a purpose which was suggested as ideal by the authors of the software \cite{simao2015busco}. 
+%In this study, we utilised the BUSCO output which screens for and verifies single copy genes for input into species tree inference, a purpose which was suggested as ideal by the authors of the software \cite{simao2015busco}. 
 %AD 160118: you have done a lot of writing describing how previous studies are full of shortcomings and how yours is the awesomest. while that is certainly good for the ego and all, i strongly suggest spending equal effort describing limitations of your study. This gives readers a balanced sense of the work and has the secondary benefit of showing the authors of all those studies you just poopoo'd that you're equally willing to criticize your own work so you are (slightly) less likely to be perceived as an arrogant egomaniac.
 % to get you started, perhaps you can talk about the unknown quality of the transcriptome assembly in the regions used for phylo inference. or the fact that you have to do assembly at all instead of just sequencing full length transcripts with high accuracy. or that you have to use transcripts because genomes are too expensive
 
 \subsection*{Limitations of study}
 %WAG shows some issues with model misspec under BI using WAG which disappeared with CAT BUT this was based on a concatenated dataset soo... fuck it? \cite{lartillot2007suppression}
-In the previous section we identified potential problems with common approaches to species inference for the gonyaulacales, and then sought to demonstrate that our methodology is more robust for addressing these problems. However we in no way want to imply that this study is not fraught with potential pitfalls too. We aim to present avenues for improvement for current methods, especially in areas where large datsets are recently unlocked such as in marine protists with the MMETSP project. %Models and methodology build upon previous work and improve with increased collective knowledge, take the progression for nucleotide substitution rates as an example. The JC69 model from 1969 assumes the substitutions rates between all nuceleotides are equal, including between purines and pyrimidines \cite{}. Through a series of increased complexity to model transition \& transversion rates (i.e. the likelihood of nucleotide change from purine to pyrimidine and vice versa) and steady-state distributions (frequency of each nucleotide given infinite time), the HK85 model was proposed in 1985 \cite{}.
+In the previous section we identified potential problems with common approaches to species inference in the literature, and in particular for the gonyaulacales. 
+We then sought to demonstrate that our methodology is more robust for addressing these problems. 
+However we do not imply that this study is not fraught with potential methodological errors. 
+We aim to present avenues for improvement on routine methods and to demonstrate the impact the method and data selections have on phylogenetic inference, especially in areas where large datasets were recently unlocked such as for marine protists with the MMETSP project. %Models and methodology build upon previous work and improve with increased collective knowledge, take the progression for nucleotide substitution rates as an example. The JC69 model from 1969 assumes the substitutions rates between all nuceleotides are equal, including between purines and pyrimidines \cite{}. Through a series of increased complexity to model transition \& transversion rates (i.e. the likelihood of nucleotide change from purine to pyrimidine and vice versa) and steady-state distributions (frequency of each nucleotide given infinite time), the HK85 model was proposed in 1985 \cite{}.
 %I may have gone on a tangent here. Probably leave that out.
-What follows is the identification of issues with the approach presented in this study, which the authors hope that these will be improved upon in the future. 
+What follows is the identification of issues with the approach presented in this study, which the authors hope will be improved upon by subsequent studies. 
 %\subsubsection*{Pipeline specific issues}
-\paragraph*{Trimming of RNA seq libraries.} The cut off values chosen for this study are based on the recommendations of MacMannes (2014) for optimal transcript discovery. However the recommendations are based on an RNA-seq library from mouse embryonic stem cells, which may not be an adequate model for dinoflagellates. 
+\paragraph*{Trimming of RNA seq libraries.} The cut off values chosen for this study are based on the recommendations of MacMannes (2014) for optimal transcript discovery. 
+However the recommendations are based on the efficacy of cut off values for a mouse embryonic stem cell RNA-seq library, which may not be an adequate model for dinoflagellates. 
 This could confound the difference between single copy genes and sequencing artifacts.
-%\paragraph*{Single copy gene selection bias.} The selection of single copy genes is based on BUSCOv2 hmmer libraries. The pre-screening process by which may have inherent selection bias that is not tranparent to us // Not sure if this one is a problem =/
 \paragraph*{Assembly parameters.}
-Trinity was chosen as the assembler for this study based on the findings of Honaas et al. (2016), in which Trinity was one of the top performing assemblers for \textit{de novo} transcriptomes as tested with \textit{Arabidopsis thaliana}, a plant with some similar genetic features to dinoflagellates.
+Trinity was chosen as the assembler for this study based on the findings of Honaas et al. (2016), in which Trinity was one of the top performing assemblers for \textit{de novo} transcriptomes as tested with \textit{Arabidopsis thaliana}. 
+While this plant model has similar genetic features to dinoflagellates, the conclusion of adequate comparison may be flawed.
 Further, Trinity performed well for identifying isoforms of genes and excelled at assembling highly expressed genes \cite{honaas2016selecting}.
 Conversely, Cerveau et al. (2016) found that Trinity, CLC Bio and IDBA-Tran assemblies all contain bioinformatic artifacts. 
 Using a combination of all three assemblers yielded a final assembly closer to biological reality than any individual assembler, when no reference genome is available \cite{cerveau2016combining}.
-As this study uses Trinity exclusively, it is subject to the bioinformatic errors found by Cerveau et al. which could affect downstream analysis.
+As this study uses Trinity exclusively, it is subject to the bioinformatic errors found by Cerveau et al. (2016) which could affect downstream analysis.
 %\paragraph*{Amino acid substitution model.} WAG model
 %\paragraph*{Molecular clock model selection.} Relaxed clock normal
 %\subsubsection*{Gonyaulacales specific issues}
 \paragraph*{Contamination of other taxa.} 
-The 650+ RNA extract submission to MMETSP was from a large number of investigators and low level contamination is inherent in the project \cite{keeling2014marine}. 
-As the cultures tested in all the studies contributing to this dataset were not axenic, contamination could be bacterial or eukaryotic in nature and could result in misleading gene phylogenies which were used to infer the species phylogeny.
+The 650+ RNA extract submission to MMETSP was from a large number of investigators and low level contamination is inherent in the project's dataset \cite{keeling2014marine}. 
+As the cultures tested in all the studies contributing to this dataset were not axenic, contamination could be bacterial or eukaryotic in nature and could result in misleading gene phylogenies, akin to the issues presented by paralog selection, which were used to infer the species phylogeny.
 \paragraph*{No representative genome for comparison.} 
 Without a guided genome comparison, it is difficult to extrapolate on the assembly adequacy and whether the genes selected are single copies, or  mis-assemblies of paralogs.
 \paragraph*{Different methods for RNA-seq.} 
-Three different approaches for RNA-seq library generation were employed for the libraries used in this study, the MMETSP taxa were sequences on HiSeq platform with 50bp inserts; while all other taxa were sequenced on the NextSeq platform with 75bp or 150bp inserts.
-\paragraph*{Total evidence.}
+Three different approaches for RNA-seq library generation were employed for the libraries used in this study, the MMETSP taxa were sequences on HiSeq platform with 50bp inserts; while all other taxa were sequenced on the NextSeq platform with 75bp or 150bp inserts. 
+The incongruity between sequencing methods may cause divergent accuracy in single copy gene coverage for sequencing.  
+\paragraph*{Total evidence phylogenetics.}
+The method presented here purely considers the information contained in the genetic aspect of the organsims examined. 
+Morphological characters and fossil dates can add another dimension to the phylogenetic resolution of taxa placement and put the evolution within a relative time frame \cite{gavryushkina2017bayesian}.  
 %TODO usingbayesian and fossil dating to infer major eukar group splits, also impacts of age estimations based on model used \cite{eme2014age}
 
 \newpage
 \section{Conclusion}
-With the accessibility of large data sets, the focus needs to fall on the methodology for investigating them. This study presents a robust methodology to process RNA-seq libraries through assembly, single copy gene selection to phylogenetic species inference. As a case study, the gonyaulacales phylogeny was elucidated as taxa within this order are rife with paralogs. The resulting phylogeny shows a well resolved, well supported inference of the gonyaulacales evolution. By presenting a statistically rigurous methodology and demonstrating how this overcomes common problems faced in phylogenetic studies, we hope that the use of reproducible, open-access processing of large data-sets such as the MMETSP database becomes the standard.  
+With the public accessibility of large data sets, the focus needs to shift to the methodology used to analyze them. 
+This study presents a robust methodology BI MSC based species inference. 
+The scripts process RNA-seq libraries through assembly, single copy gene selection to alignment for phylogenetic species inference. 
+As a case study exemplifying organisms rife with paralogs and ancient lineages, the gonyaulacales were selected. 
+The resulting phylogeny shows a well resolved, well supported and statistically sound inference of the gonyaulacales evolution. 
+This was then compared to phylogenies inferred from commonly utilized methods in the literature, and issues arising from these methods were discussed. 
+By presenting a statistically rigorous methodology and demonstrating how this overcomes common problems faced in phylogenetic studies, we hope that the use of reproducible, open-access processing of large data-sets such as the MMETSP database becomes the standard.  
 \newpage
 
 \section{Acknowledgments}
