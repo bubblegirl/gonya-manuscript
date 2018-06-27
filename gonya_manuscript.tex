@@ -186,15 +186,14 @@ Inference was accelerated using BEAGLE \cite{ayres2011beagle} on the GPU.
 Posterior distributions of parameters were approximated after 300,000,000 generations of MCMC runs with 4 heated and one cold chain, sampled every 5,000 generations  with a burn in of 15\%. 
 The inference was run four times to compare convergence of parameters, then log and tree files were merged. 
 
-
 %\subsection*{Path sampling}
 %TODO Mathieu please put details in
 
 \subsection*{Inference run time comparison}
 A subset of 14 taxa was selected for a comparison between CPU and GPU inference run time comparison. 
-The transcriptome libraries were fed through the single copy gene extracrion script as described, which was set to extract single copy genes present in all of the taxa. 
+The transcriptome libraries were fed through the single copy gene extraction script as described, which was set to extract single copy genes present in all of the taxa. 
 The resulting alignments were run on *BEAST either on the CPU or GPU.
-
+%TODO Up tp here
 \subsubsection*{Generation of figures}
 Tanglegrams were generated with Dendroscope v3.5.9 \cite{huson2007dendroscope}; images were edited in GIMP \cite{gimp}.
 \newpage
@@ -203,7 +202,7 @@ Tanglegrams were generated with Dendroscope v3.5.9 \cite{huson2007dendroscope}; 
 RNA-sequencing libraries are available on NCBI's sequence read archive under SRP134273.
 Sequencing of transcriptomes for \emph{Gambierdiscus} spp. and \emph{T.} cf. \emph{kofoidii} generated datasets ranging in size from, 143,155,667 to 233,822,334 reads, resulting in 97,634 to 191,224 assembled contigs (table ~\ref{tbl:asmstats}). 
 Approximately XX\% to XX\% predicted to be protein coding sequences. 
-%TODO Interpro scan, SRA IDs
+
 \FloatBarrier
 \begin{longtable}{  | p{3cm} |p{2.2cm} | p{2.2cm} | p{2.2cm} | p{2.2cm} | p{2.2cm} |}
 \caption{Summary of transcriptome sequencing and assembly statistics.}\\
@@ -233,7 +232,7 @@ Approximately XX\% to XX\% predicted to be protein coding sequences.
 \hline
 \textbf{\# clusters}&139,699&92,418&139,487&107,766&116,468\\
 \hline
-\textbf{with GO terms}&44,167&32,140&43,098&34,201&37,656\\
+\textbf{Contigs with GO annotations}&44,167&32,140&43,098&34,201&37,656\\
 \hline
 %\textbf{with full annotations}&&&&&\\
 %\hline
