@@ -99,7 +99,7 @@ We recommend Huelsenbeck et al. (2001) for an overview of the principles underly
 Error type persists and increases as dataset size approaches infinity. 
 If strong, can override true phylogenetic signal.\\
 \textbf{Incomplete lineage sorting:} discordance of gene evolutionary history with the species evolutionary history causing the phylogenetic species tree to be misinfered.\\
-\textbf{Long branch attraction:} phylogenetic phenomenon where distantly related taxa are inferred as close relatives due to systematic error, also known as the Felsenstein zone.
+\textbf{Long branch artifacts:} phylogenetic phenomenon where distantly related taxa are inferred as close relatives due to systematic error, also known as the Felsenstein zone.
 
 \subsubsection*{Box 2: Who/what are the gonyaulacales?}
 %TODO Aaron and Mathieu, as non protistologists is this section adequate in explaining why the gonyaulacales were chosen for this work, or would it help to include some of the commented out text?
@@ -290,7 +290,7 @@ Other deeper nodes were well supported.
 
 \subsubsection*{Concatenated single copy gene based phylogeny inferred with BI}
 \FloatBarrier 
-%TODO Running with PATH sampling
+%TODO Running with PATH sampling ~~~ check out trees closer to posterior for prev PATH sampling run in /shared/homes/s1/Liza/concat-bollocks/test/
 
 \begin{figure} 
 %\includegraphics[scale=.23]{} 
@@ -368,12 +368,15 @@ To address this problem, trimming and assembly of RNA-seq libraries using Trimom
 %eukaryotic deep lineages show evidence of rapid diversification \cite{he2016reducing} -- actually maybe find a different ref for this, they're kinda shite, which results in short internl brnaches which is the play ground for ILS.
 % ---> \cite{degnan2006discordance} describes that methods which rely on democratic elucidation of species tree by most common gene tree are statistically predisposed to being wrong as anomatolous gene trees are likely with asymetric trees, and this holds true for any trees with 5 or more taxa (ie. if there are long and short branches). uses coalescence as example
 Extensive coverage of taxons within the group of organisms examined is necessary to give useful insight into the evolutionary inter-taxon relationships. 
-Two concerning phenomena that can creep in in phylogenetic studies based on the data set selected are incomplete lineage sorting (ILS) and long branch attraction (LBA). 
+Two concerning phenomena that can creep in in phylogenetic studies based on the data set selected are incomplete lineage sorting (ILS) and long branch artifacts (LBA). 
 The lack of adequate coverage is termed ILS and subject to postulated detrimental impact through bias on inferences \cite{heath2008taxon}. 
 The impact of ILS on phylogenetic inferences has been explored through simulated datasets with a known species tree. 
-Maddison et. Knowles (2006) found that the amount of genetic information retains enough information to overcome extensive ILS when the number of genes is sufficient, in their study 27 genes were sufficient \cite{maddison2006inferring}. 
+Maddison et. Knowles (2006) found that the amount of genetic information retains enough information to overcome extensive ILS when the number of genes is sufficient, in their study 27 genes were appropriate \cite{maddison2006inferring}. 
 So extrapolating from the simulation data studies available, a large number of genes should overcome the incomplete coverage of the families from the gonyaluacales and give an accurate representation of the evolutionary relationships despite the missing taxa. 
-LBA in comparison is prone to be problematic in the deployment of less robust inference methods such as parsimony, however if the models are mispecified in ML or BI study this issue can occur also. %TODO expand section on LBA
+In contrast, LBA is exacerbated if ILS is present. 
+LBA arises if some species have disproportionately high substitution rates which causes the presence of long and short branches in the phylogenetic topology \cite{liu2014coalescent}. 
+Short internal branches with long external branches are symptomatic of ancient lineage radiation, which is a characteristic commonly associated with the dinoflagellates. 
+Under these conditions, concatenation methods are more likely to be mislead and fall prey to LBAs than MSC methods \cite{liu2014coalescent}.
 
 \subsection*{Inferring species evolution from a small subset of genes such as ribosomal genes, whose evolution may not reflect that of the species.}
 \FloatBarrier 
