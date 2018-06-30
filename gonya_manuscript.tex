@@ -291,6 +291,11 @@ Other deeper nodes were well supported.
 \subsubsection*{Concatenated single copy gene based phylogeny inferred with BI}
 \FloatBarrier 
 %TODO Running with PATH sampling ~~~ check out trees closer to posterior for prev PATH sampling run in /shared/homes/s1/Liza/concat-bollocks/test/
+All nodes resolved fully supported, except one node within the genus \textit{Gambierdiscus} which was very well supported (Fig. ~\ref{fig:SCconcatBI}). 
+The species in the genera \textit{Alexandrium}, \textit{Gambierdiscus} and \textit{Ostreopsis} all resolved with full support within their respective genera clades. 
+The overall topology of the gonyaulacales resolved as three clades with \textit{Thecadinium} and then \textit{Ceratium} as ancestral lineages. 
+\textit{Alexandrium}, \textit{Coolia} and \textit{Ostreopsis} clustered together, followed by \textit{Gambierdiscus} on their own in a sister clade. 
+The third clade encompasses \textit{Gonyaulax}, \textit{Protoceratium} and \textit{Pyrodinium}. 
 
 \begin{figure} 
 \includegraphics[scale=.3]{figures/SC-concat-BI.png} 
@@ -423,15 +428,15 @@ The BI MSC method clusters \emph{Ceratium}, \emph{Gonyaulax}, \emph{Protoceratiu
 
 \subsection*{Concatenating selected genes and using BI methods for species inference.}
 \FloatBarrier
-Finally, to demonstrate the difference in concatenation and MSC, the single copy gene dataset was run as BI with both approaches (Fig. ~\ref{fig:tangleconcatBI}). 
-Even within a BI framework, while more robust than ML, concatenation can introduce a number of errors. 
+Even within a BI framework, while more robust than when used in conjunction with ML, concatenation can introduce a number of errors. 
 Under simulated datasets, even under the coalescent methods, the species tree topology is inaccurate when concatenation is used \cite{kubatko2007inconsistency}. 
 Further to that, the PP values tend to be overestimated for concatenation \cite{suzuki2002overcredibility}. 
-Theoretically for the gonyaluacales, and taxa prone to paralogy and convoluted evolutionary histories, MSC is a preferable approach to concatenation as MSC is more robust to ILS \& LBA artefacts \cite{liu2014coalescent}.
-To objectively compare the veracity of this  for the single copy gene dataset from the gonyalacales, we used a statistical framework to compare the concatenation and MSC approaches through PATH sampling. 
+Theoretically for the gonyaluacales, and taxa prone to paralogy and convoluted evolutionary histories, MSC is a preferable approach to concatenation as MSC is more robust to ILS \& LBA artefacts \cite{liu2014coalescent}. 
+To test this theory, the single copy gene dataset was run with BI both under MSC and with concatenation (Fig. ~\ref{fig:tangleconcatBI}). 
+We then used a statistical framework to compare the two model approaches to verify the veracity of model adequacy through PATH sampling. 
 PATH sampling is an adequate method for objectively comparing the model parameters for relaxed clock models while penalizing for over-parameterization \cite{baele2012accurate}. 
 The valuex XXX %TODO whatever the hell the PATH sampling results are
-%TODO whatever the topological differences are 
+%TODO topology comparison here 
 
   
 %with concatenation, coalescent methods still commonly return inaccurate species tree resolutions \cite{kubatko2007inconsistency} 
