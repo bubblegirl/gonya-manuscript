@@ -58,10 +58,8 @@ The quest to untangle these relationships is an ongoing process that can help in
 A limiting factor for our analysis of evolutionary relationships is, commonly, the computational methods and available infrastructure used to analyze the datasets. 
 Another is that the methods and models applied to the dataset can influence the resulting phylogeny and there needs to be a solid understanding of the methods, including their shortcomings, by the operator.
 An example of the breadth of publicly available data is the Marine Microbial Eukaryote Transcriptome Sequencing Project (MMETSP), which sequenced transcriptomes of over 650 marine eukaryotic microbes \cite{keeling2014marine}. 
-%AD: try rephrasing the following. I think you mean the organisms are highly prevalent in the environment, and their lineages are not well studied.
-This project focused on a group of organisms which is highly prevalent in the environment, but the  has unlocked an unprecedented wealth of information to investigate some of the understudied yet prolific branches of the tree of life.
-%AD: instead of describing a nebulous gap, suggest you just skip straight to describing how you're studying the effect of different datasets and analytic methods on phylogeny.
-Here we seek to bridge some of the gap between the theoretical in computational biology and the environmental biologists exploring these types of datasets.
+This project focused on a group of understudied organisms which are abundant and play vital roles in the marine environment, from geochemical cylcling, predation to symbiosis. 
+This dataset offers an excellent opportunity to explore the evolutionary relationships between these taxa through phylogenetics. 
 %AD: shared evolutionary history is homology. Orthology is a subtype of homology which implies all gene tree divergences were caused by speciations. please revise accordingly.
 For phylogenetic inference, the gene representative for each taxa is compared with all other representatives, with the assumption of a shared evolutionary history, i.e. orthology, from which the species evolution is inferred \cite{maddison1997gene}. 
 %AD: can you be more specific what you mean by random sampling error? I think you mean variance in the tree estimate due to insufficient data. Also, be clear that systematic error usually comes from model misspecification.
@@ -117,7 +115,7 @@ For a review on the genetic features of dinoflagellates see \cite{murray2016unra
 While the evolutionary relationship of most orders within the dinoflagellates has been inferred with consistently high support values, one order has often escaped elucidation - the gonyaulacales. 
 %Analyses for this order commonly combined concatenation and maximum likelihood approaches, which yielded long branch attraction, low confidence values and inconsistent taxon resolution \cite{}. 
 %AD: typo in gonya...? also the first half of sentence doesn't make sense, pls revise
-Improving upon the species the evolution of the gonyaulaceles has implications for environmental disease monitoring, as neurotoxin production is prevalent in this order and the direct cause of paralytic shellfish poisioning, ciguatera fish poisoning, e.g. \cite{shalchian2006combined,zhang2007three,saldarriaga2004molecular,hoppenrath2010dinoflagellate,murray2005improving}. 
+Improving upon the species the evolution of the gonyaulacales has implications for environmental disease monitoring, as neurotoxin production is prevalent in this order and the direct cause of paralytic shellfish poisioning, ciguatera fish poisoning, e.g. \cite{shalchian2006combined,zhang2007three,saldarriaga2004molecular,hoppenrath2010dinoflagellate,murray2005improving}. 
 %Specifically the ciguatoxins produced by some \emph{Gambierdiscus} spp. are of interest as the causative agent of ciguatera fish poisoning, a neglected tropical disease with global implications \cite{globalcig}.%, which is predicted to increase in prevalence as climate change progresses \cite{}.
 
 \newpage
@@ -227,7 +225,6 @@ Clusters with gene ontology (GO) annotations made up 30.9\% to 34.8\% of the tot
 \hline
 \label{tbl:asmstats}
 \emph{Sequences:}&\emph{G. carpenteri}&\emph{G. lapillus}&\emph{G. polynesiensis}&\emph{G.} cf. \emph{silvae}&\emph{T.} cf. \emph{kofoidii}\\
-%TODO how the fuck can there be more clusters than contigs for  carp, poly and kofoidii
 \hline
  \multicolumn{6}{| c |}{Sequencing}\\
  \hline
@@ -269,22 +266,21 @@ Single copy genes for each transcriptome used in this study are available on Zen
 %TODO single copy genes need ot go up on Zenodo, then link DOI here
 
 \subsection*{Phylogenetic inferences}
-%AD: maybe "weakly supported" for > 50%?
-Support for branches was interpreted as follows, for ML and BI, respectively: 100\%/1.0 was considered fully supported, above 90\%/0.9 was very well supported, 80\%/0.8 and above was interpreted as relatively well supported and above 50\%/0.5 was considered supported but below was considered unsupported.
+Support for branches was interpreted as follows, for ML and BI, respectively: 100\%/1.0 was considered fully supported, above 90\%/0.9 was very well supported, 80\%/0.8 and above was interpreted as relatively well supported and above 50\%/0.5 was considered weakly supported but below was considered unsupported.
 %AD: if possible you should cite some previous study which identifies them as a strong outgroup
 As \emph{Azadinium spinosum}, \emph{Dinophysis acuminata} and \emph{Karenia brevis} are considered the outgroup to this study, the unifying branch for these taxa was used to root the tree in all subsequent analyses.
 \subsubsection*{rDNA based phylogeny}
 \FloatBarrier 
 All nodes were supported, with a range of certainty (Fig. ~\ref{fig:rdna}).
 Species with the genera \emph{Gambierdiscus} and \emph{Ostreopsis} resolved with their sister species with full support. 
-Within the \emph{Gambierdiscus} clade, nodes are either supported or fully supported. 
+Within the \emph{Gambierdiscus} clade, nodes are either weakly supported or fully supported. 
 The two species of \emph{Alexandrium} resolve as well supported closest relatives, but do not form an individual clade. 
 %AD: crown taxa is a new one for me - surprising after 15 years thinking about phylogeny!
 Deeper nodes were supported but with less certainty than the crown taxa. 
 Two distinct clades can be observed from the topology: One including \emph{Alexandrium}, \emph{Coolia} and \emph{Ostreopsis}; another with only \emph{Gambierdiscus}. 
 Sister to these clades, in descending order, was \emph{Pyrodinium}, \emph{Ceratium} and \emph{Gonaulax}, \emph{Protoceratium} and \emph{Thecadinium}. 
 The outgroup was relatively well supported and included \emph{Crypthecodinium}. 
-Support for deeper nodes varied from supported to well supported.
+Support for deeper nodes varied from weak to well supported.
 
 \begin{figure} 
 \includegraphics[scale=.4]{figures/rDNA-ML.png} 
@@ -314,7 +310,7 @@ Other deeper nodes were well supported.
 \subsubsection*{Concatenated single copy gene based phylogeny inferred with BI}
 \FloatBarrier 
 %TODO Running with PATH sampling ~~~ check out trees closer to posterior for prev PATH sampling run in /shared/homes/s1/Liza/concat-bollocks/test/
-All nodes resolved fully supported, except one node within the genus \textit{Gambierdiscus} which was very well supported (Fig. ~\ref{fig:SCconcatBI}). 
+All nodes resolved with full support, except one node within the genus \textit{Gambierdiscus} which was very well supported (Fig. ~\ref{fig:SCconcatBI}). 
 The species in the genera \textit{Alexandrium}, \textit{Gambierdiscus} and \textit{Ostreopsis} all resolved with full support within their respective genera clades. 
 The overall topology of the gonyaulacales resolved as three clades with \textit{Thecadinium} and then \textit{Ceratium} as ancestral lineages. 
 \textit{Alexandrium}, \textit{Coolia} and \textit{Ostreopsis} clustered together, followed by \textit{Gambierdiscus} on their own in a sister clade. 
@@ -334,7 +330,7 @@ Species of \emph{Alexandrium}, \emph{Ostreopsis} and \emph{Gambierdiscus} resolv
 The topology within the gonyaulacales resolves as three clades: 
 one fully supported encompassing \emph{Alexandrium}, \emph{Coolia} and \emph{Ostreopsis}; 
 a well supported clade with \emph{Gambierdiscus} and \emph{Pyrodinium}; 
-and a supported clade including \emph{Ceratium}, \emph{Gonyaulax}, \emph{Protoceratium} and \emph{Thecadinium}. 
+and a weakly supported clade including \emph{Ceratium}, \emph{Gonyaulax}, \emph{Protoceratium} and \emph{Thecadinium}. 
 The outgroup clustered together with high support. 
 \emph{Crypthecodinium} resolved as a sister taxon to the outgroup. 
 Other deeper nodes were well or fully supported.
