@@ -180,7 +180,7 @@ Inference was accelerated using BEAGLE \cite{ayres2011beagle} on the GPU.
 Posterior distributions of parameters were approximated after 300,000,000 generations of MCMC runs with 4 heated and one cold chain, sampled every 5,000 generations  with a burn in of 15\%. 
 The inference was run four times to compare convergence of parameters, then log and tree files were merged. 
 
-%\subsection*{Path sampling}
+%\subsection*{stepping stone analysis}
 %TODO put details in
 
 \subsection*{Inference run time comparison}
@@ -288,7 +288,7 @@ Other deeper nodes were well supported.
 
 \subsubsection*{Concatenated single copy gene based phylogeny inferred with BI}
 \FloatBarrier 
-%TODO Running with PATH sampling ~~~ check out trees closer to posterior for prev PATH sampling run in /shared/homes/s1/Liza/concat-bollocks/test/
+%TODO Running with stepping stone ~~~ check out trees closer to posterior for prev ss sampling run in /shared/homes/s1/Liza/concat-bollocks/test/
 All nodes resolved with full support, except one node within the genus \textit{Gambierdiscus} which was very well supported (Fig. ~\ref{fig:SCconcatBI}). 
 The species in the genera \textit{Alexandrium}, \textit{Gambierdiscus} and \textit{Ostreopsis} all resolved with full support within their respective genera clades. 
 The overall topology of the gonyaulacales resolved as three clades with \textit{Thecadinium} and then \textit{Ceratium} as ancestral lineages. 
@@ -326,8 +326,8 @@ Other deeper nodes were well or fully supported.
 With publicly available data sets such as the MMETSP project for marine microbes \cite{keeling2014marine}, availability of data is no longer the biggest limitation for exploring the species evolution within these abundant organisms. 
 However, the next obstacle lies in the methodology used for investigating the evolutionary relationship between these taxa, as the choice in data analysis method can impact the resultant phylogeny and conclusions drawn. 
 %AD: can you say *why* this is highly relevant for the dinos? perhaps some stats on gene family sizes & paralog counts being larger than in other clades? or a paper to cite?
-Dinoflagellates  
-In particular and highly relevant to working with dinoflagellate phylogenetics,
+Dinoflagellates are notorious for their extensive genomes with suspected whole or partial genome duplication and potential cDNA retro-insertion into the genome \cite{van2009florida.beauchemin2012dinoflagellate,slamovits2008widespread,hou2009distinct,lin2011genomic}. 
+This causes unusually large gene copy numbers and extensive paralogy. 
 With this in mind, the gonyaulacales presented as an ideal challenge to test the process of paralog elimination for the methodology presented here as input for species inference.  
 The authors hope the process presented here is transparent and reproducible for those with basic programming skills. 
 Due to the size of their genomes and extensive paralogs the gonyaulacales were chosen to test the methodology presented here.
@@ -336,12 +336,12 @@ We present a synopsis of the impact of model and data selection on the overall t
 The authors are mindful that overparameterization as well as under parameterization can cause mis-specification for BI, if the inference is not in the Felsenstein zone. 
 However under- compared to over-parameterization has been shown to have  more severe impacts in giving the wrong species tree \cite{lemmon2004importance}. 
 %AD: path. does path sampling address model adequacy? i'm doubtful.
-Hence integral to this study was the statistical comparison of concatenation versus MSC through PATH sampling as evidence for model parameter adequacy. 
+Hence integral to this study was the statistical comparison of concatenation versus MSC through stepping stone sampling as evidence for model parameter adequacy. 
 The scripts which form the basis of this study are publicly available through github and the single copy genes used to infer the species evolution in this study, as well as the xml input and log files for the *BEAST runs, are available on zenodo. 
 What follows is a discussion of the key methodological questions that this study sought to address, using the gonyalacales as a case study. 
 %TODO refs, not sure if neede but were sent by Shauna:
 % Disagreements in deeper branches in insect phylogenomic study which compared models - but used concat \cite{boussau2014strepsiptera}
-% PATH sampling also penalises over-parameterization \cite{} because while bias decreses w/ #parameters, variance increases. So model \& it's parameters should hit the sweet spot between the two \cite{kelchner2007model}
+% path sampling also penalises over-parameterization \cite{} because while bias decreses w/ #parameters, variance increases. So model \& it's parameters should hit the sweet spot between the two \cite{kelchner2007model} ... same for ss?
 
 %Paragraph I reckon I can take out:
 %This study presents a set of scripts that trim and assemble RNA-seq libraries, then search for a set of single copy genes common among the input transcriptomes which are subsequently aligned and ready for phylogenetic inference. 
@@ -448,8 +448,8 @@ Under simulated datasets, even under the coalescent methods, the species tree to
 Further to that, the PP values tend to be overestimated for concatenation \cite{suzuki2002overcredibility}. 
 Theoretically for the gonyaluacales, and taxa prone to paralogy and convoluted evolutionary histories, MSC is a preferable approach to concatenation as MSC is more robust to ILS \& LBA artefacts \cite{liu2014coalescent}. 
 To test this theory, the single copy gene dataset was run with BI both under MSC and with concatenation (Fig. ~\ref{fig:tangleconcatBI}). 
-We then used a statistical framework to compare the two model approaches to verify the veracity of model adequacy through PATH sampling. 
-PATH sampling is an adequate method for objectively comparing the model parameters for relaxed clock models while penalizing for over-parameterization \cite{baele2012accurate}. 
+We then used a statistical framework to compare the two model approaches to verify the veracity of model adequacy through stepping stone analysis. 
+PATH sampling is an adequate method for objectively comparing the model parameters for relaxed clock models while penalizing for over-parameterization \cite{baele2012accurate}. %TODO same for ss?
 The valuex XXX %TODO whatever the hell the PATH sampling results are
 %TODO topology comparison here 
 The resolution of \textit{Alexandrium}, \textit{Coolia} and \textit{Ostreopsis} was identical between the two methods. 
@@ -460,11 +460,11 @@ Further, in the MSC analysis \textit{Ceratium}, \textit{Gonyalax}, \textit{Proto
   
 %with concatenation, coalescent methods still commonly return inaccurate species tree resolutions \cite{kubatko2007inconsistency} 
 %Suzuki 2002 shows that PP is overestimated when concatenation is used
-%TODO \cite{baele2012accurate} for Path sampling as accurate model assessment method for relaxed clock models... are any improper priors used? PS may not be able to sample from the prior
+%TODO \cite{baele2012accurate} for Path sampling as accurate model assessment method for relaxed clock models... are any improper priors used? PS may not be able to sample from the prior %TODO see if ok for ss
 
 % MSC robust for both ILS & LBA unlike concat <3 \cite{liu2014coalescent} ; example from water lillies with same phenomenon \cite{liu2014coalescent}
 
-%TODO CHeck again after PATH sampling is complete and also if run0 is posterior
+%TODO CHeck again after ss sampling is complete and also if run0 is posterior
 \begin{figure} 
 \includegraphics[scale=.18]{figures/SC-MSC-BI_vs_SC-concat-BI.png} 
 \caption{Tanglegram showing the topological differences in phylogenies with same 58 single copy gene alignments as input. (A) concatenated beast2; and (B) inference MSC starbeast inference. Gonyaulacales (\#16) in purple, outgroups (\#3) in light blue and taxa \textit{incertae sedis} (\#1) in teal.} 
@@ -893,7 +893,7 @@ The inference was run four times to compare convergence of parameters, then log 
 Log and tree files are available on Zenodo DOI: 
 Inference was accelerated using BEAGLE \cite{ayres2011beagle} on the GPU.
 
-\subsection*{Path sampling}
+\subsection*{Stepping stone analysis}
 %TODO Mathieu please put details in
 
 \subsection*{Inference run time comparison}
@@ -1002,7 +1002,7 @@ The scale represents number of mutations.}
 
 \subsubsection*{Concatenated single copy gene based phylogeny inferred with BI}
 \FloatBarrier 
-%TODO Running with PATH sampling
+%TODO Running with ss sampling
 
 \begin{figure} 
 %\includegraphics[scale=.23]{} 
