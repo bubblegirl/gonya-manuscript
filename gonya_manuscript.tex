@@ -96,7 +96,6 @@ If strong, can override true phylogenetic signal.\\
 \subsubsection*{Box 2: Who/what are the gonyaulacales?}
 %TODO Aaron and Mathieu, as non protistologists is this section adequate in explaining why the gonyaulacales were chosen for this work, or would it help to include some of the commented out text?
 The gonyaulacales are an order within the super-phylum alveolata and sub-phylum dinoflagellata, which are an ancient lineage on the eukaryotic branch of life \cite{moldowan1998biogeochemical}. 
-%AD: following sentence is too long, split it up pls
 They play a role in several important ecological processes in aquatic environments where they cover a diverse array of niches such as symbionts, parasites and autotrophs. 
 Some taxa can cause harmful algal blooms through proliferation and/or neurotoxin production (e.g. causing paralytic shellfish poisioning, ciguatera fish poisoning) \cite{murray2016unravelling}.
 Dinoflagellates possess large genomes (estimated 3.7 to 220 Gbp), with extensive paralogy and repetitive short sequences  \cite{casabianca2017genome,murray2016unravelling}. 
@@ -182,13 +181,13 @@ Posterior distributions of parameters were approximated after 300,000,000 genera
 The inference was run four times to compare convergence of parameters, then log and tree files were merged. 
 
 %\subsection*{Path sampling}
-%TODO Mathieu please put details in
+%TODO put details in
 
 \subsection*{Inference run time comparison}
 A subset of 14 taxa was selected for a comparison between CPU and GPU inference run time comparison. 
 The transcriptome libraries were fed through the single copy gene extraction script as described, which was set to extract single copy genes present in all of the taxa. 
 The resulting alignments were run on *BEAST either on the CPU or GPU.
-%TODO Up tp here
+
 \subsubsection*{Generation of figures}
 Tanglegrams were generated with Dendroscope v3.5.9 \cite{huson2007dendroscope}; images were edited in GIMP \cite{gimp}.
 \newpage
@@ -246,8 +245,8 @@ Single copy genes for each transcriptome used in this study are available on Zen
 
 \subsection*{Phylogenetic inferences}
 Support for branches was interpreted as follows, for ML and BI, respectively: 100\%/1.0 was considered fully supported, above 90\%/0.9 was very well supported, 80\%/0.8 and above was interpreted as relatively well supported and above 50\%/0.5 was considered weakly supported but below was considered unsupported.
-%AD: if possible you should cite some previous study which identifies them as a strong outgroup
-As \emph{Azadinium spinosum}, \emph{Dinophysis acuminata} and \emph{Karenia brevis} are considered the outgroup to this study, the unifying branch for these taxa was used to root the tree in all subsequent analyses.
+As \emph{Azadinium spinosum}, \emph{Dinophysis acuminata} and \emph{Karenia brevis} are members of different orders (Dinophyceae ordo incertae sedis, Dinophysiales \& Gymnodiniales respectively) and consistently resolve outside of the gonyaulacales in phylogenetic analyses, their placement as an outgroup was considered a given for this study. 
+Hence the unifying branch for these taxa was used to root the tree in all subsequent analyses.
 \subsubsection*{rDNA based phylogeny}
 \FloatBarrier 
 All nodes were supported, with a range of certainty (Fig. ~\ref{fig:rdna}).
