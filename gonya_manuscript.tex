@@ -276,7 +276,7 @@ The topology shows three distinct, well supported clades:
 One encompassing \emph{Alexandrium}, \emph{Coolia} and \emph{Ostreopsis}; another which only contains \emph{Gambierdiscus}; and one which includes \emph{Pyrodinium}, \emph{Gonyaulax} and \emph{Protoceratium}. 
 Sister to these clades is \emph{Thecadinium}, followed by \emph{Ceratium}. .
 The split of the outgroup was fully supported, while the internal nodes resolved very well supported. 
-\emph{Crypthecodinium} resolved within the outgroup, sister to \emph{Karenia.} 
+\emph{Crypthecodinium} resolved within the outgroup, sister to \emph{Karenia}. 
 Other deeper nodes were well supported.
  
 \begin{figure} 
@@ -324,10 +324,12 @@ Other deeper nodes were well or fully supported.
 \newpage
 \section{Discussion}
 With publicly available data sets such as the MMETSP project for marine microbes \cite{keeling2014marine}, availability of data is no longer the biggest limitation for exploring the species evolution within these abundant organisms. 
-%AD: rather than suggesting a value judgment ("best") perhaps just point out that choices in data analysis can impact conclusions that are drawn
-However, the next obstacle lies in the methodology used for investigating the evolutionary relationship between these taxa, as common practice does not necessarily equate best practice.
+However, the next obstacle lies in the methodology used for investigating the evolutionary relationship between these taxa, as the choice in data analysis method can impact the resultant phylogeny and conclusions drawn. 
 %AD: can you say *why* this is highly relevant for the dinos? perhaps some stats on gene family sizes & paralog counts being larger than in other clades? or a paper to cite?
-In particular and highly relevant to working with dinoflagellate phylogenetics, the process of paralog elimination as input for species inference presented here is transparent and, the authors hope, reproducible for those with basic programming skills. 
+Dinoflagellates  
+In particular and highly relevant to working with dinoflagellate phylogenetics,
+With this in mind, the gonyaulacales presented as an ideal challenge to test the process of paralog elimination for the methodology presented here as input for species inference.  
+The authors hope the process presented here is transparent and reproducible for those with basic programming skills. 
 Due to the size of their genomes and extensive paralogs the gonyaulacales were chosen to test the methodology presented here.
 We present a synopsis of the impact of model and data selection on the overall topology, while comparing commonly employed methodologies. 
 %AD: the following statement seems out of place. maybe you need to start a new paragraph about the problem of model misspecification? let's remember the well known words of George Box...all models are wrong
@@ -335,8 +337,7 @@ The authors are mindful that overparameterization as well as under parameterizat
 However under- compared to over-parameterization has been shown to have  more severe impacts in giving the wrong species tree \cite{lemmon2004importance}. 
 %AD: path. does path sampling address model adequacy? i'm doubtful.
 Hence integral to this study was the statistical comparison of concatenation versus MSC through PATH sampling as evidence for model parameter adequacy. 
-%AD: maybe put your beast xml files into zenodo as well?
-The scripts which form the basis of this study are publicly available through github and the single copy genes used to infer the species evolution in this study, as well as the log files for the *BEAST runs, are available on zenodo. 
+The scripts which form the basis of this study are publicly available through github and the single copy genes used to infer the species evolution in this study, as well as the xml input and log files for the *BEAST runs, are available on zenodo. 
 What follows is a discussion of the key methodological questions that this study sought to address, using the gonyalacales as a case study. 
 %TODO refs, not sure if neede but were sent by Shauna:
 % Disagreements in deeper branches in insect phylogenomic study which compared models - but used concat \cite{boussau2014strepsiptera}
@@ -378,7 +379,7 @@ To address this problem, trimming and assembly of RNA-seq libraries using Trimom
 % ---> \cite{degnan2006discordance} describes that methods which rely on democratic elucidation of species tree by most common gene tree are statistically predisposed to being wrong as anomatolous gene trees are likely with asymetric trees, and this holds true for any trees with 5 or more taxa (ie. if there are long and short branches). uses coalescence as example
 Extensive coverage of taxons within the group of organisms examined is necessary to give useful insight into the evolutionary inter-taxon relationships.
 %AD: s/artifacts/attraction/ throughout
-Two concerning phenomena that can creep in to phylogenetic studies based on the data set selected are incomplete lineage sorting (ILS) and long branch artifacts (LBA). 
+Two concerning phenomena that can creep in to phylogenetic studies based on the data set selected are incomplete lineage sorting (ILS) and long branch attraction (LBA). 
 %AD: the following sentence doesn't make sense
 The lack of adequate coverage is termed ILS and subject to postulated detrimental impact through bias on inferences \cite{heath2008taxon}. 
 The impact of ILS on phylogenetic inferences has been explored through simulated datasets with a known species tree. 
