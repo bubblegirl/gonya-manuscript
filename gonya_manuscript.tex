@@ -176,12 +176,11 @@ The analysis was performed with the WAG amino acid substitution model \cite{whel
 A random local clock was employed \cite{drummond2010bayesian}. 
 Inference was executed on the HPCC. 
 Inference was accelerated using BEAGLE \cite{ayres2011beagle} on the GPU. 
-%AD: are you sure about this 4 heated & 1 cold chain bit? that sounds like something MrBayes would do, not BEAST, but maybe BEAST2 has it?
-Posterior distributions of parameters were approximated after 300,000,000 generations of MCMC runs with 4 heated and one cold chain, sampled every 5,000 generations  with a burn in of 15\%. 
+Posterior distributions of parameters were approximated after 300,000,000 generations of MCMC runs, sampled every 5,000 generations with a burn in of 15\%. 
 The inference was run four times to compare convergence of parameters, then log and tree files were merged. 
 
 %\subsection*{stepping stone analysis}
-%TODO put details in
+%TODO put details in in the distant future
 
 \subsection*{Inference run time comparison}
 A subset of 14 taxa was selected for a comparison between CPU and GPU inference run time comparison. 
@@ -400,7 +399,8 @@ Using LSU or SSU rDNA regions for phylogenetics is common practice, at times sup
 %AD: synonymity -> congruence? unless degnan introduced the term synonymity?
 It is important to acknowledge that these represent the evolutionary history of highly conserved genes, which does not necessarily represent the species evolution and assuming their synonymity is statistically inadequate \cite{degnan2009gene}.
 %AD: maybe add something positive like "...and we have learned much from rDNA phylogeny" at the end of the sentence? alternatively it could go in a sentence below about how its still common practice
-Utilization of rDNA loci made sense when study designs were bound by sequencing and computational limitations, so they were a universally available proxy. 
+%LK: this ok?
+Utilization of rDNA loci made sense when study designs were bound by sequencing and computational limitations, so they were a universally available proxy which was informative and continues to be commonly employed. 
 With high throughput sequencing and high performance computing now commonly available, we are no longer restricted to the use of rDNA datasets as proxies for species evolution. 
 Yet, this is still common practice. 
 %AD: the following does not have an obvious mechanism, and is certainly not always true (if ever true). i've only read the abstract of the he2016 paper but I didn't see anything about rDNA. what's the story here?
@@ -447,7 +447,7 @@ Under simulated datasets, even under the coalescent methods, the species tree to
 Further to that, the PP values tend to be overestimated for concatenation \cite{suzuki2002overcredibility}. 
 Theoretically for the gonyaluacales, and taxa prone to paralogy and convoluted evolutionary histories, MSC is a preferable approach to concatenation as MSC is more robust to ILS \& LBA artefacts \cite{liu2014coalescent}. 
 To test this theory, the single copy gene dataset was run with BI both under MSC and with concatenation (Fig. ~\ref{fig:tangleconcatBI}). 
-We then used a statistical framework to compare the two model approaches to verify the veracity of model adequacy through stepping stone analysis. 
+We then used a statistical framework to compare the two model approaches to verify the veracity of model adequacy through stepping stone sampling. 
 PATH sampling is an adequate method for objectively comparing the model parameters for relaxed clock models while penalizing for over-parameterization \cite{baele2012accurate}. %TODO same for ss?
 The valuex XXX %TODO whatever the hell the PATH sampling results are
 %TODO topology comparison here 
@@ -892,7 +892,7 @@ The inference was run four times to compare convergence of parameters, then log 
 Log and tree files are available on Zenodo DOI: 
 Inference was accelerated using BEAGLE \cite{ayres2011beagle} on the GPU.
 
-\subsection*{Stepping stone analysis}
+\subsection*{Stepping stone sampling}
 %TODO Mathieu please put details in
 
 \subsection*{Inference run time comparison}
