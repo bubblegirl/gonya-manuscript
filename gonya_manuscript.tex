@@ -6,6 +6,7 @@
 \usepackage[square,sort,comma,numbers]{natbib}
  \usepackage{graphicx}
  \usepackage{tabularx}
+ \usepackage{datetime2}
  \linespread{1.3}
  \usepackage{gensymb}
 \usepackage{longtable}
@@ -22,10 +23,14 @@
 
 \title{Trial by phylogenetics - how model and data selection impacts the elucidation of the evolution of the gonyaulacales (Dinophyceae). $^{1}$}
 \author{Key words: Bayesian inference, model selection, gonyaulacales, phylogenetics, transcriptomics}
+
 \date{}
 
 \begin{document}
 \maketitle
+
+Timestamp \DTMnow UTC
+
 \paragraph{}Anna Liza Kretzschmar$^{2}$\\
 Climate Change Cluster (C3), University of Technology Sydney, Ultimo, 2007 NSW, Australia, anna.kretzschmar@uts.edu.au
 \paragraph{}Aaron E. Darling \\
@@ -263,6 +268,7 @@ Support for deeper nodes varied from weak to well supported.
 \begin{figure} 
 \includegraphics[scale=.4]{figures/rDNA-ML.png} 
 \caption{Maximum likelihood phylogenetic inference of ribosomal DNA genes. Concatenation of small subunit rDNA and D1-D3 region large subunit rDNA. Accession numbers for concatenated genes in Table S3. Gonyaulacales (\#16) in purple, outgroups (\#3) in light blue and taxa \textit{incertae sedis} (\#1) in teal. The scale represents number of mutations.} 
+%AD: number of mutations -> substitutions per site?
 \label{fig:rdna}
 \end{figure} 
 \FloatBarrier
@@ -296,7 +302,8 @@ The third clade encompasses \textit{Gonyaulax}, \textit{Protoceratium} and \text
 
 \begin{figure} 
 \includegraphics[scale=.3]{figures/SC-concat-BI.png} 
-\caption{Bayesian inference phylogenetic inference of concatenated single copy gene set (62 single copy genes from 20 taxa). Gonyaulacales (\#16) in purple, outgroups (\#3) in light blue and taxa \textit{incertae sedis} (\#1) in teal.} 
+\caption{Bayesian phylogenetic inference of concatenated single copy gene set (62 single copy genes from 20 taxa). Gonyaulacales (\#16) in purple, outgroups (\#3) in light blue and taxa \textit{incertae sedis} (\#1) in teal.} 
+%AD: you should note here that it was rerooted
 \label{fig:SCconcatBI}
 \end{figure} 
 \FloatBarrier
@@ -406,11 +413,14 @@ Yet, this is still common practice.
 %AD: the following does not have an obvious mechanism, and is certainly not always true (if ever true). i've only read the abstract of the he2016 paper but I didn't see anything about rDNA. what's the story here?
 A confounding factor for using rDNA loci from the gonyaulacales is that they posses very high rDNA copy numbers which for phylogenetics result in extremely long branches \cite{he2016reducing}. 
 Yet rDNA loci are still widely used for gonyaulacales. 
-Comparing the topology from a rDNA ML inference with the single gene copy MSC phylogeny presented here (Fig. ~\ref{fig:tanglerDNA}) shows that both topologies were both predominantly completely or very well supported. 
+%AD: would it be better to first compare different data with same method (e.g. rDNA concat vs scg concat) before describing different data & different method?
+%you might even add \paragraph{} subheadings for "same data, different method" etc?
+Comparing the topology from a rDNA ML inference with the single gene copy MSC phylogeny presented here (Fig. ~\ref{fig:tanglerDNA}) shows that most clades in both topologies were completely or very well supported. 
 Within the genera \emph{Gambierdiscus} and \emph{Ostreopsis}, the species resolution differed between the two datasets. 
 In several cases, the placement of sister taxa was incongruous between the two analyses. 
 For example, the rDNA concatenation dataset places \emph{Ceratium} \& \emph{Gonyaulax} as well as \emph{Alexandrium} and \emph{Gambierdiscus} as sister taxa, while the single copy gene dataset under MSC places \emph{Gonyaulax} with \emph{Protoceratium} and \emph{Gambierdiscus} with \emph{Pyrodinium}. 
-This is exemplary in how using rDNA segments as a proxy for species evolution can differ when examining the history in light of a range of nuclear genes. 
+%AD: I removed "nuclear genes" below as both rDNA and the single copy proteins are nuclear
+This is an example of how using rDNA segments as a proxy for species evolution can provide different results than an analysis of single-copy protein coding genes.
 
 \begin{figure} 
 \includegraphics[scale=.2]{figures/MSC-BI_vs_rDNA-ML.png} 
@@ -421,12 +431,16 @@ This is exemplary in how using rDNA segments as a proxy for species evolution ca
 
 \subsection*{Concatenating selected genes and using ML methods for species inference.}
 \FloatBarrier
+%AD: it's the alignments that get concatenated
 Concatenation of genes coupled with running ML inference is a commonly used method as it is computationally un-intensive in comparison to BI methods. 
 However as demonstrated by Kubatko et al. (2007) and Roche et al. (2015), this approach is error prone. 
+%AD: i'm not sure what the 2nd half of the following sentence means. What is a homogenised deviation? Do you mean a uniformly random deviation? And the deviation is only acceptable in evolutionary rate, not topology? branch lengths? What is an "unrealistic predictor"? Do you mean it yields biased estimates? inaccurate?
 Concatenation assumes uniform evolutionary history across genes, with a homogenised deviation possible - however as this is on the average evolutionary rate between the genes as input, it's still an unrealistic predictor across multi gene datasets. 
 The combination of concatenation and ML for phylogentic inference can result in high bootstrap values for incorrectly resolved clades which overinflates confidence in the robustness of erroneous topologies \cite{degnan2009gene}. 
 The application of concatenation in combination with ML is common practice in phylogenetic studies for gonyaulacoids  \cite{shalchian2006combined,zhang2007three,saldarriaga2004molecular,murray2005improving,hoppenrath2010dinoflagellate}.
+%AD: maybe transition here by saying something like "We investigated whether use of a technique explicitly designed to handle multiple genes to estimate species trees would yield different results than concat+ML". remember that the model you used isnt perfect either...people just do the best thing that is feasible at the time.
 This issue was addressed in this study by running BI under the MSC process rather than resorting to concatenation. 
+%AD: the comment about rDNA seems confusing here. perhaps either expand on it or move it elsewhere.
 A comparison between a BI inference under MSC compared to concatenated ML inference on the same single copy gene dataset shows differences in topology, albeit different when comparing to the rDNA dataset (Fig. ~\ref{fig:tangleconcatML}). 
 The species resolution within the genera \emph{Alexandrium}, \emph{Gambierdiscus} and \emph{Ostreopsis} matches between the two inference methods. 
 The major difference is of the \emph{Pyrodinium} placement, where the BI MSC approach places the genus sister to \emph{Gambierdiscus} while the concatenated ML approach places it with \emph{Gonyaulax} and \emph{Protoceratium}. 
