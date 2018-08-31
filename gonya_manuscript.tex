@@ -119,6 +119,7 @@ The Gonyaulacales are an order within the super-phylum Alveolata and sub-phylum 
 They play a role in several important ecological processes in aquatic environments where they cover a diverse array of niches such as symbionts, parasites and autotrophs. 
 Some taxa can cause harmful algal blooms through proliferation and/or neurotoxin production (e.g. causing paralytic shellfish poisioning, ciguatera fish poisoning) \cite{murray2016unravelling}.
 Dinoflagellates possess large genomes (estimated 3.7 to 220 Gbp), with extensive paralogy and repetitive short sequences  \cite{casabianca2017genome,murray2016unravelling}. 
+%sm: parology THis is KEY point of why these particular study was necessary. NEED TO emphasise this here. Describe this in more detail 
 For a review on the genetic features of dinoflagellates see \cite{murray2016unravelling}. 
 While the evolutionary relationship of most orders within the dinoflagellates has been inferred with consistently high support values, one order has often escaped elucidation - the Gonyaulacales. 
 %Analyses for this order commonly combined concatenation and maximum likelihood approaches, which yielded long branch attraction, low confidence values and inconsistent taxon resolution \cite{}. 
@@ -145,7 +146,7 @@ RNA was quantified with Nanodrop 2000 (Thermo Scientific, Australia) and frozen 
 %TODO insert centrifuge, kit name deets
  
 \subsection*{Library preparation and Sequencing}
-The quality of samples was assessed via Agilent 2100 Bioanalyzer. 
+The quality of samples was assessed via an Agilent 2100 Bioanalyzer. 
 Paired-end sequencing was performed with a NextSeq 500 High Output run at the Ramaciotti Centre (UNSW, AU) with 75bp read lenth for \emph{G. lapillus} and \emph{G.} cf. \emph{silvae}; and 150bp read length for \emph{G. carpenterii}, \emph{G. polynesiensis} CG15 and \emph{T.} cf. \emph{kofoidii}.
 
 \subsubsection*{Publically available transcriptome libraries}
@@ -174,6 +175,7 @@ Amino acid clusters were clustered again with cd-hit with the flags as previousl
 Protein sequences were analysed with interproscan v5.27 with local lookup server \cite{quevillon2005interproscan}.
 
 \subsection*{Phylogenetic inferences}
+%sm: Don't need each of these to have its own heading, it can be the one paragraph
 \subsubsection*{Ribosomal DNA based inference}
 Ribosomal DNA (rDNA) sequences for the small subunit (SSU) region as well as the D1-D3 large subunit (LSU) region were acquired from NCBI \cite{coordinators2017database} or the SILVA rRNA database project \cite{silvaproj}, accession IDs in Table S3. 
 %AD: I guess these didn't go through infernal?
@@ -268,8 +270,9 @@ As \emph{Azadinium spinosum}, \emph{Dinophysis acuminata} and \emph{Karenia brev
 Hence the unifying branch for these taxa was used to root the tree in all subsequent analyses.
 \subsubsection*{rDNA based phylogeny}
 \FloatBarrier 
-All nodes were supported, with a range of certainty (Fig. ~\ref{fig:rdna}).
-Species with the genera \emph{Gambierdiscus} and \emph{Ostreopsis} resolved with their sister species with full support. 
+All nodes were supported, with a range of certainty.
+The following refers to Fig. ~\ref{fig:rdna}.
+Species within the genera \emph{Gambierdiscus} and \emph{Ostreopsis} resolved with their sister species with full support. 
 Within the \emph{Gambierdiscus} clade, nodes are either weakly supported or fully supported. 
 The two species of \emph{Alexandrium} resolve as well supported closest relatives, but do not form an individual clade. 
 %AD: crown taxa is a new one for me - surprising after 15 years thinking about phylogeny!
@@ -290,7 +293,8 @@ Support for deeper nodes varied from weak to well supported.
 
 \subsubsection*{Concatenated single copy gene based phylogeny inferred with ML}
 \FloatBarrier
-All nodes except one within the \emph{Gambierdiscus} species cluster resolved as relatively well supported (Fig. ~\ref{fig:SCconcatML}). 
+All nodes except one within the \emph{Gambierdiscus} species cluster resolved as relatively well supported. 
+Topological description in this section refers to Fig. ~\ref{fig:SCconcatML}. 
 Species of the genera \emph{Alexandrium}, \emph{Gambierdiscus} and \emph{Ostreopsis} cluster as individual clades with their sister species.  
 The topology shows three distinct, well supported clades: 
 One encompassing \emph{Alexandrium}, \emph{Coolia} and \emph{Ostreopsis}; another which only contains \emph{Gambierdiscus}; and one which includes \emph{Pyrodinium}, \emph{Gonyaulax} and \emph{Protoceratium}. 
@@ -308,8 +312,11 @@ Other deeper nodes were well supported.
 
 \subsubsection*{Concatenated single copy gene based phylogeny inferred with BI}
 \FloatBarrier 
-%TODO Running with stepping stone ~~~ check out trees closer to posterior for prev ss sampling run in /shared/homes/s1/Liza/concat-bollocks/test/
-All nodes resolved with full support, except one node within the genus \textit{Gambierdiscus} which was very well supported (Fig. ~\ref{fig:SCconcatBI}). 
+%TODO Running with stepping stone ~~~ check out trees closer to posterior for prev ss sampling run in /shared/homes/s1/Liza/concat-bollocks/test
+%sm: As above, the first sentence needs to start with :  "In the analysis of XYZ using XYZ, it was found that.."
+%LK: really? it's in the section title.
+All nodes resolved with full support, except one node within the genus \textit{Gambierdiscus} which was very well supported. 
+The following descriptions are based on Fig. ~\ref{fig:SCconcatBI}. 
 The species in the genera \textit{Alexandrium}, \textit{Gambierdiscus} and \textit{Ostreopsis} all resolved with full support within their respective genera clades. 
 The overall topology of the Gonyaulacales resolved as three clades with \textit{Thecadinium} and then \textit{Ceratium} as ancestral lineages. 
 \textit{Alexandrium}, \textit{Coolia} and \textit{Ostreopsis} clustered together, followed by \textit{Gambierdiscus} on their own in a sister clade. 
@@ -325,7 +332,8 @@ The third clade encompasses \textit{Gonyaulax}, \textit{Protoceratium} and \text
 
 \subsubsection*{Single copy gene based phylogeny under MSC}
 \FloatBarrier 
-All nodes except one within the outgroup clustering resolved (Fig. ~\ref{fig:SCmscBI}). 
+All nodes except one within the outgroup clustering resolved.
+The following is ectrapolated from the topology in Fig. ~\ref{fig:SCmscBI}. 
 Species of \emph{Alexandrium}, \emph{Ostreopsis} and \emph{Gambierdiscus} resolved well or fully supported within their genus clades. 
 The topology within the Gonyaulacales resolves as three clades: 
 one fully supported encompassing \emph{Alexandrium}, \emph{Coolia} and \emph{Ostreopsis}; 
@@ -337,7 +345,7 @@ Other deeper nodes were well or fully supported.
 
 \begin{figure} 
 \includegraphics[scale=.25]{figures/Aug2_20-taxa-combined-fig_MCC_trees.png} 
-\caption{Phylogenetic analysis of Gonyaulacales species tree with 62 single copy genes from 20 taxa. Gonyaulacales (\#16) in purple, outgroups (\#3) in light blue and taxa \textit{incertae sedis} (\#1) in teal.} 
+\caption{Bayesian phylogenetic inference of Gonyaulacales species tree under the multipsecies coalescence with 62 single copy genes from 20 taxa. Gonyaulacales (\#16) in purple, outgroups (\#3) in light blue and taxa \textit{incertae sedis} (\#1) in teal.} 
 \label{fig:SCmscBI}
 \end{figure} 
 \FloatBarrier
@@ -345,6 +353,7 @@ Other deeper nodes were well or fully supported.
 \newpage
 \section{Discussion}
 With publicly available data sets such as the MMETSP project for marine microbes \cite{keeling2014marine}, availability of data is no longer the biggest limitation for exploring the species evolution within these abundant organisms. 
+%sm: Phylogenetic inference of groups of microbial eukaryotes has been greatly enabled by the increasing amount of genetic data now available, including through large scale sequencing initiatives such as MMETSP...
 However, the next obstacle lies in the methodology used for investigating the evolutionary relationship between these taxa, as the choice in data analysis method can impact the resultant phylogeny and conclusions drawn. 
 Dinoflagellates are notorious for their extensive genomes with suspected whole or partial genome duplication and potential cDNA retro-insertion into the genome \cite{van2009florida.beauchemin2012dinoflagellate,slamovits2008widespread,hou2009distinct,lin2011genomic}. 
 This causes unusually large gene copy numbers and extensive paralogy. 
@@ -354,11 +363,13 @@ Due to the size of their genomes and extensive paralogs the Gonyaulacales were c
 We present a synopsis of the impact of model and data selection on the overall topology, while comparing commonly employed methodologies. \\
 %AD: the following statement seems out of place. maybe you need to start a new paragraph about the problem of model misspecification? let's remember the well known words of George Box...all models are wrong
 The authors are mindful that overparameterization as well as under parameterization can cause mis-specification for BI, if the inference is not in the Felsenstein zone. 
-However under- compared to over-parameterization has been shown to have  more severe impacts in giving the wrong species tree \cite{lemmon2004importance}. 
+However under- compared to over-parameterization has been shown to have  more severe negatve impacts for inferring the an adequate approximation of the species tree \cite{lemmon2004importance}. 
 %AD: path. does path sampling address model adequacy? i'm doubtful.
 Hence integral to this study was the statistical comparison of concatenation versus MSC through stepping stone sampling as evidence for model parameter adequacy. 
 The scripts which form the basis of this study are publicly available through github and the single copy genes used to infer the species evolution in this study, as well as the xml input and log files for the *BEAST runs, are available on zenodo. 
 What follows is a discussion of the key methodological questions that this study sought to address, using the gonyalacales as a case study. 
+%sm: says this last sentence isnt necessary
+
 %TODO refs, not sure if neede but were sent by Shauna:
 % Disagreements in deeper branches in insect phylogenomic study which compared models - but used concat \cite{boussau2014strepsiptera}
 % path sampling also penalises over-parameterization \cite{} because while bias decreses w/ #parameters, variance increases. So model \& it's parameters should hit the sweet spot between the two \cite{kelchner2007model} ... same for ss?
@@ -392,14 +403,16 @@ Cohen et al. demonstrated that while the raw data available from the MMETSP proj
 Another factor in assembly quality is RNA-seq library processing prior to assembly, especially trimming. 
 Commonly high stringency is favored, however MacManes (2014) found that this can be detrimental to the assembly and the quality cut off scores used in this study were based on the recommendation with that study \cite{macmanes2014optimal}.
 In short, the trimming and assembly pipeline used for the assemblies available as part of MMETSP have become outdated and this is reflected in the quality comparison conducted by Cohen et al. 
+%sm: delete, not necessary
+%LK: disagree. how the transcriptomes are processed is important for the quality of the assemblies used 
 To address this problem, trimming and assembly of RNA-seq libraries using Trimomatic and Trinity respectively were considered integral to the transcriptome assembly in this study.
 
 \subsection*{Quantity of taxa in phylogenetic inference}
 %eukaryotic deep lineages show evidence of rapid diversification \cite{he2016reducing} -- actually maybe find a different ref for this, they're kinda shite, which results in short internl brnaches which is the play ground for ILS.
 % ---> \cite{degnan2006discordance} describes that methods which rely on democratic elucidation of species tree by most common gene tree are statistically predisposed to being wrong as anomatolous gene trees are likely with asymetric trees, and this holds true for any trees with 5 or more taxa (ie. if there are long and short branches). uses coalescence as example
-Extensive coverage of taxons within the group of organisms examined is necessary to give useful insight into the evolutionary inter-taxon relationships.
+Extensive coverage of taxa within the group of organisms examined is necessary to give useful insight into the evolutionary inter-taxon relationships.
 %AD: s/artifacts/attraction/ throughout
-Two concerning phenomena that can creep in to phylogenetic studies based on the data set selected are incomplete lineage sorting (ILS) and long branch attraction (LBA). 
+Two concerning phenomena that can confound the veracity of the conclusion drawn from phylogenetic inference are incomplete lineage sorting (ILS) and long branch attraction (LBA). 
 %AD: the following sentence doesn't make sense
 The lack of adequate coverage is termed ILS and subject to postulated detrimental impact through bias on inferences \cite{heath2008taxon}. 
 The impact of ILS on phylogenetic inferences has been explored through simulated datasets with a known species tree. 
@@ -416,6 +429,8 @@ Short internal branches with long external branches are symptomatic of ancient l
 Under these conditions, concatenation methods are more likely to be mislead and fall prey to LBAs than MSC methods \cite{liu2014coalescent}.
 
 \subsection*{Inferring species evolution from a small subset of genes such as ribosomal genes, whose evolution may not reflect that of the species.}
+%sm: This is too long for subtitle. Its not necessary to have subtitles in the discussion. just a new paragraph is fine
+%LK: I think that's more of a style choice and advocating what the section is about, since there are a bunch of comparisons coming up, seems relevant to me
 \FloatBarrier 
 Using LSU or SSU rDNA regions for phylogenetics is common practice, at times supplemented with a small number of other genes \cite{shalchian2006combined,zhang2007three,saldarriaga2004molecular,murray2005improving,hoppenrath2010dinoflagellate}. 
 %AD: synonymity -> congruence? unless degnan introduced the term synonymity?
@@ -427,7 +442,9 @@ With high throughput sequencing and high performance computing now commonly avai
 Yet, this is still common practice. 
 %AD: the following does not have an obvious mechanism, and is certainly not always true (if ever true). i've only read the abstract of the he2016 paper but I didn't see anything about rDNA. what's the story here?
 A confounding factor for using rDNA loci from the Gonyaulacales is that they posses very high rDNA copy numbers which for phylogenetics result in extremely long branches \cite{he2016reducing}. 
+%sm: not clear how copy numbers relate to branch lengths. Need to unpack and explain carefully and clearly with refs.
 Yet rDNA loci are still widely used for Gonyaulacales. 
+%sm: not clear and not  necessary
 %AD: would it be better to first compare different data with same method (e.g. rDNA concat vs scg concat) before describing different data & different method?
 %you might even add \paragraph{} subheadings for "same data, different method" etc?
 Comparing the topology from a rDNA ML inference with the single gene copy MSC phylogeny presented here (Fig. ~\ref{fig:tanglerDNA}) shows that most clades in both topologies were completely or very well supported. 
@@ -482,7 +499,7 @@ The valuex XXX %TODO whatever the hell the PATH sampling results are
 %TODO topology comparison here 
 The resolution of \textit{Alexandrium}, \textit{Coolia} and \textit{Ostreopsis} was identical between the two methods. 
 Further, the species resolution within the genera \textit{Gambierdiscus} and \textit{Ostreopsis} was also identical. 
-The difference in topology starts with \textit{Pyrodinium} clustering with \textit{Gambierdiscus} in the MSC analysis, while for concatenation this genus clusters with \textit{Gonyalax} and \textit{Protoceratium}. 
+Differences were found in the topology, in that \textit{Pyrodinium} clustered with \textit{Gambierdiscus} in the MSC analysis, while for concatenation this genus clusters with \textit{Gonyalax} and \textit{Protoceratium}. 
 Further, in the MSC analysis \textit{Ceratium}, \textit{Gonyalax}, \textit{Protoceratium} and \textit{Thecadinium} form their own clade while with concatenation, \textit{Ceratium} and \textit{Thecadinium} are ancestral genera to the rest of the Gonyaulacales. 
 
   
@@ -504,15 +521,22 @@ Further, in the MSC analysis \textit{Ceratium}, \textit{Gonyalax}, \textit{Proto
 %\cite{yang2014orthology} orthologue extr method which means good discussion on problems with wrong selection
 %\cite{degnan2009gene} some bullshit bout paralogs in soy bean
 Selection of paralogs for species inference is highly problematic as it compares an arbitrarily divergent gene history as input. 
+%sm: Need to explain and unpack. Ie, Under some circumstances, genes that are not orthologous, but are instead the result of subsequent gene duplication events within species (ie paralogous) can be mistaken for one another. This causes incorrect phylogenetic inference due to XYZ.  This problem is particularly apparent in species in which many genes exist in multiple copies in the genome, and for which multi-gene families are very common. In dinoflagellates.... In this study, this issue was addressed by
+%LK: this was supposed to be apparent from the introduction. Does it really need to be explained again
 This problem is particularly prevalent in the dinoflagellates and Gonyaulacales due to extensive paralogy from gene duplication. 
 This study sought to address the issues arising from paralog comparison by isolating single copy genes, based on the BUSCO software output. 
 As this software utilizes lineage specific hmmer libraries designed to target single copy genes, and the output distinguishes between single copy genes and duplications, it presents a method for reliably screening for single copy genes for phylogenomics \cite{waterhouse2017busco}.
 Only one other study by Price et al. (2017) sought to address the issue of parology within the gonyalacales, by purportedly selecting single genes as input. 
+%sm: Price et al did not have the same aim as this study, it was just a phylogenetic study of dinos. No need to discuss in detail.
+%LK: aim isn't important, it's the only study taking the same approach and covering the same order. Without provodong their methodology or any supporting scripts so that is important to compare on both the methodology part as well as a point on accessible and reproducible methods
 However there are several issues with the study presented by Price et al \cite{price2017robust}. 
 The assemblies used are from the MMETSP project, which employed outdated assembly methods as mentioned previously, and hence could present single copy genes which are instead hybrids of paralogs. 
 Further, the methodology for identifying and selecting the single copy genes is not included in the publication. 
 Contact with the author established that there was no documentation for the commands that the authors executed, so no record of how the genes were attained was available. 
 Hence it was impossible to compare the parameters that went into identifying and screening for single copy genes and it was not possible to scrutinize or reproduce the study.
+%sm: This is too detailed . There have been multiple recent phylogenetic studies on dinos, several of which used large datasets of multiple genes. Discuss them all but much more briefly. ie Price et al and Janouškovec(2017), Orr (2012), Bachvaroff (2014)
+%LK: those studies are addressed in the relevant sections where the methodology is comparable. Here, it is about Price and the use of single copy genes to overcome the dino/gonya problem. 
+
 Lastly, the genes were concatenated and the evolutionary relationships were inferred using ML. 
 While the bootstraps are well supported, this could very well be due to the methodology problems outlined in previous sections.
 %The difference in topology between inferences presented by Price et al. and this study, is lies in the organization of sister taxa %(Fig. ~\ref{fig:tangle}). 
@@ -543,6 +567,8 @@ What follows is the identification of issues with the approach presented in this
 \paragraph*{Trimming of RNA seq libraries.} The cut off values chosen for this study are based on the recommendations of MacMannes (2014) for optimal transcript discovery. 
 However the recommendations are based on the efficacy of cut off values for a mouse embryonic stem cell RNA-seq library, which may not be an adequate model for dinoflagellates. 
 This could confound the difference between single copy genes and sequencing artifacts.
+%sm: Need some discussion and refs as to what difference this could make. But it can be much more brief than this
+%LK: refs, yes. but hardly briefer without getting the importance of pre-assembly processing accross.
 \paragraph*{Assembly parameters.}
 Trinity was chosen as the assembler for this study based on the findings of Honaas et al. (2016), in which Trinity was one of the top performing assemblers for \textit{de novo} transcriptomes as tested with \textit{Arabidopsis thaliana}. 
 While this plant model has similar genetic features to dinoflagellates, the conclusion of adequate comparison may be flawed.
@@ -556,6 +582,8 @@ As this study uses Trinity exclusively, it is subject to the bioinformatic error
 \paragraph*{Contamination of other taxa.} 
 The 650+ RNA extract submission to MMETSP was from a large number of investigators and low level contamination is inherent in the project's dataset \cite{keeling2014marine}. 
 As the cultures tested in all the studies contributing to this dataset were not axenic, contamination could be bacterial or eukaryotic in nature and could result in misleading gene phylogenies, akin to the issues presented by paralog selection, which were used to infer the species phylogeny.
+%sm: Is what is meant that there could be genes from bacteria in there? but surely these would look completely different. Its not clear how this is relevant here.
+%LK: this is relevant as a potential limitation of the study. Just because it isn't likely isn't a reason to omitt the possibility. I didn't extract these myself and all the MMETSP data is whole RNA-seq so the possibility of contamination needs to be pointed out.
 \paragraph*{No representative genome for comparison.} 
 Without a guided genome comparison, it is difficult to extrapolate on the assembly adequacy and whether the genes selected are single copies, or mis-assemblies of paralogs.
 \paragraph*{Different methods for RNA-seq.} 
@@ -580,7 +608,11 @@ By presenting a statistically rigorous methodology and demonstrating how this ov
 The GVL section of this study was conducted inside the National eResearch Collaboration Tools and Resources (NeCTAR) research cloud, an initiative by the National Research Infrastructure for Australia (NCRIS).
 Gratitude to the Stanley Watson foundation, the Linnaean Society of New South Wales, and the ABRS National Taxonomy Research Student Travel Bursary for funding A. L. Kretzschmar's attendance at the Molecular Evolution workshop at the Marine biological laboratory, Woods Hole, MA, USA.
 Shout out to the Taming the BEAST organizers \& fellow attendees for a most illuminating workshop in February 2017 on BEAST methodology, and to Geneious for subsidizing A. L. Kretzschmar's attendance fee.
-Thank you to Dr. Tim Kahlke for running Interproscan for transcriptome analysis.
+%sm: 'shout out' is colloquial
+%LK: how is that a problem in the acknowledgements
+Thank you to Dr. Tim Kahlke for running Interproscan for transcriptome analysis. 
+The transcriptomic sequencing was funded by  an ARC Future Fellowship to S. Murray.
+A. L. Kretzschmar's PhD stipend was funded through a UTS Doctoral scholarship.
 \section{Supplementary material}
 \FloatBarrier
 \begin{table}
