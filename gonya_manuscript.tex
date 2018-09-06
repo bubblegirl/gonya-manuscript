@@ -68,7 +68,7 @@ This project focused on a group of understudied organisms which are abundant and
 This dataset offers an excellent opportunity to explore the evolutionary relationships between these taxa through phylogenetics. 
 For phylogenetic inference, the gene representative for each taxa is compared with all other representatives. 
 The assumption for an accurate representation of species evolution is based on this gene comparison using genes that diverged strictly through  gene tree divergence due to speciation (= orthology) rather than duplication (= paralogy) or transfer from another organism (= horizontal gene transfer) \cite{maddison1997gene}. 
-Both paralogs and orthologs are specific cases of homology, genes which share an ancestral sequence and diverged in the past, where the mode of divergence differs. 
+Both paralogs and orthologs are specific cases of homology, genes which share an ancestral sequence and diverged in the past, where the mode of divergence differs \cite{fitch1970distinguishing}. 
 The distinction between these two cases is essential in identifying gene candidates that are informative for species evolution inference, as the selection of orthologs ensures the inclusion of a signal that is based on the speciation of the taxa examined, while selection of paralogs confounds that signal by including information that does not pertain to the speciation of the taxa. 
 As gene loss and duplication can commonly occur in a number of the lineages examined, the establishment of orthology is more difficult than may seem apparent from the definition \cite{gabaldon2008large}. 
 Once orthologs are selected, there are further issues that can arise and impact the veracity of the phylogenetic inference. 
@@ -95,7 +95,6 @@ We provide open source scripts to assemble RNA-seq datasets, identify and extrac
 %AD: can you give the URL for script download? e.g. the github repo?
 %LK: should I do this here or in the methods?
 Finally, the methodology is tested with a group of organsims notorious for their extensive paralogy - the Gonyalacales (phylum: Dinoflagellata) (see box 2 for further information on the Gonaylacales).
-%rea;;y good example of describing orthology /cite{gabaldon2008large}
 
 \subsubsection*{Box 1: Statistical nomenclature \& errors this study seeks to address}
 For in depth explanations see \cite{yang2014molecular}.\\
@@ -336,7 +335,7 @@ The third clade encompasses \textit{Gonyaulax}, \textit{Protoceratium} and \text
 \includegraphics[scale=.3]{figures/SC-concat-BI.png} 
 \caption{Bayesian phylogenetic inference of concatenated single copy gene set (62 single copy genes from 20 taxa). Gonyaulacales (\#16) in purple, outgroups (\#3) in light blue and taxa \textit{incertae sedis} (\#1) in teal. The scale represents number of substitutions per site.} 
 %AD: you should note here that it was rerooted
-%LK: stated in line 276 for all following phylos. SHould I put it in again?
+%LK: stated in line 276 for all following phylos. SHould I put it in every figure again?
 \label{fig:SCconcatBI}
 \end{figure} 
 \FloatBarrier
@@ -410,7 +409,7 @@ However, these have relied on the assemblies supplied as part of the project.
 The stringency for quality trimming of RNA-seq libraries prior to assembly plays a role in the number of unique contigs recovered and the subsequent assembly quality of transcriptomes. 
 Regarding the transcriptome assembly method, Cohen et al. evaluated the publicly available assemblies from MMETSP using BUSCO scores, compared to processing and re-assembly with Trinity \cite{cohen-reass}. 
 %AD: quality of which assembly? Cohen's? or public MMETSP assemblies? please clarify.
-Cohen et al. demonstrated that while the raw data available from the MMETSP project is an excellent resource, the assembly quality is less than ideal. 
+Cohen et al. demonstrated that while the raw data available from the MMETSP project is an excellent resource, the assemblies available as part of the project are of a quality less than what can be achieved with current methods. 
 Another factor in assembly quality is RNA-seq library processing prior to assembly, especially trimming. 
 Commonly high stringency is favored, however MacManes (2014) found that this can be detrimental to the assembly and the quality cut off scores used in this study were based on the recommendation with that study \cite{macmanes2014optimal}.
 In short, the trimming and assembly pipeline used for the assemblies available as part of MMETSP have become outdated and this is reflected in the quality comparison conducted by Cohen et al. 
