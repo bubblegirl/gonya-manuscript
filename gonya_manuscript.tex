@@ -67,8 +67,12 @@ An example of the breadth of publicly available data is the Marine Microbial Euk
 This project focused on a group of understudied organisms which are abundant and play vital roles in the marine environment, from geochemical cylcling, predation to symbiosis. %sm: ref
 This dataset offers an excellent opportunity to explore the evolutionary relationships between these taxa through phylogenetics. 
 For phylogenetic inference, the gene representative for each taxa is compared with all other representatives. 
-The assumption for an accurate representation of species evolution is based on this gene comparison using genes that diverged strictly through  gene tree divergence due to speciation (= orthology) rather than duplication or transfer from another organism \cite{maddison1997gene}. 
-Two common, well characterized types of errors can occur that impact the outcome of phylogenetic inference: random (sampling) and systematic errors. 
+The assumption for an accurate representation of species evolution is based on this gene comparison using genes that diverged strictly through  gene tree divergence due to speciation (= orthology) rather than duplication (= paralogy) or transfer from another organism (= horizontal gene transfer) \cite{maddison1997gene}. 
+Both paralogs and orthologs are specific cases of homology, genes which share an ancestral sequence and diverged in the past, where the mode of divergence differs. 
+The distinction between these two cases is essential in identifying gene candidates that are informative for species evolution inference, as the selection of orthologs ensures the inclusion of a signal that is based on the speciation of the taxa examined, while selection of paralogs confounds that signal by including information that does not pertain to the speciation of the taxa. 
+As gene loss and duplication can commonly occur in a number of the lineages examined, the establishment of orthology is more difficult than may seem apparent from the definition \cite{gabaldon2008large}. 
+Once orthologs are selected, there are further issues that can arise and impact the veracity of the phylogenetic inference. 
+Two common, well characterized types of errors are random (sampling) and systematic errors. 
 The former arises from the data, as individual gene histories may differ to the species tree. 
 With a small number of genes, this random error can skewer the inference results away from the true species tree, however increasing the number of genes directly reduces the impact this error has on the analysis. 
 Conversely, systematic errors arise due to the mispecification of the model used for the inference where an incorrect species tree results from inadequate parameters applied to the analysis. 
