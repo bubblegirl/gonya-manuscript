@@ -95,7 +95,7 @@ We provide open source scripts to assemble RNA-seq datasets, identify and extrac
 %AD: can you give the URL for script download? e.g. the github repo?
 %LK: should I do this here or in the methods?
 Finally, the methodology is tested with a group of organsims notorious for their extensive paralogy - the Gonyalacales (phylum: Dinoflagellata) (see box 2 for further information on the Gonaylacales).
-
+%need: limited taxon sampling
 \subsubsection*{Box 1: Statistical nomenclature \& errors this study seeks to address}
 For in depth explanations see \cite{yang2014molecular}.\\
 \textbf{Maximum likelihood estimate:} estimates the parameters of a statistical model that maximise the parameter's likelihood function. 
@@ -124,7 +124,6 @@ Some taxa can cause harmful algal blooms through proliferation and/or neurotoxin
 Dinoflagellates possess large genomes (estimated 3.7 to 220 Gbp), with extensive paralogy and repetitive short sequences  \cite{casabianca2017genome,murray2016unravelling}. 
 In particular the paralogy has proven problematic for efforts investigating the genetic content and structure of the dinoflagellates, as this feature has prevented the assembly of genomes apart from two draft genomes for \textit{Symbiodinium} which posess some of the smaller genomes 
 cite{shoguchi2013draft,lin2015symbiodinium}. 
-%sm: parology THis is KEY point of why these particular study was necessary. NEED TO emphasise this here. Describe this in more detail 
 For a review on the genetic features of dinoflagellates see \cite{murray2016unravelling}. 
 While the evolutionary relationship of most orders within the dinoflagellates has been inferred with consistently high support values, one order has often escaped elucidation - the Gonyaulacales. 
 %Analyses for this order commonly combined concatenation and maximum likelihood approaches, which yielded long branch attraction, low confidence values and inconsistent taxon resolution \cite{}. 
@@ -362,8 +361,7 @@ Other deeper nodes were well or fully supported.
 
 \newpage
 \section{Discussion}
-With publicly available data sets such as the MMETSP project for marine microbes \cite{keeling2014marine}, availability of data is no longer the biggest limitation for exploring the species evolution within these abundant organisms. 
-%sm: Phylogenetic inference of groups of microbial eukaryotes has been greatly enabled by the increasing amount of genetic data now available, including through large scale sequencing initiatives such as MMETSP...
+Phylogenetic inference of groups of microbial eukaryotes has been greatly enabled by the increasing amount of genetic data now available, including through large scale sequencing initiatives such as MMETSP \cite{keeling2014marine}.
 However, the next obstacle lies in the methodology used for investigating the evolutionary relationship between these taxa, as the choice in data analysis method can impact the resultant phylogeny and conclusions drawn. 
 Dinoflagellates are notorious for their extensive genomes with suspected whole or partial genome duplication and potential cDNA retro-insertion into the genome \cite{van2009florida.beauchemin2012dinoflagellate,slamovits2008widespread,hou2009distinct,lin2011genomic}. 
 This causes unusually large gene copy numbers and extensive paralogy. 
@@ -408,7 +406,6 @@ Since the MMETSP datasets were made available, several studies have utilized a b
 However, these have relied on the assemblies supplied as part of the project. 
 The stringency for quality trimming of RNA-seq libraries prior to assembly plays a role in the number of unique contigs recovered and the subsequent assembly quality of transcriptomes. 
 Regarding the transcriptome assembly method, Cohen et al. evaluated the publicly available assemblies from MMETSP using BUSCO scores, compared to processing and re-assembly with Trinity \cite{cohen-reass}. 
-%AD: quality of which assembly? Cohen's? or public MMETSP assemblies? please clarify.
 Cohen et al. demonstrated that while the raw data available from the MMETSP project is an excellent resource, the assemblies available as part of the project are of a quality less than what can be achieved with current methods. 
 Another factor in assembly quality is RNA-seq library processing prior to assembly, especially trimming. 
 Commonly high stringency is favored, however MacManes (2014) found that this can be detrimental to the assembly and the quality cut off scores used in this study were based on the recommendation with that study \cite{macmanes2014optimal}.
