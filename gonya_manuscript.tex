@@ -98,22 +98,25 @@ Finally, the methodology is tested with a group of organsims notorious for their
 %need: limited taxon sampling
 \subsubsection*{Box 1: Statistical nomenclature \& errors this study seeks to address}
 For in depth explanations see \cite{yang2014molecular}.\\
-\textbf{Maximum likelihood estimate:} estimates the parameters of a statistical model that maximise the parameter's likelihood function. 
+\textbf{Bayesian probability (BI):} infers posterior probability from expectation based prior probability compared to data based likelihood function which assesses the differences in prior and likelihood of each parameter.
+BI uses probability distributions to describe uncertainty in parameters.
+Model re-parameterization via priors changes posterior output, i.e. this is a dynamic method informed by observation as input by the user. 
+We recommend Huelsenbeck et al. (2001) for an overview of the principles underlying BI for phylogenetics \cite{huelsenbeck2001bayesian}.\\
 %AD: i'm not sure what the following two sentences mean. it doesn't sound right.
+%LK: is this a clearer explanation of MLE?
+\textbf{Maximum likelihood estimate (MLE):} estimates the values for the parameters of the model that maximise the likelihood of the result given the observed data. 
+The likelihood is invariant to re-parameterization as the most likely values for the parameters are not affected, so where a change in prior designation would affect Bayesian probability, this would not affect MLE.
 Does not use priors, which means probability functions not applied to model parameters, but only their estimates. 
 Model reparameterization does not affect MLE, in effect a static method.\\
-\textbf{Bayesian probability:} infers posterior probability from expectation based prior probability and data based likelihood function.
-BI uses probability distributions to describe uncertainty in parameters.
-Model reparameterization via priors changes posterior output, i.e. a dynamic method informed by observation. 
-We recommend Huelsenbeck et al. (2001) for an overview of the principles underlying BI for phylogenetics \cite{huelsenbeck2001bayesian}.\\
 \textbf{Heterotachy:} change in evolutionary rates of sites over time, specific to lineage(s).\\
 \textbf{Potential statistical error types:}\\
 1. random. Sampling based error which decreases and approaches zero as size of dataset approaches infinity.\\
 2. systematic. Arises from incorrect model assumptions or problems with the model itself. 
 Error type persists and increases as dataset size approaches infinity. 
 If strong, can override true phylogenetic signal.\\
-%AD: suggest you give some biological mechanisms that lead to ILS
-\textbf{Incomplete lineage sorting:} discordance of gene evolutionary history with the species evolutionary history causing the phylogenetic species tree to be misinfered.\\
+\textbf{Incomplete lineage sorting:} discordance of gene evolutionary history with the species evolutionary history causing the phylogenetic species tree to be misinfered. 
+Difference in the topology of a gene tree compared to the species evolution can arise from the coalescence of those orthologs pre-dating the species divergence, in effect having an ancestral state where several copies of the gene were present in the population for one or more species divergence points. 
+Another mechanism is the introduction of a copy of the gene which is not based on ancestral inheritance, such as horizontal gene transfer or hybridization.\\
 \textbf{Long branch attraction:} phylogenetic phenomenon where distantly related taxa are inferred as close relatives topologically due to systematic error, also known as the Felsenstein zone.
 
 \subsubsection*{Box 2: Who/what are the Gonyaulacales?}
@@ -345,7 +348,7 @@ All nodes except one within the outgroup clustering resolved.
 The following is ectrapolated from the topology in Fig. ~\ref{fig:SCmscBI}. 
 Species of \emph{Alexandrium}, \emph{Ostreopsis} and \emph{Gambierdiscus} resolved well or fully supported within their genus clades. 
 The topology within the Gonyaulacales resolves as three clades: 
-one fully supported encompassing \emph{Alexandrium}, \emph{Coolia} and \emph{Ostreopsis}; 
+one fully supported encompassing \emph{Alexandrium}, \emph{Coolia} and \emph{Ostreopsis};
 a well supported clade with \emph{Gambierdiscus} and \emph{Pyrodinium}; 
 and a weakly supported clade including \emph{Ceratium}, \emph{Gonyaulax}, \emph{Protoceratium} and \emph{Thecadinium}. 
 The outgroup clustered together with high support. 
@@ -367,8 +370,9 @@ Dinoflagellates are notorious for their extensive genomes with suspected whole o
 This causes unusually large gene copy numbers and extensive paralogy. 
 With this in mind, the Gonyaulacales presented as an ideal challenge to test the process of paralog elimination for the methodology presented here as input for species inference.  
 The authors hope the process presented here is transparent and reproducible for those with basic programming skills. 
-Due to the size of their genomes and extensive paralogs the Gonyaulacales were chosen to test the methodology presented here.
+Due to the size of their genomes and extensive paralogy the Gonyaulacales were chosen to test the methodology presented here.
 We present a synopsis of the impact of model and data selection on the overall topology, while comparing commonly employed methodologies. \\
+%TODO uo to here
 %AD: the following statement seems out of place. maybe you need to start a new paragraph about the problem of model misspecification? let's remember the well known words of George Box...all models are wrong
 The authors are mindful that overparameterization as well as under parameterization can cause mis-specification for BI, if the inference is not in the Felsenstein zone. 
 However under- compared to over-parameterization has been shown to have  more severe negatve impacts for inferring the an adequate approximation of the species tree \cite{lemmon2004importance}. 
