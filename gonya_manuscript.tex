@@ -427,13 +427,11 @@ Two concerning phenomena that can confound the veracity of the conclusion drawn 
 The lack of adequate coverage is termed ILS and subject to postulated detrimental impact through bias on inferences \cite{heath2008taxon}. 
 The impact of ILS on phylogenetic inferences has been explored through simulated datasets with a known species tree. 
 %AD: Maddison et. Knowles? maybe you can use latex's \citet{} command to get the right format here.
-%also, please grammar check. I don't understand this sentence.
-Maddison et. Knowles (2006) found that the amount of genetic information retains enough information to overcome extensive ILS when the number of genes is sufficient, in their study 27 genes were appropriate \cite{maddison2006inferring}. 
+Maddison et. Knowles (2006) found that ILS can be overcome with an increase in genes rather than taxa due to the information retained in the signal from informative sites in the genes \cite{maddison2006inferring}. 
 %AD: here it sounds like you're talking about limited taxon sampling, but this is the first place in the manuscript I've noticed it. Would be good to address this up front somewhere, especially given the important suggestion that having lots of genes can overcome limited taxon sampling.
 So extrapolating from the simulation data studies available, a large number of genes should overcome the incomplete coverage of the families from the gonyaluacales and give an accurate representation of the evolutionary relationships despite the missing taxa. 
 In contrast, LBA is exacerbated if ILS is present. 
-%AD: maybe say LBA can arise, since it could also happen if taxon sampling is poor.
-LBA arises if some species have disproportionately high substitution rates which causes the presence of long and short branches in the phylogenetic topology \cite{liu2014coalescent}. 
+LBA can arise if some species have disproportionately high substitution rates which causes the presence of long and short branches in the phylogenetic topology \cite{liu2014coalescent}. 
 %AD: maybe cite something that previously described a dino radiation?
 Short internal branches with long external branches are symptomatic of ancient lineage radiation, which is a characteristic commonly associated with the dinoflagellates. 
 Under these conditions, concatenation methods are more likely to be mislead and fall prey to LBAs than MSC methods \cite{liu2014coalescent}.
@@ -477,8 +475,7 @@ However as demonstrated by Kubatko et al. (2007) and Roche et al. (2015), this a
 Concatenation assumes uniform evolutionary history across genes, with a homogenised deviation possible - however as this is on the average evolutionary rate between the genes as input, it's still an unrealistic predictor across multi gene datasets. 
 The combination of concatenation and ML for phylogentic inference can result in high bootstrap values for incorrectly resolved clades which overinflates confidence in the robustness of erroneous topologies \cite{degnan2009gene}. 
 The application of concatenation in combination with ML is common practice in phylogenetic studies for gonyaulacoids  \cite{shalchian2006combined,zhang2007three,saldarriaga2004molecular,murray2005improving,hoppenrath2010dinoflagellate}.
-%AD: maybe transition here by saying something like "We investigated whether use of a technique explicitly designed to handle multiple genes to estimate species trees would yield different results than concat+ML". remember that the model you used isnt perfect either...people just do the best thing that is feasible at the time.
-This issue was addressed in this study by running BI under the MSC process rather than resorting to concatenation. 
+We investigated whether use of a technique explicitly designed to handle multiple genes to estimate species trees would yield different results than concatenation and ML. 
 %AD: the comment about rDNA seems confusing here. perhaps either expand on it or move it elsewhere.
 A comparison between a BI inference under MSC compared to concatenated ML inference on the same single copy gene dataset shows differences in topology, albeit different when comparing to the rDNA dataset (Fig. ~\ref{fig:tangleconcatML}). 
 The species resolution within the genera \emph{Alexandrium}, \emph{Gambierdiscus} and \emph{Ostreopsis} matches between the two inference methods. 
@@ -559,8 +556,7 @@ While the bootstraps are well supported, this could very well be due to the meth
 %\end{figure} 
 %\FloatBarrier
 %In this study, we utilised the BUSCO output which screens for and verifies single copy genes for input into species tree inference, a purpose which was suggested as ideal by the authors of the software \cite{simao2015busco}. 
-%AD 160118: you have done a lot of writing describing how previous studies are full of shortcomings and how yours is the awesomest. while that is certainly good for the ego and all, i strongly suggest spending equal effort describing limitations of your study. This gives readers a balanced sense of the work and has the secondary benefit of showing the authors of all those studies you just poopoo'd that you're equally willing to criticize your own work so you are (slightly) less likely to be perceived as an arrogant egomaniac.
-% to get you started, perhaps you can talk about the unknown quality of the transcriptome assembly in the regions used for phylo inference. or the fact that you have to do assembly at all instead of just sequencing full length transcripts with high accuracy. or that you have to use transcripts because genomes are too expensive
+%AD 160118: you have done a lot of writing describing how previous studies are full of shortcomings and how yours is the awesomest. while 
 
 \subsection*{Limitations of study}
 %WAG shows some issues with model misspec under BI using WAG which disappeared with CAT BUT this was based on a concatenated dataset soo... fuck it? \cite{lartillot2007suppression}
