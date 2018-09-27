@@ -476,22 +476,21 @@ Further, in the MSC analysis \textit{Ceratium}, \textit{Gonyalax}, \textit{Proto
 \subsection*{Selection of paralogs to infer species evolution.}
 %\cite{yang2014orthology} orthologue extr method which means good discussion on problems with wrong selection
 %\cite{degnan2009gene} some bullshit bout paralogs in soy bean
-Selection of paralogs for species inference is highly problematic as it compares an arbitrarily divergent gene history as input. 
-%sm: Need to explain and unpack. Ie, Under some circumstances, genes that are not orthologous, but are instead the result of subsequent gene duplication events within species (ie paralogous) can be mistaken for one another. This causes incorrect phylogenetic inference due to XYZ.  This problem is particularly apparent in species in which many genes exist in multiple copies in the genome, and for which multi-gene families are very common. In dinoflagellates.... In this study, this issue was addressed by
-%LK: this was supposed to be apparent from the introduction. Does it really need to be explained again
-This problem is particularly prevalent in the dinoflagellates and Gonyaulacales due to extensive paralogy from gene duplication. 
+Using gene histories to collate and extrapolate the species history is the basis for phylogenetic inference.
+Selecting genes which diverged through a process other than speciation events, such as paralogs, confounds the inference.
+Hence the selection of orthologs, and the elimination of paralogs, is essential.
+Paralogy is particularly rife in the dinoflagellates, and the order Gonyaulacales therein. 
 This study sought to address the issues arising from paralog comparison by isolating single copy genes, based on the BUSCO software output. 
 As this software utilizes lineage specific hmmer libraries designed to target single copy genes, and the output distinguishes between single copy genes and duplications, it presents a method for reliably screening for single copy genes for phylogenomics \cite{waterhouse2017busco}.
-Only one other study by Price et al. (2017) sought to address the issue of parology within the gonyalacales, by selecting single genes as input. 
+Only one other study by Price et al. (2017) sought to address the issue of parology within the dinoflagellates, by selecting single genes as input. 
 However there are several issues with the study presented by Price et al \cite{price2017robust}. 
 The assemblies used are from the MMETSP project, which employed outdated assembly methods as mentioned previously, and hence could present single copy genes which are instead hybrids of paralogs. 
 Further, the methodology for identifying and selecting the single copy genes was not described in the publication and is not available upon request. 
 Contact with the author established that there was no documentation for the commands that the authors executed, so no record of how the genes were attained was available. 
 Hence it was impossible to compare the parameters that went into identifying and screening for single copy genes and it was not possible to scrutinize or reproduce the study.
-
 Lastly, the genes were concatenated and the evolutionary relationships were inferred using ML. 
-While the bootstraps are well supported, this could very well be due to the methodology problems outlined in previous sections.
-The difference in topology between inferences presented by Price et al. and this study, is lies in the organization of sister taxa (Fig. ~\ref{fig:tangle}). 
+While the bootstraps are well supported, this could very well be due to systematic error as outlined in previous sections.
+The difference in topology between inferences presented by Price et al. and this study, is in the organization of sister taxa (Fig. ~\ref{fig:tangle}). 
 Price et al. place \emph{Alexandrium} spp. as the closest genus to \emph{Gambierdiscus}, while this study places \emph{Pyrodinium} as sister. 
 As some \emph{Gambierdiscus} spp. produce polyketide toxins which cause ciguatera fish poisoning, establishing the close relations to \emph{Gambierdiscus} is important for investigating the toxin evolution \cite{pawlowiez2014transcriptome}.
 The placement of the genus \emph{Azadinium} is equally as divergent as Price et al. place this genus as part of the gonyaulacales, while this study firmly places this genus as an outgroup with \emph{Dinophysis} spp. and \emph{Karenia} spp.
@@ -503,7 +502,6 @@ As \emph{Azadinium} spp. also produce polyketide toxins that cause azaspiracid s
 \label{fig:tangle}
 \end{figure} 
 \FloatBarrier
-In this study, we utilised the BUSCO output which screens for and verifies single copy genes for input into species tree inference, a purpose which was suggested as ideal by the authors of the software \cite{simao2015busco}. 
 
 \subsection*{Limitations of study}
 In the previous section we identified potential problems with common approaches to species inference in the literature, and in particular for the Gonyaulacales. 
