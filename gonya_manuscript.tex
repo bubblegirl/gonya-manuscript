@@ -75,12 +75,10 @@ Once orthologs are selected, there are further issues that can arise and impact 
 Two common, well characterized types of errors are random (sampling) and systematic errors. 
 The former arises from the data, as individual gene histories may differ to the species tree. 
 With a small number of genes, this random error can skewer the inference results away from the true species tree, however increasing the number of genes directly reduces the impact this error has on the analysis. 
-Conversely, systematic errors arise due to the mispecification of the model used for the inference where an incorrect species tree results from inadequate parameters applied to the analysis. 
-In this case, the increase in dataset size can exacerbate this type of error rather than reduce it like with random errors (see Box 1).  
-To confound the presence of a systematic error in an analysis, it
-%sm: not clear what 'it' is, need to reword ie Despite systematic errors occuring in an analysis, robust support values can be inferred (refs)
-%LK: no. that is the complete opposite to what is meant, the references and the point of this study. I don't think this is unclear. I checked with colleagues with basic molec bio background, they were clear on the meaning too, so I don;t think this needs to be changed.
- can return robust support values for the incorrect phylogenetic tree inferred and obfuscate the presence of the error \cite{jeffroy2006phylogenomics,roch2015likelihood,kubatko2007inconsistency}. 
+Conversely, systematic errors arise due to the mispecification of the model used for the inference where an incorrect species tree topology results. 
+In this case, an increase in dataset size can exacerbate systematic error rather than reduce it as would happen with random errors (see Box 1). 
+In the presence of this type of systematic error, the resulting inference can be positively misleading,
+ with high clade support values for the incorrect tree topology, obfuscating the presence of the error \cite{jeffroy2006phylogenomics,roch2015likelihood,kubatko2007inconsistency}. 
 Common problems in carrying out a species tree inference arise from:\\
 1) Selection of paralogs. 
 If genes with different evolutionary histories are selected, the gene tree will not reflect the history of either paralog and be nonsensical for species tree inference; \\
@@ -380,7 +378,6 @@ However under- compared to over-parameterization has been shown to have  more se
 Hence integral to this study was the statistical comparison of concatenation versus MSC through stepping stone sampling as evidence for model parameter adequacy. 
 The scripts which form the basis of this study are publicly available through github and the single copy genes used to infer the species evolution in this study, as well as the xml input and log files for the *BEAST runs, are available on zenodo. 
 What follows is a discussion of the key methodological questions that this study sought to address, using the gonyalacales as a case study. 
-%sm: says this last sentence isnt necessary
 
 %TODO refs, not sure if neede but were sent by Shauna:
 % Disagreements in deeper branches in insect phylogenomic study which compared models - but used concat \cite{boussau2014strepsiptera}
@@ -414,8 +411,6 @@ Cohen et al. demonstrated that while the raw data available from the MMETSP proj
 Another factor in assembly quality is RNA-seq library processing prior to assembly, especially trimming. 
 Commonly high stringency is favored, however MacManes (2014) found that this can be detrimental to the assembly and the quality cut off scores used in this study were based on the recommendation with that study \cite{macmanes2014optimal}.
 In short, the trimming and assembly pipeline used for the assemblies available as part of MMETSP have become outdated and this is reflected in the quality comparison conducted by Cohen et al. 
-%sm: delete, not necessary
-%LK: disagree. how the transcriptomes are processed is important for the quality of the assemblies used 
 To address this problem, trimming and assembly of RNA-seq libraries using Trimomatic and Trinity respectively were considered integral to the transcriptome assembly in this study.
 
 \subsection*{Quantity of taxa in phylogenetic inference}
@@ -446,12 +441,7 @@ It is important to acknowledge that these represent the evolutionary history of 
 %LK: this ok?
 Utilization of rDNA loci made sense when study designs were bound by sequencing and computational limitations, so they were a universally available proxy which was informative and continues to be commonly employed. 
 With high throughput sequencing and high performance computing now commonly available, we are no longer restricted to the use of rDNA datasets as proxies for species evolution. 
-Yet, this is still common practice. 
-%AD: the following does not have an obvious mechanism, and is certainly not always true (if ever true). i've only read the abstract of the he2016 paper but I didn't see anything about rDNA. what's the story here?
-A confounding factor for using rDNA loci from the Gonyaulacales is that they posses very high rDNA copy numbers which for phylogenetics result in extremely long branches \cite{he2016reducing}. 
-%sm: not clear how copy numbers relate to branch lengths. Need to unpack and explain carefully and clearly with refs.
 Yet rDNA loci are still widely used for Gonyaulacales. 
-%sm: not clear and not  necessary
 %AD: would it be better to first compare different data with same method (e.g. rDNA concat vs scg concat) before describing different data & different method?
 %you might even add \paragraph{} subheadings for "same data, different method" etc?
 Comparing the topology from a rDNA ML inference with the single gene copy MSC phylogeny presented here (Fig. ~\ref{fig:tanglerDNA}) shows that most clades in both topologies were completely or very well supported. 
@@ -530,16 +520,14 @@ Selection of paralogs for species inference is highly problematic as it compares
 This problem is particularly prevalent in the dinoflagellates and Gonyaulacales due to extensive paralogy from gene duplication. 
 This study sought to address the issues arising from paralog comparison by isolating single copy genes, based on the BUSCO software output. 
 As this software utilizes lineage specific hmmer libraries designed to target single copy genes, and the output distinguishes between single copy genes and duplications, it presents a method for reliably screening for single copy genes for phylogenomics \cite{waterhouse2017busco}.
-Only one other study by Price et al. (2017) sought to address the issue of parology within the gonyalacales, by purportedly selecting single genes as input. 
+Only one other study by Price et al. (2017) sought to address the issue of parology within the gonyalacales, by selecting single genes as input. 
 %sm: Price et al did not have the same aim as this study, it was just a phylogenetic study of dinos. No need to discuss in detail.
 %LK: aim isn't important, it's the only study taking the same approach and covering the same order. Without provodong their methodology or any supporting scripts so that is important to compare on both the methodology part as well as a point on accessible and reproducible methods
 However there are several issues with the study presented by Price et al \cite{price2017robust}. 
 The assemblies used are from the MMETSP project, which employed outdated assembly methods as mentioned previously, and hence could present single copy genes which are instead hybrids of paralogs. 
-Further, the methodology for identifying and selecting the single copy genes is not included in the publication. 
+Further, the methodology for identifying and selecting the single copy genes was not described in the publication and is not available upon request. 
 Contact with the author established that there was no documentation for the commands that the authors executed, so no record of how the genes were attained was available. 
 Hence it was impossible to compare the parameters that went into identifying and screening for single copy genes and it was not possible to scrutinize or reproduce the study.
-%sm: This is too detailed . There have been multiple recent phylogenetic studies on dinos, several of which used large datasets of multiple genes. Discuss them all but much more briefly. ie Price et al and Janouškovec(2017), Orr (2012), Bachvaroff (2014)
-%LK: those studies are addressed in the relevant sections where the methodology is comparable. Here, it is about Price and the use of single copy genes to overcome the dino/gonya problem. 
 
 Lastly, the genes were concatenated and the evolutionary relationships were inferred using ML. 
 While the bootstraps are well supported, this could very well be due to the methodology problems outlined in previous sections.
@@ -570,8 +558,6 @@ What follows is the identification of issues with the approach presented in this
 \paragraph*{Trimming of RNA seq libraries.} The cut off values chosen for this study are based on the recommendations of MacMannes (2014) for optimal transcript discovery. 
 However the recommendations are based on the efficacy of cut off values for a mouse embryonic stem cell RNA-seq library, which may not be an adequate model for dinoflagellates. 
 This could confound the difference between single copy genes and sequencing artifacts.
-%sm: Need some discussion and refs as to what difference this could make. But it can be much more brief than this
-%LK: refs, yes. but hardly briefer without getting the importance of pre-assembly processing accross.
 \paragraph*{Assembly parameters.}
 Trinity was chosen as the assembler for this study based on the findings of Honaas et al. (2016), in which Trinity was one of the top performing assemblers for \textit{de novo} transcriptomes as tested with \textit{Arabidopsis thaliana}. 
 While this plant model has similar genetic features to dinoflagellates, the conclusion of adequate comparison may be flawed.
@@ -611,8 +597,6 @@ By presenting a statistically rigorous methodology and demonstrating how this ov
 The GVL section of this study was conducted inside the National eResearch Collaboration Tools and Resources (NeCTAR) research cloud, an initiative by the National Research Infrastructure for Australia (NCRIS).
 Gratitude to the Stanley Watson foundation, the Linnaean Society of New South Wales, and the ABRS National Taxonomy Research Student Travel Bursary for funding A. L. Kretzschmar's attendance at the Molecular Evolution workshop at the Marine biological laboratory, Woods Hole, MA, USA.
 Shout out to the Taming the BEAST organizers \& fellow attendees for a most illuminating workshop in February 2017 on BEAST methodology, and to Geneious for subsidizing A. L. Kretzschmar's attendance fee.
-%sm: 'shout out' is colloquial
-%LK: how is that a problem in the acknowledgements
 Thank you to Dr. Tim Kahlke for running Interproscan for transcriptome analysis. 
 The transcriptomic sequencing was funded by  an ARC Future Fellowship to S. Murray.
 A. L. Kretzschmar's PhD stipend was funded through a UTS Doctoral scholarship.
