@@ -81,7 +81,11 @@ We provide open source scripts to assemble RNA-seq datasets, identify and extrac
 %AD: can you give the URL for script download? e.g. the github repo?
 %LK: should I do this here or in the methods?
 Finally, the methodology is tested with a group of organsims notorious for their extensive paralogy - the Gonyalacales (phylum: Dinoflagellata) (see box 2 for further information on the Gonaylacales).
-%TODO limited taxon sampling
+
+%TODO limited taxon sampling section
+%Heath 08: Because  parametric  methods,  such  as  maximum  likelihood,  incorporate  models  that  account  for  unobserved  substitutions,  these  methods  are less prone to the effects of long-branch attraction, as  long  as  the  models  of  evolution  are  adequate.  However, enough taxa must be sampled to parameter-ize  these  models  effectively  (Pollock  et  al.,  2002). In  addition,   longer   branches   require   more   accurate   models   of   evolution   (because   more   unobserved   changes  must  be  inferred),  so  increased  taxon  sam-pling (which breaks up long branches) greatly benefits parametric  methods  as  well  as  nonparametric  meth-ods. 
+% Xia 06 Topological Bias in Distance-Based Phylogenetic Methods: Problems with Over- and Underestimated Genetic Distances
+% Pollock Increased Taxon Sampling Is Advantageous for Phylogenetic Inference
 \subsubsection*{Box 1: Statistical nomenclature \& errors this study seeks to address}
 For in depth explanations see \cite{yang2014molecular}.\\
 \textbf{Bayesian probability (BI):} infers posterior probability from expectation based prior probability compared to data based likelihood function which assesses the differences in prior and likelihood of each parameter.
@@ -175,6 +179,8 @@ ML inference was obtained using RaxML \cite{stamatakis2014raxml} with the GTR an
 \subsubsection*{Concatenated single copy gene based inference}
 Single copy gene alignments were concatenated and both ML \& BI analyses were executed on the University of Technology Sydney's High-performance computing cluster (HPCC). 
 GPU processing units were either Nvidia Tesla K80 or a Tesla P100. 
+Adequate amino acid substitution model was identified with ProtTest3 with the Bayesian Information Criterion as well as the log likelihood \cite{darriba2011prottest,guindon2003simple}. 
+Best model for the dataset was identified by both criteria was VT followed by LG, however neither are available in beast2 so the third best model, WAG, was chosen for analysis. 
 \paragraph*{Maximum likelihood with concatenated sequences.}
 ML inference run as described in the previous section, with the ILGF, GAMMA and PROT flags.
 \paragraph*{Bayesian inference with concatenated sequences.}
@@ -350,9 +356,11 @@ The authors hope the process presented here is transparent and reproducible for 
 Due to the size of their genomes and extensive paralogy the Gonyaulacales were chosen to test the methodology presented here.
 We present a synopsis of the impact of model and data selection on the overall topology, while comparing commonly employed methodologies. \\
 %AD: the following statement seems out of place. maybe you need to start a new paragraph about the problem of model misspecification? let's remember the well known words of George Box...all models are wrong
+The issue of model misspecification is an important one, as the choice of model can severely impact the resulting topology.
+
 The authors are mindful that overparameterization as well as under parameterization can cause mis-specification for BI, if the inference is not in the Felsenstein zone. 
 However under- compared to over-parameterization has been shown to have  more severe negatve impacts for inferring the an adequate approximation of the species tree \cite{lemmon2004importance}. 
-Stepping stone (SS) sampling compares the marginal likelihood of both the prior and the posterior of a model, which penalizing for overparameterization. 
+Stepping stone (SS) sampling compares the marginal likelihood of both the prior and the posterior of a model, while penalizing for overparameterization. 
 To compare how well concatenation vs. MSC fits the single copy gene dataset used in this study, SS comparison was conducted.
 The scripts which form the basis of this study are publicly available through github and the single copy genes used to infer the species evolution in this study, as well as the xml input and log files for the *BEAST runs, are available on zenodo. 
 What follows is a discussion of the key methodological questions that this study sought to address, using the gonyalacales as a case study. 
