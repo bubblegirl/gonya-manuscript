@@ -81,7 +81,11 @@ We provide open source scripts to assemble RNA-seq datasets, identify and extrac
 %AD: can you give the URL for script download? e.g. the github repo?
 %LK: should I do this here or in the methods?
 Finally, the methodology is tested with a group of organsims notorious for their extensive paralogy - the Gonyalacales (phylum: Dinoflagellata) (see box 2 for further information on the Gonaylacales).
-%TODO limited taxon sampling
+
+%TODO limited taxon sampling section
+%Heath 08: Because  parametric  methods,  such  as  maximum  likelihood,  incorporate  models  that  account  for  unobserved  substitutions,  these  methods  are less prone to the effects of long-branch attraction, as  long  as  the  models  of  evolution  are  adequate.  However, enough taxa must be sampled to parameter-ize  these  models  effectively  (Pollock  et  al.,  2002). In  addition,   longer   branches   require   more   accurate   models   of   evolution   (because   more   unobserved   changes  must  be  inferred),  so  increased  taxon  sam-pling (which breaks up long branches) greatly benefits parametric  methods  as  well  as  nonparametric  meth-ods. 
+% Xia 06 Topological Bias in Distance-Based Phylogenetic Methods: Problems with Over- and Underestimated Genetic Distances
+% Pollock Increased Taxon Sampling Is Advantageous for Phylogenetic Inference
 \subsubsection*{Box 1: Statistical nomenclature \& errors this study seeks to address}
 For in depth explanations see \cite{yang2014molecular}.\\
 \textbf{Bayesian probability (BI):} infers posterior probability from expectation based prior probability compared to data based likelihood function which assesses the differences in prior and likelihood of each parameter.
@@ -101,10 +105,11 @@ If strong, can override true phylogenetic signal.\\
 \textbf{Incomplete lineage sorting:} discordance of gene evolutionary history with the species evolutionary history causing the phylogenetic species tree to be misinfered. 
 Difference in the topology of a gene tree compared to the species evolution can arise from the coalescence of those orthologs pre-dating the species divergence, in effect having an ancestral state where several copies of the gene were present in the population for one or more species divergence points. 
 Another mechanism is the introduction of a copy of the gene which is not based on ancestral inheritance, such as horizontal gene transfer or hybridization.\\
-\textbf{Long branch attraction:} phylogenetic phenomenon where distantly related taxa are inferred as close relatives topologically due to systematic error, also known as the Felsenstein zone.
+\textbf{Long branch attraction:} when two distantly related taxa are inferred as sister taxa due to sequence similarity from convergence or parallel evolution rather than recent ancestry. 
+When this is more likely than accurate placement based on shared ancestry, it's known as the Felsenstein zone.
 
 \subsubsection*{Box 2: Who/what are the Gonyaulacales?}
-%TODO Aaron and Mathieu, as non protistologists is this section adequate in explaining why the gonyaulacales were chosen for this work, or would it help to include some of the commented out text?
+%TODO Aaron and Mathieu, as non protistologists is this section adequate in explaining why the gonyaulacales were chosen for this work, or would it help to include some of the commented out text? Would the commented out sections be helpful?
 The Gonyaulacales are an order within the super-phylum Alveolata and sub-phylum Dinoflagellata, which are an ancient lineage on the eukaryotic branch of life \cite{moldowan1998biogeochemical}. 
 They play a role in several important ecological processes in aquatic environments where they cover a diverse array of niches such as symbionts, parasites and autotrophs. 
 Some taxa can cause harmful algal blooms through proliferation and/or neurotoxin production (e.g. causing paralytic shellfish poisioning, ciguatera fish poisoning) \cite{murray2016unravelling}.
@@ -113,7 +118,6 @@ In particular the paralogy has proven problematic for efforts investigating the 
 cite{shoguchi2013draft,lin2015symbiodinium}. 
 For a review on the genetic features of dinoflagellates see \cite{murray2016unravelling}. 
 While the evolutionary relationship of most orders within the dinoflagellates has been inferred with consistently high support values, one order has often escaped elucidation - the Gonyaulacales. 
-%Analyses for this order commonly combined concatenation and maximum likelihood approaches, which yielded long branch attraction, low confidence values and inconsistent taxon resolution \cite{}. 
 As neurotoxin production is prevalent in this order, the evolution of the order is of interest to give a a base line for investigating how the toxins evolved \cite{shalchian2006combined,zhang2007three,saldarriaga2004molecular,hoppenrath2010dinoflagellate,murray2005improving}. 
 %Specifically the ciguatoxins produced by some \emph{Gambierdiscus} spp. are of interest as the causative agent of ciguatera fish poisoning, a neglected tropical disease with global implications \cite{globalcig}.%, which is predicted to increase in prevalence as climate change progresses \cite{}.
 
@@ -176,6 +180,8 @@ ML inference was obtained using RaxML \cite{stamatakis2014raxml} with the GTR an
 \subsubsection*{Concatenated single copy gene based inference}
 Single copy gene alignments were concatenated and both ML \& BI analyses were executed on the University of Technology Sydney's High-performance computing cluster (HPCC). 
 GPU processing units were either Nvidia Tesla K80 or a Tesla P100. 
+Adequate amino acid substitution model was identified with ProtTest3 with the Bayesian Information Criterion as well as the log likelihood \cite{darriba2011prottest,guindon2003simple}. 
+Best model for the dataset was identified by both criteria was VT followed by LG, however neither are available in beast2 so the third best model, WAG, was chosen for analysis. 
 \paragraph*{Maximum likelihood with concatenated sequences.}
 ML inference run as described in the previous section, with the ILGF, GAMMA and PROT flags.
 \paragraph*{Bayesian inference with concatenated sequences.}
@@ -303,7 +309,7 @@ Other deeper nodes were well supported.
 
 \subsubsection*{Concatenated single copy gene based phylogeny inferred with BI}
 \FloatBarrier 
-%TODO Running with stepping stone ~~~ check out trees closer to posterior for prev ss sampling run in /shared/homes/s1/Liza/concat-bollocks/test
+%TODO Running with stepping stone ~~~ check out trees closer to posterior for prev ss sampling run in /shared/homes/s1/Liza/concat-bollocks/test // um... which on edid I use??
 All nodes resolved with full support, except one node within the genus \textit{Gambierdiscus} which was very well supported. 
 The following descriptions are based on Fig. ~\ref{fig:SCconcatBI}. 
 The species in the genera \textit{Alexandrium}, \textit{Gambierdiscus} and \textit{Ostreopsis} all resolved with full support within their respective genera clades. 
@@ -351,9 +357,11 @@ The authors hope the process presented here is transparent and reproducible for 
 Due to the size of their genomes and extensive paralogy the Gonyaulacales were chosen to test the methodology presented here.
 We present a synopsis of the impact of model and data selection on the overall topology, while comparing commonly employed methodologies. \\
 %AD: the following statement seems out of place. maybe you need to start a new paragraph about the problem of model misspecification? let's remember the well known words of George Box...all models are wrong
+The issue of model misspecification is an important one, as the choice of model can severely impact the resulting topology.
+
 The authors are mindful that overparameterization as well as under parameterization can cause mis-specification for BI, if the inference is not in the Felsenstein zone. 
 However under- compared to over-parameterization has been shown to have  more severe negatve impacts for inferring the an adequate approximation of the species tree \cite{lemmon2004importance}. 
-Stepping stone (SS) sampling compares the marginal likelihood of both the prior and the posterior of a model, which penalizing for overparameterization. 
+Stepping stone (SS) sampling compares the marginal likelihood of both the prior and the posterior of a model, while penalizing for overparameterization. 
 To compare how well concatenation vs. MSC fits the single copy gene dataset used in this study, SS comparison was conducted.
 The scripts which form the basis of this study are publicly available through github and the single copy genes used to infer the species evolution in this study, as well as the xml input and log files for the *BEAST runs, are available on zenodo. 
 What follows is a discussion of the key methodological questions that this study sought to address, using the gonyalacales as a case study. 
