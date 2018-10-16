@@ -356,7 +356,8 @@ To address this, a synopsis on RNA library pre-processing, assembly parameter se
 Dinoflagellates are notorious for their extensive genomes with suspected whole or partial genome duplication and potential cDNA retro-insertion into the genome \cite{van2009florida,beauchemin2012dinoflagellate,slamovits2008widespread,hou2009distinct,lin2011genomic}. 
 This causes unusually large gene copy numbers and extensive paralogy. 
 With this in mind, the gonyaulacales (an order within the dinoflagellates, see Box 1) presented as an ideal challenge to test the parameters of interest. \\
-
+The inference resultant from the work flow we present as most rigorous for the gonyaulacales to date (Fig. ~\ref{fig:SCmscBI}) resolved well for species within the same genus and with high PP throughout. 
+The topology follows a broad revised taxonomic classification of the gonyaulacales based on morphological characteristics \cite{hoppenrath2017dinoflagellate} and will be used as the comparative point to other commonly employed methods in later sections. \\
 The scripts which form the basis of this study are publicly available through github and the single copy genes used to infer the species evolution in this study, as well as the xml input and log files for the *BEAST runs, are available on zenodo. 
 The authors hope the process presented here is transparent and reproducible for those with basic programming skills. 
 %other factors to consider.. qiality of transcriptome etc
@@ -378,7 +379,7 @@ To investigate the presence of ILS and as a topological comparison to the BI and
 The rationale for including this method was that NJ can recover an accurate species topology despite ILS where ML would fail  \cite{mendes2017concatenation}.
 However NJ is highly sensitive to LBA. 
 The resulting topology was sufficiently anomalous, with out and in-groups clustering together, that led us to exclude this inference from the results and strongly suspect that LBA is at play in this data set. 
-Both BI and ML are more robust to the effects of LBA, where BI tends to outperform ML, especially in conjunction with concatenation, %TODO fucking finish this sentence
+Both BI and ML are more robust to the effects of LBA than NJ, where BI tends to outperform ML especially if the latter is performed conjunction with concatenation \cite{kubatko2007inconsistency,roch2015likelihood}. %TODO check ref
 \subsubsection*{Trimming of RNA seq libraries.} The cut off values chosen for this study are based on the recommendations of MacManes (2014) for optimal transcript discovery. 
 However the recommendations are based on the efficacy of cut off values for a mouse embryonic stem cell RNA-seq library, which may not be an adequate model for dinoflagellates. 
 This could confound the difference between single copy genes and sequencing artifacts.
@@ -442,14 +443,8 @@ To compare how well concatenation vs. MSC fits the single copy gene data set use
 Using LSU or SSU rDNA regions for phylogenetics is common practice, at times supplemented with a small number of other genes \cite{shalchian2006combined,zhang2007three,saldarriaga2004molecular,murray2005improving,hoppenrath2010dinoflagellate}. 
 It is important to acknowledge that these represent the evolutionary history of highly conserved genes, which does not necessarily represent the species evolution and assuming their congruence is statistically inadequate \cite{degnan2009gene}.
 Utilization of rDNA loci made sense when study designs were bound by sequencing and computational limitations, so they were a universally available proxy which was informative and continues to be commonly employed. 
-With high throughput sequencing and high performance computing now commonly available, we are no longer restricted to the use of rDNA data sets as proxies for species evolution. 
-Yet rDNA loci are still widely used for Gonyaulacales. 
-%AD: would it be better to first compare different data with same method (e.g. rDNA concat vs scg concat) before describing different data & different method?
-%you might even add \paragraph{} subheadings for "same data, different method" etc?
-%LK: I'm having trouble picturing this, the way I had set this up was as the SCG BI MSC run as the comparison to all the other inferences. 
-%I can do the comparisons this way too, I'll set up a rDNA concat beast run tonight and make more tanglegrams... so the structure would be something like this:
-%\section{rDNA inference} with rDNA ML concat vs. rDNA BI concat (same data diff method), as well as rDNA ML concat vs. SCG ML concat (Diff data same method), and rDNA ML concat vs. SCG BI MSC (diff data, diff method)
-%and then the following two sections stay the same or do they need to be restructured too?
+While rDNA sequences are useful for characterizing intra-species relationships within crown taxa, these regions are unsuited for topological resolution of deeper branches (for a summary see \cite{hoppenrath2017dinoflagellate}).
+Yet rDNA sequences are still commonly used, exclusively or as part of a subset of genes for analysis, for the gonyaulacales. 
 Comparing the topology from a rDNA ML inference with the single gene copy MSC phylogeny presented here (Fig. ~\ref{fig:tanglerDNA}) shows that most clades in both topologies were completely or very well supported. 
 Within the genera \emph{Gambierdiscus} and \emph{Ostreopsis}, the species resolution differed between the two data sets. 
 In several cases, the placement of sister taxa was incongruous between the two analyses. 
