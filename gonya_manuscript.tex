@@ -52,7 +52,7 @@ The quest to untangle the relationships within the evolutionary tree is an ongoi
 A limiting factor for our analysis of evolutionary relationships is, commonly, the computational methods and available infrastructure used to analyze the data sets. 
 Another is that the methods and models applied to the data set can influence the resulting phylogeny and there needs to be a solid understanding of the methods, including their shortcomings, by the operator.
 An example of the breadth of publicly available data is the Marine Microbial Eukaryote Transcriptome Sequencing Project (MMETSP), which sequenced transcriptomes of over 650 marine eukaryotic microbes \cite{keeling2014marine}. 
-This project focused on a group of understudied organisms which are abundant and play vital roles in the marine environment, from geochemical cylcling, predation to symbiosis. %TODO ref
+This project focused on a group of understudied organisms which are abundant and play vital roles in the marine environment, from geochemical cylcling, predation to symbiosis \cite{gomez2005list}. 
 This data set offers an excellent opportunity to explore the evolutionary relationships between these taxa through phylogenetics. 
 For phylogenetic inference, the gene representative for each taxa is compared with all other representatives. 
 The assumption for an accurate representation of species evolution is based on this gene comparison using genes that diverged strictly through  gene tree divergence due to speciation (= orthology) rather than duplication (= paralogy) or transfer from another organism (= horizontal gene transfer) \cite{maddison1997gene}. 
@@ -206,7 +206,7 @@ The transcriptome libraries were fed through the single copy gene extraction scr
 The resulting alignments were run on *BEAST either on the CPU or GPU.
 
 \subsubsection*{Generation of figures}
-Tanglegrams were generated with Dendroscope v3.5.9 \cite{huson2007dendroscope}; images were edited in GIMP \cite{gimp}.
+Tanglegrams were generated with Dendroscope v3.5.9 \cite{huson2007dendroscope}; images were edited in GIMP \cite{gimp}. %TODO learn inkscape
 \newpage
 \section{Results}
 \subsection*{Transcriptomes overview}
@@ -378,9 +378,8 @@ In short, the trimming and assembly pipeline used for the assemblies available a
 To address this problem, trimming and assembly of RNA-seq libraries using Trimomatic and Trinity respectively were considered integral to the transcriptome assembly in this study.
 
 \subsection*{Quantity of taxa in phylogenetic inference}
-Extensive coverage of taxa within the group of organisms examined is necessary to give useful insight into the evolutionary inter-taxon relationships.
-Two concerning phenomena that can confound the veracity of the conclusion drawn from phylogenetic inference are ILS and LBA. 
-When taxa sitting along long branches share a number of substitutions which are due to homoplasy rather than recently shared ancestry, they can be falsely clustered with each other. 
+Sufficient and even coverage of taxa within the group of organisms examined is necessary to give insight into the evolutionary inter-taxon relationships while reducing the occurrence of LBA and ILS \cite{heath2008taxon}.
+When taxa sitting along long branches share a number of substitutions due to homoplasy rather than recently shared ancestry, they can be incorrectly inferred as close relatives and placed adjacent in the topology. 
 The likelihood of LBA can be reduced by denser taxon sampling to break up long branches and ensuring that the models specified are appropriate \cite{heath2008taxon}. 
 The impact of ILS on phylogenetic inferences has been explored through simulated data sets with a known species tree. 
 While the increase in the number of genes used to infer the species phylogeny reduces the interference from ILS in the results, an increase in taxa and an even distribution there of has a greater impact \cite{maddison2006inferring}.
@@ -394,7 +393,7 @@ To investigate the presence of ILS and as a topological comparison to the BI and
 The rationale for including this method was that NJ can recover an accurate species topology despite ILS where ML would fail  \cite{mendes2017concatenation}.
 However NJ is highly sensitive to LBA. 
 The resulting topology was sufficiently anomalous, with out and in-groups clustering together, that led us to exclude this inference from the results and strongly suspect that LBA is at play in this data set. 
-Both BI and ML are more robust to the effects of LBA, where BI tends to outperform ML, especially in conjunction with concatenation, 
+Both BI and ML are more robust to the effects of LBA, where BI tends to outperform ML especially in conjunction with concatenation, 
 
 \subsection*{Phylogenetic inference using ribosomal genes.}
 \FloatBarrier 
