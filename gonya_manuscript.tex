@@ -22,7 +22,7 @@
  
 
 \title{Trial by phylogenetics - how model and data selection impacts the elucidation of the evolution of the Gonyaulacales (Dinophyceae). $^{1}$}
-\author{Key words: Bayesian inference, model selection, Gonyaulacales, phylogenetics, transcriptomics}
+\author{Key words: Bayesian inference, model selection, Gonyaulacales,\\ phylogenetics, transcriptomics}
 
 \date{}
 
@@ -59,73 +59,80 @@ This data set offers an excellent opportunity to explore the evolutionary relati
 % AD 181018: this sounds like it needs to start a fresh paragraph. I'm not sure what this following sentence is trying to say though.
 In phylogenetic inference, one or more representative genes for each taxon are compared to those from other taxa. 
 % AD 181018: suggest splitting out the definition of orthology, paralogy, and HGT into separate sentences rather than leaving their definitions as implicit in the following sentence
-In order to estimate a tree representing species evolution, most inference methods typically assume that genes used in the analysis have diverged strictly through  speciation events (= orthology) rather than duplication (= paralogy) or transfer from another organism (= horizontal gene transfer) \cite{maddison1997gene}. 
+In order to estimate a tree representing species evolution, most inference methods typically assume that genes used in the analysis have diverged strictly through speciation events (the resulting two copies of the gene are called orthologs) rather than duplication (creating copies with a paralog relationship) or transfer from another organism (= horizontal gene transfer) \cite{maddison1997gene}. 
+% AD 181018: suggest clarifying that it is essential when using an inference method that assumes all genes are orthologs. There are models which include inference of gene duplication & paralogy, though these are much harder to implement and apply than *BEAST
 Both paralogs and orthologs are specific cases of homology, genes which share an ancestral sequence and diverged in the past, where the mode of divergence differs \cite{fitch1970distinguishing}. 
 The distinction between these two cases is essential in identifying gene candidates that are informative for species evolution inference, as the selection of orthologs ensures the inclusion of a signal that is based on the speciation of the taxa examined, while selection of paralogs confounds that signal by including information that does not pertain to the speciation of the taxa. 
-As gene loss and duplication can commonly occur in a number of the lineages examined, the establishment of orthology is more difficult than may seem apparent from the definition \cite{gabaldon2008large}. 
-Once orthologs are selected, there are further issues that can arise and impact the veracity of the phylogenetic inference. 
-Two common, well characterized types of errors are random (sampling) and systematic errors. 
+As gene duplication and subsequent loss commonly occur over the course of evolution and speciation, the identification of genes that have orthologous relationships is more difficult than may seem apparent from the definition \cite{gabaldon2008large}. 
+
+Once orthologs have been identified there are further issues that can arise and impact the veracity of the phylogenetic inference. 
+% AD 181018: the language here doesn't seem quite right. random noise leads to higher variance in estimates, not skew or bias. In Bayesian inference this usually manifests as lower posterior probabilities == higher uncertainty in the estimated trees.
+Two common, well characterized types of errors are random (sampling error) and systematic errors. 
 The former arises from the data, as individual gene histories may differ to the species tree. 
-With a small number of genes, this random error can skewer the inference results away from the true species tree, however increasing the number of genes directly reduces the impact this error has on the analysis. 
+With a small number of genes, this random error can skew the inference results away from the true species tree, however increasing the number of genes directly reduces the impact this error has on the analysis. 
+
+% AD 181018: The following reads well
 Conversely, systematic errors arise due to the mispecification of the model used for the inference where an incorrect species tree topology results. 
 In this case, an increase in data set size can exacerbate systematic error rather than reduce it as would happen with random errors (see Box 1). 
 In the presence of this type of systematic error, the resulting inference can be positively misleading,
  with high clade support values for the incorrect tree topology, obfuscating the presence of the error \cite{jeffroy2006phylogenomics,roch2015likelihood,kubatko2007inconsistency}. 
-Common problems in carrying out a species tree inference arise from:\\
+
+% AD 181018: suggest using latex's \enumerate for the below list
+In summary, common problems in carrying out a species tree inference arise from:\\
 1) Selection of paralogs. 
 If genes with different evolutionary histories are selected, the gene tree will not reflect the history of either paralog and be nonsensical for species tree inference; \\
 2) Concatenation of genes. 
 Can be statistically inconsistent estimator of the species tree due to incomplete lineage sorting (ILS) and concatenation acting as imperfect estimator of species tree topology \cite{roch2015likelihood}; and \\
 3) Inference of model adequacy from bootstrap values. 
 Kubatko et al. (2007) demonstrated high bootstrap support under maximum likelihood (ML) inference for incorrect species trees with concatenated gene sets as input \cite{kubatko2007inconsistency}. 
-As high bootstrap values are often used as an indicator for robust species topology resolution, this fallacy is particularly problematic if the reader/operator is unfamiliar with the statistical phenomenon.\\
-In this study we aim to demonstrate a bioinformatic methodology which attempts to mitigate the effects of paralogy when processing transcriptomic data than currently commonly utilized in protistology. 
-Further, we seek to demonstrate the impact of model and data selection on the resulting phylogenetic inference. 
-We provide open source scripts to assemble RNA-seq data sets, identify and extract single copy genes across input taxa with extensive paralogy, and aligns selected genes ready for Bayesian inference (BI) phylogenetics. 
+As high bootstrap values are often used as an indicator for robust species topology resolution, this fallacy is particularly problematic if the reader/operator is unfamiliar with the statistical phenomenon.
+
+In this study we explore the application of data analysis techniques which attempt to mitigate several of the pitfalls in species tree inference, beyond what has previously been applied in the study of protist phylogeny.
+The sequence data is prepared using a workflow that selects single copy genes. 
+Next, we evaluate the impact of model and data selection on the resulting phylogenetic inference. 
+Source code for the scripts to assemble RNA-seq data sets, to identify and extract single copy genes across input taxa with extensive paralogy, and to align selected genes ready for Bayesian inference (BI) phylogenetics is provided under an open source license. 
 %AD: can you give the URL for script download? e.g. the github repo?
 %LK: should I do this here or in the methods?
-Finally, the methodology is tested with a group of organisms notorious for their extensive paralogy - the Gonyalacales (phylum: Dinoflagellata) (see box 2 for further information on the Gonyaulacales).
+% AD 181018: either is ok, so long as it is somewhere in here
+Finally, we applied the methodology to a group of organisms notorious for their extensive paralogy - the Gonyalacales (phylum: Dinoflagellata) (see box 2 for further information on the Gonyaulacales).
 %can I include this again now ^___^
 %Within this framework, the dinoflagellates and in particular the gonyaulacales hold a special place in hell. 
 %This author postulates that there is a Dante-esque lower circle especially reserved for protist microbiologists and taxonomists whose willfully laisez-faire approach abuses mathematical models to spew forth statistically inconsistent abominations of their complex evolutionary history.
+% AD 181018: wow, that's beautiful.
 
 %TODO limited taxon sampling section, not sure whether to include this here or in the discussion is sufficient?
 %Heath 08: Because  parametric  methods,  such  as  maximum  likelihood,  incorporate  models  that  account  for  unobserved  substitutions,  these  methods  are less prone to the effects of long-branch attraction, as  long  as  the  models  of  evolution  are  adequate.  However, enough taxa must be sampled to parameter-ize  these  models  effectively  (Pollock  et  al.,  2002). In  addition,   longer   branches   require   more   accurate   models   of   evolution   (because   more   unobserved   changes  must  be  inferred),  so  increased  taxon  sam-pling (which breaks up long branches) greatly benefits parametric  methods  as  well  as  nonparametric  meth-ods. 
 % Xia 06 Topological Bias in Distance-Based Phylogenetic Methods: Problems with Over- and Underestimated Genetic Distances
 % Pollock Increased Taxon Sampling Is Advantageous for Phylogenetic Inference
 \subsubsection*{Box 1: Statistical nomenclature \& errors this study seeks to address}
+% AD 181018: suggest using latex \itemize for the below
+% AD 181018: the descriptions of BI and ML are not precise, I suggest just removing them and deferring to another paper but if you feel strongly about their inclusion we can try to refine the language. I think it will be hard, though.
 For in depth explanations see \cite{yang2014molecular}.\\
-\textbf{Bayesian probability (BI):} infers posterior probability from expectation based prior probability compared to data based likelihood function which assesses the differences in prior and likelihood of each parameter.
-BI uses probability distributions to describe uncertainty in parameters.
-Model re-parameterization via priors changes posterior output, i.e. this is a dynamic method informed by observation as input by the user. 
-We recommend Huelsenbeck et al. (2001) for an overview of the principles underlying BI for phylogenetics \cite{huelsenbeck2001bayesian}.\\
-\textbf{Maximum likelihood estimate (MLE):} estimates the values for the parameters of the model that maximize the likelihood of the result given the observed data. 
-The likelihood is invariant to re-parameterization as the most likely values for the parameters are not affected, so where a change in prior designation would affect Bayesian probability, this would not affect MLE.
-Does not use priors, which means probability functions not applied to model parameters, but only their estimates. 
-Model reparameterization does not affect MLE, in effect a static method.\\
 \textbf{Heterotachy:} change in evolutionary rates of sites over time, specific to lineage(s).\\
 \textbf{Potential statistical error types:}\\
-1. random. Sampling based error which decreases and approaches zero as size of data set approaches infinity.\\
+1. random. Sampling based error which decreases and approaches zero as the size of the data set approaches infinity.\\
 2. systematic. Arises from incorrect model assumptions or problems with the model itself. 
 Error type persists and increases as data set size approaches infinity. 
 If strong, can override true phylogenetic signal.\\
 \textbf{Incomplete lineage sorting (ILS):} discordance of gene evolutionary history with the species evolutionary history causing the phylogenetic species tree to be misinferred. 
-Difference in the topology of a gene tree compared to the species evolution can arise from the coalescence of those orthologs pre-dating the species divergence, in effect having an ancestral state where several copies of the gene were present in the population for one or more species divergence points. 
+Difference in the topology of a gene tree compared to the species evolution can arise from the coalescence of those orthologs prior to the species divergence, where in effect the ancestral populations contain two or more already-diverged copies of the gene across one or more species divergence points. 
 Another mechanism is the introduction of a copy of the gene which is not based on ancestral inheritance, such as horizontal gene transfer or hybridization.\\
 \textbf{Long branch attraction (LBA):} when two distantly related taxa are inferred as sister taxa due to sequence similarity from convergence or parallel evolution rather than recent ancestry. 
+% AD 181018: the above is incorrect. LBA is not due to convergent evolution, but rather limitations of phylogenetic methods when processing data with two or more heavily diverged sequences. So many mutations have occurred that the signal of evolutionary history is lost and the simplest explanation for the data just involves gluing those long branches together. 
 When it is more likely than accurate placement based on shared ancestry, this is known as the Felsenstein zone.
 
 \subsubsection*{Box 2: Who/what are the Gonyaulacales?}
 %TODO Aaron and Mathieu, as non protistologists is this section adequate in explaining why the gonyaulacales were chosen for this work, or would it help to include some of the commented out text? Would the commented out sections be helpful?
-The Gonyaulacales are an order within the super-phylum Alveolata and sub-phylum Dinoflagellata, which are an ancient lineage on the eukaryotic branch of life \cite{moldowan1998biogeochemical}. 
+The Gonyaulacales are an order within the super-phylum Alveolata and sub-phylum Dinoflagellata, which are an ancient eukaryotic lineage \cite{moldowan1998biogeochemical}. 
 They play a role in several important ecological processes in aquatic environments where they cover a diverse array of niches such as symbionts, parasites and autotrophs. 
+% AD 181018: why is the proliferation harmful? is it consuming resources and stifling growth of other organisms?
 Some taxa can cause harmful algal blooms through proliferation and/or neurotoxin production (e.g. causing paralytic shellfish poisoning, ciguatera fish poisoning) \cite{murray2016unravelling}.
-Dinoflagellates possess large genomes (estimated 3.7 to 220 Gbp), with extensive paralogy and repetitive short sequences  \cite{casabianca2017genome,murray2016unravelling}. 
+Dinoflagellates possess large genomes (estimated size range 3.7 to 220 Gbp), with extensive paralogy and repetitive short sequences  \cite{casabianca2017genome,murray2016unravelling}. 
 In particular the paralogy has proven problematic for efforts investigating the genetic content and structure of the dinoflagellates, as this feature has prevented the assembly of genomes apart from two draft genomes for \textit{Symbiodinium} which posses some of the smaller genomes 
 cite{shoguchi2013draft,lin2015symbiodinium}. 
 For a review on the genetic features of dinoflagellates see \cite{murray2016unravelling}. 
 While the evolutionary relationship of most orders within the dinoflagellates has been inferred with consistently high support values, one order has often escaped elucidation - the Gonyaulacales. 
-As neurotoxin production is prevalent in this order, the evolution of the order is of interest to give a a base line for investigating how the toxins evolved \cite{shalchian2006combined,zhang2007three,saldarriaga2004molecular,hoppenrath2010dinoflagellate,murray2005improving}. 
+As neurotoxin production is prevalent in this order, the evolution of the order is of interest to provide a frame of reference for future investigations into how the toxins have evolved \cite{shalchian2006combined,zhang2007three,saldarriaga2004molecular,hoppenrath2010dinoflagellate,murray2005improving}. 
 %Specifically the ciguatoxins produced by some \emph{Gambierdiscus} spp. are of interest as the causative agent of ciguatera fish poisoning, a neglected tropical disease with global implications \cite{globalcig}.%, which is predicted to increase in prevalence as climate change progresses \cite{}.
 
 \newpage
@@ -136,15 +143,16 @@ Cultures were isolated from locations as per Table S1 and clonal cultures establ
 Clonal cultures were maintained in F/10 medium and maintained at temperatures indicated in Table S1. 
 
 \subsection*{RNA isolation}
-\emph{Gambierdiscus} spp. and \emph{Thecadinium} cf. \emph{kofoidii} were harvested during late exponential growth phase by filtration onto 5 $\mu$m SMWP Millipore membrane filter (Merck, DE) and washed off with sterile seawater. 
-Cells were pelleted via centrifugation (make of centrifuge) for 10 minutes at 350 rcf. 
-Supernatant was decanted and 2ml of TRI Reagent (Sigma-Aldrich, subsidiary of Merck, DE) was added to the pellet and vortexed till dissolved. 
+\emph{Gambierdiscus} spp. and \emph{Thecadinium} cf. \emph{kofoidii} were harvested during late exponential growth phase by filtration onto 5 $\mu$m SMWP Millipore membrane filters (Merck, DE) and washed off with sterile seawater. 
+Cells were pelleted via centrifugation for 10 minutes at 350 rcf. 
+The supernatant was decanted and 2ml of TRI Reagent (Sigma-Aldrich, subsidiary of Merck, DE) was added to the pellet and vortexed till dissolved. 
 Samples were split in two and transferred to 1.5ml eppendorf tubes. 
 Cellular thecae were ruptured by three rounds of freeze-thaw, with tubes transferred between liquid Nitrogen and 95 $^{\circ}$C. 
-RNA was extracted as per protocol for TRI Reagent. 
-RNA elute was purified with the RNeasy RNA clean up kit EXACT NAME as per protocol(Qiagen). 
-DNA was digested with TurboDNAse (Life technologies, subsidiary of Thermo Fischer scientific, AU). 
-RNA was quantified with Nanodrop 2000 (Thermo Scientific, Australia) and frozen at -80 $^{\circ}$C until sequencing.
+RNA was extracted as per the protocol for TRI Reagent. 
+RNA eluate was purified with the RNeasy RNA clean up kit EXACT NAME as per protocol (Qiagen). 
+% AD 181018: TODO above
+DNA was digested with TurboDNAse (Life Technologies, subsidiary of Thermo Fischer scientific, AU). 
+RNA was quantified with a Nanodrop 2000 (Thermo Scientific, Australia) and frozen at -80 $^{\circ}$C until sequencing.
 %TODO insert centrifuge, kit name deets
  
 \subsection*{Library preparation and Sequencing}
@@ -154,55 +162,57 @@ Paired-end sequencing was performed with a NextSeq 500 High Output run at the Ra
 \subsubsection*{Publicly available transcriptome libraries}
 The \emph{Gambierdiscus excentricus} VGO790 transcriptome was downloaded from NCBI under accession ID SRR3348983 \cite{kohli2017role}. 
 \textit{Coolia malayensis}, \textit{Ostreopsis ovata}, \textit{Ostreopsis rhodesae} and \textit{Ostreopsis siamensis} transcriptomes were supplied by Arjun Verma (Verma 2018, in prep). 
-RNA seq libraries for all remaining transcriptomes were generated by, and downloaded from, the Marine Microbial Eukaryote Transcriptome Sequencing Project \citep{keeling2014marine}.
+% AD 181018: you'll need to get accession numbers for these before a paper could go to a journal
+RNA-seq libraries for all remaining transcriptomes were generated by, and downloaded from, the Marine Microbial Eukaryote Transcriptome Sequencing Project \citep{keeling2014marine}.
 
 \subsection*{Transcriptome processing scripts}
-The analysis work flow was written in the Nextflow language \cite{nextflow} for streamlined transfer between high performance computing clusters and is available on Github under hydrahamster/gonya\_phylo. 
-The work flow is separated into two parts, and modules within the scripts are written in bash and Python 2.7 \cite{python}, including the pandas module \cite{pandas}, and can be found on Github. 
+The analysis work flow was written in the Nextflow language \cite{nextflow} and is available on Github under hydrahamster/gonya\_phylo. 
+The workflow is separated into two parts, and modules within the scripts are written in bash and Python 2.7 \cite{python} and pandas \cite{pandas}, and can be found on Github. 
+% AD 181018: i think the term package or library generally gets used for things like pandas (not module)
 Our data sets were analyzed using a Genomics Virtual Lab (GVL) \cite{afgan2015genomics} instance in the NeCTAR cloud.
 \subsubsection*{Transcriptome assembly}
-Individual RNA sequencing libraries are the input, which are then processed through FastQC \cite{fastqc} for quality metrics, sequences are trimmed with Trimmomatic (LEADING:3 TRAILING:3 SLIDINGWINDOW:4:5 MINLEN:25) \cite{bolger2014trimmomatic} and assembled with Trinity v2.4.0 (default settings for paired end libraries) \cite{haas2013novo}. 
+Individual RNA sequencing libraries are the input, which are then processed through FastQC \cite{fastqc} for quality metrics, sequences are trimmed with Trimmomatic (\texttt{LEADING:3 TRAILING:3 SLIDINGWINDOW:4:5 MINLEN:25}) \cite{bolger2014trimmomatic} and assembled with Trinity v2.4.0 (default settings for paired end libraries) \cite{haas2013novo}. 
 Assemblies were then processed with BUSCOv2 with the protist specific library \cite{simao2015busco}.
 The RNA libraries with 150bp reads generated as part of this study were also subjected to Digital Normalization \cite{diginorm} prior to assembly, to pool identical transcripts before assembly which were then used for downstream analysis.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
 \subsubsection*{Construction of multiple alignments}
 The BUSCOv2 output from all transcriptomes from the previous step forms the input for identification of single copy genes and construction of multiple alignments. 
-Any genes that were present as single copies in at least 75 \% of the transcriptomes were indexed, the corresponding contig extracted from the assemblies, aligned with hmmer3.1b2 \cite{eddy2015hmmer} and unaligned regions trimmed.
-If several candidate sequences are processed for the same organism, a warning message in the command interface alerts the user before proceeding. 
-The output for this section was used as basis for single copy gene phylogenetic inferences in subsequent sections.
+Any genes that were present as single copies in at least 75\% of the transcriptomes were indexed, the corresponding contig extracted from the assemblies, aligned with hmmer3.1b2 \cite{eddy2015hmmer} and unaligned regions trimmed.
+If several candidate sequences are processed for the same organism, a warning message in the terminal window alerts the user before proceeding. 
+The output for this section was used as a basis for single copy gene phylogenetic inferences in subsequent sections.
 
 \subsection*{Assembly analysis}
-Contigs from assemblies were clustered with cd-hit with the flags T 10 -M 5000 -G 0 -c 1.00 -aS 1.00 -aL 0.005 \cite{fu2012cd}. 
+Contigs from assemblies were clustered with cd-hit with the flags \texttt{-T 10 -M 5000 -G 0 -c 1.00 -aS 1.00 -aL 0.005} \cite{fu2012cd}. 
 Protein coding regions were predicted with Transdecoder \cite{haas2016transdecoder}.
-Amino acid clusters were clustered again with cd-hit with the flags as previously except -c 0.98.
+%AD 181018: where do the amino acid clusters come from? maybe add another sentence to say how you go from nt clusters to aa seqs which are clustered again
+Amino acid clusters were clustered again with cd-hit with the flags as previously except \texttt{-c 0.98}.
 Protein sequences were analyzed with interproscan v5.27 with local lookup server \cite{quevillon2005interproscan}.
 
 \subsection*{Phylogenetic inferences}
 \subsubsection*{Ribosomal DNA based inference}
 Ribosomal DNA (rDNA) sequences for the small subunit (SSU) region as well as the D1-D3 large subunit (LSU) region were acquired from NCBI \cite{coordinators2017database} or the SILVA rRNA database project \cite{silvaproj}, accession IDs in Table S3. 
-%AD: I guess these didn't go through infernal?
-%LK: no they did not. That inquiry was for a side project
-Individual genes were aligned using the MUSCLE algorithm a maximum of 8 iterations \cite{edgar2004muscle}, then were concatenated in Geneious v11.3 \cite{kearse2012geneious}.
-ML inference was obtained using RaxML \cite{stamatakis2014raxml} with the GTR and GAMMA flags, with 100 bootstraps.
+Individual genes were aligned using the MUSCLE algorithm for a maximum of 8 iterations \cite{edgar2004muscle}, then were concatenated in Geneious v11.3 \cite{kearse2012geneious}.
+ML inference was obtained using RaxML \cite{stamatakis2014raxml} with the GTR and GAMMA flags, with 100 bootstrap replicates.
 
 \subsubsection*{Concatenated single copy gene based inference}
 Single copy gene alignments were concatenated and both ML \& BI analyses were executed on the University of Technology Sydney's High-performance computing cluster (HPCC). 
 GPU processing units were either Nvidia Tesla K80 or a Tesla P100. 
-Adequate amino acid substitution model was identified with ProtTest3 with the Bayesian Information Criterion as well as the log likelihood \cite{darriba2011prottest,guindon2003simple}. 
-Best model for the data set was identified by both criteria was VT followed by LG, however neither are available in beast2 so the third best model, WAG, was chosen for analysis. 
+Amino acid substitution model selection was carried out with ProtTest3 with the Bayesian Information Criterion as well as the log likelihood \cite{darriba2011prottest,guindon2003simple}. 
+%AD 181018: Does ProtTest3 check adequacy as well as just selecting among models with BIC?
+The best model for the data set identified by both criteria was VT followed by LG, however neither are available in beast2 so the third best model, WAG, was chosen for analysis. 
 \paragraph*{Maximum likelihood with concatenated sequences.}
-ML inference run as described in the previous section, with the ILGF, GAMMA and PROT flags.
+ML inference was run as described in the previous section, with the ILGF, GAMMA and PROT flags.
+%AD 181018: what's ILGF? did you use WAG in raxml as well? would be good to say so here.
 \paragraph*{Bayesian inference with concatenated sequences.}
-BI was run in BEAST2 with the Gamma site model with 4 Gamma category counts under the WAG substitution model \cite{whelan2001general}. A local random clock was used  under the Birth Death model %TODO insert nuber of chains etc
+BI was run in BEAST2 with the Gamma site model with 4 discrete Gamma categories under the WAG substitution model \cite{whelan2001general}. A local random clock was used under the Birth Death model %TODO insert nuber of chains etc
  
 
 \paragraph*{Bayesian probability under the multispecies coalescent.}
 Bayesian inference of the species tree was carried out under the *BEAST2 model in BEAST2 \cite{bouckaert2014beast}. 
 The analysis was performed with the WAG amino acid substitution model \cite{whelan2001general} and with a Gamma distribution for four rate categories. 
 A random local clock was employed \cite{drummond2010bayesian}. 
-Inference was executed on the HPCC. 
-Inference was accelerated using BEAGLE \cite{ayres2011beagle} on the GPU. 
-Posterior distributions of parameters were approximated after 300,000,000 generations of MCMC runs, sampled every 5,000 generations with a burn in of 15\%. 
-The inference was run four times to compare convergence of parameters, then log and tree files were merged. 
+Computation was carried out on the HPCC and was accelerated using BEAGLE \cite{ayres2011beagle} on the GPU. 
+Posterior distributions of parameters were approximated after 300,000,000 generations of MCMC, subsampled every 5,000 generations with a burn in of 15\%. 
+The inference was run four times to evaluate convergence of parameters, then log and tree files were merged. 
 
 %\subsection*{stepping stone analysis}
 %TODO put details in in the distant future
@@ -217,8 +227,8 @@ Tanglegrams were generated with Dendroscope v3.5.9 \cite{huson2007dendroscope}; 
 \newpage
 \section{Results}
 \subsection*{Transcriptomes overview}
-RNA-sequencing libraries generated in this study are available on NCBI's sequence read archive under the project ID SRP134273.
-Sequencing of transcriptomes for \emph{Gambierdiscus} spp. and \emph{T.} cf. \emph{kofoidii} generated data sets ranging in size from, 143,155,667 to 233,822,334 reads, resulting in 97,634 to 191,224 assembled contigs (table ~\ref{tbl:asmstats}). 
+RNA-seq libraries generated in this study are available on NCBI's sequence read archive under the project ID SRP134273.
+Sequencing of transcriptomes for \emph{Gambierdiscus} spp. and \emph{T.} cf. \emph{kofoidii} generated data sets ranging in size from 143,155,667 to 233,822,334 reads, resulting in 97,634 to 191,224 assembled contigs (table ~\ref{tbl:asmstats}). 
 Clusters with gene ontology (GO) annotations made up 30.9\% to 34.8\% of the total clusters. 
 
 \FloatBarrier
@@ -261,9 +271,8 @@ Clusters with gene ontology (GO) annotations made up 30.9\% to 34.8\% of the tot
 \end{longtable}
 
 \subsection*{BUSCO output}
-Assemblies were searched with BUSCOv2 and the single copy genes were extracted. 
-The single copy genes acquired though the BUSCO HMMER libraries curated for protists are reported in Table S2 out of the total 234 genes searched for, as well as accession numbers and identifiers for each transcriptome. 
-%AD: good idea to post to zenodo //LK:  thanks ^__^
+Assemblies were searched with BUSCOv2 for 234 candidate single copy genes and homologs to these single copy genes were extracted. 
+The single copy genes acquired though the BUSCO HMMER libraries curated for protists are reported in Table S2, as well as accession numbers and identifiers for each transcriptome. 
 Single copy genes for each transcriptome used in this study are available on Zenodo DOI:
 %TODO single copy genes need ot go up on Zenodo, then link DOI here
 
@@ -272,7 +281,7 @@ Support for branches was interpreted as follows, for ML and BI, respectively: 10
 As \emph{Azadinium spinosum}, \emph{Dinophysis acuminata} and \emph{Karenia brevis} are members of different orders (Dinophyceae ordo incertae sedis, Dinophysiales \& Gymnodiniales respectively) and consistently resolve outside of the Gonyaulacales in phylogenetic analyses, their placement as an outgroup was considered a given for this study. 
 %sm:what about crypthecodinium
 %LK: that genus has been routinely placed within the gonyaulacales incl on reference databases like NCBI, encyclopedia of life so it's placement as outgroup is not a given and uncertain at best
-Hence the unifying branch for these taxa was used to root the tree in all subsequent analyses.
+Therefore, the branch separating these taxa from others was used to root the tree in subsequent analyses where rooting was required.
 \subsubsection*{rDNA based phylogeny}
 \FloatBarrier 
 All nodes were supported, with a range of certainty.
@@ -282,6 +291,7 @@ Within the \emph{Gambierdiscus} clade, nodes are either weakly supported or full
 The two species of \emph{Alexandrium} resolve as well supported closest relatives, but do not form an individual clade. 
 %AD: crown taxa is a new one for me - surprising after 15 years thinking about phylogeny!
 %LK: That's a good thing, right?
+%AD 181018: either I'm still learning or it suggests the terminology is obscure enough that it may not be understood by most readers
 Deeper nodes were supported but with less certainty than the crown taxa. 
 Two distinct clades can be observed from the topology: One including \emph{Alexandrium}, \emph{Coolia} and \emph{Ostreopsis}; another with only \emph{Gambierdiscus}. 
 Sister to these clades, in descending order, was \emph{Pyrodinium}, \emph{Ceratium} and \emph{Gonaulax}, \emph{Protoceratium} and \emph{Thecadinium}. 
@@ -336,7 +346,7 @@ The third clade encompasses \textit{Gonyaulax}, \textit{Protoceratium} and \text
 \subsubsection*{Single copy gene based phylogeny under MSC}
 \FloatBarrier 
 All nodes except one within the outgroup clustering resolved.
-The following is extrapolated from the topology in Fig. ~\ref{fig:SCmscBI}. 
+The following description is based on the topology in Fig. ~\ref{fig:SCmscBI}. 
 Species of \emph{Alexandrium}, \emph{Ostreopsis} and \emph{Gambierdiscus} resolved well or fully supported within their genus clades. 
 The topology within the Gonyaulacales resolves as three clades: 
 one fully supported encompassing \emph{Alexandrium}, \emph{Coolia} and \emph{Ostreopsis};
@@ -348,7 +358,7 @@ Other deeper nodes were well or fully supported.
 
 \begin{figure} 
 \includegraphics[scale=.25]{figures/Aug2_20-taxa-combined-fig_MCC_trees.png} 
-\caption{Bayesian phylogenetic inference of Gonyaulacales species tree under the multipsecies coalescence with 62 single copy genes from 20 taxa. Gonyaulacales (\#16) in purple, outgroups (\#3) in light blue and taxa \textit{incertae sedis} (\#1) in teal. The scale represents number of substitutions per site.} 
+\caption{Bayesian phylogenetic inference of Gonyaulacales species tree under the multipsecies coalescent with 62 single copy genes from 20 taxa. Gonyaulacales (\#16) in purple, outgroups (\#3) in light blue and taxa \textit{incertae sedis} (\#1) in teal. The scale represents number of substitutions per site.} 
 \label{fig:SCmscBI}
 \end{figure} 
 \FloatBarrier
@@ -357,76 +367,78 @@ Other deeper nodes were well or fully supported.
 \section{Discussion}
 %explanation of model choice, history of analysis, shortcommings
 Phylogenetic inference has become a key aspect of exploring the evolutionary relationships between organisms, with applications in pathology, ecology, investigating adaptive traits and many more \cite{heath2008taxon}. 
-Increase in sequencing throughput and reduction of associated cost has seen an increase in large scale sequencing initiatives such as MMETSP, which covers a relatively uncharacterized group of marine microbial eukaryotes \cite{keeling2014marine}.
-However, the next obstacle lies in the methodology used for investigating the evolutionary relationship between these taxa, as the choice of input data and method employed influences the inference outcome. 
+An increase in sequencing throughput and reduction of associated cost has seen an increase in large scale sequencing initiatives such as MMETSP, which covers a relatively uncharacterized group of marine microbial eukaryotes \cite{keeling2014marine}.
+However, the methodologies used for investigating the evolutionary relationships between these taxa remain an obstacle, as the choice of input data and method employed influences the outcome of the inference. 
 To address this, a synopsis on RNA library pre-processing, assembly parameter selection, a method for single copy gene selection, and synthesis of phylogenetic inference models availability and selection is presented in this study - as well as possible shortcomings of the parameters and methods selected. \\
 Dinoflagellates are notorious for their extensive genomes with suspected whole or partial genome duplication and potential cDNA retro-insertion into the genome \cite{van2009florida,beauchemin2012dinoflagellate,slamovits2008widespread,hou2009distinct,lin2011genomic}. 
 This causes unusually large gene copy numbers and extensive paralogy. 
-With this in mind, the gonyaulacales (an order within the dinoflagellates, see Box 1) presented as an ideal challenge to test the parameters of interest. \\
-The inference resultant from the work flow we present as most rigorous for the gonyaulacales to date (Fig. ~\ref{fig:SCmscBI}) resolved well for species within the same genus and with high PP throughout. 
-The topology follows a broad revised taxonomic classification of the gonyaulacales based on morphological characteristics \cite{hoppenrath2017dinoflagellate} and will be used as the comparative point to other commonly employed methods in later sections. \\
+With this in mind, the gonyaulacales (an order within the dinoflagellates, see Box 1) presented as an ideal challenge to test the parameters of interest.
+
+The phylogenetic inference for gonyaulacales that resulted from the workflow we developed, which implements several of the most recent innovations in analytical methodology, resolved within-genus relationships well and shows high P.P. throughout the species tree (Fig. ~\ref{fig:SCmscBI}). 
+The inferred species tree topology follows a broad revised taxonomic classification of the gonyaulacales based on morphological characteristics \cite{hoppenrath2017dinoflagellate} and will be used as a point of comparison to results from other commonly employed methods in later sections. 
 The scripts which form the basis of this study are publicly available through github and the single copy genes used to infer the species evolution in this study, as well as the xml input and log files for the *BEAST runs, are available on zenodo. 
 The authors hope the process presented here is transparent and reproducible for those with basic programming skills. 
 %other factors to consider.. qiality of transcriptome etc
 \subsection*{Considerations for data set selection and pre-processing}
 \subsubsection*{Quantity of taxa in phylogenetic inference}
 Extensive coverage of taxa within the group of organisms examined is necessary to give useful insight into the evolutionary inter-taxon relationships.
-Two concerning phenomena that can confound the veracity of the conclusion drawn from phylogenetic inference are ILS and LBA. 
-When taxa sitting along long branches share a number of substitutions which are due to homoplasy rather than recently shared ancestry, they can be falsely clustered with each other. 
-The likelihood of LBA can be reduced by denser taxon sampling to break up long branches and ensuring that the models specified are appropriate \cite{heath2008taxon}. 
+Two concerning phenomena that can confound the veracity of conclusions drawn from phylogenetic inference are ILS and LBA. 
+The risk of LBA artefacts can be reduced by denser taxon sampling to break up long branches and ensuring that the models specified are appropriate \cite{heath2008taxon}. 
 The impact of ILS on phylogenetic inferences has been explored through simulated data sets with a known species tree. 
-While the increase in the number of genes used to infer the species phylogeny reduces the interference from ILS in the results, an increase in taxa and an even distribution there of has a greater impact \cite{maddison2006inferring}.
-However the addition of taxa can also introduce more long branches to confound the inference \cite{heath2008taxon}. 
+While the increase in the number of genes used to infer the species phylogeny reduces the interference from ILS in the results, an increase in taxa and an even distribution thereof has a greater impact \cite{maddison2006inferring}.
+However the addition of taxa can also introduce more long branches that confound the inference \cite{heath2008taxon}. 
 Furthermore, LBA is exacerbated if ILS is present. 
 LBA can arise if some species have disproportionately high substitution rates which causes the presence of long and short branches in the phylogenetic topology \cite{liu2014coalescent}. 
 The gonyaulacales data set in this study includes a single representative species per genus, with the exception of \textit{Alexandrium}, \textit{Gambierdiscus} and \textit{Ostreopsis}. 
 This resulted in some genera on long branches (eg. fig. ~\ref{fig:SCmscBI} \textit{Ceratium fusus} \& \textit{Pyrodinium bahamense}) indicative of a proportionally large number of genetic changes to their closest relative.
-This type of topology is indicative of sparse taxon coverage and can attract LBA \cite{heath2008taxon}. 
+This type of topology is indicative of sparse taxon coverage and can lead to LBA \cite{heath2008taxon}. 
 To investigate the presence of ILS and as a topological comparison to the BI and ML inferences, a neighbor-joining (NJ) inference was run as well (Phylip with Protdist JTT matrix and neighbor packages \cite{felsenstein2005phylip}). 
 The rationale for including this method was that NJ can recover an accurate species topology despite ILS where ML would fail  \cite{mendes2017concatenation}.
-However NJ is highly sensitive to LBA. 
-The resulting topology was sufficiently anomalous, with out and in-groups clustering together, that led us to exclude this inference from the results and strongly suspect that LBA is at play in this data set. 
+However NJ is more susceptible to LBA than ML or BI methods. 
+The resulting topology was sufficiently anomalous, with out and in-groups clustering together, that led us to exclude this result from further discussion. 
 Both BI and ML are more robust to the effects of LBA than NJ, where BI tends to outperform ML especially if the latter is performed conjunction with concatenation \cite{kubatko2007inconsistency,roch2015likelihood}. %TODO check ref
-\subsubsection*{Trimming of RNA seq libraries.} The cut off values chosen for this study are based on the recommendations of MacManes (2014) for optimal transcript discovery. 
-However the recommendations are based on the efficacy of cut off values for a mouse embryonic stem cell RNA-seq library, which may not be an adequate model for dinoflagellates. 
-This could confound the difference between single copy genes and sequencing artifacts.
+%\subsubsection*{Trimming of RNA seq libraries.} The trimming parameters chosen for this study are based on the recommendations of MacManes (2014) for optimal transcript discovery. 
+%However the recommendations in that work are based on mouse embryonic stem cell RNA-seq data, which may not be representative for dinoflagellates. 
+%Transcriptome misassembly artifacts, such as chimeric assemblies or coassembly of paralogous gene copies could introduce error in subsequent phylogenetic analysis.
+%AD 181018: the above paragraph seems redundant with the below. suggest just keeping in the below.
 \subsubsection*{Quality of transcriptome assemblies.}
 When using publicly available data sets, quality assessment is essential. 
 Since the MMETSP data sets were made available, several studies have utilized a broader range of taxa to explore evolutionary stories involving the Gonyaulacales. 
 However, these have relied on the assemblies supplied as part of the project. 
 The stringency for quality trimming of RNA-seq libraries prior to assembly plays a role in the number of unique contigs recovered and the subsequent assembly quality of transcriptomes. 
 Regarding the transcriptome assembly method, Cohen et al. evaluated the publicly available assemblies from MMETSP using BUSCO scores, compared to processing and re-assembly with Trinity \cite{cohen2018mmetsp}. 
-Cohen et al. demonstrated that while the raw data available from the MMETSP project is an excellent resource, the assemblies available as part of the project are of a quality less than what can be achieved with current methods. 
-Another factor in assembly quality is RNA-seq library processing prior to assembly, especially trimming. 
-Commonly high stringency is favored, however MacManes (2014) found that this can be detrimental to the assembly and the quality cut off scores used in this study were based on the recommendation with that study \cite{macmanes2014optimal}.
+Cohen et al. demonstrated that while the raw data available from the MMETSP project is an excellent resource, the assemblies available as part of the project are of a lower quality than what can be achieved with current methods. 
+Another factor in assembly quality is RNA-seq data processing prior to assembly, especially trimming. 
+Commonly high stringency is favored, however MacManes (2014) found that this can be detrimental to the assembly and the quality cut off scores used in this study were based on those recommendations \cite{macmanes2014optimal}.
 In short, the trimming and assembly pipeline used for the assemblies available as part of MMETSP have become outdated and this is reflected in the quality comparison conducted by Cohen et al. 
 To address this problem, trimming and assembly of RNA-seq libraries using Trimomatic and Trinity respectively were considered integral to the transcriptome assembly in this study.
 \paragraph*{Assembly parameters.}
 Trinity was chosen as the assembler for this study based on the findings of Honaas et al. (2016), in which Trinity was one of the top performing assemblers for \textit{de novo} transcriptomes as tested with \textit{Arabidopsis thaliana}. 
 While this plant model has similar genetic features to dinoflagellates, the conclusion of adequate comparison may be flawed.
 Further, Trinity performed well for identifying isoforms of genes and excelled at assembling highly expressed genes \cite{honaas2016selecting}.
-Conversely, Cerveau et al. (2016) found that Trinity, CLC Bio and IDBA-Tran assemblies all contain bioinformatic artifacts. 
+Conversely, Cerveau et al. (2016) found that Trinity, CLC Bio and IDBA-Tran assemblies all contain errors introduced by the assembly algorithms. 
 Using a combination of all three assemblers yielded a final assembly closer to biological reality than any individual assembler, when no reference genome is available \cite{cerveau2016combining}.
-As this study uses Trinity exclusively, it is subject to the bioinformatic errors found by Cerveau et al. (2016) which could affect downstream analysis.
+As this study uses Trinity exclusively, it is subject to the type of errors found by Cerveau et al. (2016) which could affect downstream analysis.
 \subsubsection*{Selection of paralogs to infer species evolution.}
-Using gene histories to collate and extrapolate the species history is the basis for phylogenetic inference.
-Selecting genes which diverged through a process other than speciation events, such as paralogs, confounds the inference.
+%Using gene histories to infer the species history is the basis for phylogenetic inference.
+%AD 101810: I disagree. there are many applications of phylogenetics where species history and taxonomy are irrelevant. suggest removing the sentence.
+Inclusion of genes which diverged through a process other than speciation events, such as paralogs, violates the assumptions of commonly used phylogenetic models which assume all genes analysed have an orthologous relationship.
 Hence the selection of orthologs, and the elimination of paralogs, is essential.
 Paralogy is particularly rife in the dinoflagellates, and the order Gonyaulacales therein. 
-This study sought to address the issues arising from paralog comparison by isolating single copy genes, based on the BUSCO software output. 
-As this software utilizes lineage specific hmmer libraries designed to target single copy genes, and the output distinguishes between single copy genes and duplications, it presents a method for reliably screening for single copy genes for phylogenomics \cite{waterhouse2017busco}.
+This study sought to address the issues arising from paralog comparison by isolating single copy genes, using the curated BUSCO gene collection and software to facilitate the process. 
+As BUSCO uses lineage specific profile HMM libraries designed to target single copy genes, and the output distinguishes between single copy genes and duplications, it presents a method for reliably screening for single copy genes for phylogenomics \cite{waterhouse2017busco}.
 Only one other study by Price et al. (2017) sought to address the issue of paralogy within the dinoflagellates, by selecting single genes as input. 
 However there are several issues with the study presented by Price et al \cite{price2017robust}. 
 The assemblies used are from the MMETSP project, which employed outdated assembly methods as mentioned previously, and hence could present single copy genes which are instead hybrids of paralogs. 
 Further, the methodology for identifying and selecting the single copy genes was not described in the publication and is not available upon request. 
-Contact with the author established that there was no documentation for the commands that the authors executed, so no record of how the genes were attained was available. 
+Correspondence with the author of that study established that there was no documentation for the commands that the authors executed, so no record of how the genes were attained was available. 
 Hence it was impossible to compare the parameters that went into identifying and screening for single copy genes and it was not possible to scrutinize or reproduce the study.
-Lastly, the genes were concatenated and the evolutionary relationships were inferred using ML. 
-While the bootstraps are well supported, this could very well be due to systematic error as outlined in previous sections.
-The difference in topology between inferences presented by Price et al. and this study, is in the organization of sister taxa (Fig. ~\ref{fig:tangle}). 
-Price et al. place \emph{Alexandrium} spp. as the closest genus to \emph{Gambierdiscus}, while this study places \emph{Pyrodinium} as sister. 
+Lastly, in that study the genes were concatenated and the evolutionary relationships were inferred using ML. 
+While the node bootstrap values are high, that could be due to systematic error as outlined in previous sections.
+The difference in tree topology inferred by Price et al. and by our study lies in the organization of sister taxa (Fig. ~\ref{fig:tangle}). 
+The Price et al. study placed \emph{Alexandrium} spp. as the closest genus to \emph{Gambierdiscus}, while this study places \emph{Pyrodinium} as sister. 
 As some \emph{Gambierdiscus} spp. produce polyketide toxins which cause ciguatera fish poisoning, establishing the close relations to \emph{Gambierdiscus} is important for investigating the toxin evolution \cite{pawlowiez2014transcriptome}.
-The placement of the genus \emph{Azadinium} is equally as divergent as Price et al. place this genus as part of the gonyaulacales, while this study firmly places this genus as an outgroup with \emph{Dinophysis} spp. and \emph{Karenia} spp.
+The placement of the genus \emph{Azadinium} is also a point of difference, as Price et al. place it as part of the gonyaulacales, while this study firmly places this genus as an outgroup with \emph{Dinophysis} spp. and \emph{Karenia} spp.
 As \emph{Azadinium} spp. also produce polyketide toxins that cause azaspiracid shellfish poisoning, their placement is important for investigating polyketide toxin evolution \cite{meyer2015transcriptomic}.
 \FloatBarrier 
 \begin{figure} 
@@ -437,25 +449,28 @@ As \emph{Azadinium} spp. also produce polyketide toxins that cause azaspiracid s
 \FloatBarrier
 \subsubsection*{Model selection for inference.} The issue of model choice is an important one, as the choice of model severely influences the resulting topology. 
 Mis-specification of the model, or individual parameters, can lead to a well supported but erroneous result. 
-While models are a simplistic approximation of the underlying messy biological drivers for evolutionary processes, getting as close an approximation as possible is essential \cite{box1979all}. 
+While models are a simplistic approximation of the underlying biological drivers for evolutionary processes, getting as close an approximation as possible is essential \cite{box1979all}. 
 However under- and over-parameterization have been shown to impact topology and PPs to varying degrees, in and outside the Felsenstein zone \cite{lemmon2004importance}. 
-Stepping stone (SS) sampling compares the marginal likelihood of both the prior and the posterior of a model, while penalizing for overparameterization and can be used to compare the fit of one model compared to another for a given data set \cite{xie2010improving}. 
-To compare how well concatenation vs. MSC fits the single copy gene data set used in this study, SS comparison was conducted.
+%AD 181018: the following two sentences should probably stay out until you have the marginal likelihood data
+%Stepping stone (SS) sampling compares the marginal likelihood of both the prior and the posterior of a model, while penalizing for overparameterization and can be used to compare the fit of one model compared to another for a given data set \cite{xie2010improving}. 
+%To compare how well concatenation vs. MSC fits the single copy gene data set used in this study, SS comparison was conducted.
 
 \subsection*{Comparison to commonly employed models and data sets}
 %compare to rDNA
 \subsubsection*{Phylogenetic inference using ribosomal genes.}
 \FloatBarrier 
 Using LSU or SSU rDNA regions for phylogenetics is common practice, at times supplemented with a small number of other genes \cite{shalchian2006combined,zhang2007three,saldarriaga2004molecular,murray2005improving,hoppenrath2010dinoflagellate}. 
-It is important to acknowledge that these represent the evolutionary history of highly conserved genes, which does not necessarily represent the species evolution and assuming their congruence is statistically inadequate \cite{degnan2009gene}.
-Utilization of rDNA loci made sense when study designs were bound by sequencing and computational limitations, so they were a universally available proxy which was informative and continues to be commonly employed. 
+It is important to acknowledge that these represent the evolutionary history of highly conserved genes, which does not necessarily represent the species evolution and assumptions of their congruence is statistically inadequate \cite{degnan2009gene}.
+Utilization of rDNA loci made sense when study designs were bound by sequencing and computational limitations, as they were a universally available proxy which was informative. 
+Due to this legacy they continue to be commonly employed. 
+%AD 181018: I think you have to be careful with the following comment. Because they evolve more slowly than other genes, there will be intraspecies relationships that are better resolved with other genes, not the rDNA. rDNA has a sweet spot, probably somewhere in the range of inter-species to order level relationships
 While rDNA sequences are useful for characterizing intra-species relationships within crown taxa, these regions are unsuited for topological resolution of deeper branches (for a summary see \cite{hoppenrath2017dinoflagellate}).
 Yet rDNA sequences are still commonly used, exclusively or as part of a subset of genes for analysis, for the gonyaulacales. 
 Comparing the topology from a rDNA ML inference with the single gene copy MSC phylogeny presented here (Fig. ~\ref{fig:tanglerDNA}) shows that most clades in both topologies were completely or very well supported. 
 Within the genera \emph{Gambierdiscus} and \emph{Ostreopsis}, the species resolution differed between the two data sets. 
 In several cases, the placement of sister taxa was incongruous between the two analyses. 
 For example, the rDNA concatenation data set places \emph{Ceratium} \& \emph{Gonyaulax} as well as \emph{Alexandrium} and \emph{Gambierdiscus} as sister taxa, while the single copy gene data set under MSC places \emph{Gonyaulax} with \emph{Protoceratium} and \emph{Gambierdiscus} with \emph{Pyrodinium}. 
-This is an example of how using rDNA segments as a proxy for species evolution can provide different results than an analysis of single-copy protein coding genes.
+This is an example of how using rDNA segments as a proxy for species evolution produces different results than an analysis of single-copy protein coding genes.
 
 \begin{figure} 
 \includegraphics[scale=.2]{figures/MSC-BI_vs_rDNA-ML.png} 
@@ -467,10 +482,10 @@ This is an example of how using rDNA segments as a proxy for species evolution c
 %compare to concat ML
 \subsubsection*{Concatenating selected genes and using ML methods for species inference.}
 \FloatBarrier
-Concatenation of alignments coupled with running ML inference is a commonly used method as it is computationally un-intensive in comparison to BI methods. 
+Concatenation of alignments coupled with ML inference is a commonly used method as it is less computationally demanding than BI methods. 
 However as demonstrated by Kubatko et al. (2007) and Roch et al. (2015), this approach is error prone. 
 Concatenation assumes uniform evolutionary history across genes, with a small amount of variation possible - however this still averages the evolutionary rate for all the input genes which doesn't allow for drastically divergent gene histories \cite{roch2015likelihood}. 
-The combination of concatenation and ML for phylogentic inference can result in high bootstrap values for incorrectly resolved clades which over inflates confidence in the robustness of erroneous topologies \cite{degnan2009gene}. 
+The combination of concatenation and ML for phylogentic inference can result in high bootstrap values for incorrectly resolved clades, over inflating confidence in erroneous topologies \cite{degnan2009gene}. 
 The application of concatenation in combination with ML is common practice in phylogenetic studies for gonyaulacoids  \cite{shalchian2006combined,zhang2007three,saldarriaga2004molecular,murray2005improving,hoppenrath2010dinoflagellate}.
 We investigated whether use of a technique explicitly designed to handle multiple genes to estimate species trees would yield different results than concatenation and ML. 
 A comparison between a BI inference under MSC compared to concatenated ML inference on the same single copy gene data set shows differences in topology (Fig. ~\ref{fig:tangleconcatML}). 
@@ -490,18 +505,20 @@ The BI MSC method clusters \emph{Ceratium}, \emph{Gonyaulax}, \emph{Protoceratiu
 
 \subsubsection*{Concatenating selected genes and using BI methods for species inference.}
 \FloatBarrier
-Even within a BI framework, while more robust than when used in conjunction with ML, concatenation can introduce a number of errors. 
+Even within a BI framework concatenation can introduce a number of errors. 
 Under simulated data sets, even under the coalescent methods, the species tree topology is inaccurate when concatenation is used \cite{kubatko2007inconsistency}. 
 Further to that, the PP values tend to be overestimated for concatenation \cite{suzuki2002overcredibility}. 
-Theoretically for the gonyaulacales, and taxa prone to paralogy and convoluted evolutionary histories, MSC is a preferable approach to concatenation as MSC is more robust to ILS \& LBA artifacts \cite{liu2014coalescent}. 
-To test this theory, the single copy gene data set was run with BI both under MSC and with concatenation (Fig. ~\ref{fig:tangleconcatBI}). 
-We then used a statistical framework to compare the two model approaches to verify the veracity of model adequacy through stepping stone sampling. 
-PATH sampling is an adequate method for objectively comparing the model parameters for relaxed clock models while penalizing for over-parameterization \cite{baele2012accurate}. %TODO same for ss?
-The value XXX %TODO whatever the hell the PATH sampling results are
+Theoretically for the gonyaulacales, and taxa prone to paralogy and convoluted evolutionary histories, the MSC is a preferable approach to concatenation as MSC is more robust to ILS \& LBA artifacts \cite{liu2014coalescent}. 
+To isolate the effects of phylogenetic model from those of the statistical framework (ML vs BI), the single copy gene data set was run with BI both under MSC and with concatenation (Fig. ~\ref{fig:tangleconcatBI}). 
+%AD 181018: don't have this yet
+%We then used a statistical framework to compare the two model approaches to verify the veracity of model adequacy through stepping stone sampling. 
+%PATH sampling is an adequate method for objectively comparing the model parameters for relaxed clock models while penalizing for over-parameterization \cite{baele2012accurate}. %TODO same for ss?
+%The value XXX %TODO whatever the hell the PATH sampling results are
 %TODO topology comparison here 
 The resolution of \textit{Alexandrium}, \textit{Coolia} and \textit{Ostreopsis} was identical between the two methods. 
 Further, the species resolution within the genera \textit{Gambierdiscus} and \textit{Ostreopsis} was also identical. 
 Differences were found in the topology, in that \textit{Pyrodinium} clustered with \textit{Gambierdiscus} in the MSC analysis, while for concatenation this genus clusters with \textit{Gonyalax} and \textit{Protoceratium}. 
+% AD 181018: is the pyrodinium placement the same as ML? Same as Price et al?
 Further, in the MSC analysis \textit{Ceratium}, \textit{Gonyalax}, \textit{Protoceratium} and \textit{Thecadinium} form their own clade while with concatenation, \textit{Ceratium} and \textit{Thecadinium} are ancestral genera to the rest of the Gonyaulacales. 
 
 %TODO CHeck again after ss sampling is complete and also if run0 is posterior
@@ -512,10 +529,10 @@ Further, in the MSC analysis \textit{Ceratium}, \textit{Gonyalax}, \textit{Proto
 \end{figure} 
 \FloatBarrier
 
-\subsection*{Areas for possible improvements of this study}
+\subsection*{Areas for possible improvement of this study}
 In the previous section we identified potential problems with common approaches to species inference in the literature, and in particular for the Gonyaulacales. 
-We then sought to demonstrate that our methodology is more robust for addressing these problems. 
-However we do not imply that this study is not fraught with potential methodological errors. 
+We then sought to evaluate the effects of different methodological approaches on analytical results in the Gonyaulacales. 
+There are several important limitations to our study. 
 We aim to present avenues for improvement on routine methods, delivering a simple \& reproducible way to access these methods and to demonstrate the impact the method and data selections have on phylogenetic inference. 
 What follows is the identification of issues with the approach presented in this study, which the authors hope will be improved upon by subsequent studies. 
 \paragraph*{Contamination of other taxa.} 
@@ -532,13 +549,14 @@ The method presented here purely considers the information contained in the gene
 Morphological characters and fossil dates can add another dimension to the phylogenetic resolution of taxa placement and put the evolution within a relative time frame \cite{gavryushkina2017bayesian}.  
 \newpage
 \section{Conclusion}
-With the public accessibility of large data sets, the focus needs to shift to the methodology used to analyze them. 
-This study presents a robust methodology BI MSC based species inference. 
+With the public accessibility of large data sets, the focus of the scientific community has begun to shift toward the methodology required to analyze them. 
+This study presents a workflow for species tree inference that implements what is currently thought to be the best practice methods. 
 The scripts process RNA-seq libraries through assembly, single copy gene selection to alignment for phylogenetic species inference. 
 As a case study exemplifying organisms rife with paralogs and ancient lineages, the Gonyaulacales were selected. 
-The resulting phylogeny shows a well resolved, well supported and statistically sound inference of the Gonyaulacales evolution. 
-This was then compared to phylogenies inferred from commonly utilized methods in the literature, and issues arising from these methods were discussed. 
-By presenting a statistically rigorous methodology and demonstrating how this overcomes common problems faced in phylogenetic studies, we hope that the use of reproducible, open-access processing of large data-sets such as the MMETSP database becomes the standard.  
+% AD 181018: I don't think you should use the term 'statistically sound' here -- we know that even the MSC is a gross simplification of the true evolutionary processes in play. Even though it may be better than concatenation we would be foolish to suggest it's perfect
+The resulting phylogeny shows a well resolved, well supported inference of the Gonyaulacales evolution. 
+This was then compared to phylogenies inferred from commonly utilized methods in the literature, and potential issues arising from these methods were discussed. 
+By presenting a statistically rigorous methodology and demonstrating how it overcomes common problems in phylogenetic studies, we hope that in the future such robust, reproducible, open-access approaches to process large data-sets such as the MMETSP database can become standard practice.
 \newpage
 
 \section{Acknowledgments}
@@ -546,7 +564,7 @@ The GVL section of this study was conducted inside the National eResearch Collab
 Gratitude to the Stanley Watson foundation, the Linnaean Society of New South Wales, and the ABRS National Taxonomy Research Student Travel Bursary for funding A. L. Kretzschmar's attendance at the Molecular Evolution workshop at the Marine biological laboratory, Woods Hole, MA, USA.
 Shout out to the Taming the BEAST organizers \& fellow attendees for a most illuminating workshop in February 2017 on BEAST methodology, and to Geneious for subsidizing A. L. Kretzschmar's attendance fee.
 Thank you to Dr. Tim Kahlke for running Interproscan for transcriptome analysis. 
-The transcriptomic sequencing was funded by  an ARC Future Fellowship to S. Murray.
+The transcriptomic sequencing was funded by an ARC Future Fellowship to S. Murray.
 A. L. Kretzschmar's PhD stipend was funded through a UTS Doctoral scholarship.
 \section{Supplementary material}
 \FloatBarrier
