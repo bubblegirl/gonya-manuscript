@@ -81,7 +81,6 @@ In this case, an increase in data set size can exacerbate systematic error rathe
 In the presence of this type of systematic error, the resulting inference can be positively misleading,
  with high clade support values for the incorrect tree topology, obfuscating the presence of the error \cite{jeffroy2006phylogenomics,roch2015likelihood,kubatko2007inconsistency}. 
 
-% AD 181018: suggest using latex's \enumerate for the below list
 In summary, common problems in carrying out a species tree inference arise from:\\
 \begin{enumerate}
 \item Selection of paralogs. 
@@ -108,7 +107,6 @@ Finally, we applied the methodology to a group of organisms notorious for their 
 % Xia 06 Topological Bias in Distance-Based Phylogenetic Methods: Problems with Over- and Underestimated Genetic Distances
 % Pollock Increased Taxon Sampling Is Advantageous for Phylogenetic Inference
 \subsubsection*{Box 1: Statistical nomenclature \& errors this study seeks to address}
-% AD 181018: suggest using latex \itemize for the below
 For in depth explanations see \cite{yang2014molecular}.\\
 \begin{itemize}
 \item \textbf{Heterotachy:} change in evolutionary rates of sites over time, specific to lineage(s).
@@ -187,8 +185,7 @@ The output for this section was used as a basis for single copy gene phylogeneti
 
 \subsection*{Assembly analysis}
 Contigs from assemblies were clustered with cd-hit with the flags \texttt{-T 10 -M 5000 -G 0 -c 1.00 -aS 1.00 -aL 0.005} \cite{fu2012cd}. 
-Protein coding regions were predicted with Transdecoder \cite{haas2016transdecoder}.
-%AD 181018: where do the amino acid clusters come from? maybe add another sentence to say how you go from nt clusters to aa seqs which are clustered again
+Protein coding regions within the clusters were predicted with Transdecoder \cite{haas2016transdecoder}. 
 Amino acid clusters were clustered again with cd-hit with the flags as previously except \texttt{-c 0.98}.
 Protein sequences were analyzed with interproscan v5.27 with local lookup server \cite{quevillon2005interproscan}.
 
@@ -228,7 +225,7 @@ The transcriptome libraries were fed through the single copy gene extraction scr
 The resulting alignments were run on *BEAST either on the CPU or GPU.
 
 \subsubsection*{Generation of figures}
-Tanglegrams were generated with Dendroscope v3.5.9 \cite{huson2007dendroscope}; images were edited in GIMP \cite{gimp}. %TODO learn inkscape
+Tanglegrams were generated with Dendroscope v3.5.9 \cite{huson2007dendroscope}; images were edited in GIMP \cite{gimp}.
 \newpage
 \section{Results}
 \subsection*{Transcriptomes overview}
@@ -551,10 +548,9 @@ With the public accessibility of large data sets, the focus of the scientific co
 This study presents a workflow for species tree inference that implements what is currently thought to be the best practice methods. 
 The scripts process RNA-seq libraries through assembly, single copy gene selection to alignment for phylogenetic species inference. 
 As a case study exemplifying organisms rife with paralogs and ancient lineages, the Gonyaulacales were selected. 
-% AD 181018: I don't think you should use the term 'statistically sound' here -- we know that even the MSC is a gross simplification of the true evolutionary processes in play. Even though it may be better than concatenation we would be foolish to suggest it's perfect
 The resulting phylogeny shows a well resolved, well supported inference of the Gonyaulacales evolution. 
 This was then compared to phylogenies inferred from commonly utilized methods in the literature, and potential issues arising from these methods were discussed. 
-By presenting a statistically rigorous methodology and demonstrating how it overcomes common problems in phylogenetic studies, we hope that in the future such robust, reproducible, open-access approaches to process large data-sets such as the MMETSP database can become standard practice.
+By presenting a statistically rigorous method and demonstrating how it overcomes common problems in phylogenetic studies, we hope that in the future such robust, reproducible, open-access approaches to process large data-sets such as the MMETSP database can become standard practice.
 \newpage
 
 \section{Acknowledgments}
