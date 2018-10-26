@@ -46,8 +46,6 @@ The ithree institute, University of Technology Sydney, Ultimo, 2007 NSW, Austral
 \newpage
 
 %General comments AD:
-%in Figure 8 it's a bit hard to see where the branch ends and the line connecting to the taxon name begins;making the tree branches thicker;  coolia and alexandrium are particularly difficult for some reason
-% figures: in several instances the embedded text is too small. i'm not sure what the easiest way to do it would be, but the taxon names at least need to get bigger in the tanglegrams
 %new: line wis=dth: 8, text size: 30
 %  bit of text in methods I think on compute speed but I didn't see that get revisited in results or discussion (unless I missed it)
 
@@ -334,7 +332,7 @@ The overall topology of the Gonyaulacales resolved as three clades with \textit{
 The third clade encompasses \textit{Gonyaulax}, \textit{Protoceratium} and \textit{Pyrodinium}. 
 
 \begin{figure} 
-\includegraphics[scale=.3]{figures/SC-concat-BI.png} 
+\includegraphics[scale=.34]{figures/SC-concat-BI.png} 
 \caption{Bayesian phylogenetic inference of concatenated single copy gene set (62 single copy genes from 20 taxa). Gonyaulacales (\#16) in purple, outgroups (\#3) in light blue and taxa \textit{incertae sedis} (\#1) in teal. The scale represents number of substitutions per site.} 
 %AD: you should note here that it was rerooted
 %LK: stated in line 268 for all following phylos. SHould I put it in every figure again?
@@ -466,11 +464,11 @@ In several cases, the placement of sister taxa was incongruous between the two a
 For example, the rDNA concatenation data set places \emph{Ceratium} \& \emph{Gonyaulax} as well as \emph{Alexandrium} and \emph{Gambierdiscus} as sister taxa, while the single copy gene data set under MSC places \emph{Gonyaulax} with \emph{Protoceratium} and \emph{Gambierdiscus} with \emph{Pyrodinium}. 
 This is an example of how using rDNA segments as a proxy for species evolution produces different results than an analysis of single-copy protein coding genes.
 
-\begin{figure} 
-\includegraphics[scale=.2]{figures/MSC-BI_vs_rDNA-ML.png} 
+\begin{sidewaysfigure} 
+\includegraphics[scale=.3]{figures/MSC-BI_vs_rDNA-ML.png} 
 \caption{Tanglegram showing the topological differences in phylogenies from (A) concatenated rDNA genes (SSU and D1-D3 LSU) inferred with ML; and (B) MSC inference with 58 single copy genes. Gonyaulacales (\#16) in purple, outgroups (\#3) in light blue and taxa \textit{incertae sedis} (\#1) in teal.} 
 \label{fig:tanglerDNA}
-\end{figure} 
+\end{sidewaysfigure} 
 \FloatBarrier
 
 %compare to concat ML
@@ -488,11 +486,11 @@ The major difference is of the \emph{Pyrodinium} placement, where the BI MSC app
 Further, the deeper branches of the phylogenies differ. 
 The BI MSC method clusters \emph{Ceratium}, \emph{Gonyaulax}, \emph{Protoceratium} and \emph{Thecadinium} as a clade, while the concatenated ML approach clusters \emph{Gonyaulax}, \emph{Protoceratium} and \emph{Pyrodinium} as a clade to which \emph{Thecadinium} and then \emph{Ceratium} feature as ancestral genera. 
 
-\begin{figure} 
-\includegraphics[scale=.2]{figures/MSC-BI_vs_singlecopy-concat-ML.png} 
+\begin{sidewaysfigure} 
+\includegraphics[scale=.3]{figures/MSC-BI_vs_singlecopy-concat-ML.png} 
 \caption{Tanglegram showing the topological differences in phylogenies with same 58 single copy gene alignments as input. (A) concatenated ML inference; and (B) MSC starbeast inference. Gonyaulacales (\#16) in purple, outgroups (\#3) in light blue and taxa \textit{incertae sedis} (\#1) in teal.} 
 \label{fig:tangleconcatML}
-\end{figure} 
+\end{sidewaysfigure} 
 \FloatBarrier
 
 %compare to concat BI
@@ -516,11 +514,11 @@ Differences were found in the topology, in that \textit{Pyrodinium} clustered wi
 Further, in the MSC analysis \textit{Ceratium}, \textit{Gonyalax}, \textit{Protoceratium} and \textit{Thecadinium} form their own clade while with concatenation, \textit{Ceratium} and \textit{Thecadinium} are ancestral genera to the rest of the Gonyaulacales. 
 
 %TODO CHeck again after ss sampling is complete and also if run0 is posterior
-\begin{figure} 
-\includegraphics[scale=.18]{figures/SC-MSC-BI_vs_SC-concat-BI.png} 
+\begin{sidewaysfigure} 
+\includegraphics[scale=.25]{figures/SC-MSC-BI_vs_SC-concat-BI.png} 
 \caption{Tanglegram showing the topological differences in phylogenies with same 58 single copy gene alignments as input. (A) concatenated beast2, rerooted on the branch separating outgroups from the Gonyaulacales; and (B) MSC starbeast2 inference. Gonyaulacales (\#16) in purple, outgroups (\#3) in light blue and taxa \textit{incertae sedis} (\#1) in teal.} 
 \label{fig:tangleconcatBI}
-\end{figure} 
+\end{sidewaysfigure} 
 \FloatBarrier
 
 \subsection*{Areas for possible improvement of this study}
