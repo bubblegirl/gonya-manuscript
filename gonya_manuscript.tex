@@ -118,9 +118,9 @@ If strong, can override true phylogenetic signal.
 \item \textbf{Incomplete lineage sorting (ILS):} discordance of gene evolutionary history with the species evolutionary history causing the phylogenetic species tree to be misinferred. 
 Difference in the topology of a gene tree compared to the species evolution can arise from the coalescence of those orthologs prior to the species divergence, where in effect the ancestral populations contain two or more already-diverged copies of the gene across one or more species divergence points. 
 Another mechanism is the introduction of a copy of the gene which is not based on ancestral inheritance, such as horizontal gene transfer or hybridization.
-\item \textbf{Long branch attraction (LBA):} when two distantly related taxa are inferred as sister taxa due to sequence similarity from convergence or parallel evolution rather than recent ancestry. 
-% AD 181018: the above is incorrect. LBA is not due to convergent evolution, but rather limitations of phylogenetic methods when processing data with two or more heavily diverged sequences. So many mutations have occurred that the signal of evolutionary history is lost and the simplest explanation for the data just involves gluing those long branches together. 
-When it is more likely than accurate placement based on shared ancestry, this is known as the Felsenstein zone.
+\item \textbf{Long branch attraction (LBA):} placement of two heavily divergent but distantly related sequences with each other. 
+The model is unable to extract evolutionary signal due to the number of mutations that have occurred, so places the two taxa together. 
+Also called the Felsenstein zone.
 \end{itemize}
 
 
@@ -198,7 +198,8 @@ Single copy gene alignments were concatenated and both ML \& BI analyses were ex
 GPU processing units were either Nvidia Tesla K80 or a Tesla P100. 
 Amino acid substitution model selection was carried out with ProtTest3 with the Bayesian Information Criterion as well as the log likelihood \cite{darriba2011prottest,guindon2003simple}. 
 %AD 181018: Does ProtTest3 check adequacy as well as just selecting among models with BIC?
-The best model for the data set identified by both criteria was VT followed by LG, however neither are available in beast2 so the third best model, WAG, was chosen for analysis. 
+%LK: Can you please explain the distinction?
+The best-fit model for the data set identified by both criteria was VT followed by LG, however neither are available in beast2 so the third best model, WAG, was chosen for analysis. 
 \paragraph*{Maximum likelihood with concatenated sequences.}
 ML inference was run as described in the previous section, with the ILGF, GAMMA and PROT flags.
 %AD 181018: what's ILGF? did you use WAG in raxml as well? would be good to say so here.
