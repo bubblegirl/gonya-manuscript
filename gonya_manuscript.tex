@@ -67,11 +67,11 @@ Xenologs are gene pairs which, additional to divergence, have undergone transfer
 The distinction between these cases is essential in identifying gene candidates that are informative for species evolution inference, as the selection of orthologs ensures the inclusion of a signal that is based on the speciation of the taxa examined, while selection of paralogs confounds that signal by including information that does not pertain to the speciation of the taxa. 
 As gene duplication and subsequent loss commonly occur over the course of evolution and speciation, the identification of genes that have orthologous relationships is more difficult than may seem apparent from the definition \cite{gabaldon2008large}. 
 
-Once orthologs have been identified there are further issues that can arise and impact the veracity of the phylogenetic inference. 
-% AD 181018: the language here doesn't seem quite right. random noise leads to higher variance in estimates, not skew or bias. In Bayesian inference this usually manifests as lower posterior probabilities == higher uncertainty in the estimated trees.
+Once orthologs have been identified there are further issues that can arise and impact the veracity of the phylogenetic inference.
 Two common, well characterized types of errors are random (sampling error) and systematic errors. 
 The former arises from the data, as individual gene histories may differ to the species tree. 
-With a small number of genes, this random error can skew the inference results away from the true species tree, however increasing the number of genes directly reduces the impact this error has on the analysis. 
+With a small number of genes, this error can reduce the confidence (through node support values) of the topology, and in extreme cases skew the inference away from determining an accurate approximation of the species tree entirely. 
+Increasing the number of genes directly reduces the impact this error has on the analysis. 
 
 % AD 181018: The following reads well
 Conversely, systematic errors arise due to the mispecification of the model used for the inference where an incorrect species tree topology results. 
@@ -197,12 +197,9 @@ ML inference was obtained using RaxML \cite{stamatakis2014raxml} with the GTR an
 Single copy gene alignments were concatenated and both ML \& BI analyses were executed on the University of Technology Sydney's High-performance computing cluster (HPCC). 
 GPU processing units were either Nvidia Tesla K80 or a Tesla P100. 
 Amino acid substitution model selection was carried out with ProtTest3 with the Bayesian Information Criterion as well as the log likelihood \cite{darriba2011prottest,guindon2003simple}. 
-%AD 181018: Does ProtTest3 check adequacy as well as just selecting among models with BIC?
-%LK: Can you please explain the distinction?
 The best-fit model for the data set identified by both criteria was VT followed by LG, however neither are available in beast2 so the third best model, WAG, was chosen for analysis. 
 \paragraph*{Maximum likelihood with concatenated sequences.}
-ML inference was run as described in the previous section, with the ILGF, GAMMA and PROT flags.
-%AD 181018: what's ILGF? did you use WAG in raxml as well? would be good to say so here.
+ML inference was run as described in the previous section, with the PROT, GAMMA and WAG flags.
 \paragraph*{Bayesian inference with concatenated sequences.}
 BI was run in BEAST2 with the Gamma site model with 4 discrete Gamma categories under the WAG substitution model \cite{whelan2001general}. A local random clock was used under the Birth Death model %TODO insert nuber of chains etc
  
@@ -218,10 +215,11 @@ The inference was run four times to evaluate convergence of parameters, then log
 %\subsection*{stepping stone analysis}
 %TODO put details in in the distant future
 
-\subsection*{Inference run time comparison}
-A subset of 14 taxa was selected for a comparison between CPU and GPU inference run time comparison. 
-The transcriptome libraries were fed through the single copy gene extraction script as described, which was set to extract single copy genes present in all of the taxa. 
-The resulting alignments were run on *BEAST either on the CPU or GPU.
+%LK: I've jsut taken this out because I don;t really have a proper comparison. The CPU run took so long I had to kill it.
+%\subsection*{Inference run time comparison}
+%A subset of 14 taxa was selected for a comparison between CPU and GPU inference run time comparison. 
+%The transcriptome libraries were fed through the single copy gene extraction script as described, which was set to extract single copy genes present in all of the taxa. 
+%The resulting alignments were run on *BEAST either on the CPU or GPU.
 
 \subsubsection*{Generation of figures}
 Tanglegrams were generated with Dendroscope v3.5.9 \cite{huson2007dendroscope}; images were edited in GIMP \cite{gimp}.
@@ -296,7 +294,7 @@ Support for deeper nodes varied from weak to well supported.
 
 \begin{figure} 
 \includegraphics[scale=.4]{figures/rDNA-ML.png} 
-\caption{Maximum likelihood phylogenetic inference of ribosomal DNA genes. Concatenation of small subunit rDNA and D1-D3 region large subunit rDNA. Accession numbers for concatenated genes in Table S3. Gonyaulacales (\#16) in purple, outgroups (\#3) in light blue and taxa \textit{incertae sedis} (\#1) in teal. The scale represents number of substitutions per site.} 
+\caption{Maximum likelihood phylogenetic inference of ribosomal DNA genes. Concatenation of small subunit rDNA and D1-D3 region large subunit rDNA. Accession numbers for concatenated genes in Table S3. Gonyaulacales (\#16) in purple, outgroups (\#3) in light blue and taxa \textit{incertae sedis} (\#1) in teal. Topology was rerooted on branch separating outgroup taxa with the gonyaulacales. The scale represents number of substitutions per site.} 
 \label{fig:rdna}
 \end{figure} 
 \FloatBarrier
@@ -315,7 +313,7 @@ Other deeper nodes were well supported.
  
 \begin{figure} 
 \includegraphics[scale=.45]{figures/Singlecopy-concat-ML.png} 
-\caption{Maximum likelihood phylogenetic inference of concatenated single copy gene set (62 single copy genes from 20 taxa). Gonyaulacales (\#16) in purple, outgroups (\#3) in light blue and taxa \textit{incertae sedis} (\#1) in teal. The scale represents number of substitutions per site.} 
+\caption{Maximum likelihood phylogenetic inference of concatenated single copy gene set (62 single copy genes from 20 taxa). Gonyaulacales (\#16) in purple, outgroups (\#3) in light blue and taxa \textit{incertae sedis} (\#1) in teal. Topology was rerooted on branch separating outgroup taxa with the gonyaulacales. The scale represents number of substitutions per site.} 
 \label{fig:SCconcatML}
 \end{figure} 
 \FloatBarrier
@@ -332,9 +330,7 @@ The third clade encompasses \textit{Gonyaulax}, \textit{Protoceratium} and \text
 
 \begin{figure} 
 \includegraphics[scale=.34]{figures/SC-concat-BI.png} 
-\caption{Bayesian phylogenetic inference of concatenated single copy gene set (62 single copy genes from 20 taxa). Gonyaulacales (\#16) in purple, outgroups (\#3) in light blue and taxa \textit{incertae sedis} (\#1) in teal. The scale represents number of substitutions per site.} 
-%AD: you should note here that it was rerooted
-%LK: stated in line 268 for all following phylos. SHould I put it in every figure again?
+\caption{Bayesian phylogenetic inference of concatenated single copy gene set (62 single copy genes from 20 taxa). Gonyaulacales (\#16) in purple, outgroups (\#3) in light blue and taxa \textit{incertae sedis} (\#1) in teal. Topology was rerooted on branch separating outgroup taxa with the gonyaulacales. The scale represents number of substitutions per site.} 
 \label{fig:SCconcatBI}
 \end{figure} 
 \FloatBarrier
@@ -354,7 +350,7 @@ Other deeper nodes were well or fully supported.
 
 \begin{figure} 
 \includegraphics[scale=.25]{figures/Aug2_20-taxa-combined-fig_MCC_trees.png} 
-\caption{Bayesian phylogenetic inference of Gonyaulacales species tree under the multipsecies coalescent with 62 single copy genes from 20 taxa. Gonyaulacales (\#16) in purple, outgroups (\#3) in light blue and taxa \textit{incertae sedis} (\#1) in teal. The scale represents number of substitutions per site.} 
+\caption{Bayesian phylogenetic inference of Gonyaulacales species tree under the multipsecies coalescent with 62 single copy genes from 20 taxa. Gonyaulacales (\#16) in purple, outgroups (\#3) in light blue and taxa \textit{incertae sedis} (\#1) in teal. Topology was rerooted on branch separating outgroup taxa with the gonyaulacales. The scale represents number of substitutions per site.} 
 \label{fig:SCmscBI}
 \end{figure} 
 \FloatBarrier
@@ -441,7 +437,6 @@ As \emph{Azadinium} spp. also produce polyketide toxins that cause azaspiracid s
 Mis-specification of the model, or individual parameters, can lead to a well supported but erroneous result. 
 While models are a simplistic approximation of the underlying biological drivers for evolutionary processes, getting as close an approximation as possible is essential \cite{box1979all}. 
 However under- and over-parameterization have been shown to impact topology and PPs to varying degrees, in and outside the Felsenstein zone \cite{lemmon2004importance}. 
-%AD 181018: the following two sentences should probably stay out until you have the marginal likelihood data
 %Stepping stone (SS) sampling compares the marginal likelihood of both the prior and the posterior of a model, while penalizing for overparameterization and can be used to compare the fit of one model compared to another for a given data set \cite{xie2010improving}. 
 %To compare how well concatenation vs. MSC fits the single copy gene data set used in this study, SS comparison was conducted.
 
@@ -453,10 +448,8 @@ Using LSU or SSU rDNA regions for phylogenetics is common practice, at times sup
 It is important to acknowledge that these represent the evolutionary history of highly conserved genes, which does not necessarily represent the species evolution and assumptions of their congruence is statistically inadequate \cite{degnan2009gene}.
 Utilization of rDNA loci made sense when study designs were bound by sequencing and computational limitations, as they were a universally available proxy which was informative. 
 Due to this legacy they continue to be commonly employed. 
-%AD 181018: I think you have to be careful with the following comment. Because they evolve more slowly than other genes, there will be intraspecies relationships that are better resolved with other genes, not the rDNA. rDNA has a sweet spot, probably somewhere in the range of inter-species to order level relationships
-rDNA is highly conserved and evolves much slower than other nuclear genes, hence can miss 
-While rDNA sequences are useful for characterizing intra-species relationships within crown taxa, these regions are unsuited for topological resolution of deeper branches (for a summary see \cite{hoppenrath2017dinoflagellate}).
-Yet rDNA sequences are still commonly used, exclusively or as part of a subset of genes for analysis, for the gonyaulacales. 
+rDNA is highly conserved and evolves much slower than other nuclear genes, hence can give an ultra conservative view of species relationships. 
+rDNA sequences are still commonly used, exclusively or as part of a subset of genes for analysis, for the gonyaulacales. 
 Comparing the topology from a rDNA ML inference with the single gene copy MSC phylogeny presented here (Fig. ~\ref{fig:tanglerDNA}) shows that most clades in both topologies were completely or very well supported. 
 Within the genera \emph{Gambierdiscus} and \emph{Ostreopsis}, the species resolution differed between the two data sets. 
 In several cases, the placement of sister taxa was incongruous between the two analyses. 
@@ -501,7 +494,6 @@ Under simulated data sets, even under the coalescent methods, the species tree t
 Further to that, the PP values tend to be overestimated for concatenation \cite{suzuki2002overcredibility}. 
 Theoretically for the gonyaulacales, and taxa prone to paralogy and convoluted evolutionary histories, the MSC is a preferable approach to concatenation as MSC is more robust to ILS \& LBA artifacts \cite{liu2014coalescent}. 
 To isolate the effects of phylogenetic model from those of the statistical framework (ML vs BI), the single copy gene data set was run with BI both under MSC and with concatenation (Fig. ~\ref{fig:tangleconcatBI}). 
-%AD 181018: don't have this yet
 %We then used a statistical framework to compare the two model approaches to verify the veracity of model adequacy through stepping stone sampling. 
 %PATH sampling is an adequate method for objectively comparing the model parameters for relaxed clock models while penalizing for over-parameterization \cite{baele2012accurate}. %TODO same for ss?
 %The value XXX %TODO whatever the hell the PATH sampling results are
