@@ -59,14 +59,12 @@ An example of the breadth of publicly available data is the Marine Microbial Euk
 This project focused on a group of understudied organisms which are abundant and play vital roles in the marine environment, from geochemical cylcling, predation to symbiosis \cite{gomez2005list,gomez2012quantitative}. 
 This data set offers an excellent opportunity to explore the evolutionary relationships between these taxa through phylogenetics. 
 
-Phylogenetics 
-% AD 181018: this sounds like it needs to start a fresh paragraph. I'm not sure what this following sentence is trying to say though.
-In phylogenetic inference compares , one or more representative genes for each taxon are compared to those from other taxa. 
-% AD 181018: suggest splitting out the definition of orthology, paralogy, and HGT into separate sentences rather than leaving their definitions as implicit in the following sentence
-In order to estimate a tree representing species evolution, most inference methods typically assume that genes used in the analysis have diverged strictly through speciation events (the resulting two copies of the gene are called orthologs) rather than duplication (creating copies with a paralog relationship) or transfer from another organism (= horizontal gene transfer) \cite{maddison1997gene}. 
-% AD 181018: suggest clarifying that it is essential when using an inference method that assumes all genes are orthologs. There are models which include inference of gene duplication & paralogy, though these are much harder to implement and apply than *BEAST
-Both paralogs and orthologs are specific cases of homology, genes which share an ancestral sequence and diverged in the past, where the mode of divergence differs \cite{fitch1970distinguishing}. 
-The distinction between these two cases is essential in identifying gene candidates that are informative for species evolution inference, as the selection of orthologs ensures the inclusion of a signal that is based on the speciation of the taxa examined, while selection of paralogs confounds that signal by including information that does not pertain to the speciation of the taxa. 
+Central to phylogenetic inference is the relationship of two characters from a common ancestor, which is called homology \cite{fitch2000homology}. 
+There are several types of homology, related to how the characters diverged, and determining through which mechanisms comparative traits/genes evolved is essential for choosing the correct inference model. 
+Orthologs is the case where the divergence of two gene copies followed a speciation event \cite{fitch1970distinguishing}. 
+Paralogs are two gene copies whose divergence is preceded by gene duplication \cite{fitch1970distinguishing}.
+Xenologs are gene pairs which, additional to divergence, have undergone transfer through horizontal gene transfer \cite{darby2016xenolog}.
+The distinction between these cases is essential in identifying gene candidates that are informative for species evolution inference, as the selection of orthologs ensures the inclusion of a signal that is based on the speciation of the taxa examined, while selection of paralogs confounds that signal by including information that does not pertain to the speciation of the taxa. 
 As gene duplication and subsequent loss commonly occur over the course of evolution and speciation, the identification of genes that have orthologous relationships is more difficult than may seem apparent from the definition \cite{gabaldon2008large}. 
 
 Once orthologs have been identified there are further issues that can arise and impact the veracity of the phylogenetic inference. 
