@@ -60,7 +60,7 @@ This data set offers an excellent opportunity to explore the evolutionary relati
 
 Central to phylogenetic inference is the relationship of two characters from a common ancestor, which is called homology \cite{fitch2000homology}. 
 There are several types of homology, related to how the characters diverged, and determining through which mechanisms comparative traits/genes evolved is essential for choosing the correct inference model. 
-Orthologs is the case where the divergence of two gene copies followed a speciation event \cite{fitch1970distinguishing}. 
+Orthology is the case where the divergence of two gene copies followed a speciation event \cite{fitch1970distinguishing}. 
 Paralogs are two gene copies whose divergence is preceded by gene duplication \cite{fitch1970distinguishing}.
 Xenologs are gene pairs which, additional to divergence, have undergone transfer through horizontal gene transfer \cite{darby2016xenolog}.
 The distinction between these cases is essential in identifying gene candidates that are informative for species evolution inference, as the selection of orthologs ensures the inclusion of a signal that is based on the speciation of the taxa examined, while selection of paralogs confounds that signal by including information that does not pertain to the speciation of the taxa. 
@@ -124,7 +124,7 @@ If strong, can override true phylogenetic signal.
 \end{enumerate}
 \item \textbf{Incomplete lineage sorting (ILS):} discordance of gene evolutionary history with the species evolutionary history causing the phylogenetic species tree to be misinferred. 
 Difference in the topology of a gene tree compared to the species evolution can arise from the coalescence of those orthologs prior to the species divergence, where in effect the ancestral populations contain two or more already-diverged copies of the gene across one or more species divergence points. 
-Another mechanism is the introduction of a copy of the gene which is not based on ancestral inheritance, such as horizontal gene transfer or hybridization.
+Another mechanism is the introduction of a copy of the gene which is not based on ancestral inheritance (xenology), such as horizontal gene transfer or hybridization.
 \item \textbf{Long branch attraction (LBA):} placement of two heavily divergent but distantly related sequences with each other. 
 The model is unable to extract evolutionary signal due to the number of mutations that have occurred, so places the two taxa together. 
 Also called the Felsenstein zone.
@@ -137,12 +137,12 @@ The gonyaulacales are an order within the super-phylum Alveolata and sub-phylum 
 They play a role in several important ecological processes in aquatic environments where they cover a diverse array of niches such as symbionts, parasites and autotrophs. 
 Some taxa can cause harmful algal blooms through proliferation (by restricting light and nutrient availability to other organisms) and/or neurotoxin production (e.g. causing paralytic shellfish poisoning, ciguatera fish poisoning) \cite{murray2016unravelling}.
 Dinoflagellates possess large genomes (estimated size range 1.5 to 185 Gbp), with extensive paralogy and repetitive short sequences  \cite{casabianca2017genome}. 
-In particular the paralogy has proven problematic for efforts investigating the genetic content and structure of the dinoflagellates, as this feature has prevented the assembly of genomes apart from two draft genomes for \textit{Symbiodinium} which posses some of the smaller genomes \cite{shoguchi2013draft,lin2015symbiodinium}. 
+In particular paralogy has proven problematic for efforts investigating the genetic content and structure of the dinoflagellates, as this feature has prevented the assembly of genomes apart from two draft genomes for \textit{Symbiodinium} which posses some of the smaller genomes \cite{shoguchi2013draft,lin2015symbiodinium}. 
 For a review on the genetic features of dinoflagellates see \cite{murray2016unravelling}.
 %AV You can add a couple of more sentences regarding the genetic complexities of dinos in this section. Does a box have a word-limit?
 %LK there is much more info in the thesis intro, thought it'd be best not to repeat too much. But would be good for a manuscript,
 While the evolutionary relationship of most orders within the dinoflagellates has been inferred with consistently high support values, one order has often escaped elucidation - the gonyaulacales. 
-As neurotoxin production is prevalent in this order, the evolution of the order is of interest to provide a frame of reference for future investigations into how the toxins have evolved \cite{shalchian2006combined,zhang2007three,saldarriaga2004molecular,hoppenrath2010dinoflagellate,murray2005improving}. 
+As neurotoxin production, which can end up in the food chain, is prevalent in this order, the evolution of the order is of interest to provide a frame of reference for future investigations into how the toxins have evolved \cite{shalchian2006combined,zhang2007three,saldarriaga2004molecular,hoppenrath2010dinoflagellate,murray2005improving}. 
 
 \newpage
 \section{Materials and methods}
@@ -373,7 +373,7 @@ Phylogenetic inference has become a key aspect of exploring the evolutionary rel
 %LK yep, you're right. Is that a problem though? It's a pretty broad re-cap of why this kinda work is important
 Advances in sequencing technologies has seen an increase in high throughput sequencing initiatives such as MMETSP, which covers a relatively uncharacterized group of marine microbial eukaryotes \cite{keeling2014marine}. 
 However, the methodologies used for investigating the evolutionary relationships between these taxa remain an obstacle, as the choice of input data and method employed influences the outcome of the inference. 
-To address this, a synopsis on RNA library pre-processing, assembly parameter selection, a method for single copy gene selection, and synthesis of phylogenetic inference models availability and selection is presented in this study - as well as possible shortcomings of the parameters and methods selected. \\
+To address this, a synopsis on RNA library pre-processing, assembly parameter selection, a method for single copy gene extraction, and synthesis of phylogenetic inference model availability and selection is presented in this study - as well as possible shortcomings of the parameters and methods selected. \\
 Dinoflagellates are notorious for their extensive genomes with suspected whole or partial genome duplication and potential cDNA retro-insertion into the genome \cite{van2009florida,beauchemin2012dinoflagellate,slamovits2008widespread,hou2009distinct,lin2011genomic}. 
 This causes unusually large gene copy numbers and extensive paralogy. 
 With this in mind, the gonyaulacales (an order within the dinoflagellates, see box 2  in section ~\ref{sec:dinobox}) presented as an ideal challenge to test the parameters of interest.
@@ -428,7 +428,7 @@ Hence the selection of orthologs, and the elimination of paralogs, is essential.
 Paralogy is particularly rife in the dinoflagellates, including in the order gonyaulacales within the dinoflagellates. 
 This study sought to address the issues arising from paralog comparison by isolating single copy genes, using the curated BUSCO gene collection and software to facilitate the process. 
 As BUSCO uses lineage specific profile HMM libraries designed to target single copy genes, and the output distinguishes between single copy genes and duplications, it presents a method for reliably screening for single copy genes for phylogenomics \cite{waterhouse2017busco}.
-Only one other study by Price et al. (2017) sought to address the issue of paralogy within the dinoflagellates, by selecting single genes as input. 
+Only one other study by Price et al. (2017) sought to address the issue of paralogy for species inference within the dinoflagellates, by selecting single genes as input. 
 However there are several issues with the study presented by Price et al. \cite{price2017robust}. 
 The assemblies used are from the MMETSP project, which employed outdated assembly methods as mentioned previously, and hence could present single copy genes which are instead hybrids of paralogs. 
 Further, the methodology for identifying and selecting the single copy genes was not described in the publication and is not available upon request. 
