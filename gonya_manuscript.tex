@@ -211,9 +211,10 @@ Posterior distributions of parameters were approximated after 300,000,000 genera
 The inference was run four times to evaluate convergence of parameters, then log and tree files were merged. 
 
 
-\subsection*{stepping stone analysis}
-Stepping stone analysis was run for both the single copy gene dataset under MSC and with concatenation, with 16 steps each.
-%TODO Mathieu could you please fill this section in?
+\subsection*{Stepping stone analysis}
+We estimated the marginal likelihood of the data under the coalescent (i.e. concatenated alignment) and the multispecies coalescent (*BEAST) models to compare their fitness.
+We used the stepping stone algorithm \citep{xie2011improving} along a path of 16 power posteriors.
+The $\beta$ values are set equal to the quantiles of the beta distribution with shape parameter $\alpha=0.3$ and $\beta = 1$, as recommended by Xie et al. \cite{xie2011improving}.
 
 \subsubsection{Generation of figures}
 Tanglegrams were generated with Dendroscope v3.5.9 \cite{huson2007dendroscope}; images were edited in GIMP \cite{gimp}.
