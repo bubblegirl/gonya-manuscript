@@ -51,7 +51,7 @@ Xenologs are gene pairs which, additional to divergence, have undergone transfer
 The distinction between these cases is essential in identifying gene candidates that are informative for species evolution inference, as the selection of orthologs ensures the inclusion of a signal that is based on the speciation of the taxa examined, while selection of paralogs confounds that signal by including information that does not pertain to the speciation of the taxa. 
 As gene duplication and subsequent loss commonly occur over the course of evolution and speciation, the identification of genes that have orthologous relationships is more difficult than may seem apparent from the definition \cite{gabaldon2008large}. 
 
-Once orthologs have been identified there are further issues that can arise and impact the veracity of the phylogenetic inference.
+Once orthologs have been identified, there are further issues that can arise and impact the veracity of the phylogenetic inference.
 Two common, well characterized types of errors are random (sampling error) and systematic errors. 
 The former arises from the data, as individual gene histories may differ to the species tree. 
 With a small number of genes, this error can reduce the confidence (through node support values) of the topology, and in extreme cases skew the inference away from determining a good approximation of the species tree entirely. 
@@ -68,17 +68,17 @@ In summary, common problems in carrying out a species tree inference arise from:
 \item Selection of paralogs. 
 If genes with different evolutionary histories are selected, the gene tree will not reflect the history of either paralog and be nonsensical for species tree inference;
 \item Concatenation of genes. 
-Can be statistically inconsistent estimator of the species tree due to incomplete lineage sorting (ILS) and concatenation acting as imperfect estimator of species tree topology \cite{roch2015likelihood};
+Can be a statistically inconsistent estimator of the species tree due to incomplete lineage sorting (ILS) and concatenation acts as an imperfect estimator of species tree topology \cite{roch2015likelihood};
 \item Inference of model adequacy from bootstrap values. 
 Kubatko et al. (2007) demonstrated high bootstrap support under maximum likelihood (ML) inference for incorrect species trees with concatenated gene sets as input \cite{kubatko2007inconsistency}. 
 As high bootstrap values are often used as an indicator for robust species topology resolution, this fallacy is particularly problematic if the reader/operator is unfamiliar with the statistical phenomenon.
 \end{enumerate}
 
-In this study we explore the application of data analysis techniques which attempt to mitigate several of the pitfalls in species tree inference, beyond what has previously been applied in the study of protist phylogeny.
+In this study, we explore the application of data analysis techniques which attempt to mitigate several of the pitfalls in species tree inference, beyond what has previously been applied in the study of protist phylogeny.
 The sequence data is prepared using a workflow that assembles RNA-seq data sets, identifies and extracts single copy genes across input taxa, and aligns selected genes ready for Bayesian inference (BI) phylogenetics.
 Next, we evaluate the impact of model and data selection on the resulting phylogenetic inference. 
 Finally, we applied the methodology to a group of organisms notorious for their extensive paralogy - the Gonyalacales (phylum: Dinoflagellata) (see box 2 for further information on the dinoflagellates).
-We present a phylogenetic inference of the gonyaulacales generated under the multipsecies coalescent (MSC) and compare the topology to inferences with commonly used methodologies.
+We present a phylogenetic inference of the gonyaulacales generated under the multispecies coalescent (MSC) and compare the topology to inferences with commonly used methodologies.
 
 %can I include this again now ^___^
 %Within this framework, the dinoflagellates and in particular the gonyaulacales hold a special place in hell. 
@@ -87,7 +87,7 @@ We present a phylogenetic inference of the gonyaulacales generated under the mul
 
 \subsubsection*{Box 1: Statistical nomenclature \& errors this study seeks to address}
 \label{sec:statbox}
-For in depth explanations see \cite{yang2014molecular}.
+For in-depth explanations see \cite{yang2014molecular}.
 \begin{itemize}
   \setlength{\itemsep}{1pt}
   \setlength{\parskip}{0pt}
@@ -98,13 +98,13 @@ For in depth explanations see \cite{yang2014molecular}.
   \setlength{\itemsep}{0pt}
   \setlength{\parskip}{0pt}
   \setlength{\parsep}{0pt}
-\item random. Sampling based error which decreases and approaches zero as the size of the data set approaches infinity.\\
+\item random. Sampling-based error which decreases and approaches zero as the size of the data set approaches infinity.\\
 \item systematic. Arises from incorrect model assumptions or problems with the model itself. 
 Error type persists and increases as data set size approaches infinity. 
 If strong, can override true phylogenetic signal.
 \end{enumerate}
 \item \textbf{Incomplete lineage sorting (ILS):} discordance of gene evolutionary history with the species evolutionary history causing the phylogenetic species tree to be misinferred. 
-Difference in the topology of a gene tree compared to the species evolution can arise from the coalescence of those orthologs prior to the species divergence, where in effect the ancestral populations contain two or more already-diverged copies of the gene across one or more species divergence points. 
+Difference in the topology of a gene tree compared to the species evolution can arise from the coalescence of those orthologs prior to the species divergence, where in effect the ancestral populations contain two or more already diverged copies of the gene across one or more species divergence points. 
 Another mechanism is the introduction of a copy of the gene which is not based on ancestral inheritance (xenology), such as horizontal gene transfer or hybridization.
 \item \textbf{Long branch attraction (LBA):} placement of two heavily divergent but distantly related sequences with each other. 
 The model is unable to extract evolutionary signal due to the number of mutations that have occurred, so places the two taxa together. 
