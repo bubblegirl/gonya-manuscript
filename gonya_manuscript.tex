@@ -1,37 +1,39 @@
-\documentclass[12pt]{article}
- \usepackage[hcentering,bindingoffset=20mm]{geometry}
- \usepackage{placeins}
- \usepackage[numbib]{tocbibind}
- \usepackage{rotating}
-\usepackage[square,sort,comma,numbers]{natbib}
- \usepackage{graphicx}
- \usepackage{tabularx}
-% \usepackage{datetime2}
- \linespread{1.3}
- \usepackage{gensymb}
-\usepackage{longtable}
- \usepackage{lscape}
- \usepackage{url}
- \addtolength{\textwidth}{2cm}
- \addtolength{\hoffset}{-1cm}
-  \usepackage{caption}
-\usepackage{subcaption}
- 
- 
- \addtolength{\textheight}{2cm}
- \addtolength{\voffset}{-1cm}
- \setlength{\parindent}{0pt}
- 
+%% Submissions for peer-review must enable line-numbering 
+%% using the lineno option in the \documentclass command.
+%%
+%% Preprints and camera-ready submissions do not need 
+%% line numbers, and should have this option removed.
+%%
+%% Please note that the line numbering option requires
+%% version 1.1 or newer of the wlpeerj.cls file, and
+%% the corresponding author info requires v1.2
+
+\documentclass[fleqn,10pt,lineno]{wlpeerj} % for journal submissions
+% \documentclass[fleqn,10pt]{wlpeerj} % for preprint submissions
 
 \title{Trial by phylogenetics - how model and data selection impacts the elucidation of the evolution of the Gonyaulacales (Dinophyceae).}
-\author{Key words: Bayesian inference, model selection, Gonyaulacales,\\ phylogenetics, transcriptomics}
 
-\date{}
+\author[1]{Anna Liza Kretzschmar}
+\author[2]{Arjun Verma}
+\author[2]{Shauna Murray}
+\author[1]{Tim Kahlke}
+\author[2]{Mathieu Fourment}
+\author[2]{Aaron E. Darling}
+\affil[1]{ithree institute, University of Technology Sydney, Australia}
+\affil[2]{c3, University of Technology Sydney, Australia}
+\corrauthor[1]{Anna Liza Kretzschmar}{anna.kretzschmar@uts.edu.au}
+
+%\keywords{Keyword1, Keyword2, Keyword3}
+
+\begin{abstract}
+Dummy abstract text. Dummy abstract text. Dummy abstract text. Dummy abstract text. Dummy abstract text. Dummy abstract text. Dummy abstract text. Dummy abstract text. Dummy abstract text. Dummy abstract text. Dummy abstract text.
+\end{abstract}
 
 \begin{document}
-\maketitle
 
-Anna Liza Kretzschmar$^{1}$, Mathieu Fourment$^{1}$, Shauna Murray$^{2}$, Tim Kahlke$^{2}$, Arjun Verma$^{2}$, Aaron E. Darling$^{1}$\\
+\flushbottom
+\maketitle
+\thispagestyle{empty}
 
 \section*{Introduction}
 Historically, availability of genetic data to infer evolutionary relationships has been a limiting factor for phylogenetics.
@@ -64,7 +66,7 @@ In the presence of this type of systematic error, the resulting inference can be
  with high clade support values for the incorrect tree topology, obfuscating the presence of the error \cite{jeffroy2006phylogenomics,roch2015likelihood,kubatko2007inconsistency}. 
 
 In summary, common problems in carrying out a species tree inference arise from:\\
-\begin{enumerate}
+\begin{enumerate}[noitemsep]
 \item Selection of paralogs. 
 If genes with different evolutionary histories are selected, the gene tree will not reflect the history of either paralog and be nonsensical for species tree inference;
 \item Concatenation of genes. 
@@ -80,24 +82,13 @@ Next, we evaluate the impact of model and data selection on the resulting phylog
 Finally, we applied the methodology to a group of organisms notorious for their extensive paralogy - the Gonyalacales (phylum: Dinoflagellata) (see box 2 for further information on the dinoflagellates).
 We present a phylogenetic inference of the gonyaulacales generated under the multispecies coalescent (MSC) and compare the topology to inferences with commonly used methodologies.
 
-%can I include this again now ^___^
-%Within this framework, the dinoflagellates and in particular the gonyaulacales hold a special place in hell. 
-%This author postulates that there is a Dante-esque lower circle especially reserved for protist microbiologists and taxonomists whose willfully laisez-faire approach abuses mathematical models to spew forth statistically inconsistent abominations of their complex evolutionary history.
-% AD 181018: wow, that's beautiful.
-
-\subsubsection*{Box 1: Statistical nomenclature \& errors this study seeks to address}
+\subsection*{Box 1: Statistical nomenclature \& errors this study seeks to address}
 \label{sec:statbox}
 For in-depth explanations see \cite{yang2014molecular}.
-\begin{itemize}
-  \setlength{\itemsep}{1pt}
-  \setlength{\parskip}{0pt}
-  \setlength{\parsep}{0pt}
+\begin{itemize}[noitemsep]
 \item \textbf{Heterotachy:} change in evolutionary rates of sites over time, specific to lineage(s).
 \item \textbf{Potential statistical error types:}
-\begin{enumerate}
-  \setlength{\itemsep}{0pt}
-  \setlength{\parskip}{0pt}
-  \setlength{\parsep}{0pt}
+\begin{enumerate}[noitemsep]
 \item random. Sampling-based error which decreases and approaches zero as the size of the data set approaches infinity.\\
 \item systematic. Arises from incorrect model assumptions or problems with the model itself. 
 Error type persists and increases as data set size approaches infinity. 
@@ -112,7 +103,7 @@ Also called the Felsenstein zone.
 \end{itemize}
 
 
-\subsubsection*{Box 2: Who/what are the Gonyaulacales?}
+\subsection*{Box 2: Who/what are the Gonyaulacales?}
 \label{sec:dinobox}
 The gonyaulacales are an order within the super-phylum Alveolata and sub-phylum Dinoflagellata, which are an ancient eukaryotic lineage \cite{moldowan1998biogeochemical}. 
 They play a role in several important ecological processes in aquatic environments where they cover a diverse array of niches such as symbionts, parasites and autotrophs. 
@@ -123,10 +114,9 @@ For a review on the genetic features of dinoflagellates see \cite{murray2016unra
 While the evolutionary relationship of most orders within the dinoflagellates has been inferred with consistently high support values, one order has often escaped elucidation - the gonyaulacales. 
 As neurotoxin production, which can accumulate up the food chain, is prevalent in this order, the evolution of the order is of interest to provide a frame of reference for future investigations into how the toxins have evolved \cite{shalchian2006combined,zhang2007three,saldarriaga2004molecular,hoppenrath2010dinoflagellate,murray2005improving}. 
 
-\newpage
-\section*{Materials and methods}
+\section*{Methods}
 \subsection*{Culture conditions}
-\FloatBarrier
+%\FloatBarrier
 Cultures were isolated from locations as per Table S1 and clonal cultures established by micropipetting single cells through sterile seawater as per the \textit{Specimen collection and culture conditions} section in \cite{kretzschmar2017characterization}. 
 Clonal cultures were maintained in F/10 medium \cite{holmes1991strain} and maintained at temperatures indicated in Table S1.
 
@@ -195,31 +185,34 @@ We used the stepping stone algorithm \citep{xie2011improving} along a path of 16
 The $\beta$ values are set equal to the quantiles of the beta distribution with shape parameter $\alpha=0.3$ and $\beta = 1$, as recommended by Xie et al. \cite{xie2011improving}.
 
 \subsubsection*{Generation of figures}
-Tanglegrams were generated with Dendroscope v3.5.9 \cite{huson2007dendroscope}; images were edited in GIMP \cite{gimp}.
+Tanglegrams were generated with Dendroscope v3.5.9 \cite{huson2007dendroscope}; images were edited in GIMP \cite{gimp2008image}.
 
 \subsubsection*{Implementation}
-The analysis work flow in section Transcriptome processing scripts was written in the Nextflow language \cite{nextflow} and is available on Github under \url{https://github.com/hydrahamster/gonya_phylo}. 
-Packages within the scripts are written in bash, Python 2.7 \cite{python} and pandas \cite{pandas}. 
+The analysis work flow in section Transcriptome processing scripts was written in the Nextflow language \cite{di2017nextflow} and is available on Github under https://github.com/hydrahamster/gonya\_phylo. 
+Packages within the scripts are written in bash, Python 2.7 \cite{stevens2018python} and pandas \cite{pandas}. 
 Source code for the scripts to assemble RNA-seq data sets, to identify and extract single copy genes across input taxa with extensive paralogy, and to align selected genes ready for Bayesian inference (BI) phylogenetics is provided under an open source license.
 The data sets were processed on a Genomics Virtual Lab (GVL) \cite{afgan2015genomics} instance in the NeCTAR cloud.
 Inference analyses were executed on the University of Technology Sydney's High-performance computing cluster (HPCC).  
 The computation for *BEAST2 inference was carried out on the HPCC and was accelerated using BEAGLE \cite{ayres2011beagle} on the GPU.
 GPU processing units were either Nvidia Tesla K80 or a Tesla P100.
 
-\newpage
 \section*{Results}
 Assemblies, annotation files, BUSCOv2 output, single-copy gene alignments and single copy gene MSC BI trace files generated in this study are available on Zenodo DOI: 10.5281/zenodo.2576201
-%TODO zenodo DOI
+
 \subsection*{Transcriptomes overview}
 RNA-seq libraries generated in this study are available on NCBI's sequence read archive under the project ID SRP134273.
 Sequencing of transcriptomes for \emph{Gambierdiscus} spp. and \emph{T.} cf. \emph{kofoidii} generated data sets ranging in size from 143,155,667 to 233,822,334 reads, resulting in 97,634 to 191,224 assembled contigs (table ~\ref{tbl:asmstats}). 
 Clusters with gene ontology (GO) annotations made up 30.9\% to 34.8\% of the total clusters. 
 
-\FloatBarrier
-\begin{longtable}{  | p{3cm} |p{2.2cm} | p{2.2cm} | p{2.2cm} | p{2.2cm} | p{2.2cm} |}
-\caption{Summary of transcriptome sequencing and assembly statistics.}\\
+%\FloatBarrier
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{| p{3cm} |p{2.2cm} | p{2.2cm} | p{2.2cm} | p{2.2cm} | p{2.2cm} |}
+
+%\begin{longtable}{  | p{3cm} |p{2.2cm} | p{2.2cm} | p{2.2cm} | p{2.2cm} | p{2.2cm} |}
+%\caption{\label{tbl:asmstats}Summary of transcriptome sequencing and assembly statistics.}\\
 \hline
-\label{tbl:asmstats}
 \emph{Sequences:}&\emph{G. carpenteri}&\emph{G. lapillus}&\emph{G. polynesiensis}&\emph{G. holmesii}&\emph{T.} cf. \emph{kofoidii}\\
 \hline
  \multicolumn{6}{| c |}{Sequencing}\\
@@ -242,7 +235,9 @@ Clusters with gene ontology (GO) annotations made up 30.9\% to 34.8\% of the tot
 \hline
 \textbf{Contigs with GO annotations}&44,167&32,140&43,098&34,201&37,656\\ %cut -f 3 my.gff | sort | uniq | wc -l .. maybe diff to '3' but hey
 \hline
-\end{longtable}
+\end{tabular}
+\caption{\label{tbl:asmstats}Summary of transcriptome sequencing and assembly statistics.}
+\end{table}
 
 \subsection*{BUSCO output}
 Assemblies were searched with BUSCOv2 for 234 candidate single copy genes and homologs to these single copy genes were extracted. 
@@ -253,7 +248,7 @@ Support for branches was interpreted as follows, for ML and BI, respectively: 10
 As \emph{Azadinium spinosum}, \emph{Dinophysis acuminata} and \emph{Karenia brevis} are members of different orders (Dinophyceae ordo incertae sedis, Dinophysiales \& Gymnodiniales respectively) and consistently resolve outside of the gonyaulacales in phylogenetic analyses, their placement as an outgroup was considered a given for this study. 
 Therefore, the branch separating these taxa from others was used to root ML trees in subsequent analyses where rooting was required.
 \subsubsection*{rDNA based phylogeny}
-\FloatBarrier 
+%\FloatBarrier 
 All nodes were supported, with a range of certainty.
 The following refers to Fig. ~\ref{fig:rdna}.
 Species within the genera \emph{Gambierdiscus} and \emph{Ostreopsis} resolved with their sister species with full support. 
@@ -265,15 +260,16 @@ Sister to these clades, in descending order, was \emph{Pyrodinium}, \emph{Cerati
 The outgroup was relatively well supported and included \emph{Crypthecodinium}. 
 Support for deeper nodes varied from weak to well supported.
 
-\begin{figure} 
-\includegraphics[scale=.4]{gonya-figs/rDNA-ML.png} 
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\linewidth]{gonya-figs/rDNA-ML.png} 
 \caption{Maximum likelihood phylogenetic inference of ribosomal DNA genes. Concatenation of small subunit rDNA and D1-D3 region large subunit rDNA. Accession numbers for concatenated genes in Table S3. Gonyaulacales (n=16) in purple, outgroups (n=3) in light blue and taxa \textit{incertae sedis} (n=1) in teal. Topology was rerooted on branch separating outgroup taxa with the gonyaulacales. The scale represents the expected number of substitutions per site.} 
 \label{fig:rdna}
 \end{figure} 
-\FloatBarrier
+%\FloatBarrier
 
 \subsubsection*{Concatenated single copy gene based phylogeny inferred with ML}
-\FloatBarrier
+%\FloatBarrier
 All nodes except one within the \emph{Gambierdiscus} species cluster resolved as relatively well supported. 
 Topological description in this section refers to Fig. ~\ref{fig:SCconcatML}. 
 Species of the genera \emph{Alexandrium}, \emph{Gambierdiscus} and \emph{Ostreopsis} cluster as individual clades with their sister species.  
@@ -284,15 +280,16 @@ The split of the outgroup was fully supported, while the internal nodes resolved
 \emph{Crypthecodinium} resolved within the outgroup, sister to \emph{Karenia}. 
 Other deeper nodes were well supported.
  
-\begin{figure} 
-\includegraphics[scale=.45]{gonya-figs/SC-concat-ML-WAG.png} 
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\linewidth]{gonya-figs/SC-concat-ML-WAG.png} 
 \caption{Maximum likelihood phylogenetic inference of concatenated single copy gene set (62 single copy genes from 20 taxa). Gonyaulacales (\#16) in purple, outgroups (\#3) in light blue and taxa \textit{incertae sedis} (\#1) in teal. Topology was rerooted on branch separating outgroup taxa with the gonyaulacales. The scale represents the expected number of substitutions per site.} 
 \label{fig:SCconcatML}
 \end{figure} 
-\FloatBarrier
+%\FloatBarrier
 
 \subsubsection*{Concatenated single copy gene based phylogeny inferred with BI}
-\FloatBarrier 
+%\FloatBarrier 
 All nodes resolved with full support, except one node within the genus \textit{Gambierdiscus} which was very well supported as well as an internal node within the outgroups. 
 The following descriptions are based on Fig. ~\ref{fig:SCconcatBI}. 
 The species in the genera \textit{Alexandrium}, \textit{Gambierdiscus} and \textit{Ostreopsis} were monophyletic with full support. 
@@ -300,15 +297,16 @@ The overall topology of the gonyaulacales resolved as three clades with \textit{
 \textit{Alexandrium}, \textit{Coolia} and \textit{Ostreopsis} clustered together, followed by \textit{Gambierdiscus} on their own in a sister clade. 
 The third clade encompasses \textit{Gonyaulax}, \textit{Protoceratium} and \textit{Pyrodinium}. 
 
-\begin{figure} 
-\includegraphics[scale=.34]{gonya-figs/SC-concat-BI.png} 
+\begin{figure}[ht] 
+\centering
+\includegraphics[width=\linewidth]{gonya-figs/SC-concat-BI.png} 
 \caption{Bayesian phylogenetic inference of concatenated single copy gene set (62 single copy genes from 20 taxa). Gonyaulacales (\#16) in purple, outgroups (\#3) in light blue and taxa \textit{incertae sedis} (\#1) in teal. The scale represents the expected number of substitutions per site.} 
 \label{fig:SCconcatBI}
 \end{figure} 
-\FloatBarrier
+%\FloatBarrier
 
 \subsubsection*{Single copy gene based phylogeny under MSC}
-\FloatBarrier 
+%\FloatBarrier 
 All nodes except one within the outgroup clustering resolved.
 The following description is based on the topology in Fig. ~\ref{fig:SCmscBI}. 
 Species of \emph{Alexandrium}, \emph{Ostreopsis} and \emph{Gambierdiscus} resolved well or fully supported within their genus clades. 
@@ -320,14 +318,14 @@ The outgroup clustered together with high support.
 \emph{Crypthecodinium} resolved as a sister taxon to the outgroup. 
 Other deeper nodes were well or fully supported.
 
-\begin{figure} 
-\includegraphics[scale=.25]{gonya-figs/Aug2-20-taxa-combined-fig-MCC-trees.png} 
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\linewidth]{gonya-figs/Aug2-20-taxa-combined-fig-MCC-trees.png} 
 \caption{Bayesian phylogenetic inference of gonyaulacales species tree under the MSC with 62 single copy genes from 20 taxa. Gonyaulacales (\#16) in purple, outgroups (\#3) in light blue and taxa \textit{incertae sedis} (\#1) in teal. The scale represents the expected number of substitutions per site.} 
 \label{fig:SCmscBI}
 \end{figure} 
-\FloatBarrier
 
-\newpage
+
 \section*{Discussion}
 Phylogenetic inference has become a key aspect of exploring the evolutionary relationships between organisms, with applications in pathology, ecology, investigating adaptive traits and many more \cite{heath2008taxon}.
 Advances in sequencing technologies has seen an increase in high throughput sequencing initiatives such as MMETSP, which covers a relatively uncharacterized group of marine microbial eukaryotes \cite{keeling2014marine}. 
@@ -379,7 +377,7 @@ Conversely, Cerveau et al. (2016) found that Trinity, CLC Bio and IDBA-Tran asse
 Using a combination of all three assemblers yielded a final assembly closer to biological reality than any individual assembler, when no reference genome is available \cite{cerveau2016combining}.
 As this study uses Trinity exclusively, it is subject to the type of errors found by Cerveau et al. (2016) which could affect downstream analysis.
 \subsubsection*{Selection of paralogs to infer species evolution.}
-\FloatBarrier
+%\FloatBarrier
 Inclusion of genes which diverged through a process other than speciation events, such as paralogs, violates the assumptions of commonly used phylogenetic models which assume all genes analysed have an orthologous relationship.
 Hence the selection of orthologs, and the elimination of paralogs, is essential.
 Paralogy is particularly rife in the dinoflagellates, including in the order gonyaulacales within the dinoflagellates. 
@@ -399,12 +397,13 @@ As some \emph{Gambierdiscus} spp. produce polyketide toxins which cause ciguater
 The placement of the genus \emph{Azadinium} is also a point of difference, as Price et al. place it as part of the gonyaulacales, while this study firmly places this genus as an outgroup with \emph{Dinophysis} spp. and \emph{Karenia} spp.
 As \emph{Azadinium} spp. also produce polyketide toxins that cause azaspiracid shellfish poisoning, their placement is important for investigating polyketide toxin evolution \cite{meyer2015transcriptomic}.
  
-\begin{figure} 
-\includegraphics[scale=.23]{gonya-figs/Price-comparison.png}
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\linewidth]{gonya-figs/Price-comparison.png}
 \caption{Tanglegram of the single copy gene topologies presented in (a) this study under MSC; and (b) concatenated by Price et al. (2017). Taxa not common to either study not shown and due to the reduced topologies from the original studies, bootstrap values are not included.} 
 \label{fig:tanglePrice}
 \end{figure} 
-\FloatBarrier
+%\FloatBarrier
 \subsubsection*{Model selection for inference.} The issue of model choice is an important one, as the choice of model severely influences the resulting topology. 
 Mis-specification of the model, or individual parameters, can lead to a well supported but erroneous result. 
 While models are a simplistic approximation of the underlying biological drivers for evolutionary processes, getting as close an approximation as possible is essential \cite{box1979all}. 
@@ -414,7 +413,7 @@ To compare how well concatenation vs. MSC fits the single copy gene data set use
 
 \subsection*{Comparison to commonly employed models and data sets}
 \subsubsection*{Phylogenetic inference using ribosomal genes.}
-\FloatBarrier 
+%\FloatBarrier 
 Using LSU or SSU rDNA regions for phylogenetics is common practice, at times supplemented with a small number of other genes \cite{shalchian2006combined,zhang2007three,saldarriaga2004molecular,murray2005improving,hoppenrath2010dinoflagellate}. 
 It is important to acknowledge that these represent the evolutionary history of highly conserved genes, which does not necessarily represent the species evolution and assumptions of their congruence is statistically inadequate \cite{degnan2009gene}.
 Utilization of rDNA loci made sense when study designs were bound by sequencing and computational limitations, as they were a universally available proxy which was informative. 
@@ -425,16 +424,17 @@ In several cases, the placement of sister taxa was incongruous between the two a
 For example, the rDNA concatenation data set places \emph{Ceratium} \& \emph{Gonyaulax} as well as \emph{Alexandrium} and \emph{Gambierdiscus} as sister taxa, while the single copy gene data set under MSC places \emph{Gonyaulax} with \emph{Protoceratium} and \emph{Gambierdiscus} with \emph{Pyrodinium}. 
 This is an example of how using rDNA segments as a proxy for species evolution produces different results than an analysis of single-copy protein coding genes.
 
-\begin{sidewaysfigure} 
-\includegraphics[scale=.3]{gonya-figs/MSC-BI-vs-rDNA-ML.png} 
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\linewidth]{gonya-figs/MSC-BI-vs-rDNA-ML.png} 
 \caption{Tanglegram showing the topological differences in phylogenies from (A) concatenated rDNA genes (SSU and D1-D3 LSU) inferred with ML; and (B) MSC inference with 58 single copy genes. Gonyaulacales (\#16) in purple, outgroups (\#3) in light blue and taxa \textit{incertae sedis} (\#1) in teal.} 
 \label{fig:tanglerDNA}
-\end{sidewaysfigure} 
-\FloatBarrier
+\end{figure} 
+%\FloatBarrier
 
 
 \subsubsection*{Concatenating selected genes and using ML methods for species inference.}
-\FloatBarrier
+%\FloatBarrier
 Concatenation of alignments coupled with ML inference is a commonly used method as it is less computationally demanding than BI methods. 
 However as demonstrated by Kubatko et al. (2007) and Roch et al. (2015), this approach is error prone. 
 Concatenation assumes uniform evolutionary history across genes, with a small amount of variation possible - however this still averages the evolutionary rate for all the input genes which doesn't allow for drastically divergent gene histories \cite{roch2015likelihood}. 
@@ -447,15 +447,16 @@ The major difference is of the \emph{Pyrodinium} placement, where the BI MSC app
 Further, the deeper branches of the phylogenies differ. 
 The BI MSC method clusters \emph{Ceratium}, \emph{Gonyaulax}, \emph{Protoceratium} and \emph{Thecadinium} as a clade, while the concatenated ML approach clusters \emph{Gonyaulax}, \emph{Protoceratium} and \emph{Pyrodinium} as a clade to which \emph{Thecadinium} and then \emph{Ceratium} feature as ancestral genera. 
 
-\begin{sidewaysfigure} 
-\includegraphics[scale=.3]{gonya-figs/MSC-BI-vs-singlecopy-concat-ML.png} 
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\linewidth]{gonya-figs/MSC-BI-vs-singlecopy-concat-ML.png} 
 \caption{Tanglegram showing the topological differences in phylogenies with same 58 single copy gene alignments as input. (A) concatenated ML inference; and (B) MSC *BEAST2 inference. Gonyaulacales (\#16) in purple, outgroups (\#3) in light blue and taxa \textit{incertae sedis} (\#1) in teal.} 
 \label{fig:tangleconcatML}
-\end{sidewaysfigure} 
-\FloatBarrier
+\end{figure} 
+%\FloatBarrier
 
 \subsubsection*{Concatenating selected genes and using BI methods for species inference.}
-\FloatBarrier
+%\FloatBarrier
 Even within a BI framework concatenation can introduce a number of errors. 
 Under simulated data sets, even under the coalescent methods, the species tree topology is inaccurate when concatenation is used \cite{kubatko2007inconsistency}. 
 Further to that, the PP values tend to be overestimated for concatenation \cite{suzuki2002overcredibility}. 
@@ -474,12 +475,13 @@ There is a marked difference in the internal branch arrangement, resulting in di
 The concatenated approach closely mirrors the ML arrangement of taxa, apart from \textit{Crypthecodinium} placement. 
 The main difference between the ML and BI concatenated inferences is the predicted number of protein changes along the branches and both inferences are topologically distinct to the MSC approach.
 
-\begin{sidewaysfigure} 
-\includegraphics[scale=.25]{gonya-figs/SC-MSC-BI-vs-SC-concat-BI.png} 
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\linewidth]{gonya-figs/SC-MSC-BI-vs-SC-concat-BI.png} 
 \caption{Tanglegram showing the topological differences in phylogenies with same 58 single copy gene alignments as input. (A) concatenated BEAST2; and (B) MSC *BEAST2 inference. Gonyaulacales (\#16) in purple, outgroups (\#3) in light blue and taxa \textit{incertae sedis} (\#1) in teal.} 
 \label{fig:tangleconcatBI}
-\end{sidewaysfigure} 
-\FloatBarrier
+\end{figure} 
+%\FloatBarrier
 
 
 
@@ -505,7 +507,6 @@ Application of these methods could in principle provide an objective means to de
 However, marginal likelihood estimation is extremely demanding, requiring months of computation even with GPU accelleration.
 Therefore comparison of model marginal likelihoods remains as future work.
 
-\newpage
 \section*{Conclusion}
 With the public accessibility of large data sets, the focus of the scientific community has begun to shift toward the methodology required to analyze them. 
 This study presents a workflow for species tree inference that implements what is currently thought to be the best practice methods. 
@@ -514,18 +515,21 @@ As a case study exemplifying organisms rife with paralogs and ancient lineages, 
 The resulting phylogeny shows a well resolved, well supported inference of the gonyaulacales evolution. 
 This was then compared to phylogenies inferred from commonly utilized methods in the literature, and potential issues arising from these methods were discussed. 
 By presenting a statistically rigorous method and demonstrating how it overcomes common problems in phylogenetic studies, we hope that in the future such robust, reproducible, open-access approaches to process large data-sets such as the MMETSP database can become standard practice.
-\newpage
 
 \section*{Acknowledgments}
+
 The GVL section of this study was conducted inside the National eResearch Collaboration Tools and Resources (NeCTAR) research cloud, an initiative by the National Research Infrastructure for Australia (NCRIS).
 Gratitude to the Stanley Watson foundation, the Linnaean Society of New South Wales, and the ABRS National Taxonomy Research Student Travel Bursary for funding A. L. Kretzschmar's attendance at the Molecular Evolution workshop at the Marine biological laboratory, Woods Hole, MA, USA.
 Shout out to the Taming the BEAST organizers \& fellow attendees for a most illuminating workshop in February 2017 on BEAST methodology, and to Geneious for subsidizing A. L. Kretzschmar's attendance fee.
-Thank you to Dr. Tim Kahlke for running Interproscan for transcriptome analysis. 
 The transcriptomic sequencing was funded by A. L. Kretzschmar's student funding and in part by an ARC Future Fellowship to S. Murray.
 A. L. Kretzschmar's PhD stipend was funded through a UTS Doctoral scholarship.
+
+\bibliography{gonya.bib}
+
 \section*{Supplementary material}
-\captionsetup[figure]{labelformat=empty}
-\FloatBarrier
+
+%\captionsetup[figure]{labelformat=empty}
+%\FloatBarrier
 \begin{table}
 \caption*{Table S1: Culturing conditions for species processed for this study.}
 %\label{tbl:strainTable}
@@ -545,10 +549,11 @@ A. L. Kretzschmar's PhD stipend was funded through a UTS Doctoral scholarship.
 \hline
 \end{tabular}
 \end{table}
-\FloatBarrier
+%\FloatBarrier
 
-\begin{longtable}{  | p{3.5cm} |p{2.2cm} | p{1.8cm} | p{1.8cm} | p{1.8cm} | p{3cm} |}
-\caption*{Table S2: Transcriptomes used for study along including strain ID, source and BUSCOv2 information. MMETSP abbreviation for marine Microbial eukaryotic transcriptome sequencing project, by Moore Foundation.}\\
+\begin{table}[ht]
+\centering
+\begin{tabular}{  | p{3.5cm} |p{2.2cm} | p{1.8cm} | p{1.8cm} | p{1.8cm} | p{3cm} |}
 \hline
 \textbf{Species}&\textbf{Strain}&\textbf{complete BUSCOs}&\textbf{single complete BUSCOs}&\textbf{fragmented BUSCOs}&\textbf{Source}\\
 \hline
@@ -596,12 +601,15 @@ A. L. Kretzschmar's PhD stipend was funded through a UTS Doctoral scholarship.
         \hline
 \emph{Karenia brevis}&CCMP2229&115&85&2&MMETSP0030 \citep{keeling2014marine}\\
     \hline
-\end{longtable}
-\FloatBarrier
+\end{tabular}
+\caption*{Table S2: Transcriptomes used for study along including strain ID, source and BUSCOv2 information. MMETSP abbreviation for marine Microbial eukaryotic transcriptome sequencing project, by Moore Foundation.}
+\end{table}
+%\FloatBarrier
 
 
-\begin{longtable}{  | p{3cm} |p{3cm} |  p{3cm} | }
-\caption*{Table S3: Accession numbers for ribosomal DNA sequences used for Fig. ~\ref{fig:rdna}. Sequences sourced from NCBI, except accesion numbers with '$\ast$' sourced from the Silva database. Genes not publically available are denoted by '-'.}\\
+\begin{table}[ht]
+\centering
+\begin{tabular}{| p{3cm} |p{3cm} |  p{3cm} | }
 \hline
 \textbf{Species}&\textbf{SSU seq.}&\textbf{D1-D3 LSU seq.}\\
 \hline
@@ -649,9 +657,8 @@ A. L. Kretzschmar's PhD stipend was funded through a UTS Doctoral scholarship.
         \hline
 \emph{Karenia brevis}&EF492504&AY355458\\
 \hline
-\end{longtable}
-\newpage
-\bibliographystyle{acm}
-\bibliography{gonya.bib}
+\end{tabular}  
+\caption*{Table S3: Accession numbers for ribosomal DNA sequences used for Fig. ~\ref{fig:rdna}. Sequences sourced from NCBI, except accesion numbers with '$\ast$' sourced from the Silva database. Genes not publically available are denoted by '-'.}
+\end{table}
 
 \end{document}
