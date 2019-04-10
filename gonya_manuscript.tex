@@ -67,6 +67,8 @@ Paralogs are two gene copies whose divergence is preceded by gene duplication \c
 Xenologs are gene pairs which, additional to divergence, have undergone transfer between organisms through horizontal gene transfer \citep{darby2016xenolog}.
 The distinction between these cases is essential in identifying gene candidates that are informative for species evolution inference, as the selection of orthologs ensures the inclusion of a signal that is based on the speciation of the taxa examined, while selection of paralogs confounds that signal by including information that does not pertain to the speciation of the taxa. 
 As gene duplication and subsequent loss commonly occur over the course of evolution and speciation, the identification of genes that have orthologous relationships is more difficult than may seem apparent from the definition \citep{gabaldon2008large}. 
+%mentikon how single coipy can also be percieved as orhtologous but masking paralogy ... probably re-write next paragraph to address these issues, e.g. change 'orthology' for singke copy and then discuss how they can be mistaken
+%talk about MSC addressing this scenario
 
 Once orthologs have been identified, there are further issues that can arise and impact the veracity of the phylogenetic inference.
 Two common, well characterized types of errors are random (sampling error) and systematic errors. 
@@ -120,6 +122,7 @@ Also called the Felsenstein zone.
 
 \subsection*{Box 2: Who/what are the Gonyaulacales?}
 \label{sec:dinobox}
+%incl gene copy duplications and subsequnt loss
 The gonyaulacales are an order within the super-phylum Alveolata and sub-phylum Dinoflagellata, which are an ancient eukaryotic lineage \citep{moldowan1998biogeochemical}. 
 They play a role in several important ecological processes in aquatic environments where they cover a diverse array of niches such as symbionts, parasites and autotrophs. 
 Some taxa can cause harmful algal blooms through proliferation (by restricting light and nutrient availability to other organisms) and/or neurotoxin production (e.g. causing paralytic shellfish poisoning, ciguatera fish poisoning) \citep{murray2016unravelling}.
@@ -359,6 +362,7 @@ Other deeper nodes were well or fully supported.
 
 
 \section*{Discussion}
+%1st species tree with robust method to parology....
 Phylogenetic inference is a fundamental approach for exploration of the evolutionary relationships between organisms, with applications in pathology, ecology, investigating adaptive traits and many more \citep{heath2008taxon}.
 Advances in sequencing technologies have seen an increase in high throughput sequencing initiatives such as MMETSP, which revealed the genomic diversity of a relatively uncharacterized group of marine microbial eukaryotes \citep{keeling2014marine}. 
 %TK: ".. these .." Which?!
@@ -400,7 +404,7 @@ The stringency for quality trimming of RNA-seq libraries prior to assembly plays
 Regarding the transcriptome assembly method, \cite{cohen2018mmetsp} evaluated the publicly available assemblies from MMETSP using BUSCO scores, compared to processing and re-assembly with Trinity \citep{cohen2018mmetsp}. 
 \cite{cohen2018mmetsp} demonstrated that while the raw data available from the MMETSP project is an excellent resource, the assemblies available as part of the project are of a lower quality than what can be achieved with current methods \citep{cohen2018mmetsp}. 
 Another factor in assembly quality is RNA-seq data processing prior to assembly, especially trimming. 
-High stringency is usually favored, however MacManes (2014) found that this can be detrimental to the assembly and the quality cut off scores used in the present study were based on those recommendations \citep{macmanes2014optimal}.
+High stringency is usually favored, however \cite{macmanes2014optimal} found that this can be detrimental to the assembly and the quality cut off scores used in the present study were based on those recommendations \citep{macmanes2014optimal}.
 In short, the trimming and assembly pipeline used for the assemblies available as part of MMETSP have become outdated and this is reflected in the quality comparison conducted by \cite{cohen2018mmetsp}.
 To address this problem, we developed a workflow implementation of current best-practice transcriptome assembly methods as part of this study.
 \paragraph*{Assembly parameters.}
@@ -497,6 +501,7 @@ Further to that, the PP values tend to be overestimated for concatenation \citep
 Theoretically for the gonyaulacales, and taxa prone to paralogy and convoluted evolutionary histories, the MSC is a preferable approach to concatenation as MSC is more robust to ILS \& LBA artifacts \citep{liu2014coalescent}. 
 To isolate the effects of phylogenetic model from those of the statistical framework (ML vs BI), the single copy gene data set was run with BI both under MSC and with concatenation (Fig. ~\ref{fig:tangleconcatBI}). 
 We then used a statistical framework to compare the two model approaches to verify the veracity of model adequacy through stepping stone sampling. 
+%incl how it's adequate for MSC
 PATH sampling is an adequate method for objectively comparing the model parameters for relaxed clock models while penalizing for over-parameterization \citep{baele2012accurate}. 
 The marginal likelihoods for the concatenated single copy gene dataset compared to under MSC was over 10,000 log units higher, favoring the MSC approach significantly.
 However stepping stone methods are sensitive to the number of steps employed in the analysis, which should be taken under consideration when interpreting these results. \\
