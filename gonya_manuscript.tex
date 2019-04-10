@@ -42,6 +42,7 @@ This study provides an exploration of the parameter space of phylogenetic infere
 %TK general comments:
 % The main comment is that it needs more flow (sorry for my directness). 
 %It's all in there and it's good but it often sounds more like single sentences put together than a complete text.
+%LK: Aaron is smoothing the flow. Also change in the story somewhat incomming
 
 
 \section*{Introduction}
@@ -91,8 +92,7 @@ As high bootstrap values are often used as an indicator for robust species topol
 \end{enumerate}
 
 In this study, we explore the application of data analysis techniques which attempt to mitigate several of the pitfalls in species tree inference, beyond what has previously been applied in the study of protist phylogeny.
-The sequence data is prepared using a workflow that assembles RNA-seq data sets, identifies and extracts single copy genes across input taxa, and aligns selected
- genes ready for Bayesian inference (BI) phylogenetics.
+The sequence data is prepared using a workflow that assembles RNA-seq data sets, identifies and extracts single copy genes across input taxa, and aligns selected genes ready for Bayesian inference (BI) phylogenetics.
 Next, we evaluate the impact of model and data selection on the resulting phylogenetic inference. 
 Finally, we applied the methodology to a group of organisms notorious for their extensive paralogy - the Gonyalacales (phylum: Dinoflagellata) (see box 2 for further information on the dinoflagellates).
 We present a phylogenetic inference of the gonyaulacales generated under the multispecies coalescent (MSC) and compare the topology to inferences with commonly used methodologies.
@@ -133,15 +133,20 @@ As neurotoxin production, which can accumulate up the food chain, is prevalent i
 \subsection*{Culture conditions}
 %\FloatBarrier
 Cultures were isolated from locations as per Table S1 and clonal cultures established by micropipetting single cells through sterile seawater as described in in \cite{kretzschmar2017characterization}. 
-Clonal cultures were maintained in F/10 medium \cite{holmes1991strain} and maintained at temperatures indicated in Table S1. %AV 5x diluted f/2 media (Guilard, 1975). or can cite Verma et al., 2016 where an explnation of why f10 should be used rather than f2
+Clonal cultures were maintained in 5x diluted F/2 medium \cite{holmes1991strain} and maintained at temperatures indicated in Table S1. %AV 5x diluted f/2 media (Guilard, 1975). or can cite Verma et al., 2016 where an explnation of why f10 should be used rather than f2
 
 \subsection*{RNA isolation, library preparation and Sequencing}
-\emph{Gambierdiscus} spp. and \emph{Thecadinium} cf. \emph{kofoidii} were harvested during late exponential growth phase by filtration onto 5 $\mu$m SMWP Millipore membrane filters (Merck, DE) and washed off with sterile seawater. %Av just provide a range of days, eg between days 14-16 of culturing
+\emph{Gambierdiscus} spp. and \emph{Thecadinium} cf. \emph{kofoidii} were harvested during late exponential growth phase by filtration onto 5 $\mu$m SMWP Millipore membrane filters (Merck, DE) and washed off with sterile seawater. 
+%Av just provide a range of days, eg between days 14-16 of culturing
 %LK: I don't recall the exact days =/ just that it was picked to be late exponential
 Cells were pelleted via centrifugation for 10 minutes at 350 rcf. 
-The supernatant was decanted and 2ml of TRI Reagent (Sigma-Aldrich, subsidiary of Merck, DE) was added to the pellet and vortexed till resuspended. %AV life technologies %LK it looks like they've been bought? Or did we use Trizol reagent not Tri?
+The supernatant was decanted and 2ml of TRI Reagent (Sigma-Aldrich, subsidiary of Merck, DE) was added to the pellet and vortexed till resuspended. 
+%AV life technologies 
+%LK it looks like they've been bought? Or did we use Trizol reagent not Tri?
 Samples were split in two and transferred to 1.5ml eppendorf tubes. 
-Cellular thecae were ruptured by three rounds of freeze-thaw, with tubes transferred between liquid Nitrogen and 95 $^{\circ}$C. %Av specify temperature %LK which part?
+Cellular thecae were ruptured by three rounds of freeze-thaw, with tubes transferred between liquid Nitrogen and 95 $^{\circ}$C. 
+%Av specify temperature 
+%LK which part? Do you mean the temperature of the liquid N2?
 RNA was extracted as per the protocol for TRI Reagent \cite{rio2010purification}.
 RNA eluate was purified with the RNeasy RNA clean up kit RNeasy Mini Kit (Qiagen, NL) as per protocol. 
 DNA was digested with TurboDNAse (Life Technologies, subsidiary of Thermo Fischer scientific, AU). 
@@ -172,7 +177,6 @@ The RNA libraries with 150bp reads generated as part of this study were also sub
 The BUSCOv2 output from all transcriptomes from the previous step forms the input for identification of single copy genes and construction of multiple alignments. 
 Any genes that BUSCOv2 identified as single copy and were present in at least 75\% of the transcriptomes were indexed, the corresponding contig extracted from the assemblies, aligned with hmmer3.1b2 \cite{eddy2015hmmer} and unaligned regions trimmed.
 If several candidate sequences are processed for the same organism, a warning message in the terminal window alerts the user before proceeding. 
-%AD: suggest removing mention of the terminal window - the message probably goes to stdout or stderr, and will only appear in a terminal if those output streams have not been redirected elsewhere. more importantly, are you telling readers this because you did something with the warnings? if so, what did you do?
 The output for this section was used as a basis for single copy gene phylogenetic inferences in subsequent sections.
 
 \subsection*{Assembly analysis}
@@ -358,13 +362,9 @@ Other deeper nodes were well or fully supported.
 Phylogenetic inference is a fundamental approach for exploration of the evolutionary relationships between organisms, with applications in pathology, ecology, investigating adaptive traits and many more \cite{heath2008taxon}.
 Advances in sequencing technologies have seen an increase in high throughput sequencing initiatives such as MMETSP, which revealed the genomic diversity of a relatively uncharacterized group of marine microbial eukaryotes \cite{keeling2014marine}. 
 %TK: ".. these .." Which?!
-%LK is this actually confusing? It's referring directly to the sentence before
+%It's referring directly to the sentence before, I think this should be fine?
 However, the methodologies used for investigating the evolutionary relationships using this type of genome-scale data remain an obstacle, as the choice of input data and method employed influences the outcome of the inference. 
-%TK re-write to more text and less bulletin list.
-%LK: is it really?
-%AD: it is a bit. I think we can boil it down to the phylo evaluation - we didn't do careful evaluations of the effects of choices made at the many other stages of the (very long) workflow from biomass to tree.
-%parameter comparison before assembly shown to impact by COhen et al., but we haven't done that. Focus on what we actually did
-To address this, a synopsis on RNA library pre-processing, assembly parameter selection, a method for single copy gene extraction, and synthesis of phylogenetic inference model availability and selection is presented in this study - as well as possible shortcomings of the parameters and methods selected. \\
+To address this, a synopsis on a method for single copy gene extraction, and synthesis of phylogenetic inference model availability and selection is presented in this study - as well as possible shortcomings of the parameters and methods selected. \\
 Dinoflagellates are notorious for their large genomes with suspected whole or partial genome duplication and potential cDNA retro-insertion into the genome \cite{van2009florida,beauchemin2012dinoflagellate,slamovits2008widespread,hou2009distinct,lin2011genomic}. 
 This can lead to unusually high gene copy numbers and extensive paralogy. 
 With this in mind, the gonyaulacales (an order within the dinoflagellates, see box 2) presented as an ideal challenge to test the parameters of interest.
@@ -381,7 +381,8 @@ The risk of LBA artefacts can be reduced by denser taxon sampling to break up lo
 The impact of ILS on phylogenetic inference has been explored through simulated data sets with a known species tree. 
 While the increase in the number of genes used to infer the species phylogeny reduces the impact of ILS on the results, an increase in taxa and an even distribution thereof has been shown to have a greater impact \cite{maddison2006inferring}.
 However the addition of taxa can also introduce more long branches that confound the inference \cite{heath2008taxon}. 
-Furthermore, LBA is exacerbated if ILS is present. %AD do you have a reference for this? I would have thought most ILS shuts off long before the sequences are so diverged that LBA on amino acid sequences becomes an issue. I mean, I can imagine it's easy to simulate situations where it happens, and I can see how it would be a problem, just not sure I believe that it's in the realm of biological possibility.
+Furthermore, LBA is exacerbated if ILS is present. 
+%AD do you have a reference for this? I would have thought most ILS shuts off long before the sequences are so diverged that LBA on amino acid sequences becomes an issue. I mean, I can imagine it's easy to simulate situations where it happens, and I can see how it would be a problem, just not sure I believe that it's in the realm of biological possibility.
 LBA can arise if some species have disproportionately high substitution rates, leading to the presence of long and short branches in the phylogenetic tree \cite{liu2014coalescent}. %AD: note topology refers to tree without branch lengths
 The gonyaulacales data set in this study includes a single representative species per genus, with the exception of \textit{Alexandrium}, \textit{Gambierdiscus} and \textit{Ostreopsis}. 
 This resulted in some genera on long branches (eg. fig. ~\ref{fig:SCmscBI}: \textit{Ceratium fusus} \& \textit{Pyrodinium bahamense}) indicative of a proportionally large number of genetic changes to their closest relative.
@@ -404,8 +405,6 @@ In short, the trimming and assembly pipeline used for the assemblies available a
 To address this problem, we developed a workflow implementation of current best-practice transcriptome assembly methods as part of this study.
 \paragraph*{Assembly parameters.}
 Trinity was chosen as the assembler for this study based on the findings of Honaas et al. (2016), in which Trinity was one of the top performing assemblers for \textit{de novo} transcriptomes as tested with \textit{Arabidopsis thaliana}. 
-% AD: i don't understand the meaning of the following sentence. paragraph may be ok without it
-% While the \textit{Arabidopsis} plant model has similar genetic features to dinoflagellates, the conclusion of adequate comparison may be flawed.
 Further, Trinity performed well for identifying isoforms of genes and excelled at assembling highly expressed genes \cite{honaas2016selecting}.
 Conversely, Cerveau et al. (2016) found that Trinity, CLC Bio and IDBA-Tran assemblies all contain errors introduced by the assembly algorithms. 
 Using a combination of all three assemblers yielded a final assembly closer to biological reality than any individual assembler, when no reference genome is available \cite{cerveau2016combining}.
