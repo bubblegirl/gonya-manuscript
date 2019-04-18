@@ -60,6 +60,7 @@ This data set offers an excellent opportunity to explore the evolutionary relati
 
 %TK I would re-write this part. It needs some flow and is not really connected to the upper parts. Something like "Another crucial factor is ... the different types of homology are Orthology, paralogy ... Orthology describes the divergence [..]. Paralogy .... and so forth
 %LK incl suplication and loss mechanisms
+%Pseudoorthologs - case where paralogous, combined with gene loss, appear as orthologs. Koonin 2005
 Central to phylogenetic inference is the relationship of two characters from a common ancestor, which is called homology \citep{fitch2000homology}. 
 There are several types of homology, related to how the characters diverged, and determining through which mechanisms comparative traits/genes evolved is essential for choosing the correct inference model. 
 Orthology is the case where the divergence of two gene copies followed a speciation event \citep{fitch1970distinguishing}. 
@@ -67,16 +68,17 @@ Paralogs are two gene copies whose divergence is preceded by gene duplication \c
 Xenologs are gene pairs which, additional to divergence, have undergone transfer between organisms through horizontal gene transfer \citep{darby2016xenolog}.
 The distinction between these cases is essential in identifying gene candidates that are informative for species evolution inference, as the selection of orthologs ensures the inclusion of a signal that is based on the speciation of the taxa examined, while selection of paralogs confounds that signal by including information that does not pertain to the speciation of the taxa. 
 As gene duplication and subsequent loss commonly occur over the course of evolution and speciation, the identification of genes that have orthologous relationships is more difficult than may seem apparent from the definition \citep{gabaldon2008large}. 
-%mentikon how single coipy can also be percieved as orhtologous but masking paralogy ... probably re-write next paragraph to address these issues, e.g. change 'orthology' for singke copy and then discuss how they can be mistaken
+Identifying single copy genes does not ensure selection of orthologous gene copies, as the gene candidates could well be from paralogous lineages where the complimentary copy has been lost between the taxa. 
+The case where paralogous homology of genes is masked by gene loss, is termed pseudoorthology \citep{koonin2005orthologs}. 
+
 %talk about MSC addressing this scenario
 
-Once orthologs have been identified, there are further issues that can arise and impact the veracity of the phylogenetic inference.
+Once candidate genes have been identified, there are further issues that can arise and impact the veracity of the phylogenetic inference.
 Two common, well characterized types of errors are random (sampling error) and systematic errors. 
 The former arises from the data, as individual gene histories may differ to the species tree. 
 With a small number of genes, this error can reduce the confidence (through node support values) of the topology, and in extreme cases skew the inference away from determining a good approximation of the species tree entirely. 
 Increasing the number of genes directly reduces the impact this error has on the analysis \citep{philippe2004phylogenomics,heath2008taxon}. 
 
-% AD 181018: The following reads well
 Conversely, systematic errors arise due to the misspecification of the model used for the inference where an incorrect species tree topology results. 
 In this case, an increase in data set size can exacerbate systematic error rather than reduce it as would happen with random errors (see Box 1). 
 In the presence of this type of systematic error, the resulting inference can be positively misleading,
@@ -84,7 +86,7 @@ In the presence of this type of systematic error, the resulting inference can be
 
 In summary, common problems in carrying out a species tree inference arise from:\\
 \begin{enumerate}[noitemsep]
-\item Selection of paralogs. 
+\item Selection of paralogs (or pseudoorthologs). 
 If genes with different evolutionary histories are selected, the gene tree will not reflect the history of either paralog and be nonsensical for species tree inference;
 \item Concatenation of genes. 
 Can be a statistically inconsistent estimator of the species tree due to incomplete lineage sorting (ILS) and concatenation acts as an imperfect estimator of species tree topology \citep{roch2015likelihood};
@@ -128,6 +130,8 @@ They play a role in several important ecological processes in aquatic environmen
 Some taxa can cause harmful algal blooms through proliferation (by restricting light and nutrient availability to other organisms) and/or neurotoxin production (e.g. causing paralytic shellfish poisoning, ciguatera fish poisoning) \citep{murray2016unravelling}.
 Dinoflagellates possess large genomes (estimated size range 1.5 to 185 Gbp), with extensive paralogy and repetitive short sequences  \citep{casabianca2017genome}. 
 In particular paralogy has proven problematic for efforts investigating the genetic content and structure of the dinoflagellates, as this feature has prevented the assembly of genomes apart from two draft genomes for \textit{Symbiodinium} which posses some of the smaller genomes \citep{shoguchi2013draft,lin2015symbiodinium}. 
+Gene duplication is rife within these organisms, therefore they have likely undergone complimentary gene deletion events. 
+%how to reference above? Can't find much about deletion
 For a review on the genetic features of dinoflagellates see \cite{murray2016unravelling}.
 While the evolutionary relationship of most orders within the dinoflagellates has been inferred with consistently high support values, one order has often escaped elucidation - the gonyaulacales. 
 As neurotoxin production, which can accumulate up the food chain, is prevalent in this order, the evolution of the order is of interest to provide a frame of reference for future investigations into how the toxins have evolved \citep{shalchian2006combined,zhang2007three,saldarriaga2004molecular,hoppenrath2010dinoflagellate,murray2005improving}. 
@@ -136,7 +140,7 @@ As neurotoxin production, which can accumulate up the food chain, is prevalent i
 \subsection*{Culture conditions}
 %\FloatBarrier
 Cultures were isolated from locations as per Table S1 and clonal cultures established by micropipetting single cells through sterile seawater as described in in \citep{kretzschmar2017characterization}. 
-Clonal cultures were maintained in 5x diluted F/2 medium \citep{holmes1991strain} and maintained at temperatures indicated in Table S1. %AV 5x diluted f/2 media (Guilard, 1975). or can cite Verma et al., 2016 where an explnation of why f10 should be used rather than f2
+Clonal cultures were maintained in 5x diluted F/2 medium \citep{holmes1991strain} and maintained at temperatures indicated in Table S1. 
 
 \subsection*{RNA isolation, library preparation and Sequencing}
 \emph{Gambierdiscus} spp. and \emph{Thecadinium} cf. \emph{kofoidii} were harvested during late exponential growth phase by filtration onto 5 $\mu$m SMWP Millipore membrane filters (Merck, DE) and washed off with sterile seawater. 
@@ -171,8 +175,7 @@ Assemblies were then processed with BUSCOv2 with the protist specific library \c
 %TK Are you sure that Digital normalization is there to "pool identical transcripts"? Make sure it is. My understanding is that it's to account for highly variable library sizes
 %ALK my understanding is to reduce data set size: "...computational algorithm that discards redundant data and both sampling variation and the number of errors present in deep sequencing data sets. Digital normalization substantially reduces the size of data sets and accordingly decreases the memory and time requirements for de novo sequence assembly, all without significantly impacting content of the generated contigs..."
 % http://ivory.idyll.org/blog/diginorm-paper-posted.html
-% AD maybe say "reduce data size by removing highly similar sequences before assembly"
-The RNA libraries with 150bp reads generated as part of this study were also subjected to Digital Normalization \citep{diginorm} prior to assembly, to reduce data set size by eliminating redundancy which were then used for downstream analysis.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+The RNA libraries with 150bp reads generated as part of this study were also subjected to Digital Normalization \citep{diginorm} prior to assembly, to reduce data set size by removing highly similar sequences, which were then used for downstream analysis.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
 \subsubsection*{Construction of multiple sequence alignments}
 %TK: How did you determine if they are single copy? Just take the BUSCO genes? Or did you estimate average sequencing depth or something? Can't find it in the methods I think ...
 %ALK: that's how BUSCO works, it hmmer searches sequences that should be single copy. Then reports whether they are absent, duplicated or single copy
@@ -362,7 +365,6 @@ Other deeper nodes were well or fully supported.
 
 
 \section*{Discussion}
-%1st species tree with robust method to parology....
 Phylogenetic inference is a fundamental approach for exploration of the evolutionary relationships between organisms, with applications in pathology, ecology, investigating adaptive traits and many more \citep{heath2008taxon}.
 Advances in sequencing technologies have seen an increase in high throughput sequencing initiatives such as MMETSP, which revealed the genomic diversity of a relatively uncharacterized group of marine microbial eukaryotes \citep{keeling2014marine}. 
 %TK: ".. these .." Which?!
@@ -371,7 +373,8 @@ However, the methodologies used for investigating the evolutionary relationships
 To address this, a synopsis on a method for single copy gene extraction, and synthesis of phylogenetic inference model availability and selection is presented in this study - as well as possible shortcomings of the parameters and methods selected. \\
 Dinoflagellates are notorious for their large genomes with suspected whole or partial genome duplication and potential cDNA retro-insertion into the genome \citep{van2009florida,beauchemin2012dinoflagellate,slamovits2008widespread,hou2009distinct,lin2011genomic}. 
 This can lead to unusually high gene copy numbers and extensive paralogy. 
-With this in mind, the gonyaulacales (an order within the dinoflagellates, see box 2) presented as an ideal challenge to test the parameters of interest.
+With this in mind, the gonyaulacales (an order within the dinoflagellates, see box 2) presented as an ideal challenge to test the parameters of interest. 
+This study presents the first species tree for the gonyaulacales with a robust method to paralogy.
 
 The phylogenetic inference for gonyaulacales that resulted from the workflow we developed, which incorporates several of the most recent innovations in analytical methodology, resolved within-genus relationships well and shows high posterior probability support throughout the species tree (Fig. ~\ref{fig:SCmscBI}). 
 The inferred species tree topology follows a broad revised taxonomic classification of the gonyaulacales based on morphological characteristics \citep{hoppenrath2017dinoflagellate} and will be used as a point of comparison to results from other commonly employed methods in later sections. 
@@ -429,6 +432,7 @@ Correspondence with the author of that study established that there was no docum
 Hence it was impossible to compare the parameters that went into identification of single copy genes and it was not possible to scrutinize or reproduce the study.
 Lastly, in that study the genes were concatenated and the evolutionary relationships were inferred using ML. 
 While the node bootstrap values are high, that could be due to systematic error as outlined in previous sections.
+Critically, this methodology is susceptible to pseudoorthology selection.
 The difference in tree topology inferred by \cite{price2017robust} and by our study lies in the organization of sister taxa (Fig. ~\ref{fig:tanglePrice}). 
 The \cite{price2017robust} study placed \emph{Alexandrium} spp. as the closest genus to \emph{Gambierdiscus}, while this study places \emph{Pyrodinium} as sister. 
 As some \emph{Gambierdiscus} spp. produce polyketide toxins which cause ciguatera fish poisoning, establishing the close relations to \emph{Gambierdiscus} is important for investigating the toxin evolution \citep{pawlowiez2014transcriptome}.
