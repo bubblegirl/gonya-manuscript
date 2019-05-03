@@ -16,9 +16,9 @@
 \author[1]{Anna Liza Kretzschmar}
 \author[2]{Arjun Verma}
 \author[2]{Shauna Murray}
-\author[1]{Tim Kahlke}
-\author[2]{Mathieu Fourment}
-\author[2]{Aaron E. Darling}
+\author[2]{Tim Kahlke}
+\author[1]{Mathieu Fourment}
+\author[1]{Aaron E. Darling}
 \affil[1]{The ithree institute, University of Technology Sydney, Australia}
 \affil[2]{c3, University of Technology Sydney, Australia}
 \corrauthor[1]{Anna Liza Kretzschmar}{ anna.l.kretzschmar@gmail.com}
@@ -59,14 +59,13 @@ The MMETSP project focused on a group of understudied organisms which are abunda
 This data set offers an excellent opportunity to explore the evolutionary relationships between these taxa through phylogenetics. 
 
 %TK I would re-write this part. It needs some flow and is not really connected to the upper parts. Something like "Another crucial factor is ... the different types of homology are Orthology, paralogy ... Orthology describes the divergence [..]. Paralogy .... and so forth
-%LK incl suplication and loss mechanisms
-%Pseudoorthologs - case where paralogous, combined with gene loss, appear as orthologs. Koonin 2005
+%LK: Aaron is having a go at streamlining the flow because trying to read this over and over feels like my eyeballs are bleeding
 Central to phylogenetic inference is the relationship of two characters from a common ancestor, which is called homology \citep{fitch2000homology}. 
 There are several types of homology, related to how the characters diverged, and determining through which mechanisms comparative traits/genes evolved is essential for choosing the correct inference model. 
 Orthology is the case where the divergence of two gene copies followed a speciation event \citep{fitch1970distinguishing}. 
 Paralogs are two gene copies whose divergence is preceded by gene duplication \citep{fitch1970distinguishing}.
 Xenologs are gene pairs which, additional to divergence, have undergone transfer between organisms through horizontal gene transfer \citep{darby2016xenolog}.
-The distinction between these cases is essential in identifying gene candidates that are informative for species evolution inference, as the selection of orthologs ensures the inclusion of a signal that is based on the speciation of the taxa examined, while selection of paralogs confounds that signal by including information that does not pertain to the speciation of the taxa. 
+The distinction between these cases is usually considered essential in identifying gene candidates that are informative for species evolution inference, as the selection of orthologs ensures the inclusion of a signal that is based on the speciation of the taxa examined, while selection of paralogs confounds that signal by including information that does not pertain to the speciation of the taxa \citep{du2019species}. 
 As gene duplication and subsequent loss commonly occur over the course of evolution and speciation, the identification of genes that have orthologous relationships is more difficult than may seem apparent from the definition \citep{gabaldon2008large}. 
 Identifying single copy genes does not ensure selection of orthologous gene copies, as the gene candidates could well be from paralogous lineages where the complimentary copy has been lost between the taxa. 
 The case where paralogous homology of genes is masked by gene loss, is termed pseudoorthology \citep{koonin2005orthologs}. 
@@ -95,7 +94,7 @@ Can be a statistically inconsistent estimator of the species tree due to incompl
 As high bootstrap values are often used as an indicator for robust species topology resolution, this fallacy is particularly problematic if the reader/operator is unfamiliar with the statistical phenomenon.
 \end{enumerate}
 
-In this study, we explore the application of data analysis techniques which attempt to mitigate several of the pitfalls in species tree inference, beyond what has previously been applied in the study of protist phylogeny.
+In this study, we explore the application of data analysis techniques which attempt to mitigate several of the pitfalls in species tree inference, beyond what has previously been applied in the study of protist phylogenetics.
 The sequence data is prepared using a workflow that assembles RNA-seq data sets, identifies and extracts single copy genes across input taxa, and aligns selected genes ready for Bayesian inference (BI) phylogenetics.
 Next, we evaluate the impact of model and data selection on the resulting phylogenetic inference. 
 Finally, we applied the methodology to a group of organisms notorious for their extensive paralogy - the Gonyalacales (phylum: Dinoflagellata) (see box 2 for further information on the dinoflagellates).
@@ -124,14 +123,12 @@ Also called the Felsenstein zone.
 
 \subsection*{Box 2: Who/what are the Gonyaulacales?}
 \label{sec:dinobox}
-%incl gene copy duplications and subsequnt loss
 The gonyaulacales are an order within the super-phylum Alveolata and sub-phylum Dinoflagellata, which are an ancient eukaryotic lineage \citep{moldowan1998biogeochemical}. 
 They play a role in several important ecological processes in aquatic environments where they cover a diverse array of niches such as symbionts, parasites and autotrophs. 
 Some taxa can cause harmful algal blooms through proliferation (by restricting light and nutrient availability to other organisms) and/or neurotoxin production (e.g. causing paralytic shellfish poisoning, ciguatera fish poisoning) \citep{murray2016unravelling}.
 Dinoflagellates possess large genomes (estimated size range 1.5 to 185 Gbp), with extensive paralogy and repetitive short sequences  \citep{casabianca2017genome}. 
 In particular paralogy has proven problematic for efforts investigating the genetic content and structure of the dinoflagellates, as this feature has prevented the assembly of genomes apart from two draft genomes for \textit{Symbiodinium} which posses some of the smaller genomes \citep{shoguchi2013draft,lin2015symbiodinium}. 
-Gene duplication is rife within these organisms, therefore they have likely undergone complimentary gene deletion events. 
-%how to reference above? Can't find much about deletion
+Gene duplication and cDNA recycling is rife within these organisms, therefore they have likely undergone complimentary gene deletion events \citep{slamovits2008widespread,murray2015gene}. 
 For a review on the genetic features of dinoflagellates see \cite{murray2016unravelling}.
 While the evolutionary relationship of most orders within the dinoflagellates has been inferred with consistently high support values, one order has often escaped elucidation - the gonyaulacales. 
 As neurotoxin production, which can accumulate up the food chain, is prevalent in this order, the evolution of the order is of interest to provide a frame of reference for future investigations into how the toxins have evolved \citep{shalchian2006combined,zhang2007three,saldarriaga2004molecular,hoppenrath2010dinoflagellate,murray2005improving}. 
@@ -213,6 +210,7 @@ The inference was run four times to evaluate convergence of parameters, then log
 
 
 \subsection*{Stepping stone analysis}
+%LK: Mathieu, could you update this for the new run methods used?
 We estimated the marginal likelihood of the data under the coalescent (i.e. concatenated alignment) and the multispecies coalescent (*BEAST) models to compare their fitness.
 We used the stepping stone algorithm by \cite{xie2011improving} along a path of 16 power posteriors.
 The $\beta$ values are set equal to the quantiles of the beta distribution with shape parameter $\alpha=0.3$ and $\beta = 1$, as recommended by \cite{xie2011improving}.
@@ -388,8 +386,9 @@ The risk of LBA artefacts can be reduced by denser taxon sampling to break up lo
 The impact of ILS on phylogenetic inference has been explored through simulated data sets with a known species tree. 
 While the increase in the number of genes used to infer the species phylogeny reduces the impact of ILS on the results, an increase in taxa and an even distribution thereof has been shown to have a greater impact \citep{maddison2006inferring}.
 However the addition of taxa can also introduce more long branches that confound the inference \citep{heath2008taxon}. 
-Furthermore, LBA is exacerbated if ILS is present. 
+%Furthermore, LBA is exacerbated if ILS is present. 
 %AD do you have a reference for this? I would have thought most ILS shuts off long before the sequences are so diverged that LBA on amino acid sequences becomes an issue. I mean, I can imagine it's easy to simulate situations where it happens, and I can see how it would be a problem, just not sure I believe that it's in the realm of biological possibility.
+%LK: Good point, checking the references I was looking at used nt rather than AA seqs
 LBA can arise if some species have disproportionately high substitution rates, leading to the presence of long and short branches in the phylogenetic tree \citep{liu2014coalescent}. %AD: note topology refers to tree without branch lengths
 The gonyaulacales data set in this study includes a single representative species per genus, with the exception of \textit{Alexandrium}, \textit{Gambierdiscus} and \textit{Ostreopsis}. 
 This resulted in some genera on long branches (eg. fig. ~\ref{fig:SCmscBI}: \textit{Ceratium fusus} \& \textit{Pyrodinium bahamense}) indicative of a proportionally large number of genetic changes to their closest relative.
@@ -419,15 +418,15 @@ As our present study uses Trinity exclusively, it may be subject to the type of 
 \subsubsection*{Selection of paralogs to infer species evolution.}
 %\FloatBarrier
 Inclusion of genes which diverged through a process other than speciation events, such as paralogs, violates the assumptions of commonly used phylogenetic models which assume all genes analysed have an orthologous relationship.
-Hence the selection of orthologs, and the elimination of paralogs, is essential.
+Hence the selection of orthologs, and the elimination of paralogs; or the employment of a method robust to paralogy in the dataset, is essential.
 Paralogy is particularly rife in the dinoflagellates, including in the order gonyaulacales within the dinoflagellates. 
 This study sought to mitigate the issues arising from paralog comparison by isolating single copy genes, using the curated BUSCO gene collection and software to facilitate the process. 
 As BUSCO uses lineage specific profile HMM libraries designed to target single copy genes, and the output distinguishes between single copy genes and duplications, it presents a method for reliably screening for single copy genes for phylogenomics \citep{waterhouse2017busco}.
 Only one other study by \cite{price2017robust} sought to address the issue of paralogy for species inference within the dinoflagellates, by selecting single genes as input. 
 However there are several issues with the study presented by \cite{price2017robust}. 
 First, the assemblies used are from the MMETSP project, which employed outdated assembly methods as mentioned previously, and hence could present single copy genes which are instead hybrids of paralogs. 
+%LK: Aaron, did we settle on keeping this sentence in? I remember there being some contention about the hybrids thing
 Further, the methodology for identifying and selecting the single copy genes was not described in the publication and is not available upon request from the authors. 
-%LK: could be an issue for us too. Need to make clear that this could be affecting both studies
 Correspondence with the author of that study established that there was no documentation for the commands that the authors executed, so no record of how the genes were attained was available. 
 Hence it was impossible to compare the parameters that went into identification of single copy genes and it was not possible to scrutinize or reproduce the study.
 Lastly, in that study the genes were concatenated and the evolutionary relationships were inferred using ML. 
@@ -505,9 +504,10 @@ Further to that, the PP values tend to be overestimated for concatenation \citep
 Theoretically for the gonyaulacales, and taxa prone to paralogy and convoluted evolutionary histories, the MSC is a preferable approach to concatenation as MSC is more robust to ILS \& LBA artifacts \citep{liu2014coalescent}. 
 To isolate the effects of phylogenetic model from those of the statistical framework (ML vs BI), the single copy gene data set was run with BI both under MSC and with concatenation (Fig. ~\ref{fig:tangleconcatBI}). 
 We then used a statistical framework to compare the two model approaches to verify the veracity of model adequacy through stepping stone sampling. 
-%incl how it's adequate for MSC
+%LK: Mathieu, could you update this for the new run methods used?
 PATH sampling is an adequate method for objectively comparing the model parameters for relaxed clock models while penalizing for over-parameterization \citep{baele2012accurate}. 
-The marginal likelihoods for the concatenated single copy gene dataset compared to under MSC was over 10,000 log units higher, favoring the MSC approach significantly.
+The marginal likelihoods for the concatenated single copy gene dataset compared to under MSC was over 10,000 log units higher, favoring the MSC approach significantly. 
+The drastic difference in marginal likelihood between the models could be due to the likely inclusion of pseudoorthologs in the dataset, a phenomenon that MSC is robust to, unlike concatenation \citep{du2019species,roch2015likelihood}.
 However stepping stone methods are sensitive to the number of steps employed in the analysis, which should be taken under consideration when interpreting these results. \\
 The resolution of \textit{Alexandrium}, \textit{Coolia} and \textit{Ostreopsis} was identical between the two methods. 
 Further, the species resolution within the genera \textit{Gambierdiscus} and \textit{Ostreopsis} was also identical. 
