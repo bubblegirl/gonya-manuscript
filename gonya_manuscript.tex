@@ -29,8 +29,8 @@
 From publicly available next-gen sequencing datasets of non-model organisms, such as marine protists, arise opportunities to explore their evolutionary relationships. 
 In this study we explore the effects that dataset and model selection have on the phylogenetic inference of the gonyaulacales, single celled marine algae of the phylum Dinoflagellata with genomes that show extensive paralogy. 
 We developed a method for identifying and extracting single copy genes from RNA-seq libraries and compared phylogenies inferred from these single copy genes with those inferred from commonly used genetic markers and phylogenetic methods. 
-Comparison of two datasets and three different phylogenetic models showed that exclusive use of ribosomal DNA sequences, maximum likelihood and gene concatenation were less adequate compared to a multispecies coalescent Bayesian inference approach of single copy genes for the gonyaulacales. 
-% AD 290519: have we actually done model adequacy evaluations? If not we should stay away from the word adequate -- it has a very specific meaning in this context. Instead maybe we could say something like "showed very different results. Where possible, comparisons of model fit favored the multispecies coalescent for these data
+Comparison of two datasets and three different phylogenetic models showed that exclusive use of ribosomal DNA sequences, maximum likelihood and gene concatenation showed very different results. 
+Where possible, comparisons of model fit favored the multispecies coalescent for these data. 
 This study provides an exploration of approaches to phylogenetic inference in species with high levels of with paralogy and the associated constraints.  
 \end{abstract}
 
@@ -39,12 +39,6 @@ This study provides an exploration of approaches to phylogenetic inference in sp
 \flushbottom
 \maketitle
 \thispagestyle{empty}
-
-%TK general comments:
-% The main comment is that it needs more flow (sorry for my directness). 
-%It's all in there and it's good but it often sounds more like single sentences put together than a complete text.
-%LK: Aaron is smoothing the flow. Also change in the story somewhat incomming
-
 
 \section*{Introduction}
 Historically, the availability of genetic data has been the limiting factor in phylogenetic inference of evolutionary relationships.
@@ -58,7 +52,6 @@ An example of the breadth of publicly available data is the Marine Microbial Euk
 The MMETSP project focuses on a group of understudied organisms which are abundant and play vital roles in the marine environment, from geochemical cycling, to predation, to symbiosis \citep{gomez2005list,gomez2012quantitative}. 
 This data set offers an excellent opportunity to explore the evolutionary relationships between these taxa through phylogenetics. 
 
-%LK: Aaron is having a go at streamlining the flow because trying to read this over and over feels like my eyeballs are bleeding
 Central to phylogenetic inference is the existence of characters (such as nucleotides) derived from a common ancestor, which is called homology \citep{fitch2000homology}. 
 There are several types of homology, each differing in how the characters diverged, and determining the mechanisms through which characters have evolved is essential for choosing the correct inference model. 
 Orthology refers to the case where the divergence of two gene copies has followed a speciation event \citep{fitch1970distinguishing}. 
@@ -84,8 +77,9 @@ In the presence of this type of systematic error, the resulting inference can be
 In summary, common problems in carrying out a species tree inference arise from:\\
 \begin{enumerate}[noitemsep]
 \item Selection of paralogs (or pseudoorthologs). 
-If genes with different evolutionary histories are selected, the gene tree will not reflect the history of either paralog and be nonsensical for species tree inference;
+If genes with different evolutionary histories are selected, and the inference model selected is violated by this occurrence, the gene tree will not reflect the history of either paralog and be nonsensical for species tree inference;
 % AD 290519: the above sends the wrong message IMO. that situation can be handled, but it violates some models badly, so model selection matters. 
+%LK: better?
 \item Concatenation of genes. 
 Can be a statistically inconsistent estimator of the species tree due to incomplete lineage sorting (ILS) and concatenation acts as an imperfect estimator of species tree topology \citep{roch2015likelihood};
 \item Inference of model adequacy from bootstrap values. 
@@ -111,7 +105,7 @@ For in-depth explanations see \citep{yang2014molecular}.
 Error type persists and increases as data set size approaches infinity. 
 If strong, can override true phylogenetic signal.
 \end{enumerate}
-\item \textbf{Incomplete lineage sorting (ILS):} discordance of gene evolutionary history with the species evolutionary history causing the phylogenetic species tree to be misinferred. % AD 290519: not sure misinferred is actually a word people use? are you wanting to coin it? :)
+\item \textbf{Incomplete lineage sorting (ILS):} discordance of gene evolutionary history with the species evolutionary history causing the phylogenetic species tree to be misinferred. % AD 290519: not sure misinferred is actually a word people use? are you wanting to coin it? :) LK:  Damn it, my unwillingness to hang around people is showing! Happy to change it if you reckon it should be =)
 Difference in the topology of a gene tree compared to the species evolution can arise from the divergence of those orthologs prior to the species divergence, where in effect the ancestral populations contain two or more already diverged copies of the gene across one or more species divergence points. 
 Another mechanism is the introduction of a copy of the gene which is not based on ancestral inheritance (xenology), such as horizontal gene transfer or hybridization.
 \item \textbf{Long branch attraction (LBA):} placement of two heavily divergent but non-monophyletic sequences with each other. 
@@ -201,7 +195,7 @@ Posterior distributions of parameters were approximated after 300,000,000 genera
 The inference was run four times to evaluate convergence of parameters, then log and tree files (without burn-in) were merged. 
 
 
-\subsection*{Stepping stone analysis}
+\subsection*{Marginal likelihood analysis}
 %LK: Mathieu, could you update this for the new run methods used?
 We estimated the marginal likelihood of the data under the coalescent (i.e. concatenated alignment) and the multispecies coalescent (*BEAST) models to compare their fit.
 We used the stepping stone algorithm by \cite{xie2011improving} along a path of 16 power posteriors.
@@ -330,8 +324,6 @@ The third clade encompasses \textit{Gonyaulax}, \textit{Protoceratium} and \text
 
 \subsubsection*{Single copy gene based phylogeny under MSC}
 %\FloatBarrier 
-% AD: The term "resolved" is being used with what seems to be different meanings throughout this narrative and it is very confusing.
-% All nodes except one within the outgroup clade resolved.
 The following description is based on the topology in Fig. ~\ref{fig:SCmscBI}. 
 Species of \emph{Alexandrium}, \emph{Ostreopsis} and \emph{Gambierdiscus} were either well or fully supported within their genus clades. 
 The topology within the gonyaulacales resolves into three clades: 
@@ -432,11 +424,13 @@ As \emph{Azadinium} spp. also produce polyketide toxins that cause azaspiracid s
 \label{fig:tanglePrice}
 \end{figure} 
 %\FloatBarrier
-\subsubsection*{Model selection for inference.} The issue of model choice is an important one, as the choice of model can heavily influence the resulting topology. 
+\subsubsection*{Model selection for inference.} 
+%Mathieu, can you make sure this is still accurate with the changed method
+The issue of model choice is an important one, as the choice of model can heavily influence the resulting topology. 
 Mis-specification of the model, or individual parameters, can lead to a well supported but erroneous result. 
 While models are a simplistic approximation of the underlying biological drivers of evolutionary processes, getting as close an approximation as possible is essential \citep{box1979all}. 
 However under- and over-parameterization have been shown to impact topology and PPs to varying degrees, in and outside the Felsenstein zone \citep{lemmon2004importance}. 
-Stepping stone sampling compares the marginal likelihood of both the prior and the posterior of a model, while penalizing for overparameterization and can be used to compare the fit of one model compared to another for a given data set \citep{xie2010improving}. 
+Marginal likelihood comparison of both the prior and the posterior of a model, while penalizing for overparameterization and can be used to compare the fit of one model compared to another for a given data set \citep{xie2010improving}. 
 To compare how well concatenation vs. MSC fits the single copy gene data set used in this study, stepping stone comparison was conducted.
 
 \subsection*{Comparison to commonly employed models and data sets}
@@ -505,17 +499,17 @@ The \textit{Pyrodinium} placement also differs to the study by \cite{price2017ro
 Further, in the MSC analysis \textit{Ceratium}, \textit{Gonyalax}, \textit{Protoceratium} and \textit{Thecadinium} form their own clade while with concatenation, \textit{Ceratium} and \textit{Thecadinium} are ancestral genera to the rest of the gonyaulacales. 
 There is a marked difference in the internal branch arrangement, resulting in different taxa clustering, between the concatenation and MSC methods.
 The concatenated approach closely mirrors the ML arrangement of taxa, apart from \textit{Crypthecodinium} placement. 
-The main difference between the ML and BI concatenated inferences is the predicted number of amino acid substitutions along the branches and both inferences are topologically distinct to the MSC approach.
-%AD 290519: really? seems weird that the total tree length would be very dissimilar
+Both inferences are topologically distinct to the MSC approach.
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=\linewidth]{gonya-figs/SC-MSC-BI-vs-SC-concat-BI.png} 
+\includegraphics[width=\linewidth]{gonya-figs/SC-MSC-BI_vs_SC-concat-BI.png} 
 \caption{Tanglegram showing the topological differences in phylogenies with same 58 single copy gene alignments as input. (A) concatenated BEAST2; and (B) MSC *BEAST2 inference. Gonyaulacales (\#16) in purple, outgroups (\#3) in light blue and taxa \textit{incertae sedis} (\#1) in teal.} 
 \label{fig:tangleconcatBI}
 \end{figure} 
 %\FloatBarrier
 %AD 290519: the taxon labels are too small to read in the above figure. maybe just scale down the tree widths in inkscape?
+%LK: Yeah they should be sideways figures but the peerJ formating submission won't let that be a thing. I've increased font size, does that help?
 
 
 \subsection*{Areas for possible improvement of this study}
@@ -532,6 +526,7 @@ Without an available reference genome, it is difficult to evaluate the accuracy 
 Three different approaches for RNA-seq library generation were employed for the libraries used in this study, the MMETSP taxa were sequenced on HiSeq platform with 50nt reads; while all other taxa were sequenced on the NextSeq platform with 75nt or 150nt reads. 
 The different sequencing methods may each influence the single copy gene coverage and transcriptome assembly accuracy, leading to systematic error and batch effects on some taxa.
 %AD 290519: love the honesty in the above paragraph!
+%LK yay ^__^
 \paragraph*{Total evidence phylogenetics.}
 The method presented here purely considers the information contained in the genetic aspect of the organisms examined. 
 Morphological characters, if evolutionarily relevant ones can be identified, and fossil dates can add another dimension to the phylogenetic inference and put the evolution within a relative time frame \citep{gavryushkina2017bayesian}.  
